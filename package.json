@@ -1,0 +1,41 @@
+{
+  "name": "vue-dataset",
+  "description": "A vue component to display datasets with filtering, paging and sorting capabilities",
+  "version": "0.0.1",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "dist/vue-dataset.umd.min.js",
+  "jsnext:main": "vue-dataset.es.js",
+  "scripts": {
+    "watch": "vuepress dev docs",
+    "rollup": "rollup -c",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "build": "rollup -c && vuepress build docs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "babel-eslint": "^10.1.0",
+    "bootstrap": "^4.5.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.1",
+    "node-sass": "^4.14.1",
+    "rollup": "^2.12.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-vue": "^5.1.9",
+    "sass-loader": "^8.0.2",
+    "vuepress": "^1.5.0"
+  }
+}
