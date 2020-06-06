@@ -10,6 +10,7 @@
   "main": "dist/vue-dataset.umd.min.js",
   "jsnext:main": "vue-dataset.es.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "watch": "vuepress dev docs",
     "rollup": "rollup -c",
     "docs:dev": "vuepress dev docs",
@@ -37,5 +38,8 @@
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^8.0.2",
     "vuepress": "^1.5.0"
+  },
+  "resolutions": {
+    "watchpack": "1.6.1"
   }
 }
