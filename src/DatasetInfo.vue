@@ -1,5 +1,5 @@
 <template>
-  <div class="dataTables_info">
+  <div>
     {{ datasetI18n.showing }} {{ dsResultsNumber != 0 ? dsFrom + 1 : 0 }}
     {{ datasetI18n.showingTo }} {{ dsTo >= dsResultsNumber ? dsResultsNumber : dsTo }}
     {{ datasetI18n.showingOf }} {{ dsResultsNumber }} {{ datasetI18n.showingEntries }}
