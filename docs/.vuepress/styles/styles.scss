@@ -65,3 +65,7 @@ blockquote p {color: #777;}
 #browsers-support + table th img {
   vertical-align: baseline;
 }
+
+.dataset-page .theme-default-content:not(.custom) {
+  max-width: 100%;
+}
