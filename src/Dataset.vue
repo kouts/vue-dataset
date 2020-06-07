@@ -59,7 +59,7 @@ export default {
         this.dsSearch = value;
       },
       showEntries: (value) => {
-        this.dsShowEntries = value;
+        this.showEntries(value);
       },
       setActive: (value) => {
         this.setActive(value);
@@ -253,6 +253,14 @@ export default {
   methods: {
     setActive (value) {
       this.dsPage = value;
+    },
+    showEntries (value) {
+      const pagesBeforeChange = this.dsPages;
+      this.dsShowEntries = value;
+      const pagesAfterChange = this.dsPages;
+      if (pagesAfterChange.length < pagesBeforeChange.length) {
+        this.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
+      }
     }
   }
 };
