@@ -9,15 +9,15 @@
         :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteFruit']"
         :ds-search-as="{}"
       >
-        <div class="row">
-          <div class="col-sm-8 mb-2 mb-sm-0">
-            Filtering and sorting
+        <div class="row mb-4">
+          <div class="col-sm-6">
+            <dataset-show :ds-show-entries="ds.dsShowEntries" />
           </div>
-          <div class="col-sm-4">
-            <dataset-filters ds-search-placeholder="Custom placeholder text..." :ds-show-entries="ds.dsShowEntries" />
+          <div class="col-sm-6">
+            <dataset-search ds-search-placeholder="Custom placeholder text..." />
           </div>
         </div>
-        <div class="row pt-2">
+        <div class="row">
           <div class="col-sm-12">
             <dataset-div :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="row">
               <template v-slot="{row, rowIndex}">
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="dataTables_wrapper info-paginate-center">
-          <dataset-showing :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
+          <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
           <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
         </div>
       </dataset>
