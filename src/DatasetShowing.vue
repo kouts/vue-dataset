@@ -1,13 +1,14 @@
 <template>
   <div class="dataTables_info">
-    {{ $t('otr.showing') }} {{ dsResultsNumber != 0 ? dsFrom + 1 : 0 }}
-    {{ $t('otr.showing_to') }} {{ dsTo >= dsResultsNumber ? dsResultsNumber : dsTo }}
-    {{ $t('otr.showing_of') }} {{ dsResultsNumber }} {{ $t('otr.showing_entries') }}
+    {{ datasetI18n.showing }} {{ dsResultsNumber != 0 ? dsFrom + 1 : 0 }}
+    {{ datasetI18n.showingTo }} {{ dsTo >= dsResultsNumber ? dsResultsNumber : dsTo }}
+    {{ datasetI18n.showingOf }} {{ dsResultsNumber }} {{ datasetI18n.showingEntries }}
   </div>
 </template>
 
 <script>
 export default {
+  inject: ['datasetI18n'],
   props: {
     dsResultsNumber: {
       type: Number,

@@ -1,9 +1,50 @@
 <template>
-  <div class="mt-3">
-    <div class="row mb-3">
-      <div class="col">
-        {{ users }}
-      </div>
+  <div class="card">
+    <div class="card-body p-3">
+      <dataset
+        v-slot="{ds}"
+        :ds-data="users"
+        :ds-filter-fields="{}"
+        :ds-sortby="''"
+        :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteFruit']"
+        :ds-search-as="{}"
+      >
+        <div class="row">
+          <div class="col-sm-8 mb-2 mb-sm-0">
+            Filtering and sorting
+          </div>
+          <div class="col-sm-4">
+            <dataset-filters ds-search-placeholder="Custom placeholder text..." :ds-show-entries="ds.dsShowEntries" />
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-sm-12">
+            <dataset-div :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="row">
+              <template v-slot="{row, rowIndex}">
+                <div class="col-sm-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title text-truncate mb-2">{{ row.name }} index {{ rowIndex }}</h4>
+                      <h6 class="card-subtitle mb-2 text-muted">{{ row.email }}</h6>
+                      <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
+                      <p class="card-text text-truncate mb-1 text-right">{{ row.birthdate }}</p>
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <template v-slot:noDataFound>
+                <div class="col-sm-12 pt-2">
+                  <p class="text-center">No results found</p>
+                </div>
+              </template>
+            </dataset-div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper info-paginate-center">
+          <dataset-showing :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
+          <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
+        </div>
+      </dataset>
     </div>
   </div>
 </template>
@@ -18,6 +59,11 @@ export default {
     return {
       users: data
     };
+  },
+  methods: {
+    testMethod () {
+      // noop
+    }
   }
 };
 </script>

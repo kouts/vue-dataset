@@ -1,16 +1,16 @@
 <template>
   <div class="input-group dataset-filters">
     <input type="text" :placeholder="dsSearchPlaceholder" class="form-control" :value="dsSearch" @input="search($event.target.value)" />
-    <div v-popper="{placement: 'bottom-end', clickToClose: false}" class="input-group-append">
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" popper-trigger><i class="fas fa-cog fs11"></i></button>
-      <div class="dropdown-menu" popper>
+    <div class="input-group-append">
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle"><i class="fas fa-cog fs11"></i></button>
+      <div class="dropdown-menu">
         <form class="form-inline">
           <div class="clearfix pr-2 pl-2">
-            <label class="d-inline-block">{{ $t('otr.show') }}</label>
+            <label class="d-inline-block">{{ datasetI18n.show }}</label>
             <select class="form-control d-inline-block" :value="dsShowEntries" style="float: none;" @change="showEntries(Number($event.target.value))">
               <option v-for="option in dsShowEntriesLovs" :key="option.value" :value="option.value">{{ option.text }}</option>
             </select>
-            <label class="d-inline-block">{{ $t('otr.entries') }}</label>
+            <label class="d-inline-block">{{ datasetI18n.entries }}</label>
           </div>
         </form>
       </div>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  inject: ['search', 'showEntries'],
+  inject: ['datasetI18n', 'search', 'showEntries'],
   props: {
     dsSearchPlaceholder: {
       type: String,
