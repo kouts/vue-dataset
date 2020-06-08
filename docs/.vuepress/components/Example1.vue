@@ -39,12 +39,8 @@
       </div>
     </div>
     <div class="d-flex flex-row justify-content-between">
-      <div>
-        <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
-      </div>
-      <div>
-        <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
-      </div>
+      <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
+      <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
     </div>
   </dataset>
 </template>
