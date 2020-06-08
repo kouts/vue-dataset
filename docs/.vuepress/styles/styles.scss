@@ -35,7 +35,9 @@ $link-hover-color: lighten($link-color, 15%) !default;
 @import '~bootstrap/scss/_card';
 /*
 @import '~bootstrap/scss/_breadcrumb';
+*/
 @import '~bootstrap/scss/_pagination';
+/*
 @import '~bootstrap/scss/_badge';
 @import '~bootstrap/scss/_jumbotron';
 @import '~bootstrap/scss/_alert';
@@ -70,6 +72,11 @@ blockquote p {color: #777;}
   vertical-align: baseline;
 }
 
+/* Custom width for dataset pages */
 .dataset-page .theme-default-content:not(.custom) {
   max-width: 100%;
+}
+
+.dataset-page .theme-default-content:not(.custom) ul.pagination a:hover {
+  text-decoration: none;
 }
