@@ -55,25 +55,10 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
 export default {
   provide () {
     return {
-      search: (value) => {
-        this.dsSearch = value;
-      },
-      showEntries: (value) => {
-        this.showEntries(value);
-      },
-      setActive: (value) => {
-        this.setActive(value);
-      },
-      datasetI18n: {
-        show: 'Show',
-        entries: 'entries',
-        previous: 'Previous',
-        next: 'Next',
-        showing: 'Showing',
-        showingTo: 'to',
-        showingOf: 'of',
-        showingEntries: 'entries'
-      }
+      search: this.search,
+      showEntries: this.showEntries,
+      setActive: this.setActive,
+      datasetI18n: this.datasetI18n
     };
   },
   props: {
@@ -102,7 +87,17 @@ export default {
     return {
       dsShowEntries: 10,
       dsPage: 1,
-      dsSearch: ''
+      dsSearch: '',
+      datasetI18n: {
+        show: 'Show',
+        entries: 'entries',
+        previous: 'Previous',
+        next: 'Next',
+        showing: 'Showing',
+        showingTo: 'to',
+        showingOf: 'of',
+        showingEntries: 'entries'
+      }
     };
   },
   computed: {
@@ -251,8 +246,8 @@ export default {
     }
   },
   methods: {
-    setActive (value) {
-      this.dsPage = value;
+    search (value) {
+      this.dsSearch = value;
     },
     showEntries (value) {
       const pagesBeforeChange = this.dsPages;
@@ -261,6 +256,9 @@ export default {
       if (pagesAfterChange.length < pagesBeforeChange.length) {
         this.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
       }
+    },
+    setActive (value) {
+      this.dsPage = value;
     }
   }
 };
