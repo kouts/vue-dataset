@@ -1,4 +1,4 @@
-import { shallowMount, createWrapper } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import DatasetSearch from '@/DatasetSearch.vue';
 
 describe('DatasetSearch', () => {
