@@ -38,7 +38,7 @@ describe('DatasetDiv', () => {
     }
   };
 
-  const wrapperComp = mount(WrapperComp)
+  const wrapperComp = mount(WrapperComp);
   const wrapper = wrapperComp.findComponent(DatasetDiv);
 
   it('renders divs based on passed props', () => {
