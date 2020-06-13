@@ -1,7 +1,7 @@
 <template>
   <div>
-    {{ datasetI18n.showing }} {{ dsResultsNumber !== 0 ? dsFrom + 1 : 0 }}
-    {{ datasetI18n.showingTo }} {{ dsTo >= dsResultsNumber ? dsResultsNumber : dsTo }}
+    {{ datasetI18n.showing }} {{ showing }}
+    {{ datasetI18n.showingTo }} {{ showingTo }}
     {{ datasetI18n.showingOf }} {{ dsResultsNumber }} {{ datasetI18n.showingEntries }}
   </div>
 </template>
@@ -21,6 +21,14 @@ export default {
     dsTo: {
       type: Number,
       default: 0
+    }
+  },
+  computed: {
+    showing () {
+      return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0;
+    },
+    showingTo () {
+      return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo;
     }
   }
 };
