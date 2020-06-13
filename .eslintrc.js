@@ -41,4 +41,7 @@ module.exports = {
     // Custom rules standard
     semi: ['error', 'always'],
   },
+  env: {
+    jest: true // now **/*.test.js files' env has both es6 *and* jest
+  },  
 };
