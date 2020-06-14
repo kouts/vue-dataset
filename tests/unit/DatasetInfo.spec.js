@@ -1,15 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
 import DatasetInfo from '@/DatasetInfo.vue';
+import datasetI18n from '@/i18n/en.js';
 
 describe('DatasetInfo', () => {
   const wrapper = shallowMount(DatasetInfo, {
     provide: {
-      datasetI18n: {
-        showing: 'Showing',
-        showingTo: 'to',
-        showingOf: 'of',
-        showingEntries: 'entries'
-      }
+      datasetI18n: datasetI18n
     }
   });
 

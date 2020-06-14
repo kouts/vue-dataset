@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import datasetI18n from './i18n/en.js';
+
 // Sorting method
 function compare (a, b) {
   if (a > b) {
@@ -88,16 +90,7 @@ export default {
       dsShowEntries: 10,
       dsPage: 1,
       dsSearch: '',
-      datasetI18n: {
-        show: 'Show',
-        entries: 'entries',
-        previous: 'Previous',
-        next: 'Next',
-        showing: 'Showing',
-        showingTo: 'to',
-        showingOf: 'of',
-        showingEntries: 'entries'
-      }
+      datasetI18n: datasetI18n
     };
   },
   computed: {
