@@ -45,19 +45,17 @@ describe('DatasetDiv', () => {
     expect(wrapper.findAll('div.result').length).toBe(2);
   });
 
-  it('does not render any results when dsRows is empty', (done) => {
+  it('does not render any results when dsRows is empty', () => {
     wrapperComp.setData({ dsRows: [] });
     wrapperComp.vm.$nextTick(() => {
       expect(wrapper.findAll('div.result').length).toBe(0);
-      done();
     });
   });
 
-  it('renders the noDataFound slot when dsRows is empty', (done) => {
+  it('renders the noDataFound slot when dsRows is empty', () => {
     wrapperComp.setData({ dsRows: [] });
     wrapperComp.vm.$nextTick(() => {
       expect(wrapper.find('p').text()).toBe('No results found');
-      done();
     });
   });
 });
