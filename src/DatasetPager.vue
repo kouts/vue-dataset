@@ -27,7 +27,7 @@
         href="#"
         :tabindex="(dsPage === dsPagecount || dsPagecount === 1) && '-1'"
         :aria-disabled="(dsPage === dsPagecount || dsPagecount === 1) && 'true'"
-        @click.prevent="setActive(dsPage !== dsPagecount && dsPagecount !== 0 ? dsPage+1 : dsPage)"
+        @click.prevent="setActive(dsPage !== dsPagecount && dsPagecount !== 0 ? dsPage + 1 : dsPage)"
       >
         {{ datasetI18n.next }}
       </a>
