@@ -2,6 +2,8 @@ import { shallowMount } from '@vue/test-utils';
 import DatasetPager from '@/DatasetPager.vue';
 import datasetI18n from '@/i18n/en.js';
 
+const mockSetActive = jest.fn();
+
 const isButtonDisabled = function (el) {
   return el.tabIndex === -1 && el.hasAttribute('aria-disabled') === true;
 };
@@ -11,22 +13,27 @@ const isButtonEnabled = function (el) {
 };
 
 describe('DatasetPager', () => {
-  const testDiv = document.createElement('div');
-  testDiv.setAttribute('id', 'test-div');
-  document.body.appendChild(testDiv);
+
+  beforeEach(() => {
+    resetProps();
+  });
 
   const wrapper = shallowMount(DatasetPager, {
     provide: {
       datasetI18n: datasetI18n,
       setActive: function (value) {
-        const testDiv = document.getElementById('test-div');
-        testDiv.textContent = value;
+        mockSetActive(value);
       }
-    },
-    propsData: {
-      dsPages: [1, 2, 3]
     }
   });
+
+  const resetProps = function () {
+    wrapper.setProps({
+      dsPages: [1, 2, 3],
+      dsPagecount: 0,
+      dsPage: 1
+    });
+  };
 
   it('renders a ul element', () => {
     const ul = wrapper.find('ul');
@@ -123,4 +130,28 @@ describe('DatasetPager', () => {
     });
   });
 
+  it('sends the correct active page number on previous button click', () => {
+    mockSetActive.mockClear();
+    wrapper.setProps({
+      dsPages: [1, '...', 4, 5, 6],
+      dsPage: 6,
+      dsPagecount: 6
+    });
+    const previousButton = wrapper.findAll('a').at(0);
+    previousButton.trigger('click');
+    expect(mockSetActive.mock.calls[0][0]).toBe(5);
+  });
+
+  it('sends the correct active page number on next button click', () => {
+    mockSetActive.mockClear();
+    wrapper.setProps({
+      dsPages: [1, '...', 4, 5, 6],
+      dsPage: 5,
+      dsPagecount: 6
+    });
+    const buttons = wrapper.findAll('a');
+    const nextButton = buttons.at(buttons.length - 1);
+    nextButton.trigger('click');
+    expect(mockSetActive.mock.calls[0][0]).toBe(6);
+  });
 });
