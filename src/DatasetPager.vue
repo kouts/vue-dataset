@@ -6,7 +6,7 @@
         href="#"
         :tabindex="(dsPage === 1 || dsPagecount === 1) && '-1'"
         :aria-disabled="(dsPage === 1 || dsPagecount === 1) && 'true'"
-        @click.prevent="setActive(dsPage !== 1 && dsPagecount !== 0 ? dsPage-1 : dsPage)"
+        @click.prevent="setActive(dsPage !== 1 && dsPagecount !== 0 ? dsPage - 1 : dsPage)"
       >
         {{ datasetI18n.previous }}
       </a>
