@@ -6,7 +6,6 @@
     "serve": "vue-cli-service serve",
     "build:vue": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "preinstall": "npx npm-force-resolutions",
     "watch": "vuepress dev docs",
     "rollup": "rollup -c",
     "docs:dev": "vuepress dev docs",
@@ -18,12 +17,11 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
     "@vue/cli-plugin-babel": "^4.4.0",
     "@vue/cli-plugin-unit-jest": "^4.4.0",
     "@vue/cli-service": "^4.4.0",
     "@vue/test-utils": "^1.0.3",
-    "vue-template-compiler": "^2.6.11",
-    "@rollup/plugin-buble": "^0.21.3",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.5.0",
     "eslint": "^6.8.0",
@@ -35,16 +33,14 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.1",
     "node-sass": "^4.14.1",
-    "rollup": "^2.12.1",
+    "rollup": "^2.16.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-css-only": "^1.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^8.0.2",
-    "vuepress": "^1.5.0"
-  },
-  "resolutions": {
-    "watchpack": "1.6.1"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.2"
   }
 }
