@@ -22,7 +22,7 @@
             <div class="col-sm-4">
               <div class="card mb-2">
                 <div class="card-body">
-                  <h4 class="card-title text-truncate mb-2">{{ row.name }} index {{ rowIndex }}</h4>
+                  <h4 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">{{ row.name }}</h4>
                   <h6 class="card-subtitle text-truncate mb-2 text-muted">{{ row.email }}</h6>
                   <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
                   <p class="card-text text-truncate mb-1 text-right">{{ row.birthdate }}</p>
