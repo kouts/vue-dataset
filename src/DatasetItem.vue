@@ -9,9 +9,6 @@
 
 <script>
 export default {
-  components: {
-    Element
-  },
   props: {
     tag: {
       type: String,
