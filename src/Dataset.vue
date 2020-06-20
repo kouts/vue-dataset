@@ -234,12 +234,12 @@ export default {
     }
   },
   watch: {
-    dsData: {
+    dsResultsNumber: {
       handler: function (val, oldVal) {
-        // Reset active page when data changes
+        // Reset active page when results change
         this.setActive(1);
       }
-    }
+    }, 
   },
   methods: {
     search (value) {
@@ -248,11 +248,12 @@ export default {
     showEntries (value) {
       const pagesBeforeChange = this.dsPages;
       this.$emit('update:dsShowEntries', value);
-      // this.dsShowEntries = value;
-      const pagesAfterChange = this.dsPages;
-      if (pagesAfterChange.length < pagesBeforeChange.length) {
-        this.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
-      }
+      this.$nextTick(() => {
+        const pagesAfterChange = this.dsPages;
+        if (pagesAfterChange.length < pagesBeforeChange.length) {
+          this.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
+        }
+      });
     },
     setActive (value) {
       this.dsPage = value;

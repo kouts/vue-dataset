@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="row mb-4">
+      <div class="col">
+        <button type="button" class="btn btn-primary" @click="updateData">Update data</button>
+      </div>
+    </div>
     <div class="row mb-2">
       <div class="col">
         <div class="btn-group">
@@ -72,7 +77,7 @@
 <script>
 // https://next.json-generator.com/4JvxrAE2O
 import data from '../data/exampleData.json';
-import { filterList } from '../utilities';
+import { filterList, clone } from '../utilities';
 
 export default {
   name: 'Example1',
@@ -90,7 +95,11 @@ export default {
     };
   },
   methods: {
-    filterList
+    filterList,
+    updateData () {
+      const updatedUsers = clone(this.users).slice(5, 10);
+      this.users = updatedUsers;
+    }
   }
 };
 </script>

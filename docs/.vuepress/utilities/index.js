@@ -8,3 +8,7 @@ export const filterList = function (list = [], filter) {
     return true;
   });
 };
+
+export const clone = function (obj) {
+  return JSON.parse(JSON.stringify(obj || {}));
+};
