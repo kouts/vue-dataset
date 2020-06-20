@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
-import DatasetDiv from '@/DatasetDiv.vue';
+import DatasetItem from '@/DatasetItem.vue';
 
-describe('DatasetDiv', () => {
+describe('DatasetItem', () => {
   const WrapperComp = {
     data: function () {
       return {
@@ -21,7 +21,7 @@ describe('DatasetDiv', () => {
       };
     },
     template: `
-      <dataset-div :ds-data="dsData" :ds-rows="dsRows">
+      <dataset-item :ds-data="dsData" :ds-rows="dsRows">
         <template v-slot="{row, rowIndex}">
           <div class="result">
             <p>{{row.name}}</p>
@@ -31,15 +31,15 @@ describe('DatasetDiv', () => {
         <template v-slot:noDataFound>
           <p>No results found</p>
         </template>      
-      </dataset-div>
+      </dataset-item>
     `,
     components: {
-      DatasetDiv
+      DatasetItem
     }
   };
 
   const wrapperComp = mount(WrapperComp);
-  const wrapper = wrapperComp.findComponent(DatasetDiv);
+  const wrapper = wrapperComp.findComponent(DatasetItem);
 
   it('renders divs based on passed props', () => {
     expect(wrapper.findAll('div.result').length).toBe(2);
