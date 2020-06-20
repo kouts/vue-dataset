@@ -2,6 +2,7 @@
   {
     "_id": "5edbf11ffddc6856a808258e",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 23439,
     "birthdate": "2000-04-08",
     "age": 20,
@@ -17,6 +18,7 @@
   {
     "_id": "5edbf11fc13bf478bd1bf5b2",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 18525,
     "birthdate": "1993-10-29",
     "age": 26,
@@ -32,6 +34,7 @@
   {
     "_id": "5edbf11f91686458679a5dae",
     "isActive": false,
+    "onlineStatus": "Do not disturb",
     "balance": 10522,
     "birthdate": "1990-09-28",
     "age": 29,
@@ -47,6 +50,7 @@
   {
     "_id": "5edbf11ff776743732be17a9",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 11600,
     "birthdate": "1982-03-16",
     "age": 38,
@@ -62,6 +66,7 @@
   {
     "_id": "5edbf11f53d8202e152991f8",
     "isActive": true,
+    "onlineStatus": "Away",
     "balance": 4542,
     "birthdate": "2004-11-06",
     "age": 15,
@@ -77,6 +82,7 @@
   {
     "_id": "5edbf11faf3e23e25975fcb2",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 11215,
     "birthdate": "1984-05-10",
     "age": 36,
@@ -92,6 +98,7 @@
   {
     "_id": "5edbf11f5b0811ea98dd60ca",
     "isActive": false,
+    "onlineStatus": "Do not disturb",
     "balance": 34245,
     "birthdate": "1986-07-14",
     "age": 33,
@@ -107,6 +114,7 @@
   {
     "_id": "5edbf11f8f34338f0dd14dd8",
     "isActive": false,
+    "onlineStatus": "Do not disturb",
     "balance": 7179,
     "birthdate": "1991-06-03",
     "age": 29,
@@ -122,6 +130,7 @@
   {
     "_id": "5edbf11f9a3502e7cd80e004",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 3391,
     "birthdate": "1988-03-06",
     "age": 32,
@@ -137,6 +146,7 @@
   {
     "_id": "5edbf11fffad616f8c45c71b",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 11115,
     "birthdate": "1986-03-07",
     "age": 34,
@@ -152,6 +162,7 @@
   {
     "_id": "5edbf11f648ad34e311699e7",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 11707,
     "birthdate": "2008-12-02",
     "age": 11,
@@ -167,6 +178,7 @@
   {
     "_id": "5edbf11fb89f277ef6a34954",
     "isActive": true,
+    "onlineStatus": "Invisible",
     "balance": 7035,
     "birthdate": "2000-11-13",
     "age": 19,
@@ -182,6 +194,7 @@
   {
     "_id": "5edbf11f81549e8308606b67",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 3778,
     "birthdate": "2011-06-14",
     "age": 8,
@@ -197,6 +210,7 @@
   {
     "_id": "5edbf11f0752b3a7a047c328",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 26947,
     "birthdate": "2009-11-17",
     "age": 10,
@@ -212,6 +226,7 @@
   {
     "_id": "5edbf11f685f013bfa34cef0",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 31798,
     "birthdate": "1976-08-11",
     "age": 43,
@@ -227,6 +242,7 @@
   {
     "_id": "5edbf11f428a8f583a0694a9",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 18730,
     "birthdate": "1976-10-14",
     "age": 43,
@@ -242,6 +258,7 @@
   {
     "_id": "5edbf11f292b96ccfc9dd7ee",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 20104,
     "birthdate": "1984-05-15",
     "age": 36,
@@ -257,6 +274,7 @@
   {
     "_id": "5edbf11faa9d824f473d1654",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 16395,
     "birthdate": "1973-09-19",
     "age": 46,
@@ -272,6 +290,7 @@
   {
     "_id": "5edbf11f7337254a5de19fd7",
     "isActive": true,
+    "onlineStatus": "Invisible",
     "balance": 11301,
     "birthdate": "2010-05-30",
     "age": 10,
@@ -287,6 +306,7 @@
   {
     "_id": "5edbf11fa5e22728e4e3b169",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 2090,
     "birthdate": "1988-08-20",
     "age": 31,
@@ -302,6 +322,7 @@
   {
     "_id": "5edbf11f219e311682b79543",
     "isActive": false,
+    "onlineStatus": "Away",
     "balance": 24633,
     "birthdate": "1987-11-14",
     "age": 32,
@@ -317,6 +338,7 @@
   {
     "_id": "5edbf11fc654e26dc6a232ec",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 15071,
     "birthdate": "2012-12-03",
     "age": 7,
@@ -332,6 +354,7 @@
   {
     "_id": "5edbf11fe86faef74ad9632d",
     "isActive": false,
+    "onlineStatus": "Invisible",
     "balance": 33501,
     "birthdate": "1983-08-29",
     "age": 36,
@@ -347,6 +370,7 @@
   {
     "_id": "5edbf11fa2a859ba224584ac",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 14638,
     "birthdate": "2006-06-08",
     "age": 13,
@@ -362,6 +386,7 @@
   {
     "_id": "5edbf11f7eb04d172684ce24",
     "isActive": true,
+    "onlineStatus": "Active",
     "balance": 23760,
     "birthdate": "1989-06-27",
     "age": 30,
@@ -377,6 +402,7 @@
   {
     "_id": "5edbf11f39416668cae95eb5",
     "isActive": true,
+    "onlineStatus": "Away",
     "balance": 38953,
     "birthdate": "1990-05-22",
     "age": 30,
@@ -392,6 +418,7 @@
   {
     "_id": "5edbf11f9c7fd26af3f60d46",
     "isActive": false,
+    "onlineStatus": "Do not disturb",
     "balance": 26054,
     "birthdate": "2014-10-10",
     "age": 5,
@@ -407,6 +434,7 @@
   {
     "_id": "5edbf11fe9573675a2b0d064",
     "isActive": false,
+    "onlineStatus": "Active",
     "balance": 22986,
     "birthdate": "1978-06-19",
     "age": 41,
@@ -422,6 +450,7 @@
   {
     "_id": "5edbf11f40481239b6a87300",
     "isActive": true,
+    "onlineStatus": "Away",
     "balance": 2146,
     "birthdate": "1985-01-03",
     "age": 35,
@@ -437,6 +466,7 @@
   {
     "_id": "5edbf11f7a99c21bfe1192a2",
     "isActive": true,
+    "onlineStatus": "Invisible",
     "balance": 19000,
     "birthdate": "2001-09-16",
     "age": 18,
