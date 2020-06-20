@@ -20,7 +20,7 @@ function compare (a, b) {
 
 // Search method that also takes into account transformations needed
 function findAny (dsSearchIn, dsSearchAs, obj, str) {
-  // Convert the search string to lower case.
+  // Convert the search string to lower case
   str = str.toLowerCase();
   for (var key in obj) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
@@ -29,13 +29,13 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
           // that returns true/false and we return that if true.
-          /* Check if dsSearchAs was passed as string from template, if so call apropriate function from component */
+          /* Check if dsSearchAs was passed as string from template, if so call appropriate function from the component */
           if (typeof dsSearchAs[field] === 'string') {
             const res = this[dsSearchAs[field]](value, str);
             if (res === true) {
               return res;
             }
-            /* Check if dsSearchAs is a function(passed from template) */
+            /* Check if dsSearchAs is a function (passed from the template) */
           }
           if (typeof dsSearchAs[field] === 'function') {
             const res = dsSearchAs[field](value, str);
@@ -45,7 +45,7 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
           }
         }
       }
-      // If it doesn't return from above we make a simple search
+      // If it doesn't return from above we perform a simple search
       if (value.indexOf(str) >= 0) {
         return true;
       }
