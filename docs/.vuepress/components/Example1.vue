@@ -23,6 +23,7 @@
     </div>
     <dataset
       v-slot="{ds}"
+      :ds-show-entries.sync="showEntries"
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter}"
       :ds-sortby="''"
@@ -77,6 +78,7 @@ export default {
   name: 'Example1',
   data: function () {
     return {
+      showEntries: 5,
       users: data,
       statusClass: {
         Active: 'text-success',

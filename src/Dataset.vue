@@ -83,11 +83,14 @@ export default {
     dsSearchAs: {
       type: Object,
       default: () => {}
+    },
+    dsShowEntries: {
+      type: Number,
+      default: 10
     }
   },
   data: function () {
     return {
-      dsShowEntries: 10,
       dsPage: 1,
       dsSearch: '',
       datasetI18n: datasetI18n
@@ -244,7 +247,8 @@ export default {
     },
     showEntries (value) {
       const pagesBeforeChange = this.dsPages;
-      this.dsShowEntries = value;
+      this.$emit('update:dsShowEntries', value);
+      // this.dsShowEntries = value;
       const pagesAfterChange = this.dsPages;
       if (pagesAfterChange.length < pagesBeforeChange.length) {
         this.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
