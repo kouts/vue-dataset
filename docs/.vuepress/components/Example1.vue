@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <dataset-div :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="form-row">
+        <dataset-item :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="form-row">
           <template v-slot="{row, rowIndex}">
             <div class="col-sm-4">
               <div class="card mb-2">
@@ -35,7 +35,7 @@
               <p class="text-center">No results found</p>
             </div>
           </template>
-        </dataset-div>
+        </dataset-item>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-between">

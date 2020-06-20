@@ -2,7 +2,7 @@ import Dataset from '../../src/Dataset.vue';
 import DatasetSearch from '../../src/DatasetSearch.vue';
 import DatasetShow from '../../src/DatasetShow.vue';
 import DatasetPager from '../../src/DatasetPager.vue';
-import DatasetDiv from '../../src/DatasetDiv.vue';
+import DatasetItem from '../../src/DatasetItem.vue';
 import DatasetInfo from '../../src/DatasetInfo.vue';
 import './styles/styles.scss';
 
@@ -18,7 +18,7 @@ export default ({
     Vue.component('dataset-show', DatasetShow);
     Vue.component('dataset-search', DatasetSearch);
     Vue.component('dataset-pager', DatasetPager);
-    Vue.component('dataset-div', DatasetDiv);
+    Vue.component('dataset-item', DatasetItem);
     Vue.component('dataset-info', DatasetInfo);
   }
 };
