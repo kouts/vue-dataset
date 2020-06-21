@@ -7,15 +7,32 @@
 <script>
 import datasetI18n from './i18n/en.js';
 
-// Sorting method
-function compare (a, b) {
-  if (a > b) {
-    return 1;
-  }
-  if (a < b) {
-    return -1;
-  }
-  return 0;
+function fieldSorter (fields) {
+  const dir = [];
+  let i;
+  const l = fields.length;
+  fields = fields.map(function (o, i) {
+    if (o[0] === '-') {
+      dir[i] = -1;
+      o = o.substring(1);
+    } else {
+      dir[i] = 1;
+    }
+    return o;
+  });
+
+  return function (a, b) {
+    for (i = 0; i < l; i++) {
+      const o = fields[i];
+      if (a.value[o] > b.value[o]) {
+        return dir[i];
+      }
+      if (a.value[o] < b.value[o]) {
+        return -(dir[i]);
+      }
+    }
+    return 0;
+  };
 }
 
 // Search method that also takes into account transformations needed
@@ -73,8 +90,8 @@ export default {
       default: () => {}
     },
     dsSortby: {
-      type: String,
-      default: ''
+      type: Array,
+      default: () => []
     },
     dsSearchIn: {
       type: Array,
@@ -156,8 +173,10 @@ export default {
         }
         // Sort it
         if (dsSortby) {
+          /*
           var reverse = (dsSortby.charAt(0) === '-');
           if (!reverse) {
+            console.log(result);
             result = result.sort(function (a, b) {
               return compare(a.value[dsSortby], b.value[dsSortby]);
             });
@@ -167,6 +186,8 @@ export default {
               return compare(a.value[dsSortby], b.value[dsSortby]);
             });
           }
+          */
+          result = result.sort(fieldSorter(dsSortby));
         }
         // We need indexes only
         result = result.map(function (entry) {

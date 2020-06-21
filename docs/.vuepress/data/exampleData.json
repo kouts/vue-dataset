@@ -176,6 +176,22 @@
     "favoriteFruit": "banana"
   },
   {
+    "_id": "5edbf11f6455d34e311699e8",
+    "isActive": false,
+    "onlineStatus": "Away",
+    "balance": 1200,
+    "birthdate": "2010-07-22",
+    "age": 10,
+    "eyeColor": "blue",
+    "name": "Adams Fields",
+    "company": "Acme",
+    "email": "adams@acme.com",
+    "phone": "+3 (312) 744-5649",
+    "address": "54 Burbon Street, Blindfield, Texas, 4445",
+    "registered": "Wednesday, April 20, 2016 12:00 AM",
+    "favoriteFruit": "cherry"
+  },  
+  {
     "_id": "5edbf11fb89f277ef6a34954",
     "isActive": true,
     "onlineStatus": "Invisible",

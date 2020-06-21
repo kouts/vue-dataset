@@ -36,7 +36,7 @@
       :ds-show-entries.sync="showEntries"
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
-      :ds-sortby="''"
+      :ds-sortby="['name']"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteFruit']"
       :ds-search-as="{}"
     >
