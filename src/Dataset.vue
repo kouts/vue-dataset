@@ -115,7 +115,7 @@ export default {
       var dsSearchAs = this.dsSearchAs;
 
       if (!dsSearch && !dsSortby && (!dsFilterFields || Object.keys(dsFilterFields).length === 0)) {
-        // just get the indexes
+        // Just get the indexes
         result = dsData.map(function (val, i) {
           return i;
         });
@@ -129,11 +129,14 @@ export default {
         });
         // Filter it by field
         for (var filterKey in dsFilterFields) {
-          // console.log(filterKey+' -> '+dsFilterFields[filterKey]);
+          // console.log(filterKey + ' -> ' + dsFilterFields[filterKey]);
           result = result.filter(function (entry) {
             var entryValue = entry.value;
             for (var entryKey in entryValue) {
               if (entryKey === filterKey) {
+                if (typeof dsFilterFields[filterKey] === 'function') {
+                  return dsFilterFields[filterKey](entryValue[entryKey]);
+                }
                 if (dsFilterFields[filterKey] === '') {
                   return true;
                 }
@@ -239,7 +242,7 @@ export default {
         // Reset active page when results change
         this.setActive(1);
       }
-    }, 
+    }
   },
   methods: {
     search (value) {

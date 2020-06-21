@@ -5,12 +5,13 @@
         <button type="button" class="btn btn-primary" @click="updateData">Update data</button>
       </div>
     </div>
+    <h3>Custom filters</h3>
     <div class="row mb-2">
       <div class="col">
         <div class="btn-group">
           <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === '' && 'active']" @click.prevent="onlineFilter = ''">
             <span class="badge bg-white text-secondary">{{ users.length }}</span> All
-          </button>          
+          </button>
           <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Active' && 'active']" @click.prevent="onlineFilter = 'Active'">
             <span class="badge bg-success text-white">{{ filterList(users, {'onlineStatus': 'Active'}).length }}</span> Active
           </button>
@@ -25,12 +26,16 @@
           </button>
         </div>
       </div>
+      <div class="col">
+        <input v-model="startsWith" type="text" class="form-control" placeholder="Name starts with">
+      </div>
     </div>
+    <hr />
     <dataset
       v-slot="{ds}"
       :ds-show-entries.sync="showEntries"
       :ds-data="users"
-      :ds-filter-fields="{onlineStatus: onlineFilter}"
+      :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
       :ds-sortby="''"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteFruit']"
       :ds-search-as="{}"
@@ -50,7 +55,9 @@
               <div class="col-sm-4">
                 <div class="card mb-2">
                   <div class="card-body">
-                    <h4 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`"><span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}</h4>
+                    <h4 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
+                      <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
+                    </h4>
                     <h6 class="card-subtitle text-truncate mb-2 text-muted">{{ row.email }}</h6>
                     <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
                     <p class="card-text text-truncate mb-1 text-right">{{ row.birthdate }}</p>
@@ -79,12 +86,16 @@
 import data from '../data/exampleData.json';
 import { filterList, clone } from '../utilities';
 
+const users = data;
+// const users = clone(data).slice(0, 2);
+
 export default {
   name: 'Example1',
   data: function () {
     return {
+      startsWith: '',
       showEntries: 5,
-      users: data,
+      users: users,
       statusClass: {
         Active: 'text-success',
         Away: 'text-warning',
@@ -99,6 +110,10 @@ export default {
     updateData () {
       const updatedUsers = clone(this.users).slice(5, 10);
       this.users = updatedUsers;
+    },
+    startsWithFilter (value) {
+      // console.log(this.startsWith);
+      return value.toLowerCase().startsWith(this.startsWith.toLowerCase());
     }
   }
 };
