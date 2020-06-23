@@ -7,6 +7,10 @@
 <script>
 import datasetI18n from './i18n/en.js';
 
+function isEmpty (obj) {
+  return Object.keys(obj).length === 0;
+}
+
 function fieldSorter (fields) {
   const dir = [];
   let i;
@@ -35,14 +39,39 @@ function fieldSorter (fields) {
   };
 }
 
+function fieldFilter (result, filterFields) {
+  // Filter it by field
+  for (const filterKey in filterFields) {
+    // console.log(filterKey + ' -> ' + filterFields[filterKey]);
+    result = result.filter(function (entry) {
+      const entryValue = entry.value;
+      for (const entryKey in entryValue) {
+        if (entryKey === filterKey) {
+          if (typeof filterFields[filterKey] === 'function') {
+            return filterFields[filterKey](entryValue[entryKey]);
+          }
+          if (filterFields[filterKey] === '') {
+            return true;
+          }
+          if (entryValue[entryKey] === filterFields[filterKey]) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+  return result;
+}
+
 // Search method that also takes into account transformations needed
 function findAny (dsSearchIn, dsSearchAs, obj, str) {
   // Convert the search string to lower case
   str = str.toLowerCase();
-  for (var key in obj) {
+  for (const key in obj) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
-      var value = String(obj[key]).toLowerCase();
-      for (var field in dsSearchAs) {
+      const value = String(obj[key]).toLowerCase();
+      for (const field in dsSearchAs) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
           // that returns true/false and we return that if true.
@@ -123,15 +152,15 @@ export default {
     The trick is to work directly on the array indexes.
     */
     indexes: function () {
-      var result = [];
-      var dsData = this.dsData || [];
-      var dsSearch = this.dsSearch;
-      var dsSortby = this.dsSortby;
-      var dsFilterFields = this.dsFilterFields;
-      var dsSearchIn = this.dsSearchIn;
-      var dsSearchAs = this.dsSearchAs;
+      let result = [];
+      const dsData = this.dsData || [];
+      const dsSearch = this.dsSearch;
+      const dsSortby = this.dsSortby;
+      const dsFilterFields = this.dsFilterFields || {};
+      const dsSearchIn = this.dsSearchIn;
+      const dsSearchAs = this.dsSearchAs;
 
-      if (!dsSearch && !dsSortby && (!dsFilterFields || Object.keys(dsFilterFields).length === 0)) {
+      if (!dsSearch && !dsSortby.length && isEmpty(dsFilterFields)) {
         // Just get the indexes
         result = dsData.map(function (val, i) {
           return i;
@@ -139,62 +168,31 @@ export default {
       } else {
         // Index it
         result = dsData.map(function (val, i) {
-          return {
-            index: i,
-            value: val
-          };
+          return { index: i, value: val };
         });
+
         // Filter it by field
-        for (var filterKey in dsFilterFields) {
-          // console.log(filterKey + ' -> ' + dsFilterFields[filterKey]);
-          result = result.filter(function (entry) {
-            var entryValue = entry.value;
-            for (var entryKey in entryValue) {
-              if (entryKey === filterKey) {
-                if (typeof dsFilterFields[filterKey] === 'function') {
-                  return dsFilterFields[filterKey](entryValue[entryKey]);
-                }
-                if (dsFilterFields[filterKey] === '') {
-                  return true;
-                }
-                if (entryValue[entryKey] === dsFilterFields[filterKey]) {
-                  return true;
-                }
-              }
-            }
-            return false;
-          });
+        if (!isEmpty(dsFilterFields)) {
+          result = fieldFilter(result, dsFilterFields);
         }
+
         // Search it
         if (dsSearch) {
           result = result.filter(function (entry) {
             return findAny.call(this, dsSearchIn, dsSearchAs, entry.value, dsSearch);
           }.bind(this));
         }
+
         // Sort it
-        if (dsSortby) {
-          /*
-          var reverse = (dsSortby.charAt(0) === '-');
-          if (!reverse) {
-            console.log(result);
-            result = result.sort(function (a, b) {
-              return compare(a.value[dsSortby], b.value[dsSortby]);
-            });
-          } else {
-            dsSortby = dsSortby.substr(1);
-            result = result.sort(function (b, a) {
-              return compare(a.value[dsSortby], b.value[dsSortby]);
-            });
-          }
-          */
+        if (dsSortby.length) {
           result = result.sort(fieldSorter(dsSortby));
         }
+
         // We need indexes only
         result = result.map(function (entry) {
           return entry.index;
         });
       }
-
       // console.log('update');
       // console.log(result);
       return result;
@@ -211,12 +209,12 @@ export default {
       return this.indexes.slice(this.dsFrom, this.dsTo);
     },
     dsPages: function () {
-      var currentPage = this.dsPage;
-      var nrOfPages = this.dsPagecount;
-      var delta = 2;
-      var range = [];
-      var rangeWithDots = [];
-      var l;
+      const currentPage = this.dsPage;
+      const nrOfPages = this.dsPagecount;
+      const delta = 2;
+      const range = [];
+      const rangeWithDots = [];
+      let l;
 
       range.push(1);
 
@@ -224,14 +222,14 @@ export default {
         return range;
       }
 
-      for (var i = currentPage - delta; i <= currentPage + delta; i++) {
+      for (let i = currentPage - delta; i <= currentPage + delta; i++) {
         if (i < nrOfPages && i > 1) {
           range.push(i);
         }
       }
       range.push(nrOfPages);
 
-      for (var j = 0; j < range.length; j++) {
+      for (let j = 0; j < range.length; j++) {
         if (l) {
           if (range[j] - l === 2) {
             rangeWithDots.push(l + 1);
