@@ -185,7 +185,7 @@ export default {
 
         // Sort it
         if (dsSortby.length) {
-          result = result.sort(fieldSorter(dsSortby));
+          result.sort(fieldSorter(dsSortby));
         }
 
         // We need indexes only
