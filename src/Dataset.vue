@@ -7,7 +7,7 @@
 <script>
 import datasetI18n from './i18n/en.js';
 
-function isEmpty (obj) {
+function isEmptyObject (obj) {
   return Object.keys(obj).length === 0;
 }
 
@@ -160,7 +160,7 @@ export default {
       const dsSearchIn = this.dsSearchIn;
       const dsSearchAs = this.dsSearchAs;
 
-      if (!dsSearch && !dsSortby.length && isEmpty(dsFilterFields)) {
+      if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
         // Just get the indexes
         result = dsData.map(function (val, i) {
           return i;
@@ -172,7 +172,7 @@ export default {
         });
 
         // Filter it by field
-        if (!isEmpty(dsFilterFields)) {
+        if (!isEmptyObject(dsFilterFields)) {
           result = fieldFilter(result, dsFilterFields);
         }
 
