@@ -44,7 +44,7 @@
           <dataset-show />
         </div>
         <div class="col-sm-6">
-          <dataset-search ds-search-placeholder="Custom placeholder text..." />
+          <dataset-search ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
