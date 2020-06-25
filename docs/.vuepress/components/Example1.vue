@@ -33,7 +33,6 @@
     <hr />
     <dataset
       v-slot="{ds}"
-      :ds-show-entries.sync="showEntries"
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
       :ds-sortby="['name']"
@@ -42,7 +41,7 @@
     >
       <div class="row mb-2">
         <div class="col-sm-6">
-          <dataset-show :ds-show-entries="ds.dsShowEntries" />
+          <dataset-show />
         </div>
         <div class="col-sm-6">
           <dataset-search ds-search-placeholder="Custom placeholder text..." />
