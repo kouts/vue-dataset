@@ -116,7 +116,7 @@ export default {
     },
     dsFilterFields: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
     dsSortby: {
       type: Array,
@@ -128,7 +128,7 @@ export default {
     },
     dsSearchAs: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   },
   data: function () {
@@ -150,10 +150,10 @@ export default {
     */
     indexes: function () {
       let result = [];
-      const dsData = this.dsData || [];
+      const dsData = this.dsData;
       const dsSearch = this.dsSearch;
       const dsSortby = this.dsSortby;
-      const dsFilterFields = this.dsFilterFields || {};
+      const dsFilterFields = this.dsFilterFields;
       const dsSearchIn = this.dsSearchIn;
       const dsSearchAs = this.dsSearchAs;
 
