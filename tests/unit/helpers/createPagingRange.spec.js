@@ -13,7 +13,7 @@ describe('createPagingRange', () => {
   it('should return the correct range for 20 pages when current page is 3', () => {
     const res = createPagingRange(20, 3);
     expect(res).toStrictEqual([1, 2, 3, 4, 5, '...', 20]);
-  });  
+  });
   it('should return the correct range for 10 pages when current page is 10', () => {
     const res = createPagingRange(10, 10);
     expect(res).toStrictEqual([1, '...', 8, 9, 10]);
