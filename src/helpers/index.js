@@ -1,5 +1,9 @@
+// https://jsperf.com/object-empty-ch/1
 function isEmptyObject (obj) {
-  return Object.keys(obj).length === 0;
+  for (const key in obj) {
+    return false;
+  }
+  return true;
 }
 
 function createPagingRange (nrOfPages, currentPage) {
