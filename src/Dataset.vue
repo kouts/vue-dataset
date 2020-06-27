@@ -11,6 +11,39 @@ function isEmptyObject (obj) {
   return Object.keys(obj).length === 0;
 }
 
+function createPagingRange (nrOfPages, currentPage) {
+  const delta = 2;
+  const range = [];
+  const rangeWithDots = [];
+  let l;
+
+  range.push(1);
+
+  if (nrOfPages <= 1) {
+    return range;
+  }
+
+  for (let i = currentPage - delta; i <= currentPage + delta; i++) {
+    if (i < nrOfPages && i > 1) {
+      range.push(i);
+    }
+  }
+  range.push(nrOfPages);
+
+  for (let j = 0; j < range.length; j++) {
+    if (l) {
+      if (range[j] - l === 2) {
+        rangeWithDots.push(l + 1);
+      } else if (range[j] - l !== 1) {
+        rangeWithDots.push('...');
+      }
+    }
+    rangeWithDots.push(range[j]);
+    l = range[j];
+  }
+  return rangeWithDots;
+}
+
 function fieldSorter (fields) {
   const dir = [];
   let i;
@@ -206,38 +239,7 @@ export default {
       return this.indexes.slice(this.dsFrom, this.dsTo);
     },
     dsPages: function () {
-      const currentPage = this.dsPage;
-      const nrOfPages = this.dsPagecount;
-      const delta = 2;
-      const range = [];
-      const rangeWithDots = [];
-      let l;
-
-      range.push(1);
-
-      if (nrOfPages <= 1) {
-        return range;
-      }
-
-      for (let i = currentPage - delta; i <= currentPage + delta; i++) {
-        if (i < nrOfPages && i > 1) {
-          range.push(i);
-        }
-      }
-      range.push(nrOfPages);
-
-      for (let j = 0; j < range.length; j++) {
-        if (l) {
-          if (range[j] - l === 2) {
-            rangeWithDots.push(l + 1);
-          } else if (range[j] - l !== 1) {
-            rangeWithDots.push('...');
-          }
-        }
-        rangeWithDots.push(range[j]);
-        l = range[j];
-      }
-      return rangeWithDots;
+      return createPagingRange(this.dsPagecount, this.dsPage);
     },
     dsResultsNumber: function () {
       return this.indexes.length;
