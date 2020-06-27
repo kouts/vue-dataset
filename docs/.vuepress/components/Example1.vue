@@ -53,13 +53,13 @@
             <template v-slot="{row, rowIndex}">
               <div class="col-sm-4">
                 <div class="card mb-2">
-                  <div class="card-body">
-                    <h4 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
+                  <div class="card-body pt-2 pb-1 px-3">
+                    <h5 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
                       <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
-                    </h4>
-                    <h6 class="card-subtitle text-truncate mb-2 text-muted">{{ row.email }}</h6>
+                    </h5>
+                    <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
                     <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
-                    <p class="card-text text-truncate mb-1 text-right">{{ row.birthdate }}</p>
+                    <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
                   </div>
                 </div>
               </div>
