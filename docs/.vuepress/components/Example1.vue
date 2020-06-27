@@ -36,7 +36,7 @@
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
       :ds-sortby="['name']"
-      :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteFruit']"
+      :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{}"
     >
       <div class="row mb-2">
@@ -72,7 +72,7 @@
           </dataset-item>
         </div>
       </div>
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row justify-content-between align-items-center">
         <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
         <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
       </div>
@@ -107,7 +107,7 @@ export default {
   methods: {
     filterList,
     updateData () {
-      const updatedUsers = clone(this.users).slice(5, 10);
+      const updatedUsers = clone(users).slice(5, 10);
       this.users = updatedUsers;
     },
     startsWithFilter (value) {
