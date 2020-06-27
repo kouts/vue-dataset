@@ -53,7 +53,7 @@
             <template v-slot="{row, rowIndex}">
               <div class="col-sm-4">
                 <div class="card mb-2">
-                  <div class="card-body pt-2 pb-1 px-3">
+                  <div class="card-body pt-3 pb-2 px-3">
                     <h5 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
                       <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
                     </h5>
