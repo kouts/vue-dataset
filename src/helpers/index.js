@@ -69,21 +69,21 @@ function fieldSorter (fields) {
   };
 }
 
-function fieldFilter (result, filterFields) {
+function fieldFilter (items, filterFields) {
   // Filter it by field
   for (const filterKey in filterFields) {
     // console.log(filterKey + ' -> ' + filterFields[filterKey]);
-    result = result.filter(function (entry) {
-      const entryValue = entry.value;
-      for (const entryKey in entryValue) {
-        if (entryKey === filterKey) {
+    items = items.filter(function (item) {
+      const itemValue = item.value;
+      for (const itemKey in itemValue) {
+        if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
-            return filterFields[filterKey](entryValue[entryKey]);
+            return filterFields[filterKey](itemValue[itemKey]);
           }
           if (filterFields[filterKey] === '') {
             return true;
           }
-          if (entryValue[entryKey] === filterFields[filterKey]) {
+          if (itemValue[itemKey] === filterFields[filterKey]) {
             return true;
           }
         }
@@ -91,7 +91,7 @@ function fieldFilter (result, filterFields) {
       return false;
     });
   }
-  return result;
+  return items;
 }
 
 // Search method that also takes into account transformations needed
