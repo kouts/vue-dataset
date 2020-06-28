@@ -7,7 +7,7 @@
     </div>
     <h3>Custom filters</h3>
     <div class="row mb-2">
-      <div class="col">
+      <div class="col-md-6 mb-2 mb-md-0">
         <div class="btn-group">
           <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === '' && 'active']" @click.prevent="onlineFilter = ''">
             <span class="badge bg-white text-secondary">{{ users.length }}</span> All
@@ -26,7 +26,7 @@
           </button>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-6">
         <input v-model="startsWith" type="text" class="form-control" placeholder="Name starts with">
       </div>
     </div>
@@ -40,18 +40,18 @@
       :ds-search-as="{}"
     >
       <div class="row mb-2">
-        <div class="col-sm-6">
+        <div class="col-md-6 mb-2 mb-md-0">
           <dataset-show />
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <dataset-search ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-12">
           <dataset-item :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="form-row">
             <template v-slot="{row, rowIndex}">
-              <div class="col-sm-4">
+              <div class="col-md-4">
                 <div class="card mb-2">
                   <div class="card-body pt-3 pb-2 px-3">
                     <h5 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
@@ -65,15 +65,15 @@
               </div>
             </template>
             <template v-slot:noDataFound>
-              <div class="col-sm-12 pt-2">
+              <div class="col-md-12 pt-2">
                 <p class="text-center">No results found</p>
               </div>
             </template>
           </dataset-item>
         </div>
       </div>
-      <div class="d-flex flex-row justify-content-between align-items-center">
-        <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" />
+      <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
+        <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" class="mb-2 mb-md-0" />
         <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
       </div>
     </dataset>
