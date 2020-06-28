@@ -1,3 +1,5 @@
+const MORE_PAGES = '...';
+
 // https://jsperf.com/object-empty-ch/1
 function isEmptyObject (obj) {
   for (const key in obj) {
@@ -30,7 +32,7 @@ function createPagingRange (nrOfPages, currentPage) {
       if (range[j] - l === 2) {
         rangeWithDots.push(l + 1);
       } else if (range[j] - l !== 1) {
-        rangeWithDots.push('...');
+        rangeWithDots.push(MORE_PAGES);
       }
     }
     rangeWithDots.push(range[j]);
@@ -128,4 +130,4 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
   return false;
 }
 
-export { isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny };
+export { MORE_PAGES, isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny };

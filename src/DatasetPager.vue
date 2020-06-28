@@ -12,8 +12,8 @@
       </a>
     </li>
     <template v-for="(item, index) in dsPages">
-      <li :key="index" :class="['page-item', item === dsPage && 'active', item === '...' && 'disabled']">
-        <a v-if="item !=='...'" class="page-link" href="#" @click.prevent="setActive(item)">
+      <li :key="index" :class="['page-item', item === dsPage && 'active', item === morePages && 'disabled']">
+        <a v-if="item !== morePages" class="page-link" href="#" @click.prevent="setActive(item)">
           {{ item }}
         </a>
         <span v-else class="page-link">
@@ -36,8 +36,15 @@
 </template>
 
 <script>
+import { MORE_PAGES } from './helpers';
+
 export default {
   inject: ['datasetI18n', 'setActive'],
+  data: function () {
+    return {
+      morePages: MORE_PAGES
+    };
+  },
   props: {
     dsPages: {
       type: Array,
