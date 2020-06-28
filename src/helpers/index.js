@@ -44,7 +44,7 @@ function createPagingRange (nrOfPages, currentPage) {
 function fieldSorter (fields) {
   const dir = [];
   let i;
-  const l = fields.length;
+  const length = fields.length;
   fields = fields.map(function (o, i) {
     if (o[0] === '-') {
       dir[i] = -1;
@@ -56,7 +56,7 @@ function fieldSorter (fields) {
   });
 
   return function (a, b) {
-    for (i = 0; i < l; i++) {
+    for (i = 0; i < length; i++) {
       const o = fields[i];
       if (a.value[o] > b.value[o]) {
         return dir[i];
