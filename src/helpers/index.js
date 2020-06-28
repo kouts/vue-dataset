@@ -12,7 +12,7 @@ function createPagingRange (nrOfPages, currentPage) {
   const delta = 2;
   const range = [];
   const rangeWithDots = [];
-  let l;
+  let length;
 
   range.push(1);
 
@@ -27,16 +27,16 @@ function createPagingRange (nrOfPages, currentPage) {
   }
   range.push(nrOfPages);
 
-  for (let j = 0; j < range.length; j++) {
-    if (l) {
-      if (range[j] - l === 2) {
-        rangeWithDots.push(l + 1);
-      } else if (range[j] - l !== 1) {
+  for (let i = 0; i < range.length; i++) {
+    if (length) {
+      if (range[i] - length === 2) {
+        rangeWithDots.push(length + 1);
+      } else if (range[i] - length !== 1) {
         rangeWithDots.push(MORE_PAGES);
       }
     }
-    rangeWithDots.push(range[j]);
-    l = range[j];
+    rangeWithDots.push(range[i]);
+    length = range[i];
   }
   return rangeWithDots;
 }
