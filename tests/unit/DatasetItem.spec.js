@@ -1,8 +1,15 @@
 import { mount } from '@vue/test-utils';
+import { ReactiveProvideMixin } from 'vue-reactive-provide';
 import DatasetItem from '@/DatasetItem.vue';
 
 describe('DatasetItem', () => {
   const WrapperComp = {
+    mixins: [
+      ReactiveProvideMixin({
+        name: 'ds',
+        include: ['dsData', 'dsRows']
+      })
+    ],
     data: function () {
       return {
         dsData: [
@@ -21,7 +28,7 @@ describe('DatasetItem', () => {
       };
     },
     template: `
-      <dataset-item :ds-data="dsData" :ds-rows="dsRows">
+      <dataset-item>
         <template v-slot="{row, rowIndex}">
           <div class="result">
             <p>{{row.name}}</p>

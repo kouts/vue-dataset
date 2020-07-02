@@ -14,34 +14,38 @@ const isButtonEnabled = function (el) {
 
 describe('DatasetPager', () => {
 
-  beforeEach(() => {
-    resetProps();
-  });
+  let wrapper = null;
 
-  const wrapper = shallowMount(DatasetPager, {
-    provide: {
-      datasetI18n: datasetI18n,
-      setActive: function (value) {
-        mockSetActive(value);
+  function wrapperWithProvide (provideOpts = {}) {
+    const wrapper = shallowMount(DatasetPager, {
+      provide: {
+        datasetI18n: datasetI18n,
+        setActive: function (value) {
+          mockSetActive(value);
+        },
+        ds: {
+          dsPages: [1, 2, 3],
+          dsPagecount: 0,
+          dsPage: 1,
+          ...provideOpts
+        }
       }
-    }
-  });
-
-  const resetProps = function () {
-    wrapper.setProps({
-      dsPages: [1, 2, 3],
-      dsPagecount: 0,
-      dsPage: 1
     });
-  };
+    return wrapper;
+  }
+
+  afterEach(function () {
+    wrapper.destroy();
+  });
 
   it('renders a ul element', () => {
+    wrapper = wrapperWithProvide();
     const ul = wrapper.find('ul');
     expect(ul.exists()).toBe(true);
   });
 
   it('disables the previous button on first page', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPage: 1
     });
     wrapper.vm.$nextTick(() => {
@@ -51,7 +55,7 @@ describe('DatasetPager', () => {
   });
 
   it('disables the previous button when there is only one page', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPagecount: 1
     });
     wrapper.vm.$nextTick(() => {
@@ -61,7 +65,7 @@ describe('DatasetPager', () => {
   });
 
   it('enables the previous button', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPage: 2,
       dsPagecount: 3
     });
@@ -72,7 +76,7 @@ describe('DatasetPager', () => {
   });
 
   it('disables the next button on last page', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPage: 4,
       dsPagecount: 4
     });
@@ -84,7 +88,7 @@ describe('DatasetPager', () => {
   });
 
   it('disables the next button when there is only one page', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPagecount: 1
     });
     wrapper.vm.$nextTick(() => {
@@ -95,7 +99,7 @@ describe('DatasetPager', () => {
   });
 
   it('enables the next button', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPage: 2,
       dsPagecount: 3
     });
@@ -107,7 +111,7 @@ describe('DatasetPager', () => {
   });
 
   it('makes the normal page button active', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPage: 1,
       dsPagecount: 3
     });
@@ -118,7 +122,7 @@ describe('DatasetPager', () => {
   });
 
   it('makes the ... page button disabled', () => {
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPages: [1, '...', 4, 5, 6],
       dsPage: 6,
       dsPagecount: 6
@@ -132,7 +136,7 @@ describe('DatasetPager', () => {
 
   it('sends the correct active page number on previous button click', () => {
     mockSetActive.mockClear();
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPages: [1, '...', 4, 5, 6],
       dsPage: 6,
       dsPagecount: 6
@@ -144,7 +148,7 @@ describe('DatasetPager', () => {
 
   it('sends the correct active page number on next button click', () => {
     mockSetActive.mockClear();
-    wrapper.setProps({
+    wrapper = wrapperWithProvide({
       dsPages: [1, '...', 4, 5, 6],
       dsPage: 5,
       dsPagecount: 6

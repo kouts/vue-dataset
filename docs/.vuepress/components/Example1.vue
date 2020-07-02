@@ -49,7 +49,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <dataset-item :ds-data="ds.dsData" :ds-rows="ds.dsRows" class="form-row">
+          <dataset-item class="form-row">
             <template v-slot="{row, rowIndex}">
               <div class="col-md-4">
                 <div class="card mb-2">
@@ -73,8 +73,8 @@
         </div>
       </div>
       <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
-        <dataset-info :ds-results-number="ds.dsResultsNumber" :ds-from="ds.dsFrom" :ds-to="ds.dsTo" class="mb-2 mb-md-0" />
-        <dataset-pager :ds-pages="ds.dsPages" :ds-pagecount="ds.dsPagecount" :ds-page="ds.dsPage" />
+        <dataset-info class="mb-2 mb-md-0" />
+        <dataset-pager />
       </div>
     </dataset>
   </div>

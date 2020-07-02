@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { ReactiveProvideMixin } from 'vue-reactive-provide';
 import datasetI18n from './i18n/en.js';
 import { isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny } from './helpers';
 
@@ -17,6 +18,12 @@ export default {
       datasetI18n: this.datasetI18n
     };
   },
+  mixins: [
+    ReactiveProvideMixin({
+      name: 'ds',
+      include: ['dsData', 'dsRows', 'dsResultsNumber', 'dsFrom', 'dsTo', 'dsPages', 'dsPagecount', 'dsPage']
+    })
+  ],
   props: {
     dsData: {
       type: Array,
