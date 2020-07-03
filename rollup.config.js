@@ -30,7 +30,9 @@ export default {
   ],
   plugins: [
     resolve(),
-    commonjs(),
+    commonjs({
+      namedExports: { 'vue-reactive-provide': ['ReactiveProvideMixin'] }
+    }),
     css({
       output: 'dist/vue-dataset.css'
     }),
