@@ -2,27 +2,22 @@ import vue from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import buble from '@rollup/plugin-buble';
-import { terser } from 'rollup-plugin-terser';
 
 export default {
-  input: './src/Dataset.vue',
+  input: [
+    './src/Dataset.vue',
+    './src/DatasetInfo.vue',
+    './src/DatasetItem.vue',
+    './src/DatasetPager.vue',
+    './src/DatasetSearch.vue',
+    './src/DatasetShow.vue'
+  ],
   output: [
     {
-      file: './dist/vue-dataset.es.js',
+      dir: 'dist',
       format: 'es',
       sourcemap: true,
       sourcemapExcludeSources: false
-    },
-    {
-      file: './dist/vue-dataset.umd.min.js',
-      format: 'umd',
-      name: 'VueDataset',
-      sourcemap: true,
-      sourcemapExcludeSources: false,
-      globals: {
-        vue: 'Vue'
-      }
     }
   ],
   external: [
@@ -38,11 +33,6 @@ export default {
     }),
     vue({
       css: false
-    }),
-    buble(),
-    terser({
-      sourcemap: true,
-      include: [/^.+\.min\.js$/]
     })
   ]
 };
