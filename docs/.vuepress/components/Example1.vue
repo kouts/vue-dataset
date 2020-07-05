@@ -92,16 +92,15 @@ export default {
   name: 'Example1',
   data: function () {
     return {
-      startsWith: '',
-      showEntries: 5,
       users: users,
+      startsWith: '',
+      onlineFilter: '',
       statusClass: {
         Active: 'text-success',
         Away: 'text-warning',
         'Do not disturb': 'text-danger',
         Invisible: 'text-secondary'
-      },
-      onlineFilter: ''
+      }
     };
   },
   methods: {
@@ -111,7 +110,6 @@ export default {
       this.users = updatedUsers;
     },
     startsWithFilter (value) {
-      // console.log(this.startsWith);
       return value.toLowerCase().startsWith(this.startsWith.toLowerCase());
     }
   }
