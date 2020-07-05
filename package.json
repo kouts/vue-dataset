@@ -2,7 +2,17 @@
   "name": "vue-dataset",
   "description": "A vue component to display datasets with filtering, paging and sorting capabilities!",
   "version": "0.1.0",
+  "author": "Giannis Koutsaftakis",
   "license": "MIT",
+  "repository": "https://github.com/kouts/vue-dataset",
+  "keywords": [
+    "vue",
+    "component",
+    "dataset",
+    "datatable"
+  ],
+  "main": "dist/umd/Dataset.js",
+  "module": "dist/es/Dataset.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:vue": "vue-cli-service build",
