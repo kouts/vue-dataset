@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+    <title>Dataset UMD build test</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/html" id="app-template">
+      <div class="container pt-4">
+        <dataset
+          :ds-data="users"
+          :ds-sortby="['name']"
+          :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
+        >
+          <div class="row mb-2">
+            <div class="col-md-6 mb-2 mb-md-0">
+              <dataset-show />
+            </div>
+            <div class="col-md-6">
+              <dataset-search ds-search-placeholder="Search..." />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <dataset-item class="form-row">
+                <template v-slot="{row, rowIndex}">
+                  <div class="col-md-4">
+                    <div class="card mb-2">
+                      <div class="card-body pt-3 pb-2 px-3">
+                        <h5 class="card-title text-truncate mb-2" :title="'Index: ' + rowIndex">
+                          <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
+                        </h5>
+                        <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
+                        <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
+                        <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                <template v-slot:noDataFound>
+                  <div class="col-md-12 pt-2">
+                    <p class="text-center">No results found</p>
+                  </div>
+                </template>
+              </dataset-item>
+            </div>
+          </div>
+          <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
+            <dataset-info class="mb-2 mb-md-0" />
+            <dataset-pager />
+          </div>
+        </dataset>
+        </div>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="/umd/Dataset.js"></script>
+    <script type="text/javascript" src="/umd/DatasetInfo.js"></script>
+    <script type="text/javascript" src="/umd/DatasetItem.js"></script>
+    <script type="text/javascript" src="/umd/DatasetPager.js"></script>
+    <script type="text/javascript" src="/umd/DatasetSearch.js"></script>
+    <script type="text/javascript" src="/umd/DatasetShow.js"></script>
+
+    <script type="text/javascript">
+      const app = new Vue({
+        el: '#app',
+        template: '#app-template',
+        data: {
+          users: [
+            {"_id":"58b7d739-5045-49b6-9404-6e0e69dab341","isActive":false,"onlineStatus":"Invisible","balance":39317,"birthdate":"1980-03-09","favoriteColor":"Crimson","name":"Gawain Cumpsty","firstName":"Gawain","lastName":"Cumpsty","company":"Quaxo","email":"gcumpsty0@discuz.net","phone":"985-353-3917","address":"4669 Northland Circle","favoriteAnimal":"Deer, roe"},
+            {"_id":"254781b4-4bc2-49c1-98de-4a93a7bbace4","isActive":true,"onlineStatus":"Do not disturb","balance":31192,"birthdate":"1972-09-29","favoriteColor":"Indigo","name":"Even Harraway","firstName":"Even","lastName":"Harraway","company":"Shuffledrive","email":"eharraway1@wordpress.com","phone":"217-861-5367","address":"1 Meadow Valley Circle","favoriteAnimal":"African clawless otter"},
+            {"_id":"482c48e5-7dd5-4e28-8968-51813ca63625","isActive":true,"onlineStatus":"Do not disturb","balance":34949,"birthdate":"2004-02-11","favoriteColor":"Fuscia","name":"Mile Fulloway","firstName":"Mile","lastName":"Fulloway","company":"Flashspan","email":"mfulloway2@whitehouse.gov","phone":"225-853-2332","address":"683 Lakeland Crossing","favoriteAnimal":"Starling, cape"}
+          ],
+          statusClass: {
+            Active: 'text-success',
+            Away: 'text-warning',
+            'Do not disturb': 'text-danger',
+            Invisible: 'text-secondary'
+          }
+        },
+        components: {
+          Dataset: Dataset,
+          DatasetInfo: DatasetInfo,
+          DatasetItem: DatasetItem,
+          DatasetPager: DatasetPager,
+          DatasetSearch: DatasetSearch,
+          DatasetShow: DatasetShow
+        }
+      });
+    </script>
+  </body>
+</html>
