@@ -82,11 +82,10 @@
 
 <script>
 // https://next.json-generator.com/4JvxrAE2O
-import data from '../data/exampleData.json';
+import users from '../../../example-data/users.json';
 import { filterList, clone } from '../utilities';
 
-const users = data;
-// const users = clone(data).slice(0, 2);
+// const lessUsers = clone(data).slice(0, 2);
 
 export default {
   name: 'Example1',
