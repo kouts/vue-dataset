@@ -17,10 +17,13 @@ describe('DatasetSearch', () => {
     expect(inputText.exists()).toBe(true);
   });
 
-  it('passes the correct value to the injected search method', () => {
+  it('passes the correct value to the injected search method', (done) => {
     mockSearch.mockClear();
     const inputText = wrapper.find('input.form-control');
     inputText.setValue('test');
-    expect(mockSearch.mock.calls[0][0]).toBe('test');
+    setTimeout(() => {
+      expect(mockSearch.mock.calls[0][0]).toBe('test');
+      done();
+    });
   });
 });

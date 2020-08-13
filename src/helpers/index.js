@@ -1,5 +1,23 @@
 const MORE_PAGES = '...';
 
+function debounce (func, wait, immediate) {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    if (immediate && !timeout) {
+      func.apply(context, args);
+    }
+    timeout = setTimeout(function () {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+  };
+};
+
 // https://jsperf.com/object-empty-ch/1
 function isEmptyObject (obj) {
   for (const key in obj) {
@@ -130,4 +148,4 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
   return false;
 }
 
-export { MORE_PAGES, isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny };
+export { MORE_PAGES, debounce, isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny };
