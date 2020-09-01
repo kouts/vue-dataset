@@ -1,16 +1,47 @@
 <template>
   <div>
+    <div class="row mb-4">
+      <div class="col">
+        <button type="button" class="btn btn-primary" @click="updateData">Update data</button>
+      </div>
+    </div>
+    <h3>Custom filters</h3>
+    <div class="row mb-2">
+      <div class="col-md-6 mb-2 mb-md-0">
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === '' && 'active']" @click.prevent="onlineFilter = ''">
+            <span class="badge bg-white text-secondary">{{ users.length }}</span> All
+          </button>
+          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Active' && 'active']" @click.prevent="onlineFilter = 'Active'">
+            <span class="badge bg-success text-white">{{ filterList(users, {'onlineStatus': 'Active'}).length }}</span> Active
+          </button>
+          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Away' && 'active']" @click.prevent="onlineFilter = 'Away'">
+            <span class="badge bg-warning text-white">{{ filterList(users, {'onlineStatus': 'Away'}).length }}</span> Away
+          </button>
+          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Do not disturb' && 'active']" @click.prevent="onlineFilter = 'Do not disturb'">
+            <span class="badge bg-danger text-white">{{ filterList(users, {'onlineStatus': 'Do not disturb'}).length }}</span> Do not disturb
+          </button>
+          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Invisible' && 'active']" @click.prevent="onlineFilter = 'Invisible'">
+            <span class="badge bg-secondary text-white">{{ filterList(users, {'onlineStatus': 'Invisible'}).length }}</span> Invisible
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <input v-model="startsWith" type="text" class="form-control" placeholder="Name starts with">
+      </div>
+    </div>
+    <hr />
     <dataset
       v-slot="{ds}"
       :ds-data="users"
-      :ds-filter-fields="{}"
+      :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
       :ds-sortby="['name']"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{}"
     >
       <div class="row mb-2">
         <div class="col-md-6 mb-2 mb-md-0">
-          <dataset-show :ds-show-entries="selected" @changed="selected = $event" />
+          <dataset-show />
         </div>
         <div class="col-md-6">
           <dataset-search ds-search-placeholder="Search..." />
@@ -57,17 +88,18 @@ import { filterList, clone } from '../utilities';
 // const lessUsers = clone(data).slice(0, 2);
 
 export default {
-  name: 'Example1',
+  name: 'Example2',
   data: function () {
     return {
       users: users,
+      startsWith: '',
+      onlineFilter: '',
       statusClass: {
         Active: 'text-success',
         Away: 'text-warning',
         'Do not disturb': 'text-danger',
         Invisible: 'text-secondary'
-      },
-      selected: 5
+      }
     };
   },
   methods: {
@@ -75,6 +107,9 @@ export default {
     updateData () {
       const updatedUsers = clone(users).slice(5, 10);
       this.users = updatedUsers;
+    },
+    startsWithFilter (value) {
+      return value.toLowerCase().startsWith(this.startsWith.toLowerCase());
     }
   }
 };
