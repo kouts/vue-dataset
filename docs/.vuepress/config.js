@@ -8,6 +8,7 @@ module.exports = {
     ],
     sidebar: [
       ['/', 'Introduction'],
+      ['/example/', 'Example']
       /*
       ['/installation/', 'Installation'],
       ['/usage/', 'Usage'],
