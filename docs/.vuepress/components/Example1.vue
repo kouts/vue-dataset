@@ -1,7 +1,7 @@
 <template>
   <div>
     <dataset
-      v-slot="{ds}"
+      v-slot="{ ds }"
       :ds-data="users"
       :ds-filter-fields="{}"
       :ds-sortby="['name']"
