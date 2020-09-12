@@ -9,8 +9,8 @@ module.exports = {
     sidebar: [
       ['/', 'Introduction'],
       ['/installation/', 'Installation'],
+      ['/components/', 'Components'],
       ['/example/', 'Example'],
-      ['/components/', 'Components']
     ]
   },
   head: [
