@@ -32,12 +32,12 @@
     </div>
     <hr />
     <dataset
-      v-slot="{ds}"
+      v-slot="{ ds }"
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
       :ds-sortby="['name']"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
-      :ds-search-as="{}"
+      :ds-search-as="{birthdate: searchAsEuroDate}"
     >
       <div class="row mb-2">
         <div class="col-md-6 mb-2 mb-md-0">
@@ -59,7 +59,7 @@
                     </h5>
                     <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
                     <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
-                    <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
+                    <p class="card-text text-truncate text-right">{{ isoDateToEuroDate(row.birthdate) }}</p>
                   </div>
                 </div>
               </div>
@@ -83,7 +83,7 @@
 <script>
 // https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
-import { filterList, clone } from '../utilities';
+import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities';
 
 // const lessUsers = clone(data).slice(0, 2);
 
@@ -104,6 +104,8 @@ export default {
   },
   methods: {
     filterList,
+    isoDateToEuroDate,
+    searchAsEuroDate,
     updateData () {
       const updatedUsers = clone(users).slice(5, 10);
       this.users = updatedUsers;
