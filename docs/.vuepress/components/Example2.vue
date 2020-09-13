@@ -1,12 +1,14 @@
 <template>
   <div>
+    <!--
     <div class="row mb-4">
       <div class="col">
         <button type="button" class="btn btn-primary" @click="updateData">Update data</button>
       </div>
     </div>
+    -->
     <h3>Custom filters</h3>
-    <div class="row mb-2">
+    <div class="row mb-1">
       <div class="col-md-6 mb-2 mb-md-0">
         <div class="btn-group">
           <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === '' && 'active']" @click.prevent="onlineFilter = ''">
@@ -27,7 +29,14 @@
         </div>
       </div>
       <div class="col-md-6">
-        <input v-model="startsWith" type="text" class="form-control" placeholder="Name starts with">
+        <input type="text" class="form-control" placeholder="Name starts with" @input="startWithInput($event)">
+      </div>
+    </div>
+    <hr class="mb-1" />
+    <h3>Sorting</h3>
+    <div class="row mb-2">
+      <div class="col-md-6 mb-2 mb-md-0">
+        <button type="button" class="btn btn-outline-secondary" @click="firstNameAsc = !firstNameAsc">First name {{ firstNameAsc ? 'asc' : 'desc' }}</button>
       </div>
     </div>
     <hr />
@@ -35,7 +44,7 @@
       v-slot="{ ds }"
       :ds-data="users"
       :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
-      :ds-sortby="['name']"
+      :ds-sortby="[sortFirstName]"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{birthdate: searchAsEuroDate}"
     >
@@ -49,7 +58,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <dataset-item class="form-row">
+          <dataset-item class="form-row" style="overflow-y: auto; max-height: 400px;">
             <template v-slot="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
@@ -84,6 +93,7 @@
 // https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
 import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities';
+import { debounce } from '../../../src/helpers';
 
 // const lessUsers = clone(data).slice(0, 2);
 
@@ -99,8 +109,19 @@ export default {
         Away: 'text-warning',
         'Do not disturb': 'text-danger',
         Invisible: 'text-secondary'
-      }
+      },
+      firstNameAsc: true
     };
+  },
+  computed: {
+    sortFirstName () {
+      return this.firstNameAsc ? 'firstName' : '-firstName';
+    }
+  },
+  created () {
+    this.startWithInput = debounce((e) => {
+      this.startsWith = e.target.value;
+    }, 300);
   },
   methods: {
     filterList,
