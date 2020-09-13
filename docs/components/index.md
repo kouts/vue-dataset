@@ -1,5 +1,5 @@
 ## Dataset
-The dataset component acts as the provider component of all the data and methods vue-dataset needs to function.
+The `dataset` component acts as the provider component of all the data and methods vue-dataset needs to function.
 It does so by using the provide/inject mechanism of Vue so that data is also accessible in nested levels down the component tree.
 
 Dataset takes the original data object as a prop and also some useful props as options that dictate how the data will be filtered, searched and sorted.
@@ -255,7 +255,7 @@ Dataset also provides several data via a `ds` object exposed from a a scoped slo
 
 ## DatasetItem
 
-The dataset item component is responsible for displaying the item rows of the dataset.
+The `dataset-item` component is responsible for displaying the item rows of the dataset.
 Since it's a dynamic component it can take the form of any tag like `div`, `li`, `tr` etc. 
 
 DatasetItem must be nested inside the Dataset component in order to work.
@@ -279,7 +279,9 @@ of the "no data found" message.
 ### Props
 #### tag
 Type: `String`  
-Default: <em>div</em>
+Default: <em>div</em>  
+
+The HTML tag to render.
 
 ### Scoped slot
 
@@ -313,3 +315,67 @@ It also provides the row's original index, useful e.g if you want to delete an i
 
 DatasetItem provides a named slot to customize the "no data found" message.  
 There's no default content for the slot.
+
+## DatasetInfo
+
+The `dataset-info` component displays information about the range of items being displayed
+and the total number of items in the dataset.
+
+### Example
+```vue
+<dataset-info class="my-custom-class" />
+```
+
+## DatasetPager
+
+The `dataset-pager` component displays the pagination controls.
+
+### Example
+```vue
+<dataset-pager />
+```
+## DatasetShow
+
+The `dataset-show` component displays a select that is used to control how many items are visible simultaneously.
+Props can be used to customize the default number of visible items as well as the list for the select control.
+
+### Example
+```vue
+<dataset-show />
+```
+
+### Props
+#### ds-show-entries
+Type: `Number`  
+Default: <em>10</em>  
+
+The selected number of items to show.
+
+#### ds-show-entries-lovs
+Type: `Array of Objects`  
+Default: `[{ value: 5, text: 5 }, { value: 10, text: 10 }, { value: 25, text: 25 }, { value: 50, text: 50 }, { value: 100, text: 100 }]`  
+
+The list of options for the select element.
+
+## DatasetSearch
+
+The `dataset-search` component displays an input search form control used to search inside the dataset data.  
+Props can be used to customize the placeholder text as well as the debounce wait time.
+
+### Example
+```vue
+<dataset-search ds-search-placeholder="Search..." />
+```
+
+### Props
+#### ds-search-placeholder
+Type: `String`  
+Default: <em>Empty String</em>  
+
+The placeholder text of the input control.
+
+#### wait
+Type: `Number`  
+Default: <em>0</em>  
+
+The amount of time the debounce function waits after the last received input action before executing the search.
