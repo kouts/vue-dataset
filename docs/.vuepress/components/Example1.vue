@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-md-12">
           <dataset-item class="form-row">
-            <template v-slot="{row, rowIndex}">
+            <template v-slot="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
                   <div class="card-body pt-3 pb-2 px-3">
