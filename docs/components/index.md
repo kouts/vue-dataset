@@ -8,6 +8,7 @@ Dataset takes the original data object as a prop and also some useful props as o
 ### Example
 ```vue
     <dataset
+      v-slot="{ ds }"
       :ds-data="users"
       :ds-filter-fields="{firstName: 'John'}"
       :ds-sortby="['lastName']"
@@ -101,3 +102,150 @@ searchAsEuroDate: function (value, searchString) {
 };
 ```
 
+### Provides
+
+Dataset `provides` several data and methods to the child components.  
+You can leverage these using `inject` to create your own child components.
+
+#### The ds object
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dsData</td>
+      <td>Array of Objects</td>
+      <td>The data object that contains all the data.</td>
+    </tr>
+    <tr>
+      <td>dsRows</td>
+      <td>Array</td>
+      <td>The indexes of the data rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsResultsNumber</td>
+      <td>Number</td>
+      <td>The number of rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsFrom</td>
+      <td>Number</td>
+      <td>The item "from" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsTo</td>
+      <td>Number</td>
+      <td>The item "to" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsPages</td>
+      <td>Array</td>
+      <td>The array used to create pagination links</td>
+    </tr>
+    <tr>
+      <td>dsPagecount</td>
+      <td>Number</td>
+      <td>The number of pagination pages</td>
+    </tr>
+    <tr>
+      <td>dsPage</td>
+      <td>Number</td>
+      <td>The number of the current page in pagination</td>
+    </tr>         
+  </tbody>
+</table>  
+
+#### methods
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Params</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>search</td>
+      <td>String</td>
+      <td>The value to search</td>
+    </tr>
+    <tr>
+      <td>showEntries</td>
+      <td>Number</td>
+      <td>The number of items to show on each page</td>
+    </tr>
+    <tr>
+      <td>setActive</td>
+      <td>Number</td>
+      <td>The number of the page to set as active</td>
+    </tr>
+  </tbody>
+</table>
+
+### Scoped slot
+
+Dataset also provides several data via a `ds` object exposed from a a scoped slot.
+
+#### The scoped slot ds object
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dsData</td>
+      <td>Array of Objects</td>
+      <td>The data object that contains all the data.</td>
+    </tr>
+    <tr>
+      <td>dsRows</td>
+      <td>Array</td>
+      <td>The indexes of the data rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsResultsNumber</td>
+      <td>Number</td>
+      <td>The number of rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsFrom</td>
+      <td>Number</td>
+      <td>The item "from" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsTo</td>
+      <td>Number</td>
+      <td>The item "to" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsPages</td>
+      <td>Array</td>
+      <td>The array used to create pagination links</td>
+    </tr>
+    <tr>
+      <td>dsPagecount</td>
+      <td>Number</td>
+      <td>The number of pagination pages</td>
+    </tr>
+    <tr>
+      <td>dsPage</td>
+      <td>Number</td>
+      <td>The number of the current page in pagination</td>
+    </tr>
+    <tr>
+      <td>dsShowEntries</td>
+      <td>Number</td>
+      <td>The number of items to show in pagination</td>
+    </tr>    
+  </tbody>
+</table> 
