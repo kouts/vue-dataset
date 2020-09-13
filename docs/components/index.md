@@ -1,5 +1,4 @@
 ## Dataset
-
 The dataset component acts as the provider component of all the data and methods vue-dataset needs to function.
 It does so by using the provide/inject mechanism of Vue so that data is also accessible in nested levels down the component tree.
 
@@ -21,7 +20,8 @@ Dataset takes the original data object as a prop and also some useful props as o
 
 ### Props
 #### ds-data
-Type: `Array of Objects`
+Type: `Array of Objects`  
+Default: <em>Empty Array</em>
 
 This is the data object that vue-dataset will operate on.  
 It must be an Array of Objects. 
@@ -42,7 +42,8 @@ It must be an Array of Objects.
 ```
 
 #### ds-filter-fields
-Type: `Object`
+Type: `Object`  
+Default: <em>Empty Object</em>
 
 It defines how certain properties of the data object will be filtered.
 The object key denotes the data object property and the object value is a `value` or a `function` that will be used to filter
@@ -67,7 +68,8 @@ startsWithD (value) {
 ```
 
 #### ds-sortby
-Type: `Array`
+Type: `Array`  
+Default: <em>Empty Array</em>
 
 It defines the data object properties by which the dataset object will be sorted.
 If a property is prefixed by `-` it will be sorted with descending order.
@@ -79,7 +81,8 @@ For example this will sort the data by lastName
 ```
 
 #### ds-search-as
-Type: `Object`
+Type: `Object`  
+Default: <em>Empty Object</em>
 
 It defines how certain properties of the data object will be searched.
 The object key denotes the data object property and the object value is an instance function name `String` or `Function` that will be used to search
@@ -166,7 +169,7 @@ You can leverage these using `inject` to create your own child components.
     <tr>
       <th>Name</th>
       <th>Params</th>
-      <th>Description</th>
+      <th>Input value/Description</th>
     </tr>
   </thead>
   <tbody>
@@ -248,4 +251,65 @@ Dataset also provides several data via a `ds` object exposed from a a scoped slo
       <td>The number of items to show in pagination</td>
     </tr>    
   </tbody>
-</table> 
+</table>
+
+## DatasetItem
+
+The dataset item component is responsible for displaying the item rows of the dataset.
+Since it's a dynamic component it can take the form of any tag like `div`, `li`, `tr` etc. 
+
+DatasetItem must be nested inside the Dataset component in order to work.
+It exposes one scoped slot with the the row's data and index and also one slot for the customization
+of the "no data found" message.
+
+### Example
+```vue
+<dataset-item>
+  <template v-slot="{ row, rowIndex }">
+    <div>
+      {{ rowIndex }} - {{ row.firstName }}
+    </div>
+  </template>
+  <template v-slot:noDataFound>
+    <p>No results found</p>
+  </template>
+</dataset-item>
+```
+
+### Props
+#### tag
+Type: `String`  
+Default: <em>div</em>
+
+### Scoped slot
+
+DatasetItem also provides the row's data via a `row` object exposed from a a scoped slot.
+It also provides the row's original index, useful e.g if you want to delete an item.
+
+#### The scoped slot object
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row</td>
+      <td>Object</td>
+      <td>The dataset row data.</td>
+    </tr>
+    <tr>
+      <td>rowIndex</td>
+      <td>Number</td>
+      <td>The original index of the data row</td>
+    </tr>
+  </tbody>
+</table>
+
+### Named slot `noDataFound`
+
+DatasetItem provides a named slot to customize the "no data found" message.  
+There's no default content for the slot.
