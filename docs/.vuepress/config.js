@@ -10,7 +10,7 @@ module.exports = {
       ['/', 'Introduction'],
       ['/installation/', 'Installation'],
       ['/components/', 'Components'],
-      ['/example/', 'Example'],
+      ['/example/', 'Example']
     ]
   },
   head: [
