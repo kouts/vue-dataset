@@ -1,10 +1,12 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
 	typeof define === 'function' && define.amd ? define(['vue'], factory) :
-	(global = global || self, global.Dataset = factory(global.Vue));
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dataset = factory(global.Vue));
 }(this, (function (vue) { 'use strict';
 
-	vue = vue && Object.prototype.hasOwnProperty.call(vue, 'default') ? vue['default'] : vue;
+	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+	var vue__default = /*#__PURE__*/_interopDefaultLegacy(vue);
 
 	function unwrapExports (x) {
 		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -107,7 +109,7 @@
 	/***/ "8bbf":
 	/***/ (function(module, exports) {
 
-	module.exports = vue;
+	module.exports = vue__default['default'];
 
 	/***/ }),
 
