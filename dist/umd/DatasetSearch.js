@@ -1,12 +1,27 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.DatasetSearch = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatasetSearch = factory());
 }(this, (function () { 'use strict';
 
-  //
-  //
-  //
+  function debounce (func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this;
+      var args = arguments;
+      clearTimeout(timeout);
+      if (immediate && !timeout) {
+        func.apply(context, args);
+      }
+      timeout = setTimeout(function () {
+        timeout = null;
+        if (!immediate) {
+          func.apply(context, args);
+        }
+      }, wait);
+    };
+  }
+
   //
 
   var script = {
@@ -15,12 +30,23 @@
       dsSearchPlaceholder: {
         type: String,
         default: ''
+      },
+      wait: {
+        type: Number,
+        default: 0
       }
     },
     data: function () {
       return {
         dsSearch: ''
       };
+    },
+    mounted: function mounted () {
+      var this$1 = this;
+
+      this.input = debounce(function (value) {
+        this$1.search(value);
+      }, this.wait);
     }
   };
 
@@ -113,7 +139,7 @@
       domProps: { value: _vm.dsSearch },
       on: {
         input: function($event) {
-          return _vm.search($event.target.value)
+          return _vm.input($event.target.value)
         }
       }
     })

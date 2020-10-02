@@ -1,4 +1,4 @@
-import { M as MORE_PAGES } from './index-32b20abd.js';
+import { M as MORE_PAGES } from './index-d5f08fcc.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 //

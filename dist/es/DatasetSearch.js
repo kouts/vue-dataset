@@ -1,8 +1,6 @@
+import { d as debounce } from './index-d5f08fcc.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
-//
-//
-//
 //
 
 var script = {
@@ -11,12 +9,21 @@ var script = {
     dsSearchPlaceholder: {
       type: String,
       default: ''
+    },
+    wait: {
+      type: Number,
+      default: 0
     }
   },
   data: function () {
     return {
       dsSearch: ''
     };
+  },
+  mounted () {
+    this.input = debounce((value) => {
+      this.search(value);
+    }, this.wait);
   }
 };
 
@@ -34,7 +41,7 @@ var __vue_render__ = function() {
     domProps: { value: _vm.dsSearch },
     on: {
       input: function($event) {
-        return _vm.search($event.target.value)
+        return _vm.input($event.target.value)
       }
     }
   })
