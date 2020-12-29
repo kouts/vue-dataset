@@ -10,10 +10,18 @@ module.exports = {
       ['/', 'Introduction'],
       ['/installation/', 'Installation'],
       ['/components/', 'Components'],
-      ['/example/', 'Example']
+      {
+        title: 'Examples',
+        collapsable: true,
+        children: [
+          ['/examples/cards/', 'Cards'],
+          ['/examples/table/', 'Table']
+        ]
+      }
     ]
   },
   head: [
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }],
     [
       'script',
       { src: 'https://polyfill.io/v3/polyfill.min.js?features=Array.from' }
