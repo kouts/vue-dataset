@@ -5,11 +5,21 @@ pageClass: dataset-page
 # vue-dataset
 
 A set of Vue.js components to display datasets and lists with filtering, paging and sorting capabilities!  
-It is created in order to solve the problem of recreating the same functionality for lists again and again.
+It is created in order to solve the problem of recreating the same functionality for lists over and over again.
 
 > vue-dataset does not impose any structure or layout limitations, you can use divs, tables or anything you like to present your data.
 
-It is most suitable in scenarios, where the amount of data is small (e.g 1000 rows), so that all data can be loaded at once from the server into the UI.
+## Features
+
+- Filtering based on the row values from all or specific data keys
+- "Search as" feature allows for searching using formatted values instead of raw data values
+- Global search with debounce setting
+- Multi "column" sorting, sortable data keys are configurable
+- Pagination
+- Pagination Information
+- Highly customizable
+- Easy to extend with custom components
+
 
 `vue-dataset` contains 6 components
 - `dataset` &rarr; The wrapper/data provider component
@@ -18,12 +28,6 @@ It is most suitable in scenarios, where the amount of data is small (e.g 1000 ro
 - `dataset-pager` &rarr; Renders the paging buttons
 - `dataset-search` &rarr; Renders the search input field
 - `dataset-show` &rarr; Renders number of visible results select 
-
-<!-- `dataset` is the wrapper component that acts as the provider of the data and methods to the child components.
-It also accepts a number of options that have to do with how the data is filtered, searched and sorted.
-
-`dataset-item` is the component that is responsible for displaying the data row.
-It uses slots so you are free to use a table row `tr` a `div` an `li` or anything you like. -->
 
 <h2 class="mb-4">Example using cards</h2>
 
