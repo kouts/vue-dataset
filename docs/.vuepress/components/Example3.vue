@@ -51,10 +51,6 @@
 <script>
 // https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
-import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities';
-import { debounce } from '../../../src/helpers';
-
-// const lessUsers = clone(data).slice(0, 2);
 
 export default {
   name: 'Example2',
