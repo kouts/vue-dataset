@@ -4,6 +4,7 @@
       v-slot="{ ds }"
       :ds-data="users"
       :ds-sortby="sortBy"
+      :ds-sort-as="{ birthdate: isoDateToDate }"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
     >
       <div class="row">
@@ -32,7 +33,7 @@
                     <th scope="row">{{ rowIndex + 1 }}</th>
                     <td>{{ row.name }}</td>
                     <td>{{ row.email }}</td>
-                    <td>{{ row.company }}</td>
+                    <td>{{ isoDateToEuroDate(row.birthdate) }}</td>
                   </tr>
                 </template>
               </dataset-item>
@@ -50,6 +51,7 @@
 
 <script>
 import users from '../../../example-data/users.json';
+import { isoDateToEuroDate, isoDateToDate } from '../utilities';
 
 export default {
   name: 'Example2',
@@ -68,8 +70,8 @@ export default {
           sort: ''
         },
         {
-          name: 'Company',
-          field: 'company',
+          name: 'Birthdate',
+          field: 'birthdate',
           sort: ''
         }
       ]
@@ -106,7 +108,9 @@ export default {
         toset = 'desc';
       }
       sortEl.sort = toset;
-    }
+    },
+    isoDateToEuroDate,
+    isoDateToDate
   }
 };
 </script>

@@ -23,3 +23,7 @@ export const searchAsEuroDate = function (value, searchString) {
   const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
   return isoDate === value;
 };
+
+export const isoDateToDate = function (isoDate) {
+  return new Date(isoDate);
+};

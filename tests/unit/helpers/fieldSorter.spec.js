@@ -62,4 +62,14 @@ describe('fieldSorter', () => {
     expect(sortData[1].value.lastName).toBe('Bumpsty');
     expect(sortData[2].value.lastName).toBe('Arraway');
   });
+  it('sorts the given array by the birthdate column using sortAs - asc', () => {
+    sortData.sort(fieldSorter(['birthdate'], { birthdate: isoDateToDate }));
+    expect(sortData[0].value.birthdate).toBe('1972-09-29');
+    expect(sortData[3].value.birthdate).toBe('2004-02-11');
+  });
+  it('sorts the given array by the birthdate column using sortAs - desc', () => {
+    sortData.sort(fieldSorter(['-birthdate'], { birthdate: isoDateToDate }));
+    expect(sortData[0].value.birthdate).toBe('2004-02-11');
+    expect(sortData[3].value.birthdate).toBe('1972-09-29');
+  });
 });

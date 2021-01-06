@@ -9,10 +9,11 @@ Dataset takes the original data object as a prop and also some useful props as o
     <dataset
       v-slot="{ ds }"
       :ds-data="users"
-      :ds-filter-fields="{firstName: 'John'}"
+      :ds-filter-fields="{ firstName: 'John' }"
       :ds-sortby="['lastName']"
       :ds-search-in="['firstName', 'lastName']"
-      :ds-search-as="{birthDate: searchAsEuroDate}"
+      :ds-search-as="{ birthDate: searchAsEuroDate }"
+      :ds-sort-as="{ birthDate: sortAsDate }"
     >
     ...
     </dataset>
@@ -93,7 +94,7 @@ For example this will set the birthDate attribute searchable by `searchAsEuroDat
 and will allow birthdate dates defined as YYYY-MM-DD format to be searched as DD.MM.YYYY format.
 
 ```js
-{birthDate: searchAsEuroDate}
+{ birthDate: 'searchAsEuroDate' }
 ```
 
 Inside your instance methods
@@ -102,6 +103,29 @@ searchAsEuroDate: function (value, searchString) {
   const parts = searchString.split('.');
   const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
   return isoDate === value;
+};
+```
+
+#### ds-sort-as
+Type: `Object`  
+Default: <em>Empty Object</em>
+
+It defines how certain properties of the data object will be sorted.
+The object key denotes the data object property and the object value is a `Function` that will be used to convert
+that data property so that it can be sorted correctly. This is useful in situations when you have values that can't be sorted natively
+such as currency or dates.
+
+For example this will apply the `sortAsDate` method to the birthDate attribute so that dates defined as YYYY-MM-DD format can be sorted
+correctly.
+
+```js
+{ birthDate: sortAsDate }
+```
+
+Inside your instance methods
+```js
+sortAsDate: function (isoDate) {
+  return new Date(isoDate)
 };
 ```
 

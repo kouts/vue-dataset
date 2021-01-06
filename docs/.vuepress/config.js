@@ -15,7 +15,7 @@ module.exports = {
         collapsable: true,
         children: [
           ['/examples/cards/', 'Cards'],
-          ['/examples/table/', 'Table']
+          ['/examples/datatable/', 'Datatable']
         ]
       }
     ]

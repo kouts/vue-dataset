@@ -59,7 +59,7 @@ function createPagingRange (nrOfPages, currentPage) {
   return rangeWithDots;
 }
 
-function fieldSorter (fields) {
+function fieldSorter (fields, dsSortAs = {}) {
   const dir = [];
   let i;
   const length = fields.length;
@@ -76,10 +76,12 @@ function fieldSorter (fields) {
   return function (a, b) {
     for (i = 0; i < length; i++) {
       const o = fields[i];
-      if (a.value[o] > b.value[o]) {
+      const aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
+      const bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
+      if (aVal > bVal) {
         return dir[i];
       }
-      if (a.value[o] < b.value[o]) {
+      if (aVal < bVal) {
         return -(dir[i]);
       }
     }

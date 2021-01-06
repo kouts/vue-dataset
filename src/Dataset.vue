@@ -44,6 +44,10 @@ export default {
     dsSearchAs: {
       type: Object,
       default: () => ({})
+    },
+    dsSortAs: {
+      type: Object,
+      default: () => ({})
     }
   },
   data: function () {
@@ -71,6 +75,7 @@ export default {
       const dsFilterFields = this.dsFilterFields;
       const dsSearchIn = this.dsSearchIn;
       const dsSearchAs = this.dsSearchAs;
+      const dsSortAs = this.dsSortAs;
 
       if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
         // Just get the indexes
@@ -97,7 +102,7 @@ export default {
 
         // Sort it
         if (dsSortby.length) {
-          result.sort(fieldSorter(dsSortby));
+          result.sort(fieldSorter(dsSortby, dsSortAs));
         }
 
         // We need indexes only
