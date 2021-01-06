@@ -3,6 +3,7 @@
     <dataset
       v-slot="{ ds }"
       :ds-data="users"
+      :ds-sortby="sortBy"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
     >
       <div class="row">
@@ -20,9 +21,9 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone</th>
+                  <th v-for="(th, index) in cols" :key="th.field" :class="['sort', th.sort]" @click="click($event, index)">
+                    {{ th.name }} <i class="gg-select float-right"></i>
+                  </th>
                 </tr>
               </thead>
               <dataset-item tag="tbody">
@@ -31,7 +32,7 @@
                     <th scope="row">{{ rowIndex + 1 }}</th>
                     <td>{{ row.name }}</td>
                     <td>{{ row.email }}</td>
-                    <td>{{ row.phone }}</td>
+                    <td>{{ row.company }}</td>
                   </tr>
                 </template>
               </dataset-item>
@@ -48,15 +49,116 @@
 </template>
 
 <script>
-// https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
 
 export default {
   name: 'Example2',
   data: function () {
     return {
-      users: users
+      users: users,
+      cols: [
+        {
+          name: 'Name',
+          field: 'name',
+          sort: ''
+        },
+        {
+          name: 'Email',
+          field: 'email',
+          sort: ''
+        },
+        {
+          name: 'Company',
+          field: 'company',
+          sort: ''
+        }
+      ]
     };
+  },
+  computed: {
+    sortBy () {
+      return this.cols.reduce((acc, o) => {
+        if (o.sort) {
+          o.sort === 'asc' ? acc.push(o.field) : acc.push('-' + o.field);
+        }
+        return acc;
+      }, []);
+    }
+  },
+  methods: {
+    click (event, i) {
+      let toset;
+      const sortEl = this.cols[i];
+      if (!event.shiftKey) {
+        this.cols.forEach(o => {
+          if (o.field !== sortEl.field) {
+            o.sort = '';
+          }
+        });
+      }
+      if (!sortEl.sort) {
+        toset = 'asc';
+      }
+      if (sortEl.sort === 'desc') {
+        toset = event.shiftKey ? '' : 'asc';
+      }
+      if (sortEl.sort === 'asc') {
+        toset = 'desc';
+      }
+      sortEl.sort = toset;
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.gg-select {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+}
+
+.gg-select::after,
+.gg-select::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 7px;
+    transform: rotate(-45deg);
+}
+
+.gg-select::before {
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    bottom: 4px;
+    opacity: 0.3;
+}
+
+.gg-select::after {
+    border-right: 2px solid;
+    border-top: 2px solid;
+    top: 4px;
+    opacity: 0.3;
+}
+
+th.sort {
+  cursor: pointer;
+  user-select: none;
+  &.asc {
+    .gg-select::after {
+      opacity: 1;
+    }
+  }
+  &.desc {
+    .gg-select::before {
+      opacity: 1;
+    }
+  }
+}
+</style>
