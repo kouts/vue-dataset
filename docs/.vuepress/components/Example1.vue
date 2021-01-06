@@ -50,7 +50,6 @@
 </template>
 
 <script>
-// https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
 import { filterList, clone } from '../utilities';
 

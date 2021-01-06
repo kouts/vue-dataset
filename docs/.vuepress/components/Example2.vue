@@ -43,10 +43,10 @@
     <dataset
       v-slot="{ ds }"
       :ds-data="users"
-      :ds-filter-fields="{onlineStatus: onlineFilter, name: startsWithFilter}"
+      :ds-filter-fields="{ onlineStatus: onlineFilter, name: startsWithFilter }"
       :ds-sortby="[sortFirstName]"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
-      :ds-search-as="{birthdate: searchAsEuroDate}"
+      :ds-search-as="{ birthdate: searchAsEuroDate }"
     >
       <div class="row mb-2">
         <div class="col-md-6 mb-2 mb-md-0">
@@ -90,7 +90,6 @@
 </template>
 
 <script>
-// https://next.json-generator.com/4JvxrAE2O
 import users from '../../../example-data/users.json';
 import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities';
 import { debounce } from '../../../src/helpers';
