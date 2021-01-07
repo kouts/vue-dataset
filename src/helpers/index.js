@@ -125,14 +125,7 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
           // that returns true/false and we return that if true.
-          /* Check if dsSearchAs was passed as string from template, if so call appropriate function from the component */
-          if (typeof dsSearchAs[field] === 'string') {
-            const res = this[dsSearchAs[field]](value, str);
-            if (res === true) {
-              return res;
-            }
-            /* Check if dsSearchAs is a function (passed from the template) */
-          }
+          /* Check if dsSearchAs is a function (passed from the template) */
           if (typeof dsSearchAs[field] === 'function') {
             const res = dsSearchAs[field](value, str);
             if (res === true) {

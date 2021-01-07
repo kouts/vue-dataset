@@ -96,8 +96,8 @@ export default {
         // Search it
         if (dsSearch) {
           result = result.filter(function (entry) {
-            return findAny.call(this, dsSearchIn, dsSearchAs, entry.value, dsSearch);
-          }.bind(this));
+            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch);
+          });
         }
 
         // Sort it
