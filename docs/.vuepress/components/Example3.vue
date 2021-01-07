@@ -6,6 +6,7 @@
       :ds-sortby="sortBy"
       :ds-sort-as="{ birthdate: isoDateToDate }"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
+      :ds-search-as="{ birthdate: searchAsEuroDate }"
     >
       <div class="row">
         <div class="col-md-6 mb-2 mb-md-0">
@@ -51,7 +52,7 @@
 
 <script>
 import users from '../../../example-data/users.json';
-import { isoDateToEuroDate, isoDateToDate } from '../utilities';
+import { isoDateToEuroDate, isoDateToDate, searchAsEuroDate } from '../utilities';
 
 export default {
   name: 'Example2',
@@ -110,7 +111,8 @@ export default {
       sortEl.sort = toset;
     },
     isoDateToEuroDate,
-    isoDateToDate
+    isoDateToDate,
+    searchAsEuroDate
   }
 };
 </script>
