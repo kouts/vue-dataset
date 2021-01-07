@@ -61,7 +61,7 @@ export default {
   computed: {
     /*
     The naive attempt would be to manipulate the original array directly.
-    This is problematic because it have to be filtered first, then sorted, then the from/to rows extracted.
+    This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
     In order to do that in that order, you would need to work on a copy.
     But this is problematic as well since you'd loose the data-binding with the original array.
 
@@ -110,12 +110,10 @@ export default {
           return entry.index;
         });
       }
-      // console.log('update');
-      // console.log(result);
       return result;
     },
     dsRows: function () {
-      // Cannot modify another computed property from inside a computed property
+      // We should not modify another computed property from inside a computed property
       // This should be moved into the dsTo computed if needed
       /*
       if (this.dsTo <= 0) {
