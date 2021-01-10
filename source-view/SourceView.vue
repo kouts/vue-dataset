@@ -41,22 +41,22 @@ export default {
     };
   },
   created () {
+    this.createComponent();
     this.createSections();
-    loadComponent(this.$props.file).then(component => { this.component = component; });
   },
   methods: {
-    async createSections () {
-      try {
-        const contents = await loadComponentAsString(this.file);
+    createComponent () {
+      loadComponent(this.$props.file).then(component => { this.component = component; });
+    },
+    createSections () {
+      loadComponentAsString(this.$props.file).then(contents => {
         const sections = [];
         sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
         sections.push({ name: 'Template', contents: this.parseSfcSection('template', contents), language: 'markup' });
         sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'javascript' });
         sections.push({ name: 'Script', contents: this.parseSfcSection('script', contents), language: 'css' });
         this.sections = sections.filter(s => s.contents);
-      } catch (err) {
-        console.log(err);
-      }
+      });
     },
     parseSfcSection (tag, contents) {
       const string = `(<${tag}(.*)?>[\\w\\W]*<\\/${tag}>)`;
