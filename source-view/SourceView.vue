@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { loadComponent } from '@dynamic/loadComponent';
 import Highlight from './Highlight';
 
 export default {
@@ -41,7 +42,7 @@ export default {
   },
   created () {
     this.createSections();
-    this.loadComponent();
+    loadComponent(this.$props.file).then(component => { this.component = component; });
   },
   methods: {
     async createSections () {
@@ -63,15 +64,6 @@ export default {
       const regex = new RegExp(string, 'g');
       const parsed = regex.exec(contents) || [];
       return parsed[1] || '';
-    },
-    loadComponent () {
-      try {
-        import('/docs/.vuepress/components/' + this.file + '.vue').then(component => {
-          this.component = component.default;
-        });
-      } catch (err) {
-        console.log(err);
-      }
     }
   }
 };

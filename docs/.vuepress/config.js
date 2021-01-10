@@ -1,6 +1,10 @@
+const sourceViewPlugin = require('../../source-view/index.js')
+
 module.exports = {
   plugins: [
-    require('../../source-view/index.js')
+    sourceViewPlugin({
+      componentsPath: '/docs/.vuepress/components/'
+    })
   ],
   dest: 'public',
   title: 'vue-dataset',
