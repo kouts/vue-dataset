@@ -5,11 +5,13 @@
         <a :class="['nav-link', section === sectionSelected && 'active']" href="#">{{ section }}</a>
       </li>
     </ul>
-    <template v-for="section in sections">
-      <div v-if="sectionSelected === section" :key="section" class="pt-2">
-        {{ pen[section] }}
-      </div>
-    </template>
+    <div v-if="pen">
+      <template v-for="section in sections">
+        <div v-if="sectionSelected === section && section !== 'example'" :key="section" class="pt-2">
+          <highlight :key="section" :code="pen[section]" :language="sectionLanguage[section]" />
+        </div>
+      </template>
+    </div>
     <div v-if="sectionSelected === 'example'" class="pt-2">
       <component :is="component" v-if="component" v-bind="{ ...$attrs, ...$props }" v-on="$listeners" />
     </div>
@@ -18,9 +20,13 @@
 
 <script>
 import Codepen from './codepen';
+import Highlight from './Highlight';
 
 export default {
   name: 'SourceView',
+  components: {
+    Highlight
+  },
   mixins: [Codepen],
   props: {
     file: {
@@ -31,7 +37,12 @@ export default {
   data () {
     return {
       component: undefined,
-      sectionSelected: 'example'
+      sectionSelected: 'example',
+      sectionLanguage: {
+        template: 'markup',
+        script: 'javascript',
+        style: 'css'
+      }
     };
   },
   computed: {
@@ -51,9 +62,9 @@ export default {
   },
   created () {
     this.importTemplate();
-    import(/* webpackChunkName: "examples" */ /* webpackMode: "lazy-once" */ `../../docs/.vuepress/components/${this.file}.vue`).then(component => {
+    import('../../docs/.vuepress/components/' + this.file + '.vue').then(component => {
       this.component = component.default;
-    })
+    });
   }
 };
 </script>
