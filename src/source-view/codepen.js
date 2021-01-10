@@ -9,7 +9,7 @@ export default {
         const template = await import(
           /* webpackChunkName: "examples-source" */
           /* webpackMode: "lazy-once" */
-          `!raw-loader!../../docs/examples/${this.file}.vue`
+          `!raw-loader!../../docs/.vuepress/components/${this.file}.vue`
         )
 
         this.boot(template.default)
