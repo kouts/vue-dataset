@@ -27,8 +27,5 @@ module.exports = (options, context) => ({
       `
     };
   },
-  enhanceAppFiles: [path.resolve(__dirname, 'enhanceAppFile.js')],
-  define: {
-    SOURCE_VIEW_OPTIONS: JSON.stringify(options)
-  }
+  enhanceAppFiles: [path.resolve(__dirname, 'enhanceAppFile.js')]
 });
