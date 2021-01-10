@@ -46,7 +46,7 @@ export default {
   methods: {
     async createSections () {
       try {
-        const sfc = await import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!../../docs/.vuepress/components/' + this.file + '.vue');
+        const sfc = await import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!/docs/.vuepress/components/' + this.file + '.vue');
         const contents = sfc.default;
         const sections = [];
         sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
@@ -66,7 +66,7 @@ export default {
     },
     loadComponent () {
       try {
-        import('../../docs/.vuepress/components/' + this.file + '.vue').then(component => {
+        import('/docs/.vuepress/components/' + this.file + '.vue').then(component => {
           this.component = component.default;
         });
       } catch (err) {

@@ -1,4 +1,7 @@
 module.exports = {
+  plugins: [
+    require('../../source-view/index.js')
+  ],
   dest: 'public',
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',

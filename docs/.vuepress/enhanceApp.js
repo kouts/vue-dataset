@@ -4,7 +4,6 @@ import DatasetShow from '../../src/DatasetShow.vue';
 import DatasetPager from '../../src/DatasetPager.vue';
 import DatasetItem from '../../src/DatasetItem.vue';
 import DatasetInfo from '../../src/DatasetInfo.vue';
-import SourceView from '../../src/source-view/SourceView.vue';
 import './styles/styles.scss';
 
 export default ({
@@ -15,7 +14,6 @@ export default ({
 }) => {
   if (typeof process === 'undefined') {
     // process is undefined in a browser
-    Vue.component('source-view', SourceView);
     Vue.component('dataset', Dataset);
     Vue.component('dataset-show', DatasetShow);
     Vue.component('dataset-search', DatasetSearch);
