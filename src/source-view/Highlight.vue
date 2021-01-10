@@ -25,7 +25,6 @@ export default {
         `Prism component for language "${this.$props.language}" was not found, did you forget to register it? See all available ones: https://cdn.jsdelivr.net/npm/prismjs/components/`
       );
     }
-
     // console.log(this.$props.code);
     // console.log(Prism);
     const code = document.createElement('code');

@@ -1,25 +1,24 @@
 <template>
   <div class="mb-4">
     <ul class="nav nav-tabs">
-      <li v-for="section in sections" :key="section" class="nav-item" @click.prevent="sectionSelected = section">
-        <a :class="['nav-link', section === sectionSelected && 'active']" href="#">{{ section }}</a>
+      <li v-for="section in sections" :key="section.name" class="nav-item" @click.prevent="sectionSelected = section.name">
+        <a :class="['nav-link', section.name === sectionSelected && 'active']" href="#">{{ section.name }}</a>
       </li>
     </ul>
-    <div v-if="pen">
+    <div>
       <template v-for="section in sections">
-        <div v-if="sectionSelected === section && section !== 'example'" :key="section" class="pt-2">
-          <highlight :key="section" :code="pen[section]" :language="sectionLanguage[section]" />
+        <div v-if="sectionSelected === section.name && section.name !== 'Example'" :key="section.name" class="pt-2">
+          <highlight :code="section.contents" :language="section.language" />
         </div>
       </template>
     </div>
-    <div v-if="sectionSelected === 'example'" class="pt-2">
+    <div v-if="sectionSelected === 'Example'" class="pt-2">
       <component :is="component" v-if="component" v-bind="{ ...$attrs, ...$props }" v-on="$listeners" />
     </div>
   </div>
 </template>
 
 <script>
-import Codepen from './codepen';
 import Highlight from './Highlight';
 
 export default {
@@ -27,7 +26,6 @@ export default {
   components: {
     Highlight
   },
-  mixins: [Codepen],
   props: {
     file: {
       type: String,
@@ -37,34 +35,44 @@ export default {
   data () {
     return {
       component: undefined,
-      sectionSelected: 'example',
-      sectionLanguage: {
-        template: 'markup',
-        script: 'javascript',
-        style: 'css'
-      }
+      sections: [],
+      sectionSelected: 'Example'
     };
   },
-  computed: {
-    sections () {
-      if (!this.pen) {
-        return [];
-      }
-      return [
-        'example',
-        'template',
-        'script',
-        'style'
-      ].filter(section => {
-        return section === 'example' || this.pen[section];
-      });
-    }
-  },
   created () {
-    this.importTemplate();
-    import('../../docs/.vuepress/components/' + this.file + '.vue').then(component => {
-      this.component = component.default;
-    });
+    this.createSections();
+    this.loadComponent();
+  },
+  methods: {
+    async createSections () {
+      try {
+        const sfc = await import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!../../docs/.vuepress/components/' + this.file + '.vue');
+        const contents = sfc.default;
+        const sections = [];
+        sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
+        sections.push({ name: 'Template', contents: this.parseSfcSection('template', contents), language: 'markup' });
+        sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'javascript' });
+        sections.push({ name: 'Script', contents: this.parseSfcSection('script', contents), language: 'css' });
+        this.sections = sections.filter(s => s.contents);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    parseSfcSection (tag, contents) {
+      const string = `(<${tag}(.*)?>[\\w\\W]*<\\/${tag}>)`;
+      const regex = new RegExp(string, 'g');
+      const parsed = regex.exec(contents) || [];
+      return parsed[1] || '';
+    },
+    loadComponent () {
+      try {
+        import('../../docs/.vuepress/components/' + this.file + '.vue').then(component => {
+          this.component = component.default;
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 };
 </script>
