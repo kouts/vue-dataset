@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { loadComponent } from '@dynamic/loadComponent';
+import { loadComponent, loadComponentAsString } from '@dynamic/loadComponent';
 import Highlight from './Highlight';
 
 export default {
@@ -47,8 +47,7 @@ export default {
   methods: {
     async createSections () {
       try {
-        const sfc = await import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!/docs/.vuepress/components/' + this.file + '.vue');
-        const contents = sfc.default;
+        const contents = await loadComponentAsString(this.file);
         const sections = [];
         sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
         sections.push({ name: 'Template', contents: this.parseSfcSection('template', contents), language: 'markup' });

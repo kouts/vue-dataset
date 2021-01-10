@@ -16,6 +16,14 @@ module.exports = (options, context) => ({
           console.log(err);
         }
       }
+      export function loadComponentAsString (file) {
+        try {
+          return import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!${opts.componentsPath}' + file + '.vue')
+          .then(component => component.default);
+        } catch (err) {
+          console.log(err);
+        }        
+      }
       `
     };
   },
