@@ -8,7 +8,7 @@
     <div>
       <template v-for="section in sections">
         <div v-if="sectionSelected === section.name && section.name !== 'Example'" :key="section.name" class="pt-2">
-          <highlight :code="section.contents" :language="section.language" />
+          <vue-example-highlight :code="section.contents" :language="section.language" />
         </div>
       </template>
     </div>
@@ -20,12 +20,12 @@
 
 <script>
 import { loadComponent, loadComponentAsString } from '@dynamic/loadComponent';
-import Highlight from './Highlight';
+import VueExampleHighlight from './VueExampleHighlight';
 
 export default {
   name: 'SourceView',
   components: {
-    Highlight
+    VueExampleHighlight
   },
   props: {
     file: {

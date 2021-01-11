@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = (options, context) => ({
-  name: 'source-view',
+  name: 'vue-example',
   clientDynamicModules () {
     const opts = Object.assign({}, {
       componentsPath: '/docs/.vuepress/components'
@@ -18,7 +18,7 @@ module.exports = (options, context) => ({
       }
       export function loadComponentAsString (file) {
         try {
-          return import(/* webpackChunkName: "examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!${opts.componentsPath}' + file + '.vue')
+          return import(/* webpackChunkName: "vue-examples-source" */ /* webpackMode: "lazy-once" */ '!raw-loader!${opts.componentsPath}' + file + '.vue')
           .then(component => component.default);
         } catch (err) {
           console.log(err);

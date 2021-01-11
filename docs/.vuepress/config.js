@@ -1,8 +1,8 @@
-const sourceViewPlugin = require('../../source-view/index.js')
+const VueExamplePlugin = require('../../vue-example/index.js');
 
 module.exports = {
   plugins: [
-    sourceViewPlugin({
+    VueExamplePlugin({
       componentsPath: '/docs/.vuepress/components/'
     })
   ],
