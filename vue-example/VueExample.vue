@@ -1,10 +1,21 @@
 <template>
   <div class="mb-4">
-    <ul class="nav nav-tabs">
-      <li v-for="section in sections" :key="section.name" class="nav-item" @click.prevent="sectionSelected = section.name">
-        <a :class="['nav-link', section.name === sectionSelected && 'active']" href="#">{{ section.name }}</a>
-      </li>
-    </ul>
+    <div v-if="sections.length" class="d-flex justify-content-between">
+      <ul class="nav nav-pills">
+        <li class="nav-item" @click.prevent="sectionSelected = sections[0].name">
+          <a href="#" :class="['nav-link', sectionSelected === sections[0].name && 'active']">
+            {{ title ? title : sections[0].name }}
+          </a>
+        </li>
+      </ul>
+      <ul class="nav nav-pills justify-content-end">
+        <li v-for="(section, i) in sections" :key="section.name" class="nav-item" @click.prevent="sectionSelected = section.name">
+          <a v-if="i !== 0" href="#" :class="['nav-link', section.name === sectionSelected && 'active']">
+            {{ section.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
     <div>
       <template v-for="section in sections">
         <div v-if="sectionSelected === section.name && section.name !== 'Example'" :key="section.name" class="pt-2">
@@ -31,6 +42,10 @@ export default {
     file: {
       type: String,
       required: true
+    },
+    title: {
+      type: String,
+      default: null
     }
   },
   data () {
@@ -53,8 +68,8 @@ export default {
         const sections = [];
         sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
         sections.push({ name: 'Template', contents: this.parseSfcSection('template', contents), language: 'markup' });
-        sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'javascript' });
         sections.push({ name: 'Script', contents: this.parseSfcSection('script', contents), language: 'css' });
+        sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'javascript' });
         this.sections = sections.filter(s => s.contents);
       });
     },
@@ -69,7 +84,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav-tabs .nav-item > a.nav-link:hover {
+.nav-pills .nav-item > a.nav-link:hover {
   text-decoration: none;
+  border-bottom: 2px solid transparent;
 }
 </style>
