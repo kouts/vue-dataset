@@ -68,8 +68,8 @@ export default {
         const sections = [];
         sections.push({ name: 'Example', contents: 'N/A', language: 'N/A' });
         sections.push({ name: 'Template', contents: this.parseSfcSection('template', contents), language: 'markup' });
-        sections.push({ name: 'Script', contents: this.parseSfcSection('script', contents), language: 'css' });
-        sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'javascript' });
+        sections.push({ name: 'Script', contents: this.parseSfcSection('script', contents), language: 'javascript' });
+        sections.push({ name: 'Style', contents: this.parseSfcSection('style', contents), language: 'css' });
         this.sections = sections.filter(s => s.contents);
       });
     },
