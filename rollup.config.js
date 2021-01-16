@@ -63,11 +63,11 @@ const umdBuild = sources.map((source) => {
 export default [
   // ES
   {
-    input: sources,
+    input: 'src/index.js',
     output: [
       {
-        dir: 'dist/es',
-        format: 'es',
+        dir: 'dist/esm',
+        format: 'esm',
         sourcemap: true,
         sourcemapExcludeSources: false
       }
