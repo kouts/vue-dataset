@@ -31,4 +31,8 @@ It is created in order to solve the problem of recreating the same functionality
 
 <h2 class="mb-4">Example using cards</h2>
 
+<vue-example file="Example1" />
+
+<!--
 <example1 />
+-->
