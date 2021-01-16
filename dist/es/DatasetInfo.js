@@ -1,5 +1,25 @@
-import normalizeComponent from '../node_modules/vue-runtime-helpers/dist/normalize-component.mjs.js';
-import script from './DatasetShow.vue_rollup-plugin-vue=script.js';
+import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
+
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script = {
+  inject: ['ds', 'datasetI18n'],
+  computed: {
+    showing () {
+      return this.ds.dsResultsNumber !== 0 ? this.ds.dsFrom + 1 : 0;
+    },
+    showingTo () {
+      return this.ds.dsTo >= this.ds.dsResultsNumber ? this.ds.dsResultsNumber : this.ds.dsTo;
+    }
+  }
+};
 
 /* script */
 const __vue_script__ = script;
@@ -9,27 +29,24 @@ var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "form-inline" }, [
-    _c("label", [_vm._v(_vm._s(_vm.datasetI18n.show))]),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
-        staticClass: "form-control mr-1 ml-1",
-        domProps: { value: _vm.dsShowEntries },
-        on: { change: _vm.change }
-      },
-      _vm._l(_vm.dsShowEntriesLovs, function(option) {
-        return _c(
-          "option",
-          { key: option.value, domProps: { value: option.value } },
-          [_vm._v("\n      " + _vm._s(option.text) + "\n    ")]
-        )
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("label", [_vm._v(_vm._s(_vm.datasetI18n.entries))])
+  return _c("div", [
+    _vm._v(
+      "\n  " +
+        _vm._s(_vm.datasetI18n.showing) +
+        " " +
+        _vm._s(_vm.showing) +
+        "\n  " +
+        _vm._s(_vm.datasetI18n.showingTo) +
+        " " +
+        _vm._s(_vm.showingTo) +
+        "\n  " +
+        _vm._s(_vm.datasetI18n.showingOf) +
+        " " +
+        _vm._s(_vm.ds.dsResultsNumber) +
+        " " +
+        _vm._s(_vm.datasetI18n.showingEntries) +
+        "\n"
+    )
   ])
 };
 var __vue_staticRenderFns__ = [];
@@ -65,4 +82,4 @@ __vue_render__._withStripped = true;
   );
 
 export default __vue_component__;
-//# sourceMappingURL=DatasetShow.vue.js.map
+//# sourceMappingURL=DatasetInfo.js.map

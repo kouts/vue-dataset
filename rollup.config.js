@@ -63,12 +63,11 @@ const umdBuild = sources.map((source) => {
 export default [
   // ES
   {
-    input: 'src/index.js',
+    input: ['src/index.js'].concat(sources),
     output: [
       {
         dir: 'dist/es',
         format: 'es',
-        preserveModules: true,
         sourcemap: true,
         sourcemapExcludeSources: false
       }

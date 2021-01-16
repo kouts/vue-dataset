@@ -1,5 +1,31 @@
-import normalizeComponent from '../node_modules/vue-runtime-helpers/dist/normalize-component.mjs.js';
-import script from './DatasetItem.vue_rollup-plugin-vue=script.js';
+import { d as debounce } from './index-cebd6bac.js';
+import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
+
+//
+
+var script = {
+  inject: ['search'],
+  props: {
+    dsSearchPlaceholder: {
+      type: String,
+      default: ''
+    },
+    wait: {
+      type: Number,
+      default: 0
+    }
+  },
+  data: function () {
+    return {
+      dsSearch: ''
+    };
+  },
+  mounted () {
+    this.input = debounce((value) => {
+      this.search(value);
+    }, this.wait);
+  }
+};
 
 /* script */
 const __vue_script__ = script;
@@ -9,20 +35,16 @@ var __vue_render__ = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    _vm.tag,
-    { tag: "component" },
-    [
-      _vm._l(_vm.ds.dsRows, function(item) {
-        return [
-          _vm._t("default", null, { row: _vm.ds.dsData[item], rowIndex: item })
-        ]
-      }),
-      _vm._v(" "),
-      !_vm.ds.dsRows.length ? _vm._t("noDataFound") : _vm._e()
-    ],
-    2
-  )
+  return _c("input", {
+    staticClass: "form-control",
+    attrs: { type: "text", placeholder: _vm.dsSearchPlaceholder },
+    domProps: { value: _vm.dsSearch },
+    on: {
+      input: function($event) {
+        return _vm.input($event.target.value)
+      }
+    }
+  })
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
@@ -57,4 +79,4 @@ __vue_render__._withStripped = true;
   );
 
 export default __vue_component__;
-//# sourceMappingURL=DatasetItem.vue.js.map
+//# sourceMappingURL=DatasetSearch.js.map
