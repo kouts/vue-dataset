@@ -66,8 +66,9 @@ export default [
     input: 'src/index.js',
     output: [
       {
-        dir: 'dist/esm',
-        format: 'esm',
+        dir: 'dist/es',
+        format: 'es',
+        preserveModules: true,
         sourcemap: true,
         sourcemapExcludeSources: false
       }
