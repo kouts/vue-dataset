@@ -1,5 +1,16 @@
-import normalizeComponent from '../node_modules/vue-runtime-helpers/dist/normalize-component.mjs.js';
-import script from './DatasetPager.vue_rollup-plugin-vue=script.js';
+import { M as MORE_PAGES } from './index-cebd6bac.js';
+import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
+
+//
+
+var script = {
+  inject: ['ds', 'datasetI18n', 'setActive'],
+  data: function () {
+    return {
+      morePages: MORE_PAGES
+    };
+  }
+};
 
 /* script */
 const __vue_script__ = script;
@@ -164,4 +175,4 @@ __vue_render__._withStripped = true;
   );
 
 export default __vue_component__;
-//# sourceMappingURL=DatasetPager.vue.js.map
+//# sourceMappingURL=DatasetPager.js.map
