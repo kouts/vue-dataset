@@ -1,5 +1,5 @@
 import vue from 'vue';
-import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-d5f08fcc.js';
+import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-cebd6bac.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 function unwrapExports (x) {
@@ -346,6 +346,10 @@ var script = {
     dsSearchAs: {
       type: Object,
       default: () => ({})
+    },
+    dsSortAs: {
+      type: Object,
+      default: () => ({})
     }
   },
   data: function () {
@@ -359,7 +363,7 @@ var script = {
   computed: {
     /*
     The naive attempt would be to manipulate the original array directly.
-    This is problematic because it have to be filtered first, then sorted, then the from/to rows extracted.
+    This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
     In order to do that in that order, you would need to work on a copy.
     But this is problematic as well since you'd loose the data-binding with the original array.
 
@@ -373,6 +377,7 @@ var script = {
       const dsFilterFields = this.dsFilterFields;
       const dsSearchIn = this.dsSearchIn;
       const dsSearchAs = this.dsSearchAs;
+      const dsSortAs = this.dsSortAs;
 
       if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
         // Just get the indexes
@@ -393,13 +398,13 @@ var script = {
         // Search it
         if (dsSearch) {
           result = result.filter(function (entry) {
-            return findAny.call(this, dsSearchIn, dsSearchAs, entry.value, dsSearch);
-          }.bind(this));
+            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch);
+          });
         }
 
         // Sort it
         if (dsSortby.length) {
-          result.sort(fieldSorter(dsSortby));
+          result.sort(fieldSorter(dsSortby, dsSortAs));
         }
 
         // We need indexes only
@@ -407,12 +412,10 @@ var script = {
           return entry.index;
         });
       }
-      // console.log('update');
-      // console.log(result);
       return result;
     },
     dsRows: function () {
-      // Cannot modify another computed property from inside a computed property
+      // We should not modify another computed property from inside a computed property
       // This should be moved into the dsTo computed if needed
       /*
       if (this.dsTo <= 0) {

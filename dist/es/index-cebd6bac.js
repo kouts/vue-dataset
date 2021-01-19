@@ -1,5 +1,22 @@
 const MORE_PAGES = '...';
 
+function debounce (func, wait, immediate) {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    if (immediate && !timeout) {
+      func.apply(context, args);
+    }
+    timeout = setTimeout(function () {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+  };
+}
 // https://jsperf.com/object-empty-ch/1
 function isEmptyObject (obj) {
   for (const key in obj) {
@@ -41,7 +58,7 @@ function createPagingRange (nrOfPages, currentPage) {
   return rangeWithDots;
 }
 
-function fieldSorter (fields) {
+function fieldSorter (fields, dsSortAs = {}) {
   const dir = [];
   let i;
   const length = fields.length;
@@ -58,10 +75,12 @@ function fieldSorter (fields) {
   return function (a, b) {
     for (i = 0; i < length; i++) {
       const o = fields[i];
-      if (a.value[o] > b.value[o]) {
+      const aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
+      const bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
+      if (aVal > bVal) {
         return dir[i];
       }
-      if (a.value[o] < b.value[o]) {
+      if (aVal < bVal) {
         return -(dir[i]);
       }
     }
@@ -105,14 +124,7 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
           // that returns true/false and we return that if true.
-          /* Check if dsSearchAs was passed as string from template, if so call appropriate function from the component */
-          if (typeof dsSearchAs[field] === 'string') {
-            const res = this[dsSearchAs[field]](value, str);
-            if (res === true) {
-              return res;
-            }
-            /* Check if dsSearchAs is a function (passed from the template) */
-          }
+          /* Check if dsSearchAs is a function (passed from the template) */
           if (typeof dsSearchAs[field] === 'function') {
             const res = dsSearchAs[field](value, str);
             if (res === true) {
@@ -130,5 +142,5 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
   return false;
 }
 
-export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, fieldFilter as f, isEmptyObject as i };
-//# sourceMappingURL=index-32b20abd.js.map
+export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, debounce as d, fieldFilter as f, isEmptyObject as i };
+//# sourceMappingURL=index-cebd6bac.js.map

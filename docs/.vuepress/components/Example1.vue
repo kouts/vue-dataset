@@ -28,7 +28,7 @@
                     </h5>
                     <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
                     <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
-                    <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
+                    <p class="card-text text-truncate text-right date">{{ row.birthdate }}</p>
                   </div>
                 </div>
               </div>
@@ -53,8 +53,6 @@
 import users from '../../../example-data/users.json';
 import { filterList, clone } from '../utilities';
 
-// const lessUsers = clone(data).slice(0, 2);
-
 export default {
   name: 'Example1',
   data: function () {
@@ -78,3 +76,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .date {
+    opacity: 0.6;
+  }
+</style>
