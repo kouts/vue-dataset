@@ -358,9 +358,7 @@
 	  return rangeWithDots;
 	}
 
-	function fieldSorter (fields, dsSortAs) {
-	  if ( dsSortAs === void 0 ) dsSortAs = {};
-
+	function fieldSorter (fields) {
 	  var dir = [];
 	  var i;
 	  var length = fields.length;
@@ -377,12 +375,10 @@
 	  return function (a, b) {
 	    for (i = 0; i < length; i++) {
 	      var o = fields[i];
-	      var aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
-	      var bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
-	      if (aVal > bVal) {
+	      if (a.value[o] > b.value[o]) {
 	        return dir[i];
 	      }
-	      if (aVal < bVal) {
+	      if (a.value[o] < b.value[o]) {
 	        return -(dir[i]);
 	      }
 	    }
@@ -428,11 +424,18 @@
 	        if (field === key) {
 	          // Found key in dsSearchAs so we pass the value and the search string to a search function
 	          // that returns true/false and we return that if true.
-	          /* Check if dsSearchAs is a function (passed from the template) */
-	          if (typeof dsSearchAs[field] === 'function') {
-	            var res = dsSearchAs[field](value, str);
+	          /* Check if dsSearchAs was passed as string from template, if so call appropriate function from the component */
+	          if (typeof dsSearchAs[field] === 'string') {
+	            var res = this[dsSearchAs[field]](value, str);
 	            if (res === true) {
 	              return res;
+	            }
+	            /* Check if dsSearchAs is a function (passed from the template) */
+	          }
+	          if (typeof dsSearchAs[field] === 'function') {
+	            var res$1 = dsSearchAs[field](value, str);
+	            if (res$1 === true) {
+	              return res$1;
 	            }
 	          }
 	        }
@@ -483,10 +486,6 @@
 	    dsSearchAs: {
 	      type: Object,
 	      default: function () { return ({}); }
-	    },
-	    dsSortAs: {
-	      type: Object,
-	      default: function () { return ({}); }
 	    }
 	  },
 	  data: function () {
@@ -500,7 +499,7 @@
 	  computed: {
 	    /*
 	    The naive attempt would be to manipulate the original array directly.
-	    This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
+	    This is problematic because it have to be filtered first, then sorted, then the from/to rows extracted.
 	    In order to do that in that order, you would need to work on a copy.
 	    But this is problematic as well since you'd loose the data-binding with the original array.
 
@@ -514,7 +513,6 @@
 	      var dsFilterFields = this.dsFilterFields;
 	      var dsSearchIn = this.dsSearchIn;
 	      var dsSearchAs = this.dsSearchAs;
-	      var dsSortAs = this.dsSortAs;
 
 	      if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
 	        // Just get the indexes
@@ -535,13 +533,13 @@
 	        // Search it
 	        if (dsSearch) {
 	          result = result.filter(function (entry) {
-	            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch);
-	          });
+	            return findAny.call(this, dsSearchIn, dsSearchAs, entry.value, dsSearch);
+	          }.bind(this));
 	        }
 
 	        // Sort it
 	        if (dsSortby.length) {
-	          result.sort(fieldSorter(dsSortby, dsSortAs));
+	          result.sort(fieldSorter(dsSortby));
 	        }
 
 	        // We need indexes only
@@ -549,10 +547,12 @@
 	          return entry.index;
 	        });
 	      }
+	      // console.log('update');
+	      // console.log(result);
 	      return result;
 	    },
 	    dsRows: function () {
-	      // We should not modify another computed property from inside a computed property
+	      // Cannot modify another computed property from inside a computed property
 	      // This should be moved into the dsTo computed if needed
 	      /*
 	      if (this.dsTo <= 0) {
