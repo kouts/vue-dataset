@@ -3,7 +3,7 @@ import Dataset from '@/Dataset.vue';
 import users from '../../example-data/users.json';
 
 const TestComponent = {
-  inject: ['search', 'showEntries', 'setActive', 'datasetI18n', 'ds'],
+  inject: ['search', 'showEntries', 'setActive', 'datasetI18n'],
   template: '<div>Test component</div>'
 };
 

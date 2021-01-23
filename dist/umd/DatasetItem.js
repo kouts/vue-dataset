@@ -15,11 +15,17 @@
   //
 
   var script = {
-    inject: ['ds'],
+    inject: ['dsData', 'rdsRows'],
     props: {
       tag: {
         type: String,
         default: 'div'
+      }
+    },
+    computed: {
+      /* Setup reactive injects */
+      dsRows: function dsRows () {
+        return this.rdsRows();
       }
     }
   };
@@ -31,7 +37,7 @@
           shadowMode = false;
       }
       // Vue.extend constructor export interop.
-      var options = typeof script === 'function' ? script.options : script;
+      const options = typeof script === 'function' ? script.options : script;
       // render functions
       if (template && template.render) {
           options.render = template.render;
@@ -46,7 +52,7 @@
       if (scopeId) {
           options._scopeId = scopeId;
       }
-      var hook;
+      let hook;
       if (moduleIdentifier) {
           // server build
           hook = function (context) {
@@ -84,7 +90,7 @@
       if (hook) {
           if (options.functional) {
               // register for functional component in vue file
-              var originalRender = options.render;
+              const originalRender = options.render;
               options.render = function renderWithStyleInjection(h, context) {
                   hook.call(context);
                   return originalRender(h, context);
@@ -92,7 +98,7 @@
           }
           else {
               // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
+              const existing = options.beforeCreate;
               options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
           }
       }
@@ -111,13 +117,13 @@
       _vm.tag,
       { tag: "component" },
       [
-        _vm._l(_vm.ds.dsRows, function(item) {
+        _vm._l(_vm.dsRows, function(item) {
           return [
-            _vm._t("default", null, { row: _vm.ds.dsData[item], rowIndex: item })
+            _vm._t("default", null, { row: _vm.dsData[item], rowIndex: item })
           ]
         }),
         _vm._v(" "),
-        !_vm.ds.dsRows.length ? _vm._t("noDataFound") : _vm._e()
+        !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e()
       ],
       2
     )

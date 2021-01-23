@@ -22,14 +22,14 @@ var script = {
     },
     dsShowEntriesLovs: {
       type: Array,
-      default: () => [{ value: 5, text: 5 }, { value: 10, text: 10 }, { value: 25, text: 25 }, { value: 50, text: 50 }, { value: 100, text: 100 }]
+      default: function () { return [{ value: 5, text: 5 }, { value: 10, text: 10 }, { value: 25, text: 25 }, { value: 50, text: 50 }, { value: 100, text: 100 }]; }
     }
   },
-  created () {
+  created: function created () {
     this.showEntries(Number(this.dsShowEntries));
   },
   methods: {
-    change (e) {
+    change: function change (e) {
       this.$emit('changed', Number(e.target.value));
       this.showEntries(Number(e.target.value));
     }
@@ -37,7 +37,7 @@ var script = {
 };
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {
@@ -71,13 +71,13 @@ var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -86,7 +86,7 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,

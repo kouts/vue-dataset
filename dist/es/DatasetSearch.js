@@ -1,4 +1,4 @@
-import { d as debounce } from './index-d5f08fcc.js';
+import { d as debounce } from './index-d02cd8a0.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 //
@@ -20,15 +20,17 @@ var script = {
       dsSearch: ''
     };
   },
-  mounted () {
-    this.input = debounce((value) => {
-      this.search(value);
+  mounted: function mounted () {
+    var this$1 = this;
+
+    this.input = debounce(function (value) {
+      this$1.search(value);
     }, this.wait);
   }
 };
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {
@@ -50,13 +52,13 @@ var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -65,7 +67,7 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,

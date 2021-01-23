@@ -1,18 +1,18 @@
 <template>
   <ul class="pagination">
-    <li :class="['page-item', (ds.dsPage === 1 || ds.dsPagecount === 1) && 'disabled']">
+    <li :class="['page-item', (dsPage === 1 || dsPagecount === 1) && 'disabled']">
       <a
         class="page-link"
         href="#"
-        :tabindex="(ds.dsPage === 1 || ds.dsPagecount === 1) && '-1'"
-        :aria-disabled="(ds.dsPage === 1 || ds.dsPagecount === 1) && 'true'"
-        @click.prevent="setActive(ds.dsPage !== 1 && ds.dsPagecount !== 0 ? ds.dsPage - 1 : ds.dsPage)"
+        :tabindex="(dsPage === 1 || dsPagecount === 1) && '-1'"
+        :aria-disabled="(dsPage === 1 || dsPagecount === 1) && 'true'"
+        @click.prevent="setActive(dsPage !== 1 && dsPagecount !== 0 ? dsPage - 1 : dsPage)"
       >
         {{ datasetI18n.previous }}
       </a>
     </li>
-    <template v-for="(item, index) in ds.dsPages">
-      <li :key="index" :class="['page-item', item === ds.dsPage && 'active', item === morePages && 'disabled']">
+    <template v-for="(item, index) in dsPages">
+      <li :key="index" :class="['page-item', item === dsPage && 'active', item === morePages && 'disabled']">
         <a v-if="item !== morePages" class="page-link" href="#" @click.prevent="setActive(item)">
           {{ item }}
         </a>
@@ -21,13 +21,13 @@
         </span>
       </li>
     </template>
-    <li :class="['page-item', (ds.dsPage === ds.dsPagecount || ds.dsPagecount === 1) && 'disabled']">
+    <li :class="['page-item', (dsPage === dsPagecount || dsPagecount === 1) && 'disabled']">
       <a
         class="page-link"
         href="#"
-        :tabindex="(ds.dsPage === ds.dsPagecount || ds.dsPagecount === 1) && '-1'"
-        :aria-disabled="(ds.dsPage === ds.dsPagecount || ds.dsPagecount === 1) && 'true'"
-        @click.prevent="setActive(ds.dsPage !== ds.dsPagecount && ds.dsPagecount !== 0 ? ds.dsPage + 1 : ds.dsPage)"
+        :tabindex="(dsPage === dsPagecount || dsPagecount === 1) && '-1'"
+        :aria-disabled="(dsPage === dsPagecount || dsPagecount === 1) && 'true'"
+        @click.prevent="setActive(dsPage !== dsPagecount && dsPagecount !== 0 ? dsPage + 1 : dsPage)"
       >
         {{ datasetI18n.next }}
       </a>
@@ -39,11 +39,23 @@
 import { MORE_PAGES } from './helpers';
 
 export default {
-  inject: ['ds', 'datasetI18n', 'setActive'],
+  inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
   data: function () {
     return {
       morePages: MORE_PAGES
     };
+  },
+  computed: {
+    /* Setup reactive injects */
+    dsPages () {
+      return this.rdsPages();
+    },
+    dsPagecount () {
+      return this.rdsPagecount();
+    },
+    dsPage () {
+      return this.rdsPage();
+    }
   }
 };
 </script>

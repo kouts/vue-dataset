@@ -13,7 +13,6 @@ const isButtonEnabled = function (el) {
 };
 
 describe('DatasetPager', () => {
-
   let wrapper = null;
 
   function wrapperWithProvide (provideOpts = {}) {
@@ -23,12 +22,10 @@ describe('DatasetPager', () => {
         setActive: function (value) {
           mockSetActive(value);
         },
-        ds: {
-          dsPages: [1, 2, 3],
-          dsPagecount: 0,
-          dsPage: 1,
-          ...provideOpts
-        }
+        rdsPages: () => [1, 2, 3],
+        rdsPagecount: () => 0,
+        rdsPage: () => 1,
+        ...provideOpts
       }
     });
     return wrapper;
@@ -46,7 +43,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button on first page', () => {
     wrapper = wrapperWithProvide({
-      dsPage: 1
+      rdsPage: () => 1
     });
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element;
@@ -56,7 +53,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      dsPagecount: 1
+      rdsPagecount: () => 1
     });
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element;
@@ -66,8 +63,8 @@ describe('DatasetPager', () => {
 
   it('enables the previous button', () => {
     wrapper = wrapperWithProvide({
-      dsPage: 2,
-      dsPagecount: 3
+      rdsPage: () => 2,
+      rdsPagecount: () => 3
     });
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element;
@@ -77,8 +74,8 @@ describe('DatasetPager', () => {
 
   it('disables the next button on last page', () => {
     wrapper = wrapperWithProvide({
-      dsPage: 4,
-      dsPagecount: 4
+      rdsPage: () => 4,
+      rdsPagecount: () => 4
     });
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a');
@@ -89,7 +86,7 @@ describe('DatasetPager', () => {
 
   it('disables the next button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      dsPagecount: 1
+      rdsPagecount: () => 1
     });
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a');
@@ -100,8 +97,8 @@ describe('DatasetPager', () => {
 
   it('enables the next button', () => {
     wrapper = wrapperWithProvide({
-      dsPage: 2,
-      dsPagecount: 3
+      rdsPage: () => 2,
+      rdsPagecount: () => 3
     });
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a');
@@ -112,8 +109,8 @@ describe('DatasetPager', () => {
 
   it('makes the normal page button active', () => {
     wrapper = wrapperWithProvide({
-      dsPage: 1,
-      dsPagecount: 3
+      rdsPage: () => 1,
+      rdsPagecount: () => 3
     });
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(1);
@@ -123,9 +120,9 @@ describe('DatasetPager', () => {
 
   it('makes the ... page button disabled', () => {
     wrapper = wrapperWithProvide({
-      dsPages: [1, '...', 4, 5, 6],
-      dsPage: 6,
-      dsPagecount: 6
+      rdsPages: () => [1, '...', 4, 5, 6],
+      rdsPage: () => 6,
+      rdsPagecount: () => 6
     });
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(2);
@@ -137,9 +134,9 @@ describe('DatasetPager', () => {
   it('sends the correct active page number on previous button click', () => {
     mockSetActive.mockClear();
     wrapper = wrapperWithProvide({
-      dsPages: [1, '...', 4, 5, 6],
-      dsPage: 6,
-      dsPagecount: 6
+      rdsPages: () => [1, '...', 4, 5, 6],
+      rdsPage: () => 6,
+      rdsPagecount: () => 6
     });
     const previousButton = wrapper.findAll('a').at(0);
     previousButton.trigger('click');
@@ -149,9 +146,9 @@ describe('DatasetPager', () => {
   it('sends the correct active page number on next button click', () => {
     mockSetActive.mockClear();
     wrapper = wrapperWithProvide({
-      dsPages: [1, '...', 4, 5, 6],
-      dsPage: 5,
-      dsPagecount: 6
+      rdsPages: () => [1, '...', 4, 5, 6],
+      rdsPage: () => 5,
+      rdsPagecount: () => 6
     });
     const buttons = wrapper.findAll('a');
     const nextButton = buttons.at(buttons.length - 1);
