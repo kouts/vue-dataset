@@ -11,17 +11,23 @@ import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 //
 
 var script = {
-  inject: ['ds'],
+  inject: ['dsData', 'rdsRows'],
   props: {
     tag: {
       type: String,
       default: 'div'
     }
+  },
+  computed: {
+    /* Setup reactive injects */
+    dsRows: function dsRows () {
+      return this.rdsRows();
+    }
   }
 };
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {
@@ -32,13 +38,13 @@ var __vue_render__ = function() {
     _vm.tag,
     { tag: "component" },
     [
-      _vm._l(_vm.ds.dsRows, function(item) {
+      _vm._l(_vm.dsRows, function(item) {
         return [
-          _vm._t("default", null, { row: _vm.ds.dsData[item], rowIndex: item })
+          _vm._t("default", null, { row: _vm.dsData[item], rowIndex: item })
         ]
       }),
       _vm._v(" "),
-      !_vm.ds.dsRows.length ? _vm._t("noDataFound") : _vm._e()
+      !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e()
     ],
     2
   )
@@ -47,13 +53,13 @@ var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -62,7 +68,7 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,

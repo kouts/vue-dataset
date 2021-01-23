@@ -10,19 +10,29 @@ import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 //
 
 var script = {
-  inject: ['ds', 'datasetI18n'],
+  inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
   computed: {
-    showing () {
-      return this.ds.dsResultsNumber !== 0 ? this.ds.dsFrom + 1 : 0;
+    showing: function showing () {
+      return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0;
     },
-    showingTo () {
-      return this.ds.dsTo >= this.ds.dsResultsNumber ? this.ds.dsResultsNumber : this.ds.dsTo;
+    showingTo: function showingTo () {
+      return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo;
+    },
+    /* Setup reactive injects */
+    dsResultsNumber: function dsResultsNumber () {
+      return this.rdsResultsNumber();
+    },
+    dsFrom: function dsFrom () {
+      return this.rdsFrom();
+    },
+    dsTo: function dsTo () {
+      return this.rdsTo();
     }
   }
 };
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {
@@ -42,7 +52,7 @@ var __vue_render__ = function() {
         "\n  " +
         _vm._s(_vm.datasetI18n.showingOf) +
         " " +
-        _vm._s(_vm.ds.dsResultsNumber) +
+        _vm._s(_vm.dsResultsNumber) +
         " " +
         _vm._s(_vm.datasetI18n.showingEntries) +
         "\n"
@@ -53,13 +63,13 @@ var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -68,7 +78,7 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,

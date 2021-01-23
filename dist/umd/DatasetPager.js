@@ -9,11 +9,23 @@
   //
 
   var script = {
-    inject: ['ds', 'datasetI18n', 'setActive'],
+    inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
     data: function () {
       return {
         morePages: MORE_PAGES
       };
+    },
+    computed: {
+      /* Setup reactive injects */
+      dsPages: function dsPages () {
+        return this.rdsPages();
+      },
+      dsPagecount: function dsPagecount () {
+        return this.rdsPagecount();
+      },
+      dsPage: function dsPage () {
+        return this.rdsPage();
+      }
     }
   };
 
@@ -24,7 +36,7 @@
           shadowMode = false;
       }
       // Vue.extend constructor export interop.
-      var options = typeof script === 'function' ? script.options : script;
+      const options = typeof script === 'function' ? script.options : script;
       // render functions
       if (template && template.render) {
           options.render = template.render;
@@ -39,7 +51,7 @@
       if (scopeId) {
           options._scopeId = scopeId;
       }
-      var hook;
+      let hook;
       if (moduleIdentifier) {
           // server build
           hook = function (context) {
@@ -77,7 +89,7 @@
       if (hook) {
           if (options.functional) {
               // register for functional component in vue file
-              var originalRender = options.render;
+              const originalRender = options.render;
               options.render = function renderWithStyleInjection(h, context) {
                   hook.call(context);
                   return originalRender(h, context);
@@ -85,7 +97,7 @@
           }
           else {
               // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
+              const existing = options.beforeCreate;
               options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
           }
       }
@@ -109,7 +121,7 @@
           {
             class: [
               "page-item",
-              (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "disabled"
+              (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "disabled"
             ]
           },
           [
@@ -119,18 +131,17 @@
                 staticClass: "page-link",
                 attrs: {
                   href: "#",
-                  tabindex:
-                    (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "-1",
+                  tabindex: (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "-1",
                   "aria-disabled":
-                    (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "true"
+                    (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "true"
                 },
                 on: {
                   click: function($event) {
                     $event.preventDefault();
                     return _vm.setActive(
-                      _vm.ds.dsPage !== 1 && _vm.ds.dsPagecount !== 0
-                        ? _vm.ds.dsPage - 1
-                        : _vm.ds.dsPage
+                      _vm.dsPage !== 1 && _vm.dsPagecount !== 0
+                        ? _vm.dsPage - 1
+                        : _vm.dsPage
                     )
                   }
                 }
@@ -140,7 +151,7 @@
           ]
         ),
         _vm._v(" "),
-        _vm._l(_vm.ds.dsPages, function(item, index) {
+        _vm._l(_vm.dsPages, function(item, index) {
           return [
             _c(
               "li",
@@ -148,7 +159,7 @@
                 key: index,
                 class: [
                   "page-item",
-                  item === _vm.ds.dsPage && "active",
+                  item === _vm.dsPage && "active",
                   item === _vm.morePages && "disabled"
                 ]
               },
@@ -181,8 +192,7 @@
           {
             class: [
               "page-item",
-              (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-                _vm.ds.dsPagecount === 1) &&
+              (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
                 "disabled"
             ]
           },
@@ -194,22 +204,19 @@
                 attrs: {
                   href: "#",
                   tabindex:
-                    (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-                      _vm.ds.dsPagecount === 1) &&
+                    (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
                     "-1",
                   "aria-disabled":
-                    (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-                      _vm.ds.dsPagecount === 1) &&
+                    (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
                     "true"
                 },
                 on: {
                   click: function($event) {
                     $event.preventDefault();
                     return _vm.setActive(
-                      _vm.ds.dsPage !== _vm.ds.dsPagecount &&
-                        _vm.ds.dsPagecount !== 0
-                        ? _vm.ds.dsPage + 1
-                        : _vm.ds.dsPage
+                      _vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0
+                        ? _vm.dsPage + 1
+                        : _vm.dsPage
                     )
                   }
                 }

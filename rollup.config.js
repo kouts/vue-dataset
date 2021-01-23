@@ -2,8 +2,9 @@ import vue from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import buble from '@rollup/plugin-buble';
 import { terser } from 'rollup-plugin-terser';
+import del from 'rollup-plugin-delete';
+import buble from '@rollup/plugin-buble';
 
 const sources = [
   './src/Dataset.vue',
@@ -45,13 +46,13 @@ const umdBuild = sources.map((source) => {
     ],
     plugins: [
       resolve(),
-      commonjs({
-        namedExports: { 'vue-reactive-provide': ['ReactiveProvideMixin'] }
-      }),
+      commonjs(),
       vue({
         css: false
       }),
-      buble(),
+      buble({
+        exclude: 'node_modules/**'
+      }),
       terser({
         sourcemap: true,
         include: [/^.+\.min\.js$/]
@@ -63,7 +64,7 @@ const umdBuild = sources.map((source) => {
 export default [
   // ES
   {
-    input: sources,
+    input: ['./src/index.js'].concat(sources),
     output: [
       {
         dir: 'dist/es',
@@ -76,15 +77,17 @@ export default [
       'vue'
     ],
     plugins: [
+      del({ targets: 'dist/*' }),
       resolve(),
-      commonjs({
-        namedExports: { 'vue-reactive-provide': ['ReactiveProvideMixin'] }
-      }),
+      commonjs(),
       css({
         output: 'dist/vue-dataset.css'
       }),
       vue({
         css: false
+      }),
+      buble({
+        exclude: 'node_modules/**'
       })
     ]
   },

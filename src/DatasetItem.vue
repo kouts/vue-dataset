@@ -1,19 +1,25 @@
 <template>
   <component :is="tag">
-    <template v-for="item in ds.dsRows">
-      <slot :row="ds.dsData[item]" :rowIndex="item"></slot>
+    <template v-for="item in dsRows">
+      <slot :row="dsData[item]" :rowIndex="item"></slot>
     </template>
-    <slot v-if="!ds.dsRows.length" name="noDataFound"></slot>
+    <slot v-if="!dsRows.length" name="noDataFound"></slot>
   </component>
 </template>
 
 <script>
 export default {
-  inject: ['ds'],
+  inject: ['dsData', 'rdsRows'],
   props: {
     tag: {
       type: String,
       default: 'div'
+    }
+  },
+  computed: {
+    /* Setup reactive injects */
+    dsRows () {
+      return this.rdsRows();
     }
   }
 };

@@ -1,7 +1,7 @@
 {
   "name": "vue-dataset",
   "description": "A vue component to display datasets with filtering, paging and sorting capabilities!",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "author": "Giannis Koutsaftakis",
   "license": "MIT",
   "repository": "https://github.com/kouts/vue-dataset",
@@ -24,17 +24,18 @@
     "build": "rollup -c && vuepress build docs"
   },
   "dependencies": {
-    "core-js": "^3.8.2",
+    "core-js": "^3.8.3",
+    "rollup-plugin-delete": "^2.0.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
-    "@vue/cli-plugin-babel": "^4.5.10",
-    "@vue/cli-plugin-unit-jest": "^4.5.10",
-    "@vue/cli-service": "^4.5.10",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "@vue/test-utils": "^1.1.2",
     "babel-eslint": "^10.1.0",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-html": "^6.1.1",
@@ -44,14 +45,13 @@
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^6.2.1",
     "node-sass": "^4.14.1",
-    "rollup": "^2.36.1",
+    "rollup": "^2.38.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-css-only": "^1.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.3.1",
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^8.0.2",
-    "vue-reactive-provide": "^0.3.0",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.0"
   }

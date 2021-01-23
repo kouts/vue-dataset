@@ -1,19 +1,31 @@
-import { M as MORE_PAGES } from './index-d5f08fcc.js';
+import { M as MORE_PAGES } from './index-d02cd8a0.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 //
 
 var script = {
-  inject: ['ds', 'datasetI18n', 'setActive'],
+  inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
   data: function () {
     return {
       morePages: MORE_PAGES
     };
+  },
+  computed: {
+    /* Setup reactive injects */
+    dsPages: function dsPages () {
+      return this.rdsPages();
+    },
+    dsPagecount: function dsPagecount () {
+      return this.rdsPagecount();
+    },
+    dsPage: function dsPage () {
+      return this.rdsPage();
+    }
   }
 };
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function() {
@@ -29,7 +41,7 @@ var __vue_render__ = function() {
         {
           class: [
             "page-item",
-            (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "disabled"
+            (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "disabled"
           ]
         },
         [
@@ -39,18 +51,17 @@ var __vue_render__ = function() {
               staticClass: "page-link",
               attrs: {
                 href: "#",
-                tabindex:
-                  (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "-1",
+                tabindex: (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "-1",
                 "aria-disabled":
-                  (_vm.ds.dsPage === 1 || _vm.ds.dsPagecount === 1) && "true"
+                  (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "true"
               },
               on: {
                 click: function($event) {
                   $event.preventDefault();
                   return _vm.setActive(
-                    _vm.ds.dsPage !== 1 && _vm.ds.dsPagecount !== 0
-                      ? _vm.ds.dsPage - 1
-                      : _vm.ds.dsPage
+                    _vm.dsPage !== 1 && _vm.dsPagecount !== 0
+                      ? _vm.dsPage - 1
+                      : _vm.dsPage
                   )
                 }
               }
@@ -60,7 +71,7 @@ var __vue_render__ = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._l(_vm.ds.dsPages, function(item, index) {
+      _vm._l(_vm.dsPages, function(item, index) {
         return [
           _c(
             "li",
@@ -68,7 +79,7 @@ var __vue_render__ = function() {
               key: index,
               class: [
                 "page-item",
-                item === _vm.ds.dsPage && "active",
+                item === _vm.dsPage && "active",
                 item === _vm.morePages && "disabled"
               ]
             },
@@ -101,8 +112,7 @@ var __vue_render__ = function() {
         {
           class: [
             "page-item",
-            (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-              _vm.ds.dsPagecount === 1) &&
+            (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
               "disabled"
           ]
         },
@@ -114,22 +124,19 @@ var __vue_render__ = function() {
               attrs: {
                 href: "#",
                 tabindex:
-                  (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-                    _vm.ds.dsPagecount === 1) &&
+                  (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
                   "-1",
                 "aria-disabled":
-                  (_vm.ds.dsPage === _vm.ds.dsPagecount ||
-                    _vm.ds.dsPagecount === 1) &&
+                  (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
                   "true"
               },
               on: {
                 click: function($event) {
                   $event.preventDefault();
                   return _vm.setActive(
-                    _vm.ds.dsPage !== _vm.ds.dsPagecount &&
-                      _vm.ds.dsPagecount !== 0
-                      ? _vm.ds.dsPage + 1
-                      : _vm.ds.dsPage
+                    _vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0
+                      ? _vm.dsPage + 1
+                      : _vm.dsPage
                   )
                 }
               }
@@ -146,13 +153,13 @@ var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -161,7 +168,7 @@ __vue_render__._withStripped = true;
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,

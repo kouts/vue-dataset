@@ -1,15 +1,14 @@
 import { mount } from '@vue/test-utils';
-import { ReactiveProvideMixin } from 'vue-reactive-provide';
 import DatasetItem from '@/DatasetItem.vue';
 
 describe('DatasetItem', () => {
   const WrapperComp = {
-    mixins: [
-      ReactiveProvideMixin({
-        name: 'ds',
-        include: ['dsData', 'dsRows']
-      })
-    ],
+    provide () {
+      return {
+        dsData: this.dsData,
+        rdsRows: () => this.dsRows
+      };
+    },
     data: function () {
       return {
         dsData: [

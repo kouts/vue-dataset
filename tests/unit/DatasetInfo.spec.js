@@ -3,14 +3,13 @@ import DatasetInfo from '@/DatasetInfo.vue';
 import datasetI18n from '@/i18n/en.js';
 
 describe('DatasetInfo', () => {
-
   let wrapper = null;
 
   function wrapperWithProvide (provideOpts) {
     const wrapper = shallowMount(DatasetInfo, {
       provide: {
         datasetI18n: datasetI18n,
-        ds: provideOpts
+        ...provideOpts
       }
     });
     return wrapper;
@@ -22,9 +21,9 @@ describe('DatasetInfo', () => {
 
   it('renders a div element', () => {
     wrapper = wrapperWithProvide({
-      dsResultsNumber: 1,
-      dsFrom: 0,
-      dsTo: 0
+      rdsResultsNumber: () => 1,
+      rdsFrom: () => 0,
+      rdsTo: () => 0
     });
     const div = wrapper.find('div');
     expect(div.exists()).toBe(true);
@@ -32,36 +31,36 @@ describe('DatasetInfo', () => {
 
   it('shows the correct number of the "showing" label when results number is zero', () => {
     wrapper = wrapperWithProvide({
-      dsResultsNumber: 0,
-      dsFrom: 0,
-      dsTo: 0
+      rdsResultsNumber: () => 0,
+      rdsFrom: () => 0,
+      rdsTo: () => 0
     });
     expect(wrapper.vm.showing).toBe(0);
   });
 
   it('shows the correct number of "showing" label when results number is not zero', () => {
     wrapper = wrapperWithProvide({
-      dsResultsNumber: 10,
-      dsFrom: 0,
-      dsTo: 0
+      rdsResultsNumber: () => 10,
+      rdsFrom: () => 0,
+      rdsTo: () => 0
     });
     expect(wrapper.vm.showing).toBe(1);
   });
 
   it('shows the correct number of the "to" label when to number is greater or equals to the results number', () => {
     wrapper = wrapperWithProvide({
-      dsResultsNumber: 3,
-      dsFrom: 1,
-      dsTo: 4
+      rdsResultsNumber: () => 3,
+      rdsFrom: () => 1,
+      rdsTo: () => 4
     });
     expect(wrapper.vm.showingTo).toBe(3);
   });
 
   it('shows the correct number of the "to" label when to number less than the results number', () => {
     wrapper = wrapperWithProvide({
-      dsResultsNumber: 3,
-      dsFrom: 1,
-      dsTo: 2
+      rdsResultsNumber: () => 3,
+      rdsFrom: () => 1,
+      rdsTo: () => 2
     });
     expect(wrapper.vm.showingTo).toBe(2);
   });

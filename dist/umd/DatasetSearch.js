@@ -57,7 +57,7 @@
           shadowMode = false;
       }
       // Vue.extend constructor export interop.
-      var options = typeof script === 'function' ? script.options : script;
+      const options = typeof script === 'function' ? script.options : script;
       // render functions
       if (template && template.render) {
           options.render = template.render;
@@ -72,7 +72,7 @@
       if (scopeId) {
           options._scopeId = scopeId;
       }
-      var hook;
+      let hook;
       if (moduleIdentifier) {
           // server build
           hook = function (context) {
@@ -110,7 +110,7 @@
       if (hook) {
           if (options.functional) {
               // register for functional component in vue file
-              var originalRender = options.render;
+              const originalRender = options.render;
               options.render = function renderWithStyleInjection(h, context) {
                   hook.call(context);
                   return originalRender(h, context);
@@ -118,7 +118,7 @@
           }
           else {
               // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
+              const existing = options.beforeCreate;
               options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
           }
       }

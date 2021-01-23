@@ -14,13 +14,23 @@
   //
 
   var script = {
-    inject: ['ds', 'datasetI18n'],
+    inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
     computed: {
       showing: function showing () {
-        return this.ds.dsResultsNumber !== 0 ? this.ds.dsFrom + 1 : 0;
+        return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0;
       },
       showingTo: function showingTo () {
-        return this.ds.dsTo >= this.ds.dsResultsNumber ? this.ds.dsResultsNumber : this.ds.dsTo;
+        return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo;
+      },
+      /* Setup reactive injects */
+      dsResultsNumber: function dsResultsNumber () {
+        return this.rdsResultsNumber();
+      },
+      dsFrom: function dsFrom () {
+        return this.rdsFrom();
+      },
+      dsTo: function dsTo () {
+        return this.rdsTo();
       }
     }
   };
@@ -32,7 +42,7 @@
           shadowMode = false;
       }
       // Vue.extend constructor export interop.
-      var options = typeof script === 'function' ? script.options : script;
+      const options = typeof script === 'function' ? script.options : script;
       // render functions
       if (template && template.render) {
           options.render = template.render;
@@ -47,7 +57,7 @@
       if (scopeId) {
           options._scopeId = scopeId;
       }
-      var hook;
+      let hook;
       if (moduleIdentifier) {
           // server build
           hook = function (context) {
@@ -85,7 +95,7 @@
       if (hook) {
           if (options.functional) {
               // register for functional component in vue file
-              var originalRender = options.render;
+              const originalRender = options.render;
               options.render = function renderWithStyleInjection(h, context) {
                   hook.call(context);
                   return originalRender(h, context);
@@ -93,7 +103,7 @@
           }
           else {
               // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
+              const existing = options.beforeCreate;
               options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
           }
       }
@@ -121,7 +131,7 @@
           "\n  " +
           _vm._s(_vm.datasetI18n.showingOf) +
           " " +
-          _vm._s(_vm.ds.dsResultsNumber) +
+          _vm._s(_vm.dsResultsNumber) +
           " " +
           _vm._s(_vm.datasetI18n.showingEntries) +
           "\n"
