@@ -1,6 +1,7 @@
 # vue-dataset
 A vue component to display datasets with filtering, paging and sorting capabilities!
 
+> vue-dataset does not impose any structure or layout limitations, you can use divs, tables or anything you like to present your data.
 
 ## Browsers support
 
