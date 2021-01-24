@@ -188,7 +188,7 @@ You can leverage these using `inject` to create your own child components.
 </table>  
 
 #### methods
-<table class="table table-bordered">
+<table class="table table-bordered w-100 d-block d-md-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -313,7 +313,7 @@ DatasetItem also provides the row's data via a `row` object exposed from a a sco
 It also provides the row's original index, useful e.g if you want to delete an item.
 
 #### The scoped slot object
-<table class="table table-bordered">
+<table class="table table-bordered w-100 d-block d-md-table">
   <thead>
     <tr>
       <th>Property</th>
