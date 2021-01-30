@@ -58,7 +58,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <dataset-item class="form-row" style="overflow-y: auto; max-height: 400px;">
+          <dataset-item class="form-row mb-3" style="overflow-y: auto; max-height: 400px;">
             <template v-slot="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
