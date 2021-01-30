@@ -131,10 +131,73 @@ sortAsDate: function (isoDate) {
 
 ### Provides
 
-Dataset `provides` several data and methods to the child components.  
-You can leverage these using `inject` to create your own child components.
+Dataset `provides` functions that return computed data, data and methods to the child components.  
+You can leverage these using `inject` to create your own **custom child components**.
 
-#### The ds object
+##### Functions that return computed data
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rdsRows</td>
+      <td>Array</td>
+      <td>The indexes of the data rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>rdsPages</td>
+      <td>Array</td>
+      <td>The array used to create pagination links</td>
+    </tr>
+    <tr>
+      <td>rdsResultsNumber</td>
+      <td>Number</td>
+      <td>The number of rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>rdsPagecount</td>
+      <td>Number</td>
+      <td>The number of pagination pages</td>
+    </tr>
+    <tr>
+      <td>rdsFrom</td>
+      <td>Number</td>
+      <td>The item "from" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>rdsTo</td>
+      <td>Number</td>
+      <td>The item "to" of paginated items currently displaying</td>
+    </tr>
+    <tr>
+      <td>rdsPage</td>
+      <td>Number</td>
+      <td>The number of the current page in pagination</td>
+    </tr>         
+  </tbody>
+</table>
+
+> In order to use the functions that provide computed data you'll need to setup a computed property
+> as the example below.
+
+Example:
+``` js
+  ...
+  inject: ['rdsPage'],
+  computed: {
+    dsPage () {
+      return this.rdsPage();
+    }
+  }
+  ... 
+```
+
+##### Data
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -150,44 +213,14 @@ You can leverage these using `inject` to create your own child components.
       <td>The data object that contains all the data.</td>
     </tr>
     <tr>
-      <td>dsRows</td>
-      <td>Array</td>
-      <td>The indexes of the data rows currently displaying</td>
-    </tr>
-    <tr>
-      <td>dsResultsNumber</td>
-      <td>Number</td>
-      <td>The number of rows currently displaying</td>
-    </tr>
-    <tr>
-      <td>dsFrom</td>
-      <td>Number</td>
-      <td>The item "from" of paginated items currently displaying</td>
-    </tr>
-    <tr>
-      <td>dsTo</td>
-      <td>Number</td>
-      <td>The item "to" of paginated items currently displaying</td>
-    </tr>
-    <tr>
-      <td>dsPages</td>
-      <td>Array</td>
-      <td>The array used to create pagination links</td>
-    </tr>
-    <tr>
-      <td>dsPagecount</td>
-      <td>Number</td>
-      <td>The number of pagination pages</td>
-    </tr>
-    <tr>
-      <td>dsPage</td>
-      <td>Number</td>
-      <td>The number of the current page in pagination</td>
-    </tr>         
+      <td>datasetI18n</td>
+      <td>Object</td>
+      <td>An object containing translation strings</td>
+    </tr>    
   </tbody>
 </table>  
 
-#### methods
+##### Methods
 <table class="table table-bordered w-100 d-block d-md-table">
   <thead>
     <tr>
