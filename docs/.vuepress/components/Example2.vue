@@ -53,7 +53,7 @@
           <dataset-show />
         </div>
         <div class="col-md-6">
-          <dataset-search ds-search-placeholder="Search..." />
+          <dataset-search ds-search-placeholder="Search..." :wait="300" />
         </div>
       </div>
       <div class="row">
