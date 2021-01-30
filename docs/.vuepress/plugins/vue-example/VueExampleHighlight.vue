@@ -31,3 +31,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  pre[class*="language-"] {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+</style>

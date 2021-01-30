@@ -1,6 +1,6 @@
 <template>
-  <div class="mb-4">
-    <div v-if="sections.length" class="d-flex justify-content-between">
+  <div class="card mb-4">
+    <div v-if="sections.length" class="card-header d-flex bg-white justify-content-between">
       <ul class="nav nav-pills">
         <li class="nav-item" @click.prevent="sectionSelected = sections[0].name">
           <a href="#" :class="['nav-link', sectionSelected === sections[0].name && 'active']">
@@ -37,16 +37,16 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div class="card-body">
       <template v-for="section in sections">
-        <div v-if="sectionSelected === section.name && section.name !== 'Example'" :key="section.name" class="pt-2">
+        <div v-if="sectionSelected === section.name && section.name !== 'Example'" :key="section.name">
           <vue-example-highlight :code="section.contents" :language="section.language" />
         </div>
       </template>
-    </div>
-    <div v-if="sectionSelected === 'Example'" class="pt-2">
-      <slot></slot>
-      <component :is="component" v-if="component" v-bind="{ ...$attrs, ...$props }" v-on="$listeners" />
+      <template v-if="sectionSelected === 'Example'">
+        <slot></slot>
+        <component :is="component" v-if="component" v-bind="{ ...$attrs, ...$props }" v-on="$listeners" />
+      </template>
     </div>
   </div>
 </template>
