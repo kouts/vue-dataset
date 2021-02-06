@@ -12,9 +12,10 @@ It is created in order to solve the problem of recreating the same functionality
 ## Features
 
 - Custom filtering based on the row values from all or specific data keys
-- "Search as" feature allows for searching using formatted values instead of raw data values
+- "Search as" feature allows for searching using a custom method
 - Global search with debounce setting
 - Multi "column" sorting, sortable data keys are configurable
+- "Sort as" feature allows for sorting using custom sorting method
 - Pagination
 - Pagination Information
 - Highly customizable DOM structure
