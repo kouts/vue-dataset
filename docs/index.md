@@ -4,21 +4,22 @@ pageClass: dataset-page
 
 # vue-dataset
 
-A set of Vue.js components to display datasets and lists with filtering, paging and sorting capabilities!  
-It is created in order to solve the problem of recreating the same functionality for lists over and over again.
+A set of Vue.js components to display datasets (lists) with filtering, paging and sorting capabilities!  
+Created with reusability in mind, so that one doesn't have to recreate the same functionality for lists over and over again.
 
-> vue-dataset does not impose any structure or layout limitations, you can use divs, tables or anything you like to present your data.
+> vue-dataset does not impose any structure or layout limitations on your HTML, you can use divs, tables or anything you like to present your data.
 
 ## Features
 
+- Highly customizable DOM structure
 - Custom filtering based on the row values from all or specific data keys
-- "Search as" feature allows for searching using a custom method
-- Global search with debounce setting
+- "Search as" feature allows for searching using a custom search method
+- Multi "column" searching, search data keys are configurable
+- "Sort as" feature allows for sorting using a custom sorting method
 - Multi "column" sorting, sortable data keys are configurable
-- "Sort as" feature allows for sorting using custom sorting method
 - Pagination
 - Pagination Information
-- Highly customizable DOM structure
+- Global search with debounce setting
 - Easy to extend with custom components
 
 
