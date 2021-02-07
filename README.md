@@ -12,7 +12,6 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 - "Sort as" feature allows for sorting using a custom sorting method
 - Multi "column" sorting, sortable data keys are configurable
 - Pagination
-- Pagination Information
 - Global search with debounce setting
 - Easy to extend with custom components
 
