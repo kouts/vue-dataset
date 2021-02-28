@@ -75,6 +75,11 @@ blockquote p {color: #777;}
   vertical-align: baseline;
 }
 
+/* Content width fix */
+.theme-default-content:not(.custom) {
+  box-sizing: content-box;
+}
+
 /* Custom width for dataset pages */
 .dataset-page .theme-default-content:not(.custom) {
   max-width: 100%;
