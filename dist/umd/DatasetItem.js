@@ -15,7 +15,7 @@
   //
 
   var script = {
-    inject: ['dsData', 'rdsRows'],
+    inject: ['rdsData', 'rdsRows'],
     props: {
       tag: {
         type: String,
@@ -26,6 +26,9 @@
       /* Setup reactive injects */
       dsRows: function dsRows () {
         return this.rdsRows();
+      },
+      dsData: function dsData () {
+        return this.rdsData();
       }
     }
   };
