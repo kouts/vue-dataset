@@ -5,7 +5,7 @@ describe('DatasetItem', () => {
   const WrapperComp = {
     provide () {
       return {
-        dsData: this.dsData,
+        rdsData: () => this.dsData,
         rdsRows: () => this.dsRows
       };
     },
@@ -28,10 +28,10 @@ describe('DatasetItem', () => {
     },
     template: `
       <dataset-item>
-        <template v-slot="{row, rowIndex}">
+        <template v-slot="{ row, rowIndex }">
           <div class="result">
-            <p>{{row.name}}</p>
-            <p>{{rowIndex}}</p>
+            <p>{{ row.name }}</p>
+            <p>{{ rowIndex }}</p>
           </div>
         </template>
         <template v-slot:noDataFound>
@@ -62,6 +62,22 @@ describe('DatasetItem', () => {
     wrapperComp.setData({ dsRows: [] });
     wrapperComp.vm.$nextTick(() => {
       expect(wrapper.find('p').text()).toBe('No results found');
+    });
+  });
+
+  it('renders divs after data changed', () => {
+    wrapperComp.setData({
+      dsData: [
+        {
+          age: 17,
+          name: 'John Doe',
+          email: 'john.doe@flyboyz.biz'
+        }
+      ],
+      dsRows: [0]
+    });
+    wrapperComp.vm.$nextTick(() => {
+      expect(wrapper.findAll('div.result').length).toBe(1);
     });
   });
 });
