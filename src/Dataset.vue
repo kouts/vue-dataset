@@ -15,8 +15,8 @@ export default {
       showEntries: this.showEntries,
       setActive: this.setActive,
       datasetI18n: this.datasetI18n,
-      dsData: this.dsData,
       /* Setup reactive provides */
+      rdsData: () => this.dsData,
       rdsRows: () => this.dsRows,
       rdsPages: () => this.dsPages,
       rdsResultsNumber: () => this.dsResultsNumber,
