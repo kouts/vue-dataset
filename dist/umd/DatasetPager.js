@@ -25,6 +25,13 @@
       },
       dsPage: function dsPage () {
         return this.rdsPage();
+      },
+      /* Normal computeds */
+      disabledPrevious: function disabledPrevious () {
+        return this.dsPage === 1;
+      },
+      disabledNext: function disabledNext () {
+        return this.dsPage === this.dsPagecount || this.dsPagecount === 0;
       }
     }
   };
@@ -116,40 +123,30 @@
       "ul",
       { staticClass: "pagination" },
       [
-        _c(
-          "li",
-          {
-            class: [
-              "page-item",
-              (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "disabled"
-            ]
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "page-link",
-                attrs: {
-                  href: "#",
-                  tabindex: (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "-1",
-                  "aria-disabled":
-                    (_vm.dsPage === 1 || _vm.dsPagecount === 1) && "true"
-                },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault();
-                    return _vm.setActive(
-                      _vm.dsPage !== 1 && _vm.dsPagecount !== 0
-                        ? _vm.dsPage - 1
-                        : _vm.dsPage
-                    )
-                  }
-                }
+        _c("li", { class: ["page-item", _vm.disabledPrevious && "disabled"] }, [
+          _c(
+            "a",
+            {
+              staticClass: "page-link",
+              attrs: {
+                href: "#",
+                tabindex: _vm.disabledPrevious && "-1",
+                "aria-disabled": _vm.disabledPrevious && "true"
               },
-              [_vm._v("\n      " + _vm._s(_vm.datasetI18n.previous) + "\n    ")]
-            )
-          ]
-        ),
+              on: {
+                click: function($event) {
+                  $event.preventDefault();
+                  return _vm.setActive(
+                    _vm.dsPage !== 1 && _vm.dsPagecount !== 0
+                      ? _vm.dsPage - 1
+                      : _vm.dsPage
+                  )
+                }
+              }
+            },
+            [_vm._v("\n      " + _vm._s(_vm.datasetI18n.previous) + "\n    ")]
+          )
+        ]),
         _vm._v(" "),
         _vm._l(_vm.dsPages, function(item, index) {
           return [
@@ -187,44 +184,30 @@
           ]
         }),
         _vm._v(" "),
-        _c(
-          "li",
-          {
-            class: [
-              "page-item",
-              (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
-                "disabled"
-            ]
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "page-link",
-                attrs: {
-                  href: "#",
-                  tabindex:
-                    (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
-                    "-1",
-                  "aria-disabled":
-                    (_vm.dsPage === _vm.dsPagecount || _vm.dsPagecount === 1) &&
-                    "true"
-                },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault();
-                    return _vm.setActive(
-                      _vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0
-                        ? _vm.dsPage + 1
-                        : _vm.dsPage
-                    )
-                  }
-                }
+        _c("li", { class: ["page-item", _vm.disabledNext && "disabled"] }, [
+          _c(
+            "a",
+            {
+              staticClass: "page-link",
+              attrs: {
+                href: "#",
+                tabindex: _vm.disabledNext && "-1",
+                "aria-disabled": _vm.disabledNext && "true"
               },
-              [_vm._v("\n      " + _vm._s(_vm.datasetI18n.next) + "\n    ")]
-            )
-          ]
-        )
+              on: {
+                click: function($event) {
+                  $event.preventDefault();
+                  return _vm.setActive(
+                    _vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0
+                      ? _vm.dsPage + 1
+                      : _vm.dsPage
+                  )
+                }
+              }
+            },
+            [_vm._v("\n      " + _vm._s(_vm.datasetI18n.next) + "\n    ")]
+          )
+        ])
       ],
       2
     )

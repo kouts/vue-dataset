@@ -1,4 +1,4 @@
-const VueExamplePlugin = require('./plugins/vue-example/index.js');
+const VueExamplePlugin = require('vuepress-plugin-vue-example');
 
 module.exports = {
   plugins: [

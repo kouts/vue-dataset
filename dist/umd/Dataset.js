@@ -157,8 +157,8 @@
         showEntries: this.showEntries,
         setActive: this.setActive,
         datasetI18n: this.datasetI18n,
-        dsData: this.dsData,
         /* Setup reactive provides */
+        rdsData: function () { return this$1.dsData; },
         rdsRows: function () { return this$1.dsRows; },
         rdsPages: function () { return this$1.dsPages; },
         rdsResultsNumber: function () { return this$1.dsResultsNumber; },

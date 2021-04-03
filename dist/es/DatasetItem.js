@@ -11,7 +11,7 @@ import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 //
 
 var script = {
-  inject: ['dsData', 'rdsRows'],
+  inject: ['rdsData', 'rdsRows'],
   props: {
     tag: {
       type: String,
@@ -22,6 +22,9 @@ var script = {
     /* Setup reactive injects */
     dsRows: function dsRows () {
       return this.rdsRows();
+    },
+    dsData: function dsData () {
+      return this.rdsData();
     }
   }
 };

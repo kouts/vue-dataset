@@ -1,4 +1,4 @@
-import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-d02cd8a0.js';
+import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-9aac0dbd.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 var datasetI18n = {
@@ -23,8 +23,8 @@ var script = {
       showEntries: this.showEntries,
       setActive: this.setActive,
       datasetI18n: this.datasetI18n,
-      dsData: this.dsData,
       /* Setup reactive provides */
+      rdsData: function () { return this$1.dsData; },
       rdsRows: function () { return this$1.dsRows; },
       rdsPages: function () { return this$1.dsPages; },
       rdsResultsNumber: function () { return this$1.dsResultsNumber; },
