@@ -54,6 +54,7 @@
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12",
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-vue-example": "^1.1.0"
   }
 }
