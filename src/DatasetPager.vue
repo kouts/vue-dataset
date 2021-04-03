@@ -1,11 +1,11 @@
 <template>
   <ul class="pagination">
-    <li :class="['page-item', (dsPage === 1 || dsPagecount === 1) && 'disabled']">
+    <li :class="['page-item', disabledPrevious && 'disabled']">
       <a
         class="page-link"
         href="#"
-        :tabindex="(dsPage === 1 || dsPagecount === 1) && '-1'"
-        :aria-disabled="(dsPage === 1 || dsPagecount === 1) && 'true'"
+        :tabindex="disabledPrevious && '-1'"
+        :aria-disabled="disabledPrevious && 'true'"
         @click.prevent="setActive(dsPage !== 1 && dsPagecount !== 0 ? dsPage - 1 : dsPage)"
       >
         {{ datasetI18n.previous }}
@@ -21,12 +21,12 @@
         </span>
       </li>
     </template>
-    <li :class="['page-item', (dsPage === dsPagecount || dsPagecount === 1) && 'disabled']">
+    <li :class="['page-item', disabledNext && 'disabled']">
       <a
         class="page-link"
         href="#"
-        :tabindex="(dsPage === dsPagecount || dsPagecount === 1) && '-1'"
-        :aria-disabled="(dsPage === dsPagecount || dsPagecount === 1) && 'true'"
+        :tabindex="disabledNext && '-1'"
+        :aria-disabled="disabledNext && 'true'"
         @click.prevent="setActive(dsPage !== dsPagecount && dsPagecount !== 0 ? dsPage + 1 : dsPage)"
       >
         {{ datasetI18n.next }}
@@ -55,6 +55,13 @@ export default {
     },
     dsPage () {
       return this.rdsPage();
+    },
+    /* Normal computeds */
+    disabledPrevious () {
+      return this.dsPage === 1;
+    },
+    disabledNext () {
+      return this.dsPage === this.dsPagecount || this.dsPagecount === 0;
     }
   }
 };

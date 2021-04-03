@@ -95,6 +95,19 @@ describe('DatasetPager', () => {
     });
   });
 
+  it('disables the previous and next buttons when there are no pages', () => {
+    wrapper = wrapperWithProvide({
+      rdsPagecount: () => 0
+    });
+    wrapper.vm.$nextTick(() => {
+      const buttons = wrapper.findAll('a');
+      const previousButton = buttons.at(0).element;
+      const nextButton = buttons.at(buttons.length - 1).element;
+      expect(isButtonDisabled(previousButton)).toBe(true);
+      expect(isButtonDisabled(nextButton)).toBe(true);
+    });
+  });
+
   it('enables the next button', () => {
     wrapper = wrapperWithProvide({
       rdsPage: () => 2,

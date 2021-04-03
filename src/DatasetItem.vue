@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  inject: ['dsData', 'rdsRows'],
+  inject: ['rdsData', 'rdsRows'],
   props: {
     tag: {
       type: String,
@@ -20,6 +20,9 @@ export default {
     /* Setup reactive injects */
     dsRows () {
       return this.rdsRows();
+    },
+    dsData () {
+      return this.rdsData();
     }
   }
 };

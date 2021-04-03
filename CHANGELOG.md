@@ -1,3 +1,9 @@
+## 1.1.1
+
+### Fixes
+* Fixed items not updating upon data refresh
+* Fixed next button not being disabled when there was no data
+
 ## 1.1.0
 
 ### Features
