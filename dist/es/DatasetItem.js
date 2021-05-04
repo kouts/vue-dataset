@@ -20,11 +20,11 @@ var script = {
   },
   computed: {
     /* Setup reactive injects */
-    dsRows: function dsRows () {
-      return this.rdsRows();
+    dsRows: function dsRows() {
+      return this.rdsRows()
     },
-    dsData: function dsData () {
-      return this.rdsData();
+    dsData: function dsData() {
+      return this.rdsData()
     }
   }
 };

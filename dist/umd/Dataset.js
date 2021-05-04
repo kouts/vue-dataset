@@ -18,14 +18,15 @@
   var MORE_PAGES = '...';
 
   // https://jsperf.com/object-empty-ch/1
-  function isEmptyObject (obj) {
+  function isEmptyObject(obj) {
+    // eslint-disable-next-line no-unreachable-loop
     for (var key in obj) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
-  function createPagingRange (nrOfPages, currentPage) {
+  function createPagingRange(nrOfPages, currentPage) {
     var delta = 2;
     var range = [];
     var rangeWithDots = [];
@@ -34,7 +35,7 @@
     range.push(1);
 
     if (nrOfPages <= 1) {
-      return range;
+      return range
     }
 
     for (var i = currentPage - delta; i <= currentPage + delta; i++) {
@@ -55,10 +56,10 @@
       rangeWithDots.push(range[i$1]);
       length = range[i$1];
     }
-    return rangeWithDots;
+    return rangeWithDots
   }
 
-  function fieldSorter (fields, dsSortAs) {
+  function fieldSorter(fields, dsSortAs) {
     if ( dsSortAs === void 0 ) dsSortAs = {};
 
     var dir = [];
@@ -71,7 +72,7 @@
       } else {
         dir[i] = 1;
       }
-      return o;
+      return o
     });
 
     return function (a, b) {
@@ -80,17 +81,17 @@
         var aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
         var bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
         if (aVal > bVal) {
-          return dir[i];
+          return dir[i]
         }
         if (aVal < bVal) {
-          return -(dir[i]);
+          return -dir[i]
         }
       }
-      return 0;
-    };
+      return 0
+    }
   }
 
-  function fieldFilter (items, filterFields) {
+  function fieldFilter(items, filterFields) {
     // Filter it by field
     var loop = function ( filterKey ) {
       // console.log(filterKey + ' -> ' + filterFields[filterKey]);
@@ -99,26 +100,26 @@
         for (var itemKey in itemValue) {
           if (itemKey === filterKey) {
             if (typeof filterFields[filterKey] === 'function') {
-              return filterFields[filterKey](itemValue[itemKey]);
+              return filterFields[filterKey](itemValue[itemKey])
             }
             if (filterFields[filterKey] === '') {
-              return true;
+              return true
             }
             if (itemValue[itemKey] === filterFields[filterKey]) {
-              return true;
+              return true
             }
           }
         }
-        return false;
+        return false
       });
     };
 
     for (var filterKey in filterFields) loop( filterKey );
-    return items;
+    return items
   }
 
   // Search method that also takes into account transformations needed
-  function findAny (dsSearchIn, dsSearchAs, obj, str) {
+  function findAny(dsSearchIn, dsSearchAs, obj, str) {
     // Convert the search string to lower case
     str = str.toLowerCase();
     for (var key in obj) {
@@ -132,24 +133,24 @@
             if (typeof dsSearchAs[field] === 'function') {
               var res = dsSearchAs[field](value, str);
               if (res === true) {
-                return res;
+                return res
               }
             }
           }
         }
         // If it doesn't return from above we perform a simple search
         if (value.indexOf(str) >= 0) {
-          return true;
+          return true
         }
       }
     }
-    return false;
+    return false
   }
 
   //
 
   var script = {
-    provide: function provide () {
+    provide: function provide() {
       var this$1 = this;
 
       return {
@@ -166,7 +167,7 @@
         rdsFrom: function () { return this$1.dsFrom; },
         rdsTo: function () { return this$1.dsTo; },
         rdsPage: function () { return this$1.dsPage; }
-      };
+      }
     },
     props: {
       dsData: {
@@ -200,7 +201,7 @@
         dsSearch: '',
         dsShowEntries: 10,
         datasetI18n: datasetI18n
-      };
+      }
     },
     computed: {
       /*
@@ -224,12 +225,12 @@
         if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
           // Just get the indexes
           result = dsData.map(function (val, i) {
-            return i;
+            return i
           });
         } else {
           // Index it
           result = dsData.map(function (val, i) {
-            return { index: i, value: val };
+            return { index: i, value: val }
           });
 
           // Filter it by field
@@ -240,7 +241,7 @@
           // Search it
           if (dsSearch) {
             result = result.filter(function (entry) {
-              return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch);
+              return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch)
             });
           }
 
@@ -251,10 +252,10 @@
 
           // We need indexes only
           result = result.map(function (entry) {
-            return entry.index;
+            return entry.index
           });
         }
-        return result;
+        return result
       },
       dsRows: function () {
         // We should not modify another computed property from inside a computed property
@@ -265,22 +266,22 @@
         }
         */
         // console.log(this.indexes);
-        return this.indexes.slice(this.dsFrom, this.dsTo);
+        return this.indexes.slice(this.dsFrom, this.dsTo)
       },
       dsPages: function () {
-        return createPagingRange(this.dsPagecount, this.dsPage);
+        return createPagingRange(this.dsPagecount, this.dsPage)
       },
       dsResultsNumber: function () {
-        return this.indexes.length;
+        return this.indexes.length
       },
       dsPagecount: function () {
-        return Math.ceil(this.dsResultsNumber / this.dsShowEntries);
+        return Math.ceil(this.dsResultsNumber / this.dsShowEntries)
       },
       dsFrom: function () {
-        return (this.dsPage - 1) * this.dsShowEntries;
+        return (this.dsPage - 1) * this.dsShowEntries
       },
       dsTo: function () {
-        return this.dsPage * this.dsShowEntries;
+        return this.dsPage * this.dsShowEntries
       }
     },
     watch: {
@@ -292,10 +293,10 @@
       }
     },
     methods: {
-      search: function search (value) {
+      search: function search(value) {
         this.dsSearch = value;
       },
-      showEntries: function showEntries (value) {
+      showEntries: function showEntries(value) {
         var this$1 = this;
 
         var pagesBeforeChange = this.dsPages;
@@ -307,7 +308,7 @@
           }
         });
       },
-      setActive: function setActive (value) {
+      setActive: function setActive(value) {
         this.dsPage = value;
       }
     }

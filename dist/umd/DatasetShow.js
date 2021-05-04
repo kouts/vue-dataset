@@ -26,14 +26,20 @@
       },
       dsShowEntriesLovs: {
         type: Array,
-        default: function () { return [{ value: 5, text: 5 }, { value: 10, text: 10 }, { value: 25, text: 25 }, { value: 50, text: 50 }, { value: 100, text: 100 }]; }
+        default: function () { return [
+          { value: 5, text: 5 },
+          { value: 10, text: 10 },
+          { value: 25, text: 25 },
+          { value: 50, text: 50 },
+          { value: 100, text: 100 }
+        ]; }
       }
     },
-    created: function created () {
+    created: function created() {
       this.showEntries(Number(this.dsShowEntries));
     },
     methods: {
-      change: function change (e) {
+      change: function change(e) {
         this.$emit('changed', Number(e.target.value));
         this.showEntries(Number(e.target.value));
       }

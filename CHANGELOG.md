@@ -1,3 +1,8 @@
+## 1.1.2
+
+### Chores
+* Lint files
+
 ## 1.1.1
 
 ### Fixes
