@@ -29,7 +29,7 @@
                 </tr>
               </thead>
               <dataset-item tag="tbody">
-                <template v-slot="{ row, rowIndex }">
+                <template #default="{ row, rowIndex }">
                   <tr>
                     <th scope="row">{{ rowIndex + 1 }}</th>
                     <td>{{ row.name }}</td>
@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import users from '../../../example-data/users.json';
-import { isoDateToEuroDate, isoDateToDate, searchAsEuroDate } from '../utilities';
+import users from '../../../example-data/users.json'
+import { isoDateToEuroDate, isoDateToDate, searchAsEuroDate } from '../utilities'
 
 export default {
   name: 'Example2',
@@ -76,81 +76,81 @@ export default {
           sort: ''
         }
       ]
-    };
+    }
   },
   computed: {
-    sortBy () {
+    sortBy() {
       return this.cols.reduce((acc, o) => {
         if (o.sort) {
-          o.sort === 'asc' ? acc.push(o.field) : acc.push('-' + o.field);
+          o.sort === 'asc' ? acc.push(o.field) : acc.push('-' + o.field)
         }
-        return acc;
-      }, []);
+        return acc
+      }, [])
     }
   },
   methods: {
-    click (event, i) {
-      let toset;
-      const sortEl = this.cols[i];
+    click(event, i) {
+      let toset
+      const sortEl = this.cols[i]
       if (!event.shiftKey) {
-        this.cols.forEach(o => {
+        this.cols.forEach((o) => {
           if (o.field !== sortEl.field) {
-            o.sort = '';
+            o.sort = ''
           }
-        });
+        })
       }
       if (!sortEl.sort) {
-        toset = 'asc';
+        toset = 'asc'
       }
       if (sortEl.sort === 'desc') {
-        toset = event.shiftKey ? '' : 'asc';
+        toset = event.shiftKey ? '' : 'asc'
       }
       if (sortEl.sort === 'asc') {
-        toset = 'desc';
+        toset = 'desc'
       }
-      sortEl.sort = toset;
+      sortEl.sort = toset
     },
     isoDateToEuroDate,
     isoDateToDate,
     searchAsEuroDate
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .gg-select {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs,1));
-    width: 22px;
-    height: 22px;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
 }
 
 .gg-select::after,
 .gg-select::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    left: 7px;
-    transform: rotate(-45deg);
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 7px;
+  transform: rotate(-45deg);
 }
 
 .gg-select::before {
-    border-left: 2px solid;
-    border-bottom: 2px solid;
-    bottom: 4px;
-    opacity: 0.3;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  bottom: 4px;
+  opacity: 0.3;
 }
 
 .gg-select::after {
-    border-right: 2px solid;
-    border-top: 2px solid;
-    top: 4px;
-    opacity: 0.3;
+  border-right: 2px solid;
+  border-top: 2px solid;
+  top: 4px;
+  opacity: 0.3;
 }
 
 th.sort {

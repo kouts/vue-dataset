@@ -1,13 +1,13 @@
-import { mount } from '@vue/test-utils';
-import DatasetItem from '@/DatasetItem.vue';
+import { mount } from '@vue/test-utils'
+import DatasetItem from '@/DatasetItem.vue'
 
 describe('DatasetItem', () => {
   const WrapperComp = {
-    provide () {
+    provide() {
       return {
         rdsData: () => this.dsData,
         rdsRows: () => this.dsRows
-      };
+      }
     },
     data: function () {
       return {
@@ -24,7 +24,7 @@ describe('DatasetItem', () => {
           }
         ],
         dsRows: [0, 1]
-      };
+      }
     },
     template: `
       <dataset-item>
@@ -42,28 +42,28 @@ describe('DatasetItem', () => {
     components: {
       DatasetItem
     }
-  };
+  }
 
-  const wrapperComp = mount(WrapperComp);
-  const wrapper = wrapperComp.findComponent(DatasetItem);
+  const wrapperComp = mount(WrapperComp)
+  const wrapper = wrapperComp.findComponent(DatasetItem)
 
   it('renders divs based on passed props', () => {
-    expect(wrapper.findAll('div.result').length).toBe(2);
-  });
+    expect(wrapper.findAll('div.result').length).toBe(2)
+  })
 
   it('does not render any results when dsRows is empty', () => {
-    wrapperComp.setData({ dsRows: [] });
+    wrapperComp.setData({ dsRows: [] })
     wrapperComp.vm.$nextTick(() => {
-      expect(wrapper.findAll('div.result').length).toBe(0);
-    });
-  });
+      expect(wrapper.findAll('div.result').length).toBe(0)
+    })
+  })
 
   it('renders the noDataFound slot when dsRows is empty', () => {
-    wrapperComp.setData({ dsRows: [] });
+    wrapperComp.setData({ dsRows: [] })
     wrapperComp.vm.$nextTick(() => {
-      expect(wrapper.find('p').text()).toBe('No results found');
-    });
-  });
+      expect(wrapper.find('p').text()).toBe('No results found')
+    })
+  })
 
   it('renders divs after data changed', () => {
     wrapperComp.setData({
@@ -75,9 +75,9 @@ describe('DatasetItem', () => {
         }
       ],
       dsRows: [0]
-    });
+    })
     wrapperComp.vm.$nextTick(() => {
-      expect(wrapper.findAll('div.result').length).toBe(1);
-    });
-  });
-});
+      expect(wrapper.findAll('div.result').length).toBe(1)
+    })
+  })
+})

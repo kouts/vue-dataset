@@ -36,33 +36,33 @@
 </template>
 
 <script>
-import { MORE_PAGES } from './helpers';
+import { MORE_PAGES } from './helpers'
 
 export default {
   inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
   data: function () {
     return {
       morePages: MORE_PAGES
-    };
+    }
   },
   computed: {
     /* Setup reactive injects */
-    dsPages () {
-      return this.rdsPages();
+    dsPages() {
+      return this.rdsPages()
     },
-    dsPagecount () {
-      return this.rdsPagecount();
+    dsPagecount() {
+      return this.rdsPagecount()
     },
-    dsPage () {
-      return this.rdsPage();
+    dsPage() {
+      return this.rdsPage()
     },
     /* Normal computeds */
-    disabledPrevious () {
-      return this.dsPage === 1;
+    disabledPrevious() {
+      return this.dsPage === 1
     },
-    disabledNext () {
-      return this.dsPage === this.dsPagecount || this.dsPagecount === 0;
+    disabledNext() {
+      return this.dsPage === this.dsPagecount || this.dsPagecount === 0
     }
   }
-};
+}
 </script>

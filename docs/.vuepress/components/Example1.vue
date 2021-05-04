@@ -19,11 +19,11 @@
       <div class="row">
         <div class="col-md-12">
           <dataset-item class="form-row mb-3">
-            <template v-slot="{ row, rowIndex }">
+            <template #default="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
                   <div class="card-body pt-3 pb-2 px-3">
-                    <h5 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
+                    <h5 class="card-title text-truncate mb-2" :title="`Index: ${rowIndex}`">
                       <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
                     </h5>
                     <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
@@ -33,7 +33,7 @@
                 </div>
               </div>
             </template>
-            <template v-slot:noDataFound>
+            <template #noDataFound>
               <div class="col-md-12 pt-2">
                 <p class="text-center">No results found</p>
               </div>
@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import users from '../../../example-data/users.json';
-import { filterList, clone } from '../utilities';
+import users from '../../../example-data/users.json'
+import { filterList, clone } from '../utilities'
 
 // const lessUsers = clone(data).slice(0, 2);
 
@@ -67,14 +67,14 @@ export default {
         Invisible: 'text-secondary'
       },
       selected: 5
-    };
+    }
   },
   methods: {
     filterList,
-    updateData () {
-      const updatedUsers = clone(users).slice(5, 10);
-      this.users = updatedUsers;
+    updateData() {
+      const updatedUsers = clone(users).slice(5, 10)
+      this.users = updatedUsers
     }
   }
-};
+}
 </script>

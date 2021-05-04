@@ -7,4 +7,4 @@ export default {
   showingTo: 'to',
   showingOf: 'of',
   showingEntries: 'entries'
-};
+}
