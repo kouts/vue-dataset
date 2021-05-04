@@ -4,7 +4,7 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatasetSearch = factory());
 }(this, (function () { 'use strict';
 
-  function debounce (func, wait, immediate) {
+  function debounce(func, wait, immediate) {
     var timeout;
     return function () {
       var context = this;
@@ -19,7 +19,7 @@
           func.apply(context, args);
         }
       }, wait);
-    };
+    }
   }
 
   //
@@ -39,9 +39,9 @@
     data: function () {
       return {
         dsSearch: ''
-      };
+      }
     },
-    mounted: function mounted () {
+    mounted: function mounted() {
       var this$1 = this;
 
       this.input = debounce(function (value) {

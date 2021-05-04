@@ -11,32 +11,61 @@
     <div class="row mb-1">
       <div class="col-md-6 mb-2 mb-md-0">
         <div class="btn-group">
-          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === '' && 'active']" @click.prevent="onlineFilter = ''">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            :class="[onlineFilter === '' && 'active']"
+            @click.prevent="onlineFilter = ''"
+          >
             <span class="badge bg-white text-secondary">{{ users.length }}</span> All
           </button>
-          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Active' && 'active']" @click.prevent="onlineFilter = 'Active'">
-            <span class="badge bg-success text-white">{{ filterList(users, {'onlineStatus': 'Active'}).length }}</span> Active
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            :class="[onlineFilter === 'Active' && 'active']"
+            @click.prevent="onlineFilter = 'Active'"
+          >
+            <span class="badge bg-success text-white">{{ filterList(users, { onlineStatus: 'Active' }).length }}</span> Active
           </button>
-          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Away' && 'active']" @click.prevent="onlineFilter = 'Away'">
-            <span class="badge bg-warning text-white">{{ filterList(users, {'onlineStatus': 'Away'}).length }}</span> Away
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            :class="[onlineFilter === 'Away' && 'active']"
+            @click.prevent="onlineFilter = 'Away'"
+          >
+            <span class="badge bg-warning text-white">{{ filterList(users, { onlineStatus: 'Away' }).length }}</span> Away
           </button>
-          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Do not disturb' && 'active']" @click.prevent="onlineFilter = 'Do not disturb'">
-            <span class="badge bg-danger text-white">{{ filterList(users, {'onlineStatus': 'Do not disturb'}).length }}</span> Do not disturb
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            :class="[onlineFilter === 'Do not disturb' && 'active']"
+            @click.prevent="onlineFilter = 'Do not disturb'"
+          >
+            <span class="badge bg-danger text-white">{{ filterList(users, { onlineStatus: 'Do not disturb' }).length }}</span>
+            Do not disturb
           </button>
-          <button type="button" class="btn btn-outline-secondary" :class="[onlineFilter === 'Invisible' && 'active']" @click.prevent="onlineFilter = 'Invisible'">
-            <span class="badge bg-secondary text-white">{{ filterList(users, {'onlineStatus': 'Invisible'}).length }}</span> Invisible
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            :class="[onlineFilter === 'Invisible' && 'active']"
+            @click.prevent="onlineFilter = 'Invisible'"
+          >
+            <span class="badge bg-secondary text-white">{{ filterList(users, { onlineStatus: 'Invisible' }).length }}</span>
+            Invisible
           </button>
         </div>
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Name starts with" @input="startWithInput($event)">
+        <input type="text" class="form-control" placeholder="Name starts with" @input="startWithInput($event)" />
       </div>
     </div>
     <hr class="mb-1" />
     <h3>Sorting</h3>
     <div class="row mb-2">
       <div class="col-md-6 mb-2 mb-md-0">
-        <button type="button" class="btn btn-outline-secondary" @click="firstNameAsc = !firstNameAsc">First name {{ firstNameAsc ? 'asc' : 'desc' }}</button>
+        <button type="button" class="btn btn-outline-secondary" @click="firstNameAsc = !firstNameAsc">
+          First name {{ firstNameAsc ? 'asc' : 'desc' }}
+        </button>
       </div>
     </div>
     <hr />
@@ -58,12 +87,12 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <dataset-item class="form-row mb-3" style="overflow-y: auto; max-height: 400px;">
-            <template v-slot="{ row, rowIndex }">
+          <dataset-item class="form-row mb-3" style="overflow-y: auto; max-height: 400px">
+            <template #default="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
                   <div class="card-body pt-3 pb-2 px-3">
-                    <h5 class="card-title text-truncate mb-2" :title="`Index: ${ rowIndex }`">
+                    <h5 class="card-title text-truncate mb-2" :title="`Index: ${rowIndex}`">
                       <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
                     </h5>
                     <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
@@ -73,7 +102,7 @@
                 </div>
               </div>
             </template>
-            <template v-slot:noDataFound>
+            <template #noDataFound>
               <div class="col-md-12 pt-2">
                 <p class="text-center">No results found</p>
               </div>
@@ -90,9 +119,9 @@
 </template>
 
 <script>
-import users from '../../../example-data/users.json';
-import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities';
-import { debounce } from '../../../src/helpers';
+import users from '../../../example-data/users.json'
+import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities'
+import { debounce } from '../../../src/helpers'
 
 // const lessUsers = clone(data).slice(0, 2);
 
@@ -110,29 +139,29 @@ export default {
         Invisible: 'text-secondary'
       },
       firstNameAsc: true
-    };
-  },
-  computed: {
-    sortFirstName () {
-      return this.firstNameAsc ? 'firstName' : '-firstName';
     }
   },
-  created () {
+  computed: {
+    sortFirstName() {
+      return this.firstNameAsc ? 'firstName' : '-firstName'
+    }
+  },
+  created() {
     this.startWithInput = debounce((e) => {
-      this.startsWith = e.target.value;
-    }, 300);
+      this.startsWith = e.target.value
+    }, 300)
   },
   methods: {
     filterList,
     isoDateToEuroDate,
     searchAsEuroDate,
-    updateData () {
-      const updatedUsers = clone(users).slice(5, 10);
-      this.users = updatedUsers;
+    updateData() {
+      const updatedUsers = clone(users).slice(5, 10)
+      this.users = updatedUsers
     },
-    startsWithFilter (value) {
-      return value.toLowerCase().startsWith(this.startsWith.toLowerCase());
+    startsWithFilter(value) {
+      return value.toLowerCase().startsWith(this.startsWith.toLowerCase())
     }
   }
-};
+}
 </script>

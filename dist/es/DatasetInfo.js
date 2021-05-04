@@ -7,26 +7,25 @@ import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 //
 //
 //
-//
 
 var script = {
   inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
   computed: {
-    showing: function showing () {
-      return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0;
+    showing: function showing() {
+      return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0
     },
-    showingTo: function showingTo () {
-      return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo;
+    showingTo: function showingTo() {
+      return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo
     },
     /* Setup reactive injects */
-    dsResultsNumber: function dsResultsNumber () {
-      return this.rdsResultsNumber();
+    dsResultsNumber: function dsResultsNumber() {
+      return this.rdsResultsNumber()
     },
-    dsFrom: function dsFrom () {
-      return this.rdsFrom();
+    dsFrom: function dsFrom() {
+      return this.rdsFrom()
     },
-    dsTo: function dsTo () {
-      return this.rdsTo();
+    dsTo: function dsTo() {
+      return this.rdsTo()
     }
   }
 };
@@ -45,13 +44,13 @@ var __vue_render__ = function() {
         _vm._s(_vm.datasetI18n.showing) +
         " " +
         _vm._s(_vm.showing) +
-        "\n  " +
+        " " +
         _vm._s(_vm.datasetI18n.showingTo) +
         " " +
         _vm._s(_vm.showingTo) +
-        "\n  " +
-        _vm._s(_vm.datasetI18n.showingOf) +
         " " +
+        _vm._s(_vm.datasetI18n.showingOf) +
+        "\n  " +
         _vm._s(_vm.dsResultsNumber) +
         " " +
         _vm._s(_vm.datasetI18n.showingEntries) +

@@ -1,4 +1,4 @@
-import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-9aac0dbd.js';
+import { i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter, c as createPagingRange } from './index-94915c20.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 var datasetI18n = {
@@ -15,7 +15,7 @@ var datasetI18n = {
 //
 
 var script = {
-  provide: function provide () {
+  provide: function provide() {
     var this$1 = this;
 
     return {
@@ -32,7 +32,7 @@ var script = {
       rdsFrom: function () { return this$1.dsFrom; },
       rdsTo: function () { return this$1.dsTo; },
       rdsPage: function () { return this$1.dsPage; }
-    };
+    }
   },
   props: {
     dsData: {
@@ -66,7 +66,7 @@ var script = {
       dsSearch: '',
       dsShowEntries: 10,
       datasetI18n: datasetI18n
-    };
+    }
   },
   computed: {
     /*
@@ -90,12 +90,12 @@ var script = {
       if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
         // Just get the indexes
         result = dsData.map(function (val, i) {
-          return i;
+          return i
         });
       } else {
         // Index it
         result = dsData.map(function (val, i) {
-          return { index: i, value: val };
+          return { index: i, value: val }
         });
 
         // Filter it by field
@@ -106,7 +106,7 @@ var script = {
         // Search it
         if (dsSearch) {
           result = result.filter(function (entry) {
-            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch);
+            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch)
           });
         }
 
@@ -117,10 +117,10 @@ var script = {
 
         // We need indexes only
         result = result.map(function (entry) {
-          return entry.index;
+          return entry.index
         });
       }
-      return result;
+      return result
     },
     dsRows: function () {
       // We should not modify another computed property from inside a computed property
@@ -131,22 +131,22 @@ var script = {
       }
       */
       // console.log(this.indexes);
-      return this.indexes.slice(this.dsFrom, this.dsTo);
+      return this.indexes.slice(this.dsFrom, this.dsTo)
     },
     dsPages: function () {
-      return createPagingRange(this.dsPagecount, this.dsPage);
+      return createPagingRange(this.dsPagecount, this.dsPage)
     },
     dsResultsNumber: function () {
-      return this.indexes.length;
+      return this.indexes.length
     },
     dsPagecount: function () {
-      return Math.ceil(this.dsResultsNumber / this.dsShowEntries);
+      return Math.ceil(this.dsResultsNumber / this.dsShowEntries)
     },
     dsFrom: function () {
-      return (this.dsPage - 1) * this.dsShowEntries;
+      return (this.dsPage - 1) * this.dsShowEntries
     },
     dsTo: function () {
-      return this.dsPage * this.dsShowEntries;
+      return this.dsPage * this.dsShowEntries
     }
   },
   watch: {
@@ -158,10 +158,10 @@ var script = {
     }
   },
   methods: {
-    search: function search (value) {
+    search: function search(value) {
       this.dsSearch = value;
     },
-    showEntries: function showEntries (value) {
+    showEntries: function showEntries(value) {
       var this$1 = this;
 
       var pagesBeforeChange = this.dsPages;
@@ -173,7 +173,7 @@ var script = {
         }
       });
     },
-    setActive: function setActive (value) {
+    setActive: function setActive(value) {
       this.dsPage = value;
     }
   }

@@ -1,6 +1,6 @@
 var MORE_PAGES = '...';
 
-function debounce (func, wait, immediate) {
+function debounce(func, wait, immediate) {
   var timeout;
   return function () {
     var context = this;
@@ -15,17 +15,19 @@ function debounce (func, wait, immediate) {
         func.apply(context, args);
       }
     }, wait);
-  };
-}
-// https://jsperf.com/object-empty-ch/1
-function isEmptyObject (obj) {
-  for (var key in obj) {
-    return false;
   }
-  return true;
 }
 
-function createPagingRange (nrOfPages, currentPage) {
+// https://jsperf.com/object-empty-ch/1
+function isEmptyObject(obj) {
+  // eslint-disable-next-line no-unreachable-loop
+  for (var key in obj) {
+    return false
+  }
+  return true
+}
+
+function createPagingRange(nrOfPages, currentPage) {
   var delta = 2;
   var range = [];
   var rangeWithDots = [];
@@ -34,7 +36,7 @@ function createPagingRange (nrOfPages, currentPage) {
   range.push(1);
 
   if (nrOfPages <= 1) {
-    return range;
+    return range
   }
 
   for (var i = currentPage - delta; i <= currentPage + delta; i++) {
@@ -55,10 +57,10 @@ function createPagingRange (nrOfPages, currentPage) {
     rangeWithDots.push(range[i$1]);
     length = range[i$1];
   }
-  return rangeWithDots;
+  return rangeWithDots
 }
 
-function fieldSorter (fields, dsSortAs) {
+function fieldSorter(fields, dsSortAs) {
   if ( dsSortAs === void 0 ) dsSortAs = {};
 
   var dir = [];
@@ -71,7 +73,7 @@ function fieldSorter (fields, dsSortAs) {
     } else {
       dir[i] = 1;
     }
-    return o;
+    return o
   });
 
   return function (a, b) {
@@ -80,17 +82,17 @@ function fieldSorter (fields, dsSortAs) {
       var aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
       var bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
       if (aVal > bVal) {
-        return dir[i];
+        return dir[i]
       }
       if (aVal < bVal) {
-        return -(dir[i]);
+        return -dir[i]
       }
     }
-    return 0;
-  };
+    return 0
+  }
 }
 
-function fieldFilter (items, filterFields) {
+function fieldFilter(items, filterFields) {
   // Filter it by field
   var loop = function ( filterKey ) {
     // console.log(filterKey + ' -> ' + filterFields[filterKey]);
@@ -99,26 +101,26 @@ function fieldFilter (items, filterFields) {
       for (var itemKey in itemValue) {
         if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
-            return filterFields[filterKey](itemValue[itemKey]);
+            return filterFields[filterKey](itemValue[itemKey])
           }
           if (filterFields[filterKey] === '') {
-            return true;
+            return true
           }
           if (itemValue[itemKey] === filterFields[filterKey]) {
-            return true;
+            return true
           }
         }
       }
-      return false;
+      return false
     });
   };
 
   for (var filterKey in filterFields) loop( filterKey );
-  return items;
+  return items
 }
 
 // Search method that also takes into account transformations needed
-function findAny (dsSearchIn, dsSearchAs, obj, str) {
+function findAny(dsSearchIn, dsSearchAs, obj, str) {
   // Convert the search string to lower case
   str = str.toLowerCase();
   for (var key in obj) {
@@ -132,19 +134,19 @@ function findAny (dsSearchIn, dsSearchAs, obj, str) {
           if (typeof dsSearchAs[field] === 'function') {
             var res = dsSearchAs[field](value, str);
             if (res === true) {
-              return res;
+              return res
             }
           }
         }
       }
       // If it doesn't return from above we perform a simple search
       if (value.indexOf(str) >= 0) {
-        return true;
+        return true
       }
     }
   }
-  return false;
+  return false
 }
 
 export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, debounce as d, fieldFilter as f, isEmptyObject as i };
-//# sourceMappingURL=index-9aac0dbd.js.map
+//# sourceMappingURL=index-94915c20.js.map

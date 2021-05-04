@@ -59,6 +59,6 @@ const data = [
       favoriteAnimal: 'African clawless otter'
     }
   }
-];
+]
 
-export { data };
+export { data }

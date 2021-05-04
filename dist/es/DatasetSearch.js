@@ -1,4 +1,4 @@
-import { d as debounce } from './index-9aac0dbd.js';
+import { d as debounce } from './index-94915c20.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 //
@@ -18,9 +18,9 @@ var script = {
   data: function () {
     return {
       dsSearch: ''
-    };
+    }
   },
-  mounted: function mounted () {
+  mounted: function mounted() {
     var this$1 = this;
 
     this.input = debounce(function (value) {

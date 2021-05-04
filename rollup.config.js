@@ -1,10 +1,10 @@
-import vue from 'rollup-plugin-vue';
-import css from 'rollup-plugin-css-only';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
-import del from 'rollup-plugin-delete';
-import buble from '@rollup/plugin-buble';
+import vue from 'rollup-plugin-vue'
+import css from 'rollup-plugin-css-only'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
+import del from 'rollup-plugin-delete'
+import buble from '@rollup/plugin-buble'
 
 const sources = [
   './src/Dataset.vue',
@@ -13,10 +13,10 @@ const sources = [
   './src/DatasetPager.vue',
   './src/DatasetSearch.vue',
   './src/DatasetShow.vue'
-];
+]
 
 const umdBuild = sources.map((source) => {
-  const name = source.split('/').pop().replace('.vue', '');
+  const name = source.split('/').pop().replace('.vue', '')
   return {
     input: source,
     output: [
@@ -41,9 +41,7 @@ const umdBuild = sources.map((source) => {
         }
       }
     ],
-    external: [
-      'vue'
-    ],
+    external: ['vue'],
     plugins: [
       resolve(),
       commonjs(),
@@ -58,8 +56,8 @@ const umdBuild = sources.map((source) => {
         include: [/^.+\.min\.js$/]
       })
     ]
-  };
-});
+  }
+})
 
 export default [
   // ES
@@ -73,9 +71,7 @@ export default [
         sourcemapExcludeSources: false
       }
     ],
-    external: [
-      'vue'
-    ],
+    external: ['vue'],
     plugins: [
       del({ targets: 'dist/*' }),
       resolve(),
@@ -93,4 +89,4 @@ export default [
   },
   // UMD
   ...umdBuild
-];
+]

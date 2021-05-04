@@ -1,9 +1,15 @@
 <template>
-  <input type="text" :placeholder="dsSearchPlaceholder" class="form-control" :value="dsSearch" @input="input($event.target.value)" />
+  <input
+    type="text"
+    :placeholder="dsSearchPlaceholder"
+    class="form-control"
+    :value="dsSearch"
+    @input="input($event.target.value)"
+  />
 </template>
 
 <script>
-import { debounce } from './helpers';
+import { debounce } from './helpers'
 
 export default {
   inject: ['search'],
@@ -20,12 +26,12 @@ export default {
   data: function () {
     return {
       dsSearch: ''
-    };
+    }
   },
-  mounted () {
+  mounted() {
     this.input = debounce((value) => {
-      this.search(value);
-    }, this.wait);
+      this.search(value)
+    }, this.wait)
   }
-};
+}
 </script>

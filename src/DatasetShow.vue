@@ -20,17 +20,23 @@ export default {
     },
     dsShowEntriesLovs: {
       type: Array,
-      default: () => [{ value: 5, text: 5 }, { value: 10, text: 10 }, { value: 25, text: 25 }, { value: 50, text: 50 }, { value: 100, text: 100 }]
+      default: () => [
+        { value: 5, text: 5 },
+        { value: 10, text: 10 },
+        { value: 25, text: 25 },
+        { value: 50, text: 50 },
+        { value: 100, text: 100 }
+      ]
     }
   },
-  created () {
-    this.showEntries(Number(this.dsShowEntries));
+  created() {
+    this.showEntries(Number(this.dsShowEntries))
   },
   methods: {
-    change (e) {
-      this.$emit('changed', Number(e.target.value));
-      this.showEntries(Number(e.target.value));
+    change(e) {
+      this.$emit('changed', Number(e.target.value))
+      this.showEntries(Number(e.target.value))
     }
   }
-};
+}
 </script>

@@ -18,12 +18,12 @@ export default {
   },
   computed: {
     /* Setup reactive injects */
-    dsRows () {
-      return this.rdsRows();
+    dsRows() {
+      return this.rdsRows()
     },
-    dsData () {
-      return this.rdsData();
+    dsData() {
+      return this.rdsData()
     }
   }
-};
+}
 </script>

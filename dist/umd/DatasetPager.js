@@ -13,25 +13,25 @@
     data: function () {
       return {
         morePages: MORE_PAGES
-      };
+      }
     },
     computed: {
       /* Setup reactive injects */
-      dsPages: function dsPages () {
-        return this.rdsPages();
+      dsPages: function dsPages() {
+        return this.rdsPages()
       },
-      dsPagecount: function dsPagecount () {
-        return this.rdsPagecount();
+      dsPagecount: function dsPagecount() {
+        return this.rdsPagecount()
       },
-      dsPage: function dsPage () {
-        return this.rdsPage();
+      dsPage: function dsPage() {
+        return this.rdsPage()
       },
       /* Normal computeds */
-      disabledPrevious: function disabledPrevious () {
-        return this.dsPage === 1;
+      disabledPrevious: function disabledPrevious() {
+        return this.dsPage === 1
       },
-      disabledNext: function disabledNext () {
-        return this.dsPage === this.dsPagecount || this.dsPagecount === 0;
+      disabledNext: function disabledNext() {
+        return this.dsPage === this.dsPagecount || this.dsPagecount === 0
       }
     }
   };
