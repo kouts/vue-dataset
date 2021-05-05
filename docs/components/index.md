@@ -64,7 +64,7 @@ firstName "John" and all lastNames that start with the letter "D"
 `startsWithD` can be a function defined in your instance methods
 ```js
 startsWithD (value) {
-  return value.toLowerCase().startsWith('D');
+  return value.toLowerCase().startsWith('D')
 }
 ```
 
@@ -100,10 +100,10 @@ and will allow birthdate dates defined as YYYY-MM-DD format to be searched as DD
 Inside your instance methods
 ```js
 searchAsEuroDate: function (value, searchString) {
-  const parts = searchString.split('.');
-  const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-  return isoDate === value;
-};
+  const parts = searchString.split('.')
+  const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`
+  return isoDate === value
+}
 ```
 
 #### ds-sort-as
@@ -126,7 +126,7 @@ Inside your instance methods
 ```js
 sortAsDate: function (isoDate) {
   return new Date(isoDate)
-};
+}
 ```
 
 ### Provides
@@ -191,7 +191,7 @@ Example:
   inject: ['rdsPage'],
   computed: {
     dsPage () {
-      return this.rdsPage();
+      return this.rdsPage()
     }
   }
   ... 
