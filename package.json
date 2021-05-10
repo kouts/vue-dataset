@@ -1,7 +1,7 @@
 {
   "name": "vue-dataset",
   "description": "A vue component to display datasets with filtering, paging and sorting capabilities!",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "author": "Giannis Koutsaftakis",
   "license": "MIT",
   "repository": "https://github.com/kouts/vue-dataset",
@@ -26,8 +26,6 @@
     "lint-fix": "eslint . --fix --ext .js,.vue"
   },
   "dependencies": {
-    "core-js": "^3.11.2",
-    "rollup-plugin-delete": "^2.0.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
@@ -39,6 +37,7 @@
     "@vue/cli-service": "^4.5.12",
     "@vue/test-utils": "^1.2.0",
     "bootstrap": "^4.6.0",
+    "core-js": "^3.11.2",
     "eslint": "^7.25.0",
     "eslint-config-kouts": "^1.3.4",
     "eslint-config-prettier": "^8.3.0",
@@ -55,6 +54,7 @@
     "rollup": "^2.47.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.3.1",
     "rollup-plugin-vue": "^5.1.9",
