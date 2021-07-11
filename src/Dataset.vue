@@ -57,62 +57,21 @@ export default {
       dsPage: 1,
       dsSearch: '',
       dsShowEntries: 10,
-      datasetI18n: datasetI18n
+      datasetI18n: datasetI18n,
+      indexes: []
     }
   },
   computed: {
-    /*
-    The naive attempt would be to manipulate the original array directly.
-    This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
-    In order to do that in that order, you would need to work on a copy.
-    But this is problematic as well since you'd loose the data-binding with the original array.
-
-    The trick is to work directly on the array indexes.
-    */
-    indexes: function () {
-      let result = []
-      const dsData = this.dsData
-      const dsSearch = this.dsSearch
-      const dsSortby = this.dsSortby
-      const dsFilterFields = this.dsFilterFields
-      const dsSearchIn = this.dsSearchIn
-      const dsSearchAs = this.dsSearchAs
-      const dsSortAs = this.dsSortAs
-
-      if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
-        // Just get the indexes
-        result = dsData.map(function (val, i) {
-          return i
-        })
-      } else {
-        // Index it
-        result = dsData.map(function (val, i) {
-          return { index: i, value: val }
-        })
-
-        // Filter it by field
-        if (!isEmptyObject(dsFilterFields)) {
-          result = fieldFilter(result, dsFilterFields)
-        }
-
-        // Search it
-        if (dsSearch) {
-          result = result.filter(function (entry) {
-            return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch)
-          })
-        }
-
-        // Sort it
-        if (dsSortby.length) {
-          result.sort(fieldSorter(dsSortby, dsSortAs))
-        }
-
-        // We need indexes only
-        result = result.map(function (entry) {
-          return entry.index
-        })
-      }
-      return result
+    whenChanged() {
+      /* eslint-disable no-unused-expressions */
+      this.dsData
+      this.dsSearch
+      this.dsSortby
+      this.dsFilterFields
+      this.dsSearchIn
+      this.dsSearchAs
+      this.dsSortAs
+      return Date.now()
     },
     dsRows: function () {
       // We should not modify another computed property from inside a computed property
@@ -147,6 +106,62 @@ export default {
         // Reset active page when results change
         this.setActive(1)
       }
+    },
+    /*
+    The naive attempt would be to manipulate the original array directly.
+    This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
+    In order to do that in that order, you would need to work on a copy.
+    But this is problematic as well since you'd loose the data-binding with the original array.
+
+    The trick is to work directly on the array indexes.
+    */
+    whenChanged: {
+      handler: function (val, oldVal) {
+        let result = []
+        const dsData = this.dsData
+        const dsSearch = this.dsSearch
+        const dsSortby = this.dsSortby
+        const dsFilterFields = this.dsFilterFields
+        const dsSearchIn = this.dsSearchIn
+        const dsSearchAs = this.dsSearchAs
+        const dsSortAs = this.dsSortAs
+
+        if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
+          // Just get the indexes
+          result = dsData.map(function (val, i) {
+            return i
+          })
+        } else {
+          // Index it
+          result = dsData.map(function (val, i) {
+            return { index: i, value: val }
+          })
+
+          // Filter it by field
+          if (!isEmptyObject(dsFilterFields)) {
+            result = fieldFilter(result, dsFilterFields)
+          }
+
+          // Search it
+          if (dsSearch) {
+            result = result.filter(function (entry) {
+              return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch)
+            })
+          }
+
+          // Sort it
+          if (dsSortby.length) {
+            result.sort(fieldSorter(dsSortby, dsSortAs))
+          }
+
+          // We need indexes only
+          result = result.map(function (entry) {
+            return entry.index
+          })
+        }
+        this.indexes = result
+      },
+      immediate: true
     }
   },
   methods: {
