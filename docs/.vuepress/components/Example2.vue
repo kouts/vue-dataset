@@ -56,7 +56,13 @@
         </div>
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Name starts with" @input="startWithInput($event)" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name starts with"
+          :value="startsWith"
+          @input="startWithInput($event)"
+        />
       </div>
     </div>
     <hr class="mb-1" />
