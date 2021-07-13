@@ -13,7 +13,7 @@
           <dataset-show :ds-show-entries="selected" @changed="selected = $event" />
         </div>
         <div class="col-md-6">
-          <dataset-search ds-search-placeholder="Search..." :wait="300" />
+          <dataset-search ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
