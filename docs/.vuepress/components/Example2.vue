@@ -155,7 +155,7 @@ export default {
   created() {
     this.startWithInput = debounce((e) => {
       this.startsWith = e.target.value
-    }, 300)
+    }, 100)
   },
   methods: {
     filterList,
