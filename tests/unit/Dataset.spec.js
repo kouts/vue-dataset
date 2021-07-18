@@ -2,12 +2,25 @@
 import { mount } from '@vue/test-utils'
 import Dataset from '@/Dataset.vue'
 import users from '../../example-data/users.json'
-import { clone, waitNT } from '../../tests/utils.js'
+import { clone, waitNT, sleep } from '../../tests/utils.js'
 
 let wrapperComponent, wrapperDataset, wrapperTestComponent
 
 const TestComponent = {
-  inject: ['search', 'showEntries', 'setActive', 'datasetI18n', 'rdsPages', 'rdsPage', 'rdsPagecount'],
+  inject: [
+    'search',
+    'showEntries',
+    'setActive',
+    'datasetI18n',
+    'rdsData',
+    'rdsRows',
+    'rdsPages',
+    'rdsResultsNumber',
+    'rdsPagecount',
+    'rdsFrom',
+    'rdsTo',
+    'rdsPage'
+  ],
   template: `
     <div>
       <div class="ds-pages">
@@ -83,9 +96,20 @@ describe('Dataset', () => {
     expect(wrapperTestComponent.find('.ds-page').text()).toBe('1')
   })
 
-  it('splits the into the corrent number of pages', async () => {
+  it('correctly calulates the number of pages', async () => {
     const newUsers = clone(users).slice(0, 301)
     await wrapperComponent.setData({ users: newUsers })
     expect(wrapperTestComponent.find('.ds-pagecount').text()).toBe('31')
+  })
+
+  it('correctly filters the search data', async () => {
+    const wrapper = mount(Dataset, {
+      propsData: {
+        dsData: users
+      }
+    })
+    wrapper.vm.search('tristique.net')
+    await waitNT(wrapper.vm)
+    expect(wrapper.vm.dsRows.length).toBe(4)
   })
 })
