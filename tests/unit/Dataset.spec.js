@@ -7,7 +7,7 @@ import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
 
 import users from '../../example-data/users.json'
-import { clone } from '../../tests/utils.js'
+import { clone, waitNT } from '../../tests/utils.js'
 
 let wrapper
 
@@ -77,5 +77,29 @@ describe('Dataset', () => {
   it('correctly filters the search data', async () => {
     await wrapper.vm.search('tristique.net')
     expect(wrapper.vm.dsRows.length).toBe(4)
+  })
+
+  it('displays items depending on show entries', async () => {
+    await wrapper.vm.showEntries(5)
+    expect(wrapper.vm.dsRows.length).toBe(5)
+    await wrapper.vm.showEntries(25)
+    expect(wrapper.vm.dsRows.length).toBe(25)
+  })
+
+  it('sets the active page to the last one if previous pages number was higher than the current one', async () => {
+    await wrapper.vm.showEntries(5)
+    await wrapper.vm.setActive(1000)
+    await wrapper.vm.showEntries(100)
+    await waitNT(wrapper.vm)
+    expect(wrapper.vm.dsPage).toBe(50)
+  })
+
+  it('correctly sets the active page', async () => {
+    await wrapper
+      .findAll('a')
+      .filter((node) => node.text().match(/Next/))
+      .at(0)
+      .trigger('click')
+    expect(wrapper.findAll('li.page-item').at(2).classes()).toContain('active')
   })
 })
