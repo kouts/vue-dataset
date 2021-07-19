@@ -1,115 +1,81 @@
-/* eslint-disable no-eval */
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Dataset from '@/Dataset.vue'
+import DatasetInfo from '@/DatasetInfo.vue'
+import DatasetItem from '@/DatasetItem.vue'
+import DatasetPager from '@/DatasetPager.vue'
+import DatasetSearch from '@/DatasetSearch.vue'
+import DatasetShow from '@/DatasetShow.vue'
+
 import users from '../../example-data/users.json'
-import { clone, waitNT, sleep } from '../../tests/utils.js'
+import { clone } from '../../tests/utils.js'
 
-let wrapperComponent, wrapperDataset, wrapperTestComponent
+let wrapper
 
-const TestComponent = {
-  inject: [
-    'search',
-    'showEntries',
-    'setActive',
-    'datasetI18n',
-    'rdsData',
-    'rdsRows',
-    'rdsPages',
-    'rdsResultsNumber',
-    'rdsPagecount',
-    'rdsFrom',
-    'rdsTo',
-    'rdsPage'
-  ],
-  template: `
-    <div>
-      <div class="ds-pages">
-        {{ dsPages }}
-      </div>
-      <div class="ds-page">
-        {{ dsPage }}
-      </div>
-      <div class="ds-pagecount">
-        {{ dsPagecount }}
-      </div>
-    </div>
-  `,
-  computed: {
-    /* Setup reactive injects */
-    dsPages() {
-      return this.rdsPages()
-    },
-    dsPage() {
-      return this.rdsPage()
-    },
-    dsPagecount() {
-      return this.rdsPagecount()
-    }
-  }
-}
+const localVue = createLocalVue()
+localVue.component('DatasetShow', DatasetShow)
+localVue.component('DatasetSearch', DatasetSearch)
+localVue.component('DatasetInfo', DatasetInfo)
+localVue.component('DatasetItem', DatasetItem)
+localVue.component('DatasetPager', DatasetPager)
 
 beforeEach(function () {
-  const WrapperComponent = {
-    data: function () {
-      return {
-        users: users
-      }
+  wrapper = mount(Dataset, {
+    slots: {
+      default: `
+        <dataset-show />
+        <dataset-search />
+        <dataset-item>
+          <template #default="{ row, rowIndex }">
+            <div>{{ rowIndex }} - {{ row.name }}</div>
+          </template>
+          <template #noDataFound>
+            <div>
+              No results found
+            </div>
+          </template>          
+        </dataset-item />
+        <dataset-info />
+        <dataset-pager />
+      `
     },
-    template: `
-      <dataset :ds-data="users">
-        <test-component />
-      </dataset>
-    `,
-    components: {
-      Dataset,
-      TestComponent
-    }
-  }
-
-  wrapperComponent = mount(WrapperComponent)
-  wrapperDataset = wrapperComponent.findComponent(Dataset)
-  wrapperTestComponent = wrapperComponent.findComponent(TestComponent)
+    propsData: {
+      dsData: users
+    },
+    localVue
+  })
 })
 
 afterEach(function () {
-  wrapperComponent.destroy()
-  wrapperDataset.destroy()
-  wrapperTestComponent.destroy()
+  wrapper.destroy()
 })
 
 describe('Dataset', () => {
   it('renders the dataset container div', () => {
-    const div = wrapperDataset.find('div')
+    const div = wrapper.find('div')
     expect(div.exists()).toBe(true)
   })
 
-  it('passes the injected values and renders the slot', async () => {
-    const array = eval(wrapperTestComponent.find('.ds-pages').text())
-    expect(array).toEqual([1, 2, 3, '...', 500])
+  it('has the correct pagination values', async () => {
+    const pagination = wrapper.findComponent(DatasetPager)
+    const { wrappers: lis } = pagination.findAll('ul > li')
+    const arr = lis.map((li) => li.text())
+    expect(arr).toEqual(['Previous', '1', '2', '3', '...', '500', 'Next'])
   })
 
   it('resets the active page when data changes', async () => {
     const newUsers = clone(users).slice(0, 200)
-    wrapperDataset.vm.setActive(15)
-    await waitNT(wrapperDataset.vm)
-    await wrapperComponent.setData({ users: newUsers })
-    expect(wrapperTestComponent.find('.ds-page').text()).toBe('1')
+    await wrapper.setProps({ dsData: newUsers })
+    expect(wrapper.findAll('li.page-item').at(1).classes()).toContain('active')
   })
 
   it('correctly calulates the number of pages', async () => {
     const newUsers = clone(users).slice(0, 301)
-    await wrapperComponent.setData({ users: newUsers })
-    expect(wrapperTestComponent.find('.ds-pagecount').text()).toBe('31')
+    await wrapper.setProps({ dsData: newUsers })
+    expect(wrapper.vm.dsPagecount).toBe(31)
   })
 
   it('correctly filters the search data', async () => {
-    const wrapper = mount(Dataset, {
-      propsData: {
-        dsData: users
-      }
-    })
-    wrapper.vm.search('tristique.net')
-    await waitNT(wrapper.vm)
+    await wrapper.vm.search('tristique.net')
     expect(wrapper.vm.dsRows.length).toBe(4)
   })
 })
