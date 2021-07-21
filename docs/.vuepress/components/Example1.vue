@@ -8,7 +8,7 @@
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{}"
     >
-      <div class="row mb-2">
+      <div class="row mb-2" :data-page-count="ds.dsPagecount">
         <div class="col-md-6 mb-2 mb-md-0">
           <dataset-show :ds-show-entries="selected" @changed="selected = $event" />
         </div>
