@@ -24,7 +24,7 @@ beforeEach(function () {
       default: `
         <dataset-show />
         <dataset-search />
-        <dataset-item>
+        <dataset-item class="items">
           <template #default="{ row, rowIndex }">
             <div>{{ rowIndex }} - {{ row.name }}</div>
           </template>
@@ -101,5 +101,28 @@ describe('Dataset', () => {
       .at(0)
       .trigger('click')
     expect(wrapper.findAll('li.page-item').at(2).classes()).toContain('active')
+  })
+
+  it('sorts the dataset using the dsSortBy prop', async () => {
+    await wrapper.setProps({ dsSortby: ['name'] })
+    expect(wrapper.find('.items > div').text()).toBe('873 - Aaron Brock')
+    await wrapper.setProps({ dsSortby: ['-name'] })
+    expect(wrapper.find('.items > div').text()).toBe('2299 - Zorita Rose')
+  })
+
+  it('filters the dataset based on the dsFilterFields prop', async () => {
+    await wrapper.setProps({ dsFilterFields: { onlineStatus: 'Active' } })
+    expect(wrapper.find('.items > div').text()).toBe('1 - Whoopi David')
+    await wrapper.setProps({ dsFilterFields: { onlineStatus: 'Away' } })
+    expect(wrapper.find('.items > div').text()).toBe('2 - Peter Mendez')
+  })
+
+  it('searches the dataset only in properties defined in the dsSearchIn prop', async () => {
+    await wrapper.setProps({ dsSearchIn: ['name', 'favoriteColor'] })
+    await wrapper.vm.search('tristique.net')
+    expect(wrapper.find('.items > div').text()).toBe('No results found')
+    await wrapper.vm.search('Burke Kelley')
+    expect(wrapper.find('.items > div').text()).toBe('4188 - Burke Kelley')
+    expect(wrapper.findAll('.items > div').length).toBe(1)
   })
 })
