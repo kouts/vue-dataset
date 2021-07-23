@@ -12,4 +12,10 @@ describe('fieldFilter', () => {
     const res = fieldFilter(filterData, { firstName: 'Gawain' })
     expect(res.length).toBe(2)
   })
+
+  it('filters the given array by first names that start with "Bo"', () => {
+    const filterFunction = (value) => value.startsWith('Bo')
+    const res = fieldFilter(filterData, { firstName: filterFunction })
+    expect(res.length).toBe(1)
+  })
 })

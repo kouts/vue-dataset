@@ -83,12 +83,12 @@
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{ birthdate: searchAsEuroDate }"
     >
-      <div class="row mb-2">
+      <div class="row mb-2" :data-page-count="ds.dsPagecount">
         <div class="col-md-6 mb-2 mb-md-0">
           <dataset-show />
         </div>
         <div class="col-md-6">
-          <dataset-search ds-search-placeholder="Search..." :wait="300" />
+          <dataset-search ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
@@ -155,7 +155,7 @@ export default {
   created() {
     this.startWithInput = debounce((e) => {
       this.startsWith = e.target.value
-    }, 300)
+    }, 100)
   },
   methods: {
     filterList,

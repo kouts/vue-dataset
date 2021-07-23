@@ -118,7 +118,7 @@ function fieldFilter(items, filterFields) {
 // Search method that also takes into account transformations needed
 function findAny(dsSearchIn, dsSearchAs, obj, str) {
   // Convert the search string to lower case
-  str = str.toLowerCase()
+  str = String(str).toLowerCase()
   for (const key in obj) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
       const value = String(obj[key]).toLowerCase()
