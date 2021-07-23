@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/kouts/vue-dataset/compare/v1.1.3...v1.1.4) (2021-07-23)
+
+
+### Bug Fixes
+
+* improved search performance ([b862ea5](https://github.com/kouts/vue-dataset/commit/b862ea56f2b354b6da5673bea2f6a44a142a8960))
+
 ## 1.1.3
 
 ### Chores
