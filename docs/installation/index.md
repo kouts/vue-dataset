@@ -24,7 +24,7 @@ and insert them in your page.
 
 Install it via npm
 ```
-npm i vue-dataset --save
+npm install vue-dataset --save
 ```
 Use the ```import``` statement to include `vue-dataset` components into your bundle.  
 You can import each component individually 
