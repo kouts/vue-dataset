@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/kouts/vue-dataset/compare/v1.1.4...v1.1.5) (2021-07-23)
+
+
+### Bug Fixes
+
+* updated build files ([bd3a1ec](https://github.com/kouts/vue-dataset/commit/bd3a1eccbf2af7ed09753534a30bff1aaa36263f))
+
 ## [1.1.4](https://github.com/kouts/vue-dataset/compare/v1.1.3...v1.1.4) (2021-07-23)
 
 
