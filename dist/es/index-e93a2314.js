@@ -122,7 +122,7 @@ function fieldFilter(items, filterFields) {
 // Search method that also takes into account transformations needed
 function findAny(dsSearchIn, dsSearchAs, obj, str) {
   // Convert the search string to lower case
-  str = str.toLowerCase();
+  str = String(str).toLowerCase();
   for (var key in obj) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
       var value = String(obj[key]).toLowerCase();
@@ -149,4 +149,4 @@ function findAny(dsSearchIn, dsSearchAs, obj, str) {
 }
 
 export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, debounce as d, fieldFilter as f, isEmptyObject as i };
-//# sourceMappingURL=index-94915c20.js.map
+//# sourceMappingURL=index-e93a2314.js.map
