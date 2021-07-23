@@ -121,7 +121,7 @@
   // Search method that also takes into account transformations needed
   function findAny(dsSearchIn, dsSearchAs, obj, str) {
     // Convert the search string to lower case
-    str = str.toLowerCase();
+    str = String(str).toLowerCase();
     for (var key in obj) {
       if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
         var value = String(obj[key]).toLowerCase();
@@ -151,7 +151,7 @@
 
   var script = {
     provide: function provide() {
-      var this$1 = this;
+      var this$1$1 = this;
 
       return {
         search: this.search,
@@ -159,14 +159,14 @@
         setActive: this.setActive,
         datasetI18n: this.datasetI18n,
         /* Setup reactive provides */
-        rdsData: function () { return this$1.dsData; },
-        rdsRows: function () { return this$1.dsRows; },
-        rdsPages: function () { return this$1.dsPages; },
-        rdsResultsNumber: function () { return this$1.dsResultsNumber; },
-        rdsPagecount: function () { return this$1.dsPagecount; },
-        rdsFrom: function () { return this$1.dsFrom; },
-        rdsTo: function () { return this$1.dsTo; },
-        rdsPage: function () { return this$1.dsPage; }
+        rdsData: function () { return this$1$1.dsData; },
+        rdsRows: function () { return this$1$1.dsRows; },
+        rdsPages: function () { return this$1$1.dsPages; },
+        rdsResultsNumber: function () { return this$1$1.dsResultsNumber; },
+        rdsPagecount: function () { return this$1$1.dsPagecount; },
+        rdsFrom: function () { return this$1$1.dsFrom; },
+        rdsTo: function () { return this$1$1.dsTo; },
+        rdsPage: function () { return this$1$1.dsPage; }
       }
     },
     props: {
@@ -200,64 +200,23 @@
         dsPage: 1,
         dsSearch: '',
         dsShowEntries: 10,
-        datasetI18n: datasetI18n
+        datasetI18n: datasetI18n,
+        indexes: []
       }
     },
     computed: {
-      /*
-      The naive attempt would be to manipulate the original array directly.
-      This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
-      In order to do that in that order, you would need to work on a copy.
-      But this is problematic as well since you'd loose the data-binding with the original array.
-
-      The trick is to work directly on the array indexes.
-      */
-      indexes: function () {
-        var result = [];
-        var dsData = this.dsData;
-        var dsSearch = this.dsSearch;
-        var dsSortby = this.dsSortby;
-        var dsFilterFields = this.dsFilterFields;
-        var dsSearchIn = this.dsSearchIn;
-        var dsSearchAs = this.dsSearchAs;
-        var dsSortAs = this.dsSortAs;
-
-        if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
-          // Just get the indexes
-          result = dsData.map(function (val, i) {
-            return i
-          });
-        } else {
-          // Index it
-          result = dsData.map(function (val, i) {
-            return { index: i, value: val }
-          });
-
-          // Filter it by field
-          if (!isEmptyObject(dsFilterFields)) {
-            result = fieldFilter(result, dsFilterFields);
-          }
-
-          // Search it
-          if (dsSearch) {
-            result = result.filter(function (entry) {
-              return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch)
-            });
-          }
-
-          // Sort it
-          if (dsSortby.length) {
-            result.sort(fieldSorter(dsSortby, dsSortAs));
-          }
-
-          // We need indexes only
-          result = result.map(function (entry) {
-            return entry.index
-          });
-        }
-        return result
+      whenChanged: function whenChanged() {
+        /* eslint-disable no-unused-expressions */
+        this.dsData;
+        this.dsSearch;
+        this.dsSortby;
+        this.dsFilterFields;
+        this.dsSearchIn;
+        this.dsSearchAs;
+        this.dsSortAs;
+        return Date.now()
       },
-      dsRows: function () {
+      dsRows: function dsRows() {
         // We should not modify another computed property from inside a computed property
         // This should be moved into the dsTo computed if needed
         /*
@@ -265,31 +224,78 @@
           this.dsTo = this.indexes.length;
         }
         */
-        // console.log(this.indexes);
         return this.indexes.slice(this.dsFrom, this.dsTo)
       },
-      dsPages: function () {
+      dsPages: function dsPages() {
         return createPagingRange(this.dsPagecount, this.dsPage)
       },
-      dsResultsNumber: function () {
+      dsResultsNumber: function dsResultsNumber() {
         return this.indexes.length
       },
-      dsPagecount: function () {
+      dsPagecount: function dsPagecount() {
         return Math.ceil(this.dsResultsNumber / this.dsShowEntries)
       },
-      dsFrom: function () {
+      dsFrom: function dsFrom() {
         return (this.dsPage - 1) * this.dsShowEntries
       },
-      dsTo: function () {
+      dsTo: function dsTo() {
         return this.dsPage * this.dsShowEntries
       }
     },
     watch: {
       dsResultsNumber: {
-        handler: function (val, oldVal) {
+        handler: function handler(val, oldVal) {
           // Reset active page when results change
           this.setActive(1);
         }
+      },
+      /*
+      The naive attempt would be to manipulate the original array directly.
+      This is problematic because it has to be filtered first, then sorted, then the from/to rows extracted.
+      In order to do that in that order, we would need to work on a copy.
+      But this is problematic as well since we'd loose the data-binding to the original array.
+
+      The trick is to work directly on the array indexes.
+      */
+      whenChanged: {
+        handler: function handler(val, oldVal) {
+          var result = [];
+          var dsData = this.dsData;
+          var dsSearch = this.dsSearch;
+          var dsSortby = this.dsSortby;
+          var dsFilterFields = this.dsFilterFields;
+          var dsSearchIn = this.dsSearchIn;
+          var dsSearchAs = this.dsSearchAs;
+          var dsSortAs = this.dsSortAs;
+
+          if (!dsSearch && !dsSortby.length && isEmptyObject(dsFilterFields)) {
+            // Skip processing and just get the indexes
+            result = dsData.map(function (val, i) { return i; });
+          } else {
+            // Index it
+            result = dsData.map(function (val, i) { return ({ index: i, value: val }); });
+
+            // Filter it by field
+            if (!isEmptyObject(dsFilterFields)) {
+              result = fieldFilter(result, dsFilterFields);
+            }
+
+            // Search it
+            if (dsSearch) {
+              result = result.filter(function (entry) { return findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch); });
+            }
+
+            // Sort it
+            if (dsSortby.length) {
+              result.sort(fieldSorter(dsSortby, dsSortAs));
+            }
+
+            // We need only the indexes
+            result = result.map(function (entry) { return entry.index; });
+          }
+          this.indexes = result;
+        },
+        immediate: true
       }
     },
     methods: {
@@ -297,14 +303,14 @@
         this.dsSearch = value;
       },
       showEntries: function showEntries(value) {
-        var this$1 = this;
+        var this$1$1 = this;
 
         var pagesBeforeChange = this.dsPages;
         this.dsShowEntries = value;
         this.$nextTick(function () {
-          var pagesAfterChange = this$1.dsPages;
+          var pagesAfterChange = this$1$1.dsPages;
           if (pagesAfterChange.length < pagesBeforeChange.length) {
-            this$1.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
+            this$1$1.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
           }
         });
       },

@@ -1,4 +1,4 @@
-import { d as debounce } from './index-94915c20.js';
+import { d as debounce } from './index-e93a2314.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 //
@@ -21,10 +21,10 @@ var script = {
     }
   },
   mounted: function mounted() {
-    var this$1 = this;
+    var this$1$1 = this;
 
     this.input = debounce(function (value) {
-      this$1.search(value);
+      this$1$1.search(value);
     }, this.wait);
   }
 };
