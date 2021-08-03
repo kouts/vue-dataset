@@ -12,7 +12,8 @@
     "datatable"
   ],
   "main": "dist/umd/Dataset.js",
-  "module": "dist/es/Dataset.js",
+  "module": "dist/es/index.js",
+  "sideEffects": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:vue": "vue-cli-service build",
@@ -50,7 +51,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-vue": "^7.14.0",
+    "eslint-plugin-vue": "^7.15.1",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.0",
     "node-sass": "^4.14.1",
