@@ -62,7 +62,7 @@ $link-hover-color: lighten($link-color, 15%) !default;
 blockquote p {color: #777;}
 
 /* Font sizes */
-.font-16 {font-size: 16px;}
+.font-16 { font-size: 16px; }
 
 /* Browsers support table */
 #browsers-support + table .icon.outbound {
@@ -85,6 +85,21 @@ blockquote p {color: #777;}
   max-width: 100%;
 }
 
+/* Fix links appearance */
 .dataset-page .theme-default-content:not(.custom) ul.pagination a:hover {
   text-decoration: none;
+}
+
+/* Fix margin-top for first paragraph */
+.theme-container .theme-default-content:not(.custom) > h2:first-child + p {
+  margin-top: 0 !important;
+}
+
+/* Fix margin-bottom for headers */
+.theme-container .theme-default-content:not(.custom) > h2, 
+.theme-container .theme-default-content:not(.custom) > h3, 
+.theme-container .theme-default-content:not(.custom) > h4, 
+.theme-container .theme-default-content:not(.custom) > h5, 
+.theme-container .theme-default-content:not(.custom) > h6 {
+  margin-bottom: 1rem !important;
 }
