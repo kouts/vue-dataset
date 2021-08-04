@@ -1,5 +1,5 @@
 ## Dataset
-The `dataset` component acts as the provider component of all the data and methods vue-dataset needs to function.
+The `dataset` component acts as the provider component of all the data and methods `vue-dataset` needs to function.
 It does so by using the provide/inject mechanism of Vue so that data is also accessible in nested levels down the component tree.
 
 Dataset takes the original data object as a prop and also some useful props as options that dictate how the data will be filtered, searched and sorted.
@@ -24,7 +24,7 @@ Dataset takes the original data object as a prop and also some useful props as o
 Type: `Array of Objects`  
 Default: <em>Empty Array</em>
 
-This is the data object that vue-dataset will operate on.  
+This is the data object that `vue-dataset` will operate on.  
 It must be an Array of Objects. 
 ``` js
 [

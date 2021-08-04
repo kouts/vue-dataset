@@ -15,8 +15,11 @@ const sources = [
   './src/DatasetShow.vue'
 ]
 
-const umdBuild = sources.map((source) => {
-  const name = source.split('/').pop().replace('.vue', '')
+const umdSources = sources.slice()
+umdSources.unshift('./src/index.js')
+
+const umdBuild = umdSources.map((source) => {
+  const name = source === './src/index.js' ? 'VueDataset' : source.split('/').pop().replace('.vue', '')
   return {
     input: source,
     output: [
