@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/kouts/vue-dataset/compare/v1.1.5...v1.1.6) (2021-08-04)
+
+
+### Bug Fixes
+
+* added unified umd build ([5b26513](https://github.com/kouts/vue-dataset/commit/5b26513627e51b50e6547fe703108cfef92b3af9))
+* fixed module property, added sideEffects property ([3afc480](https://github.com/kouts/vue-dataset/commit/3afc48007d88c69fe850932db324844b207fb953))
+
 ## [1.1.5](https://github.com/kouts/vue-dataset/compare/v1.1.4...v1.1.5) (2021-07-23)
 
 
