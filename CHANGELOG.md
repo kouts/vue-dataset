@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/kouts/vue-dataset/compare/v1.1.6...v1.1.7) (2021-08-09)
+
+
+### Bug Fixes
+
+* added npm and size badges ([df2aac7](https://github.com/kouts/vue-dataset/commit/df2aac7239faa2a35a7afdaeb33a777a8465ac56))
+
 ## [1.1.6](https://github.com/kouts/vue-dataset/compare/v1.1.5...v1.1.6) (2021-08-04)
 
 
