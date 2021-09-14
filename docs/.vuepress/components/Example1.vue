@@ -51,7 +51,7 @@
 
 <script>
 import users from '../../../example-data/users.json'
-import { filterList, clone } from '../utilities'
+// import { filterList, clone } from '../utilities'
 
 // const lessUsers = clone(data).slice(0, 2);
 
@@ -70,7 +70,6 @@ export default {
     }
   },
   methods: {
-    filterList,
     updateData() {
       const updatedUsers = clone(users).slice(5, 10)
       this.users = updatedUsers
