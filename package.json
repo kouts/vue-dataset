@@ -46,7 +46,6 @@
     "@vue/compiler-sfc": "^3.2.11",
     "@vue/test-utils": "^2.0.0-rc.14",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.26",
-    "@vuepress/plugin-search": "^2.0.0-beta.26",
     "bootstrap": "^4.6.0",
     "core-js": "^3.17.3",
     "eslint": "^7.32.0",
