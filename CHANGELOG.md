@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/kouts/vue-dataset/compare/v1.1.7...v1.1.8) (2021-09-19)
+
+
+### Bug Fixes
+
+* added dist to .gitignore ([31c1e22](https://github.com/kouts/vue-dataset/commit/31c1e221a01198ae86fe41f14fbeea61fa00a95f))
+
 ## [1.1.7](https://github.com/kouts/vue-dataset/compare/v1.1.6...v1.1.7) (2021-08-09)
 
 
