@@ -33,7 +33,7 @@ beforeEach(function () {
               No results found
             </div>
           </template>          
-        </dataset-item />
+        </dataset-item>
         <dataset-info />
         <dataset-pager />
       `

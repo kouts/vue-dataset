@@ -1,5 +1,13 @@
 # vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset"></a> ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg) ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg?compression=gzip)
 
+
+---
+
+:fire: **HEADS UP!** You're currently looking at vue-dataset branch for **Vue.js 2**.  
+If you're looking for a Vue.js 3 compatible version of vue-dataset, [please check out the `next` branch](https://github.com/kouts/vue-dataset/tree/next).
+
+---
+
 A set of Vue.js components to display datasets (lists) with filtering, paging, and sorting capabilities!  
 Created with reusability in mind, so that one doesn't have to recreate the same functionality for lists over and over again.
 
