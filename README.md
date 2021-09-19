@@ -40,5 +40,5 @@ In order to start development:
 
 ```sh
 npm i
-npm run watch
+npm run dev
 ```

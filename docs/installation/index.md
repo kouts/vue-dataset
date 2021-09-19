@@ -2,9 +2,9 @@
 
 Most likely you are using a module bundler like [Webpack](https://webpack.js.org/), which makes it easy to directly include `vue-dataset` into your project.  
 
-Install `vue-dataset` via npm
+Install `vue-dataset@next` via npm
 ```
-npm install vue-dataset --save
+npm install vue-dataset@next --save
 ```
 
 Use the ```import``` statement to include the `vue-dataset` components into your bundle.  
