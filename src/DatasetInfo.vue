@@ -6,24 +6,22 @@
 </template>
 
 <script>
+import { inject, computed } from 'vue'
+
 export default {
-  inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
-  computed: {
-    showing() {
-      return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0
-    },
-    showingTo() {
-      return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo
-    },
-    /* Setup reactive injects */
-    dsResultsNumber() {
-      return this.rdsResultsNumber()
-    },
-    dsFrom() {
-      return this.rdsFrom()
-    },
-    dsTo() {
-      return this.rdsTo()
+  setup() {
+    const dsResultsNumber = inject('dsResultsNumber')
+    const dsFrom = inject('dsFrom')
+    const dsTo = inject('dsTo')
+
+    const showing = computed(() => (dsResultsNumber.value !== 0 ? dsFrom.value + 1 : 0))
+    const showingTo = computed(() => (dsTo.value >= dsResultsNumber.value ? dsResultsNumber.value : dsTo.value))
+
+    return {
+      datasetI18n: inject('datasetI18n'),
+      dsResultsNumber,
+      showing,
+      showingTo
     }
   }
 }

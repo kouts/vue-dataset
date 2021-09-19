@@ -9,10 +9,10 @@
 </template>
 
 <script>
+import { inject, ref } from 'vue'
 import { debounce } from './helpers'
 
 export default {
-  inject: ['search'],
   props: {
     dsSearchPlaceholder: {
       type: String,
@@ -23,15 +23,18 @@ export default {
       default: 0
     }
   },
-  data: function () {
+  setup(props) {
+    const search = inject('search')
+    const dsSearch = ref('')
+
+    const input = debounce((value) => {
+      search(value)
+    }, props.wait)
+
     return {
-      dsSearch: ''
+      dsSearch,
+      input
     }
-  },
-  mounted() {
-    this.input = debounce((value) => {
-      this.search(value)
-    }, this.wait)
   }
 }
 </script>

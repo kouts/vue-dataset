@@ -1,4 +1,5 @@
-const VueExamplePlugin = require('vuepress-plugin-vue-example')
+const path = require('path')
+const VueExamplePlugin = require('../../vuepress-plugin-vue-example/index.js')
 
 module.exports = {
   plugins: [
@@ -10,26 +11,40 @@ module.exports = {
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',
   themeConfig: {
-    nav: [{ text: 'Github', link: 'https://github.com/kouts/vue-dataset' }],
+    repo: 'https://github.com/kouts/vue-dataset',
+    darkMode: false,
     sidebar: [
-      ['/', 'Introduction'],
-      ['/installation/', 'Installation'],
-      ['/components/', 'Components'],
       {
-        title: 'Examples',
+        link: '/',
+        text: 'Introduction'
+      },
+      {
+        link: '/installation/',
+        text: 'Installation'
+      },
+      {
+        link: '/components/',
+        text: 'Components'
+      },
+      {
+        text: 'Examples',
         collapsable: true,
         children: [
-          ['/examples/cards/', 'Cards'],
-          ['/examples/datatable/', 'Datatable']
+          {
+            link: '/examples/cards/',
+            text: 'Cards'
+          },
+          {
+            link: '/examples/datatable/',
+            text: 'Datatable'
+          }
         ]
       }
     ]
   },
-  head: [
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }],
-    ['script', { src: 'https://polyfill.io/v3/polyfill.min.js?features=Array.from' }],
-    ['script', { src: 'https://polyfill.io/v3/polyfill.min.js?features=Promise' }],
-    ['script', { src: 'https://polyfill.io/v3/polyfill.min.js?features=NodeList.prototype.forEach' }],
-    ['script', { src: 'https://polyfill.io/v3/polyfill.min.js?features=Object.assign' }]
-  ]
+  alias: {
+    '@': path.resolve(__dirname, '../../src'),
+    '@playground': path.resolve(__dirname, '../../playground'),
+    '@root': path.resolve(__dirname, '../../')
+  }
 }

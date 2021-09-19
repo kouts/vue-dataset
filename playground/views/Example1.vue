@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <dataset
       v-slot="{ ds }"
       :ds-data="users"
@@ -50,11 +50,17 @@
 </template>
 
 <script>
-import users from '@root/example-data/users.json'
+import jsonUsers from '@root/example-data/users.json'
+
+const clone = function (obj) {
+  return JSON.parse(JSON.stringify(obj || {}))
+}
+
+const users = clone(jsonUsers).slice()
 
 export default {
-  name: 'Example1',
-  data: function () {
+  name: 'Home',
+  data() {
     return {
       users: users,
       statusClass: {

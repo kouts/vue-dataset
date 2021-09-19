@@ -8,21 +8,19 @@
 </template>
 
 <script>
+import { inject } from 'vue'
+
 export default {
-  inject: ['rdsData', 'rdsRows'],
   props: {
     tag: {
       type: String,
       default: 'div'
     }
   },
-  computed: {
-    /* Setup reactive injects */
-    dsRows() {
-      return this.rdsRows()
-    },
-    dsData() {
-      return this.rdsData()
+  setup() {
+    return {
+      dsData: inject('dsData'),
+      dsRows: inject('dsRows')
     }
   }
 }

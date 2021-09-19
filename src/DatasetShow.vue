@@ -11,8 +11,9 @@
 </template>
 
 <script>
+import { inject } from 'vue'
+
 export default {
-  inject: ['datasetI18n', 'showEntries'],
   props: {
     dsShowEntries: {
       type: Number,
@@ -29,13 +30,20 @@ export default {
       ]
     }
   },
-  created() {
-    this.showEntries(Number(this.dsShowEntries))
-  },
-  methods: {
-    change(e) {
-      this.$emit('changed', Number(e.target.value))
-      this.showEntries(Number(e.target.value))
+  emits: ['changed'],
+  setup(props, { emit }) {
+    const showEntries = inject('showEntries')
+
+    const change = (e) => {
+      emit('changed', Number(e.target.value))
+      showEntries(Number(e.target.value))
+    }
+
+    showEntries(Number(props.dsShowEntries))
+
+    return {
+      datasetI18n: inject('datasetI18n'),
+      change
     }
   }
 }

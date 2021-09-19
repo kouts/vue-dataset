@@ -131,10 +131,10 @@ sortAsDate: function (isoDate) {
 
 ### Provides
 
-Dataset `provides` functions that return computed data, data and methods to the child components.  
+Dataset `provides` reactive data and methods to the child components.  
 You can leverage these using `inject` to create your own **custom child components**.
 
-##### Functions that return computed data
+##### Reactive data provided by `vue-dataset`
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -145,68 +145,40 @@ You can leverage these using `inject` to create your own **custom child componen
   </thead>
   <tbody>
     <tr>
-      <td>rdsRows</td>
+      <td>dsRows</td>
       <td>Array</td>
       <td>The indexes of the data rows currently displaying</td>
     </tr>
     <tr>
-      <td>rdsPages</td>
+      <td>dsPages</td>
       <td>Array</td>
       <td>The array used to create pagination links</td>
     </tr>
     <tr>
-      <td>rdsResultsNumber</td>
+      <td>dsResultsNumber</td>
       <td>Number</td>
       <td>The number of rows currently displaying</td>
     </tr>
     <tr>
-      <td>rdsPagecount</td>
+      <td>dsPagecount</td>
       <td>Number</td>
       <td>The number of pagination pages</td>
     </tr>
     <tr>
-      <td>rdsFrom</td>
+      <td>dsFrom</td>
       <td>Number</td>
       <td>The item "from" of paginated items currently displaying</td>
     </tr>
     <tr>
-      <td>rdsTo</td>
+      <td>dsTo</td>
       <td>Number</td>
       <td>The item "to" of paginated items currently displaying</td>
     </tr>
     <tr>
-      <td>rdsPage</td>
+      <td>dsPage</td>
       <td>Number</td>
       <td>The number of the current page in pagination</td>
-    </tr>         
-  </tbody>
-</table>
-
-> In order to use the functions that provide computed data you'll need to setup a computed property
-> as the example below.
-
-Example:
-``` js
-  ...
-  inject: ['rdsPage'],
-  computed: {
-    dsPage () {
-      return this.rdsPage()
-    }
-  }
-  ... 
-```
-
-##### Data
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <td>dsData</td>
       <td>Array of Objects</td>
@@ -216,9 +188,34 @@ Example:
       <td>datasetI18n</td>
       <td>Object</td>
       <td>An object containing translation strings</td>
-    </tr>    
+    </tr>
   </tbody>
-</table>  
+</table>
+
+Example:
+``` vue
+<template>
+  <div>
+    {{ dsRows }} - {{ dsPages }}
+  </div>
+</template>
+
+<script>
+import { inject } from 'vue'
+
+export default {
+  setup(props) {
+    const dsRows = inject('dsRows')
+    const dsPages = inject('dsPages')
+
+    return {
+      dsRows,
+      dsPages
+    }
+  }
+}
+</script>
+```
 
 ##### Methods
 <table class="table table-bordered w-100 d-block d-md-table">

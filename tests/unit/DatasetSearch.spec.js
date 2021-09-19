@@ -5,9 +5,11 @@ const mockSearch = jest.fn()
 
 describe('DatasetSearch', () => {
   const wrapper = shallowMount(DatasetSearch, {
-    provide: {
-      search: function (value) {
-        mockSearch(value)
+    global: {
+      provide: {
+        search: function (value) {
+          mockSearch(value)
+        }
       }
     }
   })

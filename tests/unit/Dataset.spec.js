@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
@@ -10,13 +10,6 @@ import users from '../../example-data/users.json'
 import { clone, waitNT } from '../../tests/utils.js'
 
 let wrapper
-
-const localVue = createLocalVue()
-localVue.component('DatasetShow', DatasetShow)
-localVue.component('DatasetSearch', DatasetSearch)
-localVue.component('DatasetInfo', DatasetInfo)
-localVue.component('DatasetItem', DatasetItem)
-localVue.component('DatasetPager', DatasetPager)
 
 beforeEach(function () {
   wrapper = mount(Dataset, {
@@ -38,15 +31,23 @@ beforeEach(function () {
         <dataset-pager />
       `
     },
-    propsData: {
+    props: {
       dsData: users
     },
-    localVue
+    global: {
+      components: {
+        DatasetShow,
+        DatasetSearch,
+        DatasetInfo,
+        DatasetItem,
+        DatasetPager
+      }
+    }
   })
 })
 
 afterEach(function () {
-  wrapper.destroy()
+  wrapper.unmount()
 })
 
 describe('Dataset', () => {
@@ -57,7 +58,7 @@ describe('Dataset', () => {
 
   it('has the correct pagination values', async () => {
     const pagination = wrapper.findComponent(DatasetPager)
-    const { wrappers: lis } = pagination.findAll('ul > li')
+    const lis = pagination.findAll('ul > li')
     const arr = lis.map((li) => li.text())
     expect(arr).toEqual(['Previous', '1', '2', '3', '...', '500', 'Next'])
   })
@@ -65,7 +66,7 @@ describe('Dataset', () => {
   it('resets the active page when data changes', async () => {
     const newUsers = clone(users).slice(0, 200)
     await wrapper.setProps({ dsData: newUsers })
-    expect(wrapper.findAll('li.page-item').at(1).classes()).toContain('active')
+    expect(wrapper.findAll('li.page-item')[1].classes()).toContain('active')
   })
 
   it('correctly calulates the number of pages', async () => {
@@ -97,10 +98,9 @@ describe('Dataset', () => {
   it('correctly sets the active page', async () => {
     await wrapper
       .findAll('a')
-      .filter((node) => node.text().match(/Next/))
-      .at(0)
+      .filter((node) => node.text().match(/Next/))[0]
       .trigger('click')
-    expect(wrapper.findAll('li.page-item').at(2).classes()).toContain('active')
+    expect(wrapper.findAll('li.page-item')[2].classes()).toContain('active')
   })
 
   it('sorts the dataset using the dsSortBy prop', async () => {

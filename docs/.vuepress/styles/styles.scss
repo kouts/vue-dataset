@@ -103,3 +103,14 @@ blockquote p {color: #777;}
 .theme-container .theme-default-content:not(.custom) > h6 {
   margin-bottom: 1rem !important;
 }
+
+/* Fix footer nav links */
+.page-nav .nav-link, .page-meta .nav-link {
+  display: inline;
+  padding: 0;
+}
+
+/* Fix stripped table rows colors */
+.table.table-striped tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}

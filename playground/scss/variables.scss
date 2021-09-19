@@ -1,0 +1,14 @@
+
+$primary: #42b983;
+$body-color: #304455;
+$info:    #73abfe;
+$gray-100: #f6f6f6;
+$text-muted: #4e6e8e;
+$gray-900: #273849;
+$dark: #273849;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+$navbar-dark-color: rgba($white, .7);

@@ -2,9 +2,9 @@
 pageClass: dataset-page
 ---
 
-# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset"></a> ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg) ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg?compression=gzip)
+# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset/next"></a> ![](https://img.badgesize.io/kouts/vue-dataset/next/dist/vue-dataset.umd.js) ![](https://img.badgesize.io/kouts/vue-dataset/next/dist/vue-dataset.umd.js.svg?compression=gzip)
 
-A set of Vue.js components to display datasets (lists) with filtering, paging, and sorting capabilities!  
+A set of Vue.js 3 components to display datasets (lists) with filtering, paging, and sorting capabilities!  
 Created with reusability in mind, so that one doesn't have to recreate the same functionality for lists over and over again.
 
 > vue-dataset does not impose any structure or layout limitations on your HTML, you can use divs, tables or anything you like to present your data.

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import users from '../../../example-data/users.json'
+import users from '@root/example-data/users.json'
 import { isoDateToEuroDate, isoDateToDate, searchAsEuroDate } from '../utilities'
 
 export default {

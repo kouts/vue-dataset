@@ -20,25 +20,12 @@ import {
 } from 'vue-dataset'
 ```
 
-<div class="mb-4"></div>
-
-Most of the times you'd want to use the **named imports** when using a module bundler, but there are standalone versions of the components available, which you can import individually as well.
-
-``` js
-import Dataset from 'vue-dataset/dist/es/Dataset.js'
-import DatasetItem from 'vue-dataset/dist/es/DatasetItem.js'
-import DatasetInfo from 'vue-dataset/dist/es/DatasetInfo.js'
-import DatasetPager from 'vue-dataset/dist/es/DatasetPager.js'
-import DatasetSearch from 'vue-dataset/dist/es/DatasetSearch.js'
-import DatasetShow from 'vue-dataset/dist/es/DatasetShow.js'
-```
-
 ## Using a script tag
 
-UMD files suitable for including `vue-dataset` using a `script` tag into your page, are located inside the `dist/umd` folder.
+A `vue-dataset.umd.js` file suitable for including `vue-dataset` using a `script` tag into your page, is resides inside the `dist` folder.
 
 ``` html
-<script type="text/javascript" src="VueDataset.min.js"></script>
+<script type="text/javascript" src="vue-dataset.umd.js"></script>
 ```
 
 This will expose a global `VueDataset` object that contains all the `vue-dataset` components.  
@@ -51,25 +38,4 @@ Vue.component('DatasetInfo', VueDataset.DatasetInfo)
 Vue.component('DatasetPager', VueDataset.DatasetPager)
 Vue.component('DatasetSearch', VueDataset.DatasetSearch)
 Vue.component('DatasetShow', VueDataset.DatasetShow)`
-```
-
-You can also include specific components
-
-``` html
-<script type="text/javascript" src="Dataset.min.js"></script>
-<script type="text/javascript" src="DatasetItem.min.js"></script>
-<script type="text/javascript" src="DatasetInfo.min.js"></script>
-<script type="text/javascript" src="DatasetPager.min.js"></script>
-<script type="text/javascript" src="DatasetSearch.min.js"></script>
-<script type="text/javascript" src="DatasetShow.min.js"></script>
-```
-
-These can then be registered with
-```js
-Vue.component('Dataset', Dataset)
-Vue.component('DatasetItem', DatasetItem)
-Vue.component('DatasetInfo', DatasetInfo)
-Vue.component('DatasetPager', DatasetPager)
-Vue.component('DatasetSearch', DatasetSearch)
-Vue.component('DatasetShow', DatasetShow)`
 ```

@@ -3,6 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@playground/*": ["./playground/*"],
+      "@root/*": ["./*"]
     }
   },
   "exclude": ["node_modules", "dist"]

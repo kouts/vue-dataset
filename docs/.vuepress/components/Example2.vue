@@ -125,9 +125,9 @@
 </template>
 
 <script>
-import users from '../../../example-data/users.json'
+import users from '@root/example-data/users.json'
 import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities'
-import { debounce } from '../../../src/helpers'
+import { debounce } from '@/helpers'
 
 // const lessUsers = clone(data).slice(0, 2);
 

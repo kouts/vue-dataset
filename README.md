@@ -1,14 +1,14 @@
-# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset"></a> ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg) ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg?compression=gzip)
+# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset/next"></a> ![](https://img.badgesize.io/kouts/vue-dataset/next/dist/vue-dataset.umd.js) ![](https://img.badgesize.io/kouts/vue-dataset/next/dist/vue-dataset.umd.js.svg?compression=gzip)
 
 
 ---
 
-:fire: **HEADS UP!** You're currently looking at vue-dataset branch for **Vue.js 2**.  
-If you're looking for a Vue.js 3 compatible version of vue-dataset, [please check out the `next` branch](https://github.com/kouts/vue-dataset/tree/next).
+:fire: **HEADS UP!** You're currently looking at vue-dataset `next` branch for **Vue.js 3**.  
+If you're looking for a Vue.js 2 compatible version of vue-dataset, [please check out the `master` branch](https://github.com/kouts/vue-dataset/tree/master).
 
 ---
 
-A set of Vue.js components to display datasets (lists) with filtering, paging, and sorting capabilities!  
+A set of Vue.js 3 components to display datasets (lists) with filtering, paging, and sorting capabilities!  
 Created with reusability in mind, so that one doesn't have to recreate the same functionality for lists over and over again.
 
 > vue-dataset does not impose any structure or layout limitations on your HTML, you can use divs, tables or anything you like to present your data.
@@ -27,12 +27,12 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 
 ## Browsers support
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |
 | --------- | --------- | --------- | --------- | --------- |
-| IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+| Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
 
 Documentation and examples
-https://vue-dataset-demo.netlify.app/
+https://vue-dataset-demo-next.netlify.app/
 
 # Development
 

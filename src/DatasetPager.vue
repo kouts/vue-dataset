@@ -4,15 +4,15 @@
       <a
         class="page-link"
         href="#"
-        :tabindex="disabledPrevious && '-1'"
-        :aria-disabled="disabledPrevious && 'true'"
+        :tabindex="disabledPrevious ? '-1' : null"
+        :aria-disabled="disabledPrevious ? 'true' : null"
         @click.prevent="setActive(dsPage !== 1 && dsPagecount !== 0 ? dsPage - 1 : dsPage)"
       >
         {{ datasetI18n.previous }}
       </a>
     </li>
-    <template v-for="(item, index) in dsPages">
-      <li :key="index" :class="['page-item', item === dsPage && 'active', item === morePages && 'disabled']">
+    <template v-for="(item, index) in dsPages" :key="index">
+      <li :class="['page-item', item === dsPage && 'active', item === morePages && 'disabled']">
         <a v-if="item !== morePages" class="page-link" href="#" @click.prevent="setActive(item)">
           {{ item }}
         </a>
@@ -25,8 +25,8 @@
       <a
         class="page-link"
         href="#"
-        :tabindex="disabledNext && '-1'"
-        :aria-disabled="disabledNext && 'true'"
+        :tabindex="disabledNext ? '-1' : null"
+        :aria-disabled="disabledNext ? 'true' : null"
         @click.prevent="setActive(dsPage !== dsPagecount && dsPagecount !== 0 ? dsPage + 1 : dsPage)"
       >
         {{ datasetI18n.next }}
@@ -36,32 +36,27 @@
 </template>
 
 <script>
+import { ref, inject, computed } from 'vue'
 import { MORE_PAGES } from './helpers'
 
 export default {
-  inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
-  data: function () {
+  setup() {
+    const morePages = ref(MORE_PAGES)
+    const dsPage = inject('dsPage')
+    const dsPagecount = inject('dsPagecount')
+
+    const disabledPrevious = computed(() => dsPage.value === 1)
+    const disabledNext = computed(() => dsPage.value === dsPagecount.value || dsPagecount.value === 0)
+
     return {
-      morePages: MORE_PAGES
-    }
-  },
-  computed: {
-    /* Setup reactive injects */
-    dsPages() {
-      return this.rdsPages()
-    },
-    dsPagecount() {
-      return this.rdsPagecount()
-    },
-    dsPage() {
-      return this.rdsPage()
-    },
-    /* Normal computeds */
-    disabledPrevious() {
-      return this.dsPage === 1
-    },
-    disabledNext() {
-      return this.dsPage === this.dsPagecount || this.dsPagecount === 0
+      datasetI18n: inject('datasetI18n'),
+      setActive: inject('setActive'),
+      dsPages: inject('dsPages'),
+      dsPagecount,
+      dsPage,
+      morePages,
+      disabledPrevious,
+      disabledNext
     }
   }
 }

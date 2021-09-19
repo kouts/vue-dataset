@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
+import { ref } from 'vue'
 import DatasetShow from '@/DatasetShow.vue'
 import datasetI18n from '@/i18n/en.js'
 
@@ -6,10 +7,12 @@ const mockShowEntries = jest.fn()
 
 describe('DatasetShow', () => {
   const wrapper = shallowMount(DatasetShow, {
-    provide: {
-      datasetI18n: datasetI18n,
-      showEntries: function (value) {
-        mockShowEntries(value)
+    global: {
+      provide: {
+        datasetI18n: ref(datasetI18n),
+        showEntries: function (value) {
+          mockShowEntries(value)
+        }
       }
     }
   })
