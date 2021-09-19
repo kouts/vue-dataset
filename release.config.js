@@ -4,6 +4,10 @@ module.exports = {
     {
       name: 'beta',
       prerelease: true
+    },
+    {
+      name: 'next',
+      channel: 'next'
     }
   ],
   plugins: [
