@@ -32,7 +32,7 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 | Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
 
 Documentation and examples
-https://vue-dataset-demo-next.netlify.app/
+https://next--vue-dataset-demo.netlify.app/
 
 # Development
 
