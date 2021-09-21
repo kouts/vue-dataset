@@ -16,7 +16,8 @@
   "unpkg": "dist/vue-dataset.umd.js",
   "sideEffects": [
     "./**/*.scss",
-    "./vuepress-plugin-vue-example/**/*.vue"
+    "./vuepress-plugin-vue-example/**/*.vue",
+    "./docs/**/*.vue"
   ],
   "scripts": {
     "dev": "vite",
