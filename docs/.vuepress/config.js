@@ -5,7 +5,14 @@ module.exports = {
   plugins: [
     VueExamplePlugin({
       componentsPath: '/docs/.vuepress/components/'
-    })
+    }),
+    [
+      '@vuepress/docsearch',
+      {
+        apiKey: '1a6df20c3c6d9b729c4109ebce3e2eed',
+        indexName: 'next-vue-dataset'
+      }
+    ]
   ],
   dest: 'public',
   title: 'vue-dataset',
