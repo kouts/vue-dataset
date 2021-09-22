@@ -171,3 +171,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.btn-group .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 10;
+}
+</style>
