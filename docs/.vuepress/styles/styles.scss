@@ -114,3 +114,16 @@ blockquote p {color: #777;}
 .table.table-striped tr:nth-child(2n) {
   background-color: #f6f8fa;
 }
+
+/* Fix headings font-size */
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.65rem;
+}
+
+h3 {
+  font-size: 1.35rem;
+}
