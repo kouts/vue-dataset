@@ -18,6 +18,7 @@ module.exports = {
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',
   themeConfig: {
+    contributors: false,
     repo: 'https://github.com/kouts/vue-dataset/tree/next',
     darkMode: false,
     sidebar: [
