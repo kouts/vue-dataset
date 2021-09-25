@@ -1,5 +1,5 @@
 const path = require('path')
-const VueExamplePlugin = require('../../vuepress-plugin-vue-example/index.js')
+const VueExamplePlugin = require('vuepress-plugin-vue-example')
 
 module.exports = {
   plugins: [
