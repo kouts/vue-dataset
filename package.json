@@ -70,6 +70,7 @@
     "vue-loader": "^16.5.0",
     "vue-router": "^4.0.11",
     "vuepress": "^2.0.0-beta.26",
+    "vuepress-plugin-vue-example": "^2.0.1",
     "vuex": "^4.0.2"
   }
 }
