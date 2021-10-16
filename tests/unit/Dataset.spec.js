@@ -129,7 +129,7 @@ describe('Dataset', () => {
     expect(wrapper.findAll('.items > div').length).toBe(1)
   })
 
-  it('data updates correctly when initialized with empty array', async () => {
+  it('updates data correctly when initialized with an empty array', async () => {
     const wrapper = createWrapper()
     const newUsers = clone(users).slice(0, 5)
     expect(wrapper.vm.dsData.length).toBe(0)
@@ -137,7 +137,7 @@ describe('Dataset', () => {
     expect(wrapper.findAll('.items > div')[0].text()).toBe('0 - Harper Nolan')
   })
 
-  it('data updates correctly when initialized with a non-empty array', async () => {
+  it('updates data correctly when initialized with a non-empty array', async () => {
     const users1 = clone(users).slice(0, 5)
     const users2 = clone(users).slice(6, 10)
     const wrapper = createWrapper({ dsData: users1 })
