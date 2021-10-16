@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/kouts/vue-dataset/compare/v2.0.1...v2.0.2) (2021-10-16)
+
+
+### Bug Fixes
+
+* fixed dsdata not updating ([f17a1d7](https://github.com/kouts/vue-dataset/commit/f17a1d79ce6b6c3724c57b6936ed6524b8bd79ce))
+
 ## [2.0.1](https://github.com/kouts/vue-dataset/compare/v2.0.0...v2.0.1) (2021-09-19)
 
 
