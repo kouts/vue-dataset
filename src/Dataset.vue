@@ -143,7 +143,10 @@ export default {
     provide('showEntries', showEntries)
     provide('setActive', setActive)
     provide('datasetI18n', datasetI18n)
-    provide('dsData', props.dsData)
+    provide(
+      'dsData',
+      computed(() => props.dsData)
+    )
     provide('dsRows', dsRows)
     provide('dsPages', dsPages)
     provide('dsResultsNumber', dsResultsNumber)

@@ -1,5 +1,10 @@
 <template>
   <div class="container">
+    <div class="mb-3">
+      <button type="button" class="btn btn-primary ml-1" @click="setData1">Set users 1</button>
+      <button type="button" class="btn btn-primary ml-1" @click="setData2">Set users 2</button>
+      <button type="button" class="btn btn-primary ml-1" @click="setDataAll">Set users all</button>
+    </div>
     <dataset
       v-slot="{ ds }"
       :ds-data="users"
@@ -56,13 +61,15 @@ const clone = function (obj) {
   return JSON.parse(JSON.stringify(obj || {}))
 }
 
-const users = clone(jsonUsers).slice()
+const users1 = clone(jsonUsers).slice(0, 12)
+const users2 = clone(jsonUsers).slice(13, 25)
+const usersAll = clone(jsonUsers)
 
 export default {
   name: 'Home',
   data() {
     return {
-      users: users,
+      users: [],
       statusClass: {
         Active: 'text-success',
         Away: 'text-warning',
@@ -70,6 +77,17 @@ export default {
         Invisible: 'text-secondary'
       },
       selected: 5
+    }
+  },
+  methods: {
+    setData1() {
+      this.users = users1
+    },
+    setData2() {
+      this.users = users2
+    },
+    setDataAll() {
+      this.users = usersAll
     }
   }
 }
