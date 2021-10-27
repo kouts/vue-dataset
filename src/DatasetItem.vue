@@ -1,7 +1,7 @@
 <template>
   <component :is="tag">
-    <template v-for="item in dsRows">
-      <slot :row="dsData[item]" :rowIndex="item"></slot>
+    <template v-for="(rowIndex, i) in dsRows">
+      <slot :row="dsData[rowIndex]" :rowIndex="rowIndex" :index="indexes[i]"></slot>
     </template>
     <slot v-if="!dsRows.length" name="noDataFound"></slot>
   </component>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  inject: ['rdsData', 'rdsRows'],
+  inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
   props: {
     tag: {
       type: String,
@@ -23,6 +23,19 @@ export default {
     },
     dsData() {
       return this.rdsData()
+    },
+    dsFrom() {
+      return this.rdsFrom()
+    },
+    dsTo() {
+      return this.rdsTo()
+    },
+    indexes() {
+      const arr = []
+      for (let i = this.dsFrom; i < this.dsTo; i++) {
+        arr.push(i)
+      }
+      return arr
     }
   }
 }
