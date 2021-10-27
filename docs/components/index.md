@@ -358,13 +358,18 @@ It also provides the row's original index, useful e.g if you want to delete an i
     <tr>
       <td>row</td>
       <td>Object</td>
-      <td>The dataset row data.</td>
+      <td>The dataset row data</td>
     </tr>
     <tr>
       <td>rowIndex</td>
       <td>Number</td>
       <td>The original index of the data row</td>
     </tr>
+    <tr>
+      <td>index</td>
+      <td>Number</td>
+      <td>The iteration index</td>
+    </tr>    
   </tbody>
 </table>
 
