@@ -1,14 +1,14 @@
 <template>
   <component :is="tag">
-    <template v-for="item in dsRows">
-      <slot :row="dsData[item]" :rowIndex="item"></slot>
+    <template v-for="(rowIndex, i) in dsRows">
+      <slot :row="dsData[rowIndex]" :rowIndex="rowIndex" :index="indexes[i]"></slot>
     </template>
     <slot v-if="!dsRows.length" name="noDataFound"></slot>
   </component>
 </template>
 
 <script>
-import { inject } from 'vue'
+import { inject, computed } from 'vue'
 
 export default {
   props: {
@@ -18,9 +18,18 @@ export default {
     }
   },
   setup() {
+    const indexes = computed(() => {
+      const arr = []
+      for (let i = inject('dsFrom').value; i < inject('dsTo').value; i++) {
+        arr.push(i)
+      }
+      return arr
+    })
+
     return {
       dsData: inject('dsData'),
-      dsRows: inject('dsRows')
+      dsRows: inject('dsRows'),
+      indexes
     }
   }
 }

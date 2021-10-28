@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatasetItem renders correctly 1`] = `
+<div>
+  
+  
+  <div
+    class="result"
+  >
+    <p>
+      Jessie Casey
+    </p>
+    <p>
+      0
+    </p>
+    <p>
+      0
+    </p>
+  </div>
+  
+  
+  <div
+    class="result"
+  >
+    <p>
+      Solomon Stanley
+    </p>
+    <p>
+      1
+    </p>
+    <p>
+      1
+    </p>
+  </div>
+  
+  
+  <!--v-if-->
+</div>
+`;
+
+exports[`DatasetItem renders divs after data changed 1`] = `
+<div>
+  
+  
+  <div
+    class="result"
+  >
+    <p>
+      John Doe
+    </p>
+    <p>
+      0
+    </p>
+    <p>
+      0
+    </p>
+  </div>
+  
+  
+  <!--v-if-->
+</div>
+`;

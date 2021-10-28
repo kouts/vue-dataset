@@ -22,15 +22,18 @@ describe('DatasetItem', () => {
             }
           ]),
           dsRows: ref([0, 1]),
+          dsFrom: ref(0),
+          dsTo: ref(10),
           ...provideOpts
         }
       },
       slots: {
         default: `
-          <template v-slot="{ row, rowIndex }">
+          <template v-slot="{ row, rowIndex, index }">
             <div class="result">
               <p>{{ row.name }}</p>
               <p>{{ rowIndex }}</p>
+              <p>{{ index }}</p>
             </div>
           </template>
         `,
@@ -45,9 +48,19 @@ describe('DatasetItem', () => {
     wrapper.unmount()
   })
 
+  it('renders correctly', () => {
+    wrapper = wrapperWithProvide()
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
   it('renders divs based on passed props', () => {
     wrapper = wrapperWithProvide()
     expect(wrapper.findAll('div.result').length).toBe(2)
+  })
+
+  it('calculates the correct indexes', () => {
+    wrapper = wrapperWithProvide()
+    expect(wrapper.vm.indexes).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   })
 
   it('does not render any results when dsRows is empty', () => {
@@ -76,5 +89,6 @@ describe('DatasetItem', () => {
       dsRows: ref([0])
     })
     expect(wrapper.findAll('div.result').length).toBe(1)
+    expect(wrapper.element).toMatchSnapshot()
   })
 })
