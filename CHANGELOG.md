@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/kouts/vue-dataset/compare/v2.0.2...v2.1.0) (2021-10-28)
+
+
+### Features
+
+* added iteration index ([367c1c0](https://github.com/kouts/vue-dataset/commit/367c1c0986cc954ea87ed06528ee5ae5f6b8441f))
+
 ## [2.0.2](https://github.com/kouts/vue-dataset/compare/v2.0.1...v2.0.2) (2021-10-16)
 
 
