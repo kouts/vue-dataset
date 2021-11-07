@@ -1,7 +1,5 @@
 <template>
-  <component :is="renderAs">
-    <slot :ds="{ dsShowEntries, dsResultsNumber, dsPage, dsPagecount, dsFrom, dsTo, dsData, dsRows, dsPages }"></slot>
-  </component>
+  <slot :ds="{ dsShowEntries, dsResultsNumber, dsPage, dsPagecount, dsFrom, dsTo, dsData, dsRows, dsPages }"></slot>
 </template>
 
 <script>
@@ -27,10 +25,6 @@ export default {
     }
   },
   props: {
-    renderAs: {
-      type: [String, Object],
-      default: 'div',
-    },
     dsData: {
       type: Array,
       default: () => []
