@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/kouts/vue-dataset/compare/v2.1.0...v3.0.0) (2021-11-10)
+
+
+* Merge pull request #45 from mesqueeb/next ([041dcae](https://github.com/kouts/vue-dataset/commit/041dcae9da75057eb744f07abf82f5833058e1ba)), closes [#45](https://github.com/kouts/vue-dataset/issues/45)
+
+
+### BREAKING CHANGES
+
+* The Dataset provider component no longer renders a div.
+
+feat: Make Dataset truly renderless
+
 # [2.1.0](https://github.com/kouts/vue-dataset/compare/v2.0.2...v2.1.0) (2021-10-28)
 
 
