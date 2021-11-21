@@ -32,10 +32,12 @@ This will expose a global `VueDataset` object that contains all the `vue-dataset
 You can then register them globally e.g.
 
 ```js
-Vue.component('Dataset', VueDataset.Dataset)
-Vue.component('DatasetItem', VueDataset.DatasetItem)
-Vue.component('DatasetInfo', VueDataset.DatasetInfo)
-Vue.component('DatasetPager', VueDataset.DatasetPager)
-Vue.component('DatasetSearch', VueDataset.DatasetSearch)
-Vue.component('DatasetShow', VueDataset.DatasetShow)`
+const app = Vue.createApp({...})
+
+app.component('Dataset', VueDataset.Dataset)
+app.component('DatasetItem', VueDataset.DatasetItem)
+app.component('DatasetInfo', VueDataset.DatasetInfo)
+app.component('DatasetPager', VueDataset.DatasetPager)
+app.component('DatasetSearch', VueDataset.DatasetSearch)
+app.component('DatasetShow', VueDataset.DatasetShow)`
 ```
