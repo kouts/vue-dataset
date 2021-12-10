@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/kouts/vue-dataset/compare/v3.0.0...v3.1.0) (2021-12-10)
+
+
+### Features
+
+* pass functions in scope... search, showEntries, setActive ([13903f3](https://github.com/kouts/vue-dataset/commit/13903f379917ebf5cf4d67563fa22ce1896d806b))
+
 # [3.0.0](https://github.com/kouts/vue-dataset/compare/v2.1.0...v3.0.0) (2021-11-10)
 
 
