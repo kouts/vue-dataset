@@ -1,5 +1,20 @@
 <template>
-  <slot :ds="{ dsShowEntries, dsResultsNumber, dsPage, dsPagecount, dsFrom, dsTo, dsData, dsRows, dsPages, search, showEntries, setActive }"></slot>
+  <slot
+    :ds="{
+      dsShowEntries,
+      dsResultsNumber,
+      dsPage,
+      dsPagecount,
+      dsFrom,
+      dsTo,
+      dsData,
+      dsRows,
+      dsPages,
+      search,
+      showEntries,
+      setActive
+    }"
+  ></slot>
 </template>
 
 <script>
