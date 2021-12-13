@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/kouts/vue-dataset/compare/v3.1.0...v3.1.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* **docs:** remove non-existing css variable usage ([1f00506](https://github.com/kouts/vue-dataset/commit/1f005064b442ba1bc9de49bede940a713342c34d))
+
 # [3.1.0](https://github.com/kouts/vue-dataset/compare/v3.0.0...v3.1.0) (2021-12-10)
 
 
