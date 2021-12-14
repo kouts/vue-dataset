@@ -52,11 +52,11 @@ export default {
   /**
    * @param {{
    *   dsData: Record<string, any>[];
-   *   dsFilterFields: { [fieldId in string]: (cellValue: any, rowData: Record<string, any>) => boolean | any };
+   *   dsFilterFields: { [fieldId in string]: (cellValue: any) => boolean | any };
    *   dsSortby: string[];
    *   dsSearchIn: string[];
-   *   dsSearchAs: { [id in string]: (val: any) => boolean };
-   *   dsSortAs: { [id in string]: (val: any) => any };
+   *   dsSearchAs: { [id in string]: (cellValue: any, searchString: string) => boolean };
+   *   dsSortAs: { [id in string]: (cellValue: any) => any };
    * }} props
    */
   setup(props) {
