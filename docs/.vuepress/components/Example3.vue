@@ -122,7 +122,7 @@ export default {
   box-sizing: border-box;
   position: relative;
   display: block;
-  transform: scale(var(--ggs, 1));
+  transform: scale(1);
   width: 22px;
   height: 22px;
 }
