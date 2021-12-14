@@ -115,7 +115,7 @@ export default {
     The trick is to work directly on the array indexes.
     */
     whenChanged: {
-      handler(val, oldVal) {
+      handler(newVal, oldVal) {
         let result = []
         const dsData = this.dsData
         const dsSearch = this.dsSearch
