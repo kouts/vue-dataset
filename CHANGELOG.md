@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/kouts/vue-dataset/compare/v3.1.1...v3.2.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* typos ([8d40b51](https://github.com/kouts/vue-dataset/commit/8d40b5178c235110c73f8b10e53f1bf5d760e2f8))
+
+
+### Features
+
+* add JSDoc type info on props ([a1cfba7](https://github.com/kouts/vue-dataset/commit/a1cfba7987ddcd2c579b229abb214ada44f8115d))
+
 ## [3.1.1](https://github.com/kouts/vue-dataset/compare/v3.1.0...v3.1.1) (2021-12-13)
 
 
