@@ -49,6 +49,16 @@ export default {
       default: () => ({})
     }
   },
+  /**
+   * @param {{
+   *   dsData: Record<string, any>[];
+   *   dsFilterFields: { [fieldId in string]: (cellValue: any, rowData: Record<string, any>) => boolean | any };
+   *   dsSortby: string[];
+   *   dsSearchIn: string[];
+   *   dsSearchAs: { [id in string]: (val: any) => boolean };
+   *   dsSortAs: { [id in string]: (val: any) => any };
+   * }} props
+   */
   setup(props) {
     const dsPage = ref(1)
     const dsSearch = ref('')
