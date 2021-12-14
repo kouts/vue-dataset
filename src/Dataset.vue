@@ -117,7 +117,7 @@ export default {
 
     watch(
       whenChanged,
-      (val, oldVal) => {
+      (newVal, oldVal) => {
         let result = []
 
         if (!dsSearch.value && !props.dsSortby.length && isEmptyObject(props.dsFilterFields)) {
