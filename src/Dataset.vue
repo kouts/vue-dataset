@@ -1,6 +1,7 @@
 <template>
   <slot
     :ds="{
+      dsIndexes,
       dsShowEntries,
       dsResultsNumber,
       dsPage,
@@ -179,6 +180,7 @@ export default {
     provide('dsPage', dsPage)
 
     return {
+      dsIndexes: indexes,
       dsShowEntries,
       dsResultsNumber,
       dsPage,
