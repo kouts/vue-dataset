@@ -145,9 +145,19 @@ You can leverage these using `inject` to create your own **custom child componen
   </thead>
   <tbody>
     <tr>
+      <td>dsData</td>
+      <td>Array of Objects</td>
+      <td>The data object that contains all the data</td>
+    </tr>  
+    <tr>
+      <td>dsIndexes</td>
+      <td>Array</td>
+      <td>The indexes of all the filtered data rows, regardless of paging</td>
+    </tr>  
+    <tr>
       <td>dsRows</td>
       <td>Array</td>
-      <td>The indexes of the data rows currently displaying</td>
+      <td>The indexes of the data rows in the current displayed page</td>
     </tr>
     <tr>
       <td>dsPages</td>
@@ -180,10 +190,10 @@ You can leverage these using `inject` to create your own **custom child componen
       <td>The number of the current page in pagination</td>
     </tr>
     <tr>
-      <td>dsData</td>
-      <td>Array of Objects</td>
-      <td>The data object that contains all the data.</td>
-    </tr>
+      <td>dsShowEntries</td>
+      <td>Number</td>
+      <td>The number of items to show in pagination</td>
+    </tr>    
     <tr>
       <td>datasetI18n</td>
       <td>Object</td>
@@ -262,17 +272,32 @@ Dataset also provides several data via a `ds` object exposed from a a scoped slo
     <tr>
       <td>dsData</td>
       <td>Array of Objects</td>
-      <td>The data object that contains all the data.</td>
+      <td>The data object that contains all the data</td>
+    </tr>
+    <tr>
+      <td>dsIndexes</td>
+      <td>Array</td>
+      <td>The indexes of all the filtered data rows, regardless of paging</td>
     </tr>
     <tr>
       <td>dsRows</td>
       <td>Array</td>
-      <td>The indexes of the data rows currently displaying</td>
+      <td>The indexes of the data rows in the current displayed page</td>
     </tr>
+    <tr>
+      <td>dsPages</td>
+      <td>Array</td>
+      <td>The array used to create pagination links</td>
+    </tr>    
     <tr>
       <td>dsResultsNumber</td>
       <td>Number</td>
       <td>The number of rows currently displaying</td>
+    </tr>
+    <tr>
+      <td>dsPagecount</td>
+      <td>Number</td>
+      <td>The number of pagination pages</td>
     </tr>
     <tr>
       <td>dsFrom</td>
@@ -283,16 +308,6 @@ Dataset also provides several data via a `ds` object exposed from a a scoped slo
       <td>dsTo</td>
       <td>Number</td>
       <td>The item "to" of paginated items currently displaying</td>
-    </tr>
-    <tr>
-      <td>dsPages</td>
-      <td>Array</td>
-      <td>The array used to create pagination links</td>
-    </tr>
-    <tr>
-      <td>dsPagecount</td>
-      <td>Number</td>
-      <td>The number of pagination pages</td>
     </tr>
     <tr>
       <td>dsPage</td>

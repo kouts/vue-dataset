@@ -1,6 +1,7 @@
 <template>
   <slot
     :ds="{
+      dsIndexes,
       dsShowEntries,
       dsResultsNumber,
       dsPage,
@@ -52,11 +53,11 @@ export default {
   /**
    * @param {{
    *   dsData: Record<string, any>[];
-   *   dsFilterFields: { [fieldId in string]: (cellValue: any) => boolean | any };
+   *   dsFilterFields: { [fieldId in string]: (columnValue: any) => boolean | any };
    *   dsSortby: string[];
    *   dsSearchIn: string[];
-   *   dsSearchAs: { [id in string]: (cellValue: any, searchString: string) => boolean };
-   *   dsSortAs: { [id in string]: (cellValue: any) => any };
+   *   dsSearchAs: { [id in string]: (columnValue: any, searchString: string) => boolean };
+   *   dsSortAs: { [id in string]: (columnValue: any) => any };
    * }} props
    */
   setup(props) {
@@ -64,7 +65,7 @@ export default {
     const dsSearch = ref('')
     const dsShowEntries = ref(10)
     const datasetI18n = ref(i18n)
-    const indexes = ref([])
+    const dsIndexes = ref([])
 
     const search = (value) => {
       dsSearch.value = value
@@ -97,7 +98,7 @@ export default {
     })
 
     const dsRows = computed(() => {
-      return indexes.value.slice(dsFrom.value, dsTo.value)
+      return dsIndexes.value.slice(dsFrom.value, dsTo.value)
     })
 
     const dsPages = computed(() => {
@@ -105,7 +106,7 @@ export default {
     })
 
     const dsResultsNumber = computed(() => {
-      return indexes.value.length
+      return dsIndexes.value.length
     })
 
     const dsPagecount = computed(() => {
@@ -155,13 +156,14 @@ export default {
           // We need only the indexes
           result = result.map((entry) => entry.index)
         }
-        indexes.value = result
+        dsIndexes.value = result
       },
       {
         immediate: true
       }
     )
 
+    provide('dsIndexes', dsIndexes)
     provide('search', search)
     provide('showEntries', showEntries)
     provide('setActive', setActive)
@@ -179,6 +181,7 @@ export default {
     provide('dsPage', dsPage)
 
     return {
+      dsIndexes,
       dsShowEntries,
       dsResultsNumber,
       dsPage,
