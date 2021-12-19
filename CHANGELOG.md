@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/kouts/vue-dataset/compare/v3.2.0...v3.3.0) (2021-12-19)
+
+
+### Bug Fixes
+
+* exposed dsIndexes through provide ([931e6cc](https://github.com/kouts/vue-dataset/commit/931e6cc01a974492ea97be0a6dd00cbc34f0fe93))
+
+
+### Features
+
+* exposed indexes to scope as `dsIndexes` ([000970a](https://github.com/kouts/vue-dataset/commit/000970a248c803895c20dbeb597f3fff2cf5c9b2))
+
 # [3.2.0](https://github.com/kouts/vue-dataset/compare/v3.1.1...v3.2.0) (2021-12-14)
 
 
