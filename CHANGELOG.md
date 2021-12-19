@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/kouts/vue-dataset/compare/v3.3.0...v3.4.0) (2021-12-19)
+
+
+### Features
+
+* pass rowData as 3rd param to the searchAs function ([ec3a81a](https://github.com/kouts/vue-dataset/commit/ec3a81ad79356f74ab5c1fac794377e59dc0dc18))
+
 # [3.3.0](https://github.com/kouts/vue-dataset/compare/v3.2.0...v3.3.0) (2021-12-19)
 
 
