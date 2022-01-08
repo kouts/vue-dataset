@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/kouts/vue-dataset/compare/v3.4.1...v3.4.2) (2022-01-08)
+
+
+### Bug Fixes
+
+* fixed release assets ([c4462da](https://github.com/kouts/vue-dataset/commit/c4462da8ce45c1cb7c8f17dbe40b5578a3ff1e2f))
+
 ## [3.4.1](https://github.com/kouts/vue-dataset/compare/v3.4.0...v3.4.1) (2022-01-08)
 
 

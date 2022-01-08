@@ -1,1 +1,502 @@
-import{ref as e,computed as t,watch as s,provide as a,nextTick as n,openBlock as r,createElementBlock as l,renderSlot as u,inject as d,toDisplayString as o,createBlock as i,resolveDynamicComponent as c,withCtx as v,Fragment as g,renderList as h,createCommentVNode as f,createElementVNode as p,normalizeClass as w,withModifiers as b}from"vue";var m={show:"Show",entries:"entries",previous:"Previous",next:"Next",showing:"Showing",showingTo:"to",showingOf:"of",showingEntries:"entries"};function P(e){for(const t in e)return!1;return!0}const S={props:{dsData:{type:Array,default:()=>[]},dsFilterFields:{type:Object,default:()=>({})},dsSortby:{type:Array,default:()=>[]},dsSearchIn:{type:Array,default:()=>[]},dsSearchAs:{type:Object,default:()=>({})},dsSortAs:{type:Object,default:()=>({})}},setup(r){const l=e(1),u=e(""),d=e(10),o=e(m),i=e([]),c=e=>{u.value=e},v=async e=>{const t=p.value;d.value=e,await n();const s=p.value;s.length<t.length&&g(s[s.length-1])},g=e=>{l.value=e},h=t((()=>(r.dsData,u.value,r.dsSortby,r.dsFilterFields,r.dsSearchIn,r.dsSearchAs,r.dsSortAs,Date.now()))),f=t((()=>i.value.slice(S.value,y.value))),p=t((()=>function(e,t){const s=[],a=[];let n;if(s.push(1),e<=1)return s;for(let r=t-2;r<=t+2;r++)r<e&&r>1&&s.push(r);s.push(e);for(let r=0;r<s.length;r++)n&&(s[r]-n==2?a.push(n+1):s[r]-n!=1&&a.push("...")),a.push(s[r]),n=s[r];return a}(b.value,l.value))),w=t((()=>i.value.length)),b=t((()=>Math.ceil(w.value/d.value))),S=t((()=>(l.value-1)*d.value)),y=t((()=>l.value*d.value));return s(w,((e,t)=>{g(1)})),s(h,((e,t)=>{let s=[];u.value||r.dsSortby.length||!P(r.dsFilterFields)?(s=r.dsData.map(((e,t)=>({index:t,value:e}))),P(r.dsFilterFields)||(s=function(e,t){for(const s in t)e=e.filter((function(e){const a=e.value;for(const n in a)if(n===s){if("function"==typeof t[s])return t[s](a[n]);if(""===t[s])return!0;if(a[n]===t[s])return!0}return!1}));return e}(s,r.dsFilterFields)),u.value&&(s=s.filter((e=>function(e,t,s,a){a=String(a).toLowerCase();for(const n in s)if(0===e.length||-1!==e.indexOf(n)){const e=String(s[n]).toLowerCase();for(const s in t)if(s===n&&"function"==typeof t[s]){const n=t[s](e,a);if(!0===n)return n}if(e.indexOf(a)>=0)return!0}return!1}(r.dsSearchIn,r.dsSearchAs,e.value,u.value)))),r.dsSortby.length&&s.sort(function(e,t={}){const s=[];let a;const n=e.length;return e=e.map((function(e,t){return"-"===e[0]?(s[t]=-1,e=e.substring(1)):s[t]=1,e})),function(r,l){for(a=0;a<n;a++){const n=e[a],u=t[n]?t[n](r.value[n]):r.value[n],d=t[n]?t[n](l.value[n]):l.value[n];if(u>d)return s[a];if(u<d)return-s[a]}return 0}}(r.dsSortby,r.dsSortAs)),s=s.map((e=>e.index))):s=r.dsData.map(((e,t)=>t)),i.value=s}),{immediate:!0}),a("search",c),a("showEntries",v),a("setActive",g),a("datasetI18n",o),a("dsData",r.dsData),a("dsRows",f),a("dsPages",p),a("dsResultsNumber",w),a("dsPagecount",b),a("dsFrom",S),a("dsTo",y),a("dsPage",l),{dsShowEntries:d,dsResultsNumber:w,dsPage:l,dsPagecount:b,dsFrom:S,dsTo:y,dsRows:f,dsPages:p,search:c,showEntries:v,setActive:g}}};S.render=function(e,t,s,a,n,d){return r(),l("div",null,[u(e.$slots,"default",{ds:{dsShowEntries:a.dsShowEntries,dsResultsNumber:a.dsResultsNumber,dsPage:a.dsPage,dsPagecount:a.dsPagecount,dsFrom:a.dsFrom,dsTo:a.dsTo,dsData:s.dsData,dsRows:a.dsRows,dsPages:a.dsPages}})])};const y={setup(){const e=d("dsResultsNumber"),s=d("dsFrom"),a=d("dsTo"),n=t((()=>0!==e.value?s.value+1:0)),r=t((()=>a.value>=e.value?e.value:a.value));return{datasetI18n:d("datasetI18n"),dsResultsNumber:e,showing:n,showingTo:r}}};y.render=function(e,t,s,a,n,u){return r(),l("div",null,o(a.datasetI18n.showing)+" "+o(a.showing)+" "+o(a.datasetI18n.showingTo)+" "+o(a.showingTo)+" "+o(a.datasetI18n.showingOf)+" "+o(a.dsResultsNumber)+" "+o(a.datasetI18n.showingEntries),1)};const x={props:{tag:{type:String,default:"div"}},setup:()=>({dsData:d("dsData"),dsRows:d("dsRows")})};x.render=function(e,t,s,a,n,d){return r(),i(c(s.tag),null,{default:v((()=>[(r(!0),l(g,null,h(a.dsRows,(t=>u(e.$slots,"default",{row:a.dsData[t],rowIndex:t}))),256)),a.dsRows.length?f("",!0):u(e.$slots,"noDataFound",{key:0})])),_:3})};const I={setup(){const s=e("..."),a=d("dsPage"),n=d("dsPagecount"),r=t((()=>1===a.value)),l=t((()=>a.value===n.value||0===n.value));return{datasetI18n:d("datasetI18n"),setActive:d("setActive"),dsPages:d("dsPages"),dsPagecount:n,dsPage:a,morePages:s,disabledPrevious:r,disabledNext:l}}},D={class:"pagination"},A=["tabindex","aria-disabled"],N=["onClick"],F={key:1,class:"page-link"},R=["tabindex","aria-disabled"];I.render=function(e,t,s,a,n,u){return r(),l("ul",D,[p("li",{class:w(["page-item",a.disabledPrevious&&"disabled"])},[p("a",{class:"page-link",href:"#",tabindex:a.disabledPrevious?"-1":null,"aria-disabled":a.disabledPrevious?"true":null,onClick:t[0]||(t[0]=b((e=>a.setActive(1!==a.dsPage&&0!==a.dsPagecount?a.dsPage-1:a.dsPage)),["prevent"]))},o(a.datasetI18n.previous),9,A)],2),(r(!0),l(g,null,h(a.dsPages,((e,t)=>(r(),l("li",{key:t,class:w(["page-item",e===a.dsPage&&"active",e===a.morePages&&"disabled"])},[e!==a.morePages?(r(),l("a",{key:0,class:"page-link",href:"#",onClick:b((t=>a.setActive(e)),["prevent"])},o(e),9,N)):(r(),l("span",F,o(e),1))],2)))),128)),p("li",{class:w(["page-item",a.disabledNext&&"disabled"])},[p("a",{class:"page-link",href:"#",tabindex:a.disabledNext?"-1":null,"aria-disabled":a.disabledNext?"true":null,onClick:t[1]||(t[1]=b((e=>a.setActive(a.dsPage!==a.dsPagecount&&0!==a.dsPagecount?a.dsPage+1:a.dsPage)),["prevent"]))},o(a.datasetI18n.next),9,R)],2)])};const k={props:{dsSearchPlaceholder:{type:String,default:""},wait:{type:Number,default:0}},setup(t){const s=d("search");return{dsSearch:e(""),input:function(e,t,s){let a;return function(){const n=this,r=arguments;clearTimeout(a),s&&!a&&e.apply(n,r),a=setTimeout((function(){a=null,s||e.apply(n,r)}),t)}}((e=>{s(e)}),t.wait)}}},E=["placeholder","value"];k.render=function(e,t,s,a,n,u){return r(),l("input",{type:"text",placeholder:s.dsSearchPlaceholder,class:"form-control",value:a.dsSearch,onInput:t[0]||(t[0]=e=>a.input(e.target.value))},null,40,E)};const T={props:{dsShowEntries:{type:Number,default:10},dsShowEntriesLovs:{type:Array,default:()=>[{value:5,text:5},{value:10,text:10},{value:25,text:25},{value:50,text:50},{value:100,text:100}]}},emits:["changed"],setup(e,{emit:t}){const s=d("showEntries");return s(Number(e.dsShowEntries)),{datasetI18n:d("datasetI18n"),change:e=>{t("changed",Number(e.target.value)),s(Number(e.target.value))}}}},C={class:"form-inline"},O=["value"],L=["value"];T.render=function(e,t,s,a,n,u){return r(),l("div",C,[p("label",null,o(a.datasetI18n.show),1),p("select",{value:s.dsShowEntries,class:"form-control mr-1 ml-1",onChange:t[0]||(t[0]=(...e)=>a.change&&a.change(...e))},[(r(!0),l(g,null,h(s.dsShowEntriesLovs,(e=>(r(),l("option",{key:e.value,value:e.value},o(e.text),9,L)))),128))],40,O),p("label",null,o(a.datasetI18n.entries),1)])};export{S as Dataset,y as DatasetInfo,x as DatasetItem,I as DatasetPager,k as DatasetSearch,T as DatasetShow};
+import { ref, computed, watch, provide, renderSlot, nextTick, inject, openBlock, createElementBlock, toDisplayString, createBlock, resolveDynamicComponent, withCtx, Fragment, renderList, createCommentVNode, createElementVNode, normalizeClass, withModifiers } from "vue";
+var i18n = {
+  show: "Show",
+  entries: "entries",
+  previous: "Previous",
+  next: "Next",
+  showing: "Showing",
+  showingTo: "to",
+  showingOf: "of",
+  showingEntries: "entries"
+};
+const MORE_PAGES = "...";
+function debounce(func, wait, immediate) {
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    if (immediate && !timeout) {
+      func.apply(context, args);
+    }
+    timeout = setTimeout(function() {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+  };
+}
+function isEmptyObject(obj) {
+  for (const key in obj) {
+    return false;
+  }
+  return true;
+}
+function createPagingRange(nrOfPages, currentPage) {
+  const delta = 2;
+  const range = [];
+  const rangeWithDots = [];
+  let length;
+  range.push(1);
+  if (nrOfPages <= 1) {
+    return range;
+  }
+  for (let i = currentPage - delta; i <= currentPage + delta; i++) {
+    if (i < nrOfPages && i > 1) {
+      range.push(i);
+    }
+  }
+  range.push(nrOfPages);
+  for (let i = 0; i < range.length; i++) {
+    if (length) {
+      if (range[i] - length === 2) {
+        rangeWithDots.push(length + 1);
+      } else if (range[i] - length !== 1) {
+        rangeWithDots.push(MORE_PAGES);
+      }
+    }
+    rangeWithDots.push(range[i]);
+    length = range[i];
+  }
+  return rangeWithDots;
+}
+function fieldSorter(fields, dsSortAs = {}) {
+  const dir = [];
+  let i;
+  const length = fields.length;
+  fields = fields.map(function(o, i2) {
+    if (o[0] === "-") {
+      dir[i2] = -1;
+      o = o.substring(1);
+    } else {
+      dir[i2] = 1;
+    }
+    return o;
+  });
+  return function(a, b) {
+    for (i = 0; i < length; i++) {
+      const o = fields[i];
+      const aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
+      const bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
+      if (aVal > bVal) {
+        return dir[i];
+      }
+      if (aVal < bVal) {
+        return -dir[i];
+      }
+    }
+    return 0;
+  };
+}
+function fieldFilter(items, filterFields) {
+  for (const filterKey in filterFields) {
+    items = items.filter(function(item) {
+      const itemValue = item.value;
+      for (const itemKey in itemValue) {
+        if (itemKey === filterKey) {
+          if (typeof filterFields[filterKey] === "function") {
+            return filterFields[filterKey](itemValue[itemKey]);
+          }
+          if (filterFields[filterKey] === "") {
+            return true;
+          }
+          if (itemValue[itemKey] === filterFields[filterKey]) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+  return items;
+}
+function findAny(dsSearchIn, dsSearchAs, rowData, str) {
+  str = String(str).toLowerCase();
+  for (const key in rowData) {
+    if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
+      const value = String(rowData[key]).toLowerCase();
+      for (const field in dsSearchAs) {
+        if (field === key) {
+          if (typeof dsSearchAs[field] === "function") {
+            const res = dsSearchAs[field](value, str, rowData);
+            if (res === true) {
+              return res;
+            }
+          }
+        }
+      }
+      if (value.indexOf(str) >= 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+var _export_sfc = (sfc, props) => {
+  for (const [key, val] of props) {
+    sfc[key] = val;
+  }
+  return sfc;
+};
+const _sfc_main$5 = {
+  props: {
+    dsData: {
+      type: Array,
+      default: () => []
+    },
+    dsFilterFields: {
+      type: Object,
+      default: () => ({})
+    },
+    dsSortby: {
+      type: Array,
+      default: () => []
+    },
+    dsSearchIn: {
+      type: Array,
+      default: () => []
+    },
+    dsSearchAs: {
+      type: Object,
+      default: () => ({})
+    },
+    dsSortAs: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  setup(props) {
+    const dsPage = ref(1);
+    const dsSearch = ref("");
+    const dsShowEntries = ref(10);
+    const datasetI18n = ref(i18n);
+    const dsIndexes = ref([]);
+    const search = (value) => {
+      dsSearch.value = value;
+    };
+    const showEntries = async (value) => {
+      const pagesBeforeChange = dsPages.value;
+      dsShowEntries.value = value;
+      await nextTick();
+      const pagesAfterChange = dsPages.value;
+      if (pagesAfterChange.length < pagesBeforeChange.length) {
+        setActive(pagesAfterChange[pagesAfterChange.length - 1]);
+      }
+    };
+    const setActive = (value) => {
+      dsPage.value = value;
+    };
+    const whenChanged = computed(() => {
+      props.dsData;
+      dsSearch.value;
+      props.dsSortby;
+      props.dsFilterFields;
+      props.dsSearchIn;
+      props.dsSearchAs;
+      props.dsSortAs;
+      return Date.now();
+    });
+    const dsRows = computed(() => {
+      return dsIndexes.value.slice(dsFrom.value, dsTo.value);
+    });
+    const dsPages = computed(() => {
+      return createPagingRange(dsPagecount.value, dsPage.value);
+    });
+    const dsResultsNumber = computed(() => {
+      return dsIndexes.value.length;
+    });
+    const dsPagecount = computed(() => {
+      return Math.ceil(dsResultsNumber.value / dsShowEntries.value);
+    });
+    const dsFrom = computed(() => {
+      return (dsPage.value - 1) * dsShowEntries.value;
+    });
+    const dsTo = computed(() => {
+      return dsPage.value * dsShowEntries.value;
+    });
+    watch(dsResultsNumber, (val, oldVal) => {
+      setActive(1);
+    });
+    watch(whenChanged, (newVal, oldVal) => {
+      let result = [];
+      if (!dsSearch.value && !props.dsSortby.length && isEmptyObject(props.dsFilterFields)) {
+        result = props.dsData.map((val, i) => i);
+      } else {
+        result = props.dsData.map((val, i) => ({ index: i, value: val }));
+        if (!isEmptyObject(props.dsFilterFields)) {
+          result = fieldFilter(result, props.dsFilterFields);
+        }
+        if (dsSearch.value) {
+          result = result.filter((entry) => findAny(props.dsSearchIn, props.dsSearchAs, entry.value, dsSearch.value));
+        }
+        if (props.dsSortby.length) {
+          result.sort(fieldSorter(props.dsSortby, props.dsSortAs));
+        }
+        result = result.map((entry) => entry.index);
+      }
+      dsIndexes.value = result;
+    }, {
+      immediate: true
+    });
+    provide("dsIndexes", dsIndexes);
+    provide("search", search);
+    provide("showEntries", showEntries);
+    provide("setActive", setActive);
+    provide("datasetI18n", datasetI18n);
+    provide("dsData", computed(() => props.dsData));
+    provide("dsRows", dsRows);
+    provide("dsPages", dsPages);
+    provide("dsResultsNumber", dsResultsNumber);
+    provide("dsPagecount", dsPagecount);
+    provide("dsFrom", dsFrom);
+    provide("dsTo", dsTo);
+    provide("dsPage", dsPage);
+    return {
+      dsIndexes,
+      dsShowEntries,
+      dsResultsNumber,
+      dsPage,
+      dsPagecount,
+      dsFrom,
+      dsTo,
+      dsRows,
+      dsPages,
+      search,
+      showEntries,
+      setActive
+    };
+  }
+};
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  return renderSlot(_ctx.$slots, "default", {
+    ds: {
+      dsIndexes: $setup.dsIndexes,
+      dsShowEntries: $setup.dsShowEntries,
+      dsResultsNumber: $setup.dsResultsNumber,
+      dsPage: $setup.dsPage,
+      dsPagecount: $setup.dsPagecount,
+      dsFrom: $setup.dsFrom,
+      dsTo: $setup.dsTo,
+      dsData: $props.dsData,
+      dsRows: $setup.dsRows,
+      dsPages: $setup.dsPages,
+      search: $setup.search,
+      showEntries: $setup.showEntries,
+      setActive: $setup.setActive
+    }
+  });
+}
+var Dataset = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
+const _sfc_main$4 = {
+  setup() {
+    const dsResultsNumber = inject("dsResultsNumber");
+    const dsFrom = inject("dsFrom");
+    const dsTo = inject("dsTo");
+    const showing = computed(() => dsResultsNumber.value !== 0 ? dsFrom.value + 1 : 0);
+    const showingTo = computed(() => dsTo.value >= dsResultsNumber.value ? dsResultsNumber.value : dsTo.value);
+    return {
+      datasetI18n: inject("datasetI18n"),
+      dsResultsNumber,
+      showing,
+      showingTo
+    };
+  }
+};
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", null, toDisplayString($setup.datasetI18n.showing) + " " + toDisplayString($setup.showing) + " " + toDisplayString($setup.datasetI18n.showingTo) + " " + toDisplayString($setup.showingTo) + " " + toDisplayString($setup.datasetI18n.showingOf) + " " + toDisplayString($setup.dsResultsNumber) + " " + toDisplayString($setup.datasetI18n.showingEntries), 1);
+}
+var DatasetInfo = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
+const _sfc_main$3 = {
+  props: {
+    tag: {
+      type: String,
+      default: "div"
+    }
+  },
+  setup() {
+    const indexes = computed(() => {
+      const arr = [];
+      for (let i = inject("dsFrom").value; i < inject("dsTo").value; i++) {
+        arr.push(i);
+      }
+      return arr;
+    });
+    return {
+      dsData: inject("dsData"),
+      dsRows: inject("dsRows"),
+      indexes
+    };
+  }
+};
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(resolveDynamicComponent($props.tag), null, {
+    default: withCtx(() => [
+      (openBlock(true), createElementBlock(Fragment, null, renderList($setup.dsRows, (rowIndex, i) => {
+        return renderSlot(_ctx.$slots, "default", {
+          row: $setup.dsData[rowIndex],
+          rowIndex,
+          index: $setup.indexes[i]
+        });
+      }), 256)),
+      !$setup.dsRows.length ? renderSlot(_ctx.$slots, "noDataFound", { key: 0 }) : createCommentVNode("", true)
+    ]),
+    _: 3
+  });
+}
+var DatasetItem = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+const _sfc_main$2 = {
+  setup() {
+    const morePages = ref(MORE_PAGES);
+    const dsPage = inject("dsPage");
+    const dsPagecount = inject("dsPagecount");
+    const disabledPrevious = computed(() => dsPage.value === 1);
+    const disabledNext = computed(() => dsPage.value === dsPagecount.value || dsPagecount.value === 0);
+    return {
+      datasetI18n: inject("datasetI18n"),
+      setActive: inject("setActive"),
+      dsPages: inject("dsPages"),
+      dsPagecount,
+      dsPage,
+      morePages,
+      disabledPrevious,
+      disabledNext
+    };
+  }
+};
+const _hoisted_1$2 = { class: "pagination" };
+const _hoisted_2$1 = ["tabindex", "aria-disabled"];
+const _hoisted_3$1 = ["onClick"];
+const _hoisted_4 = {
+  key: 1,
+  class: "page-link"
+};
+const _hoisted_5 = ["tabindex", "aria-disabled"];
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("ul", _hoisted_1$2, [
+    createElementVNode("li", {
+      class: normalizeClass(["page-item", $setup.disabledPrevious && "disabled"])
+    }, [
+      createElementVNode("a", {
+        class: "page-link",
+        href: "#",
+        tabindex: $setup.disabledPrevious ? "-1" : null,
+        "aria-disabled": $setup.disabledPrevious ? "true" : null,
+        onClick: _cache[0] || (_cache[0] = withModifiers(($event) => $setup.setActive($setup.dsPage !== 1 && $setup.dsPagecount !== 0 ? $setup.dsPage - 1 : $setup.dsPage), ["prevent"]))
+      }, toDisplayString($setup.datasetI18n.previous), 9, _hoisted_2$1)
+    ], 2),
+    (openBlock(true), createElementBlock(Fragment, null, renderList($setup.dsPages, (item, index) => {
+      return openBlock(), createElementBlock("li", {
+        key: index,
+        class: normalizeClass(["page-item", item === $setup.dsPage && "active", item === $setup.morePages && "disabled"])
+      }, [
+        item !== $setup.morePages ? (openBlock(), createElementBlock("a", {
+          key: 0,
+          class: "page-link",
+          href: "#",
+          onClick: withModifiers(($event) => $setup.setActive(item), ["prevent"])
+        }, toDisplayString(item), 9, _hoisted_3$1)) : (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(item), 1))
+      ], 2);
+    }), 128)),
+    createElementVNode("li", {
+      class: normalizeClass(["page-item", $setup.disabledNext && "disabled"])
+    }, [
+      createElementVNode("a", {
+        class: "page-link",
+        href: "#",
+        tabindex: $setup.disabledNext ? "-1" : null,
+        "aria-disabled": $setup.disabledNext ? "true" : null,
+        onClick: _cache[1] || (_cache[1] = withModifiers(($event) => $setup.setActive($setup.dsPage !== $setup.dsPagecount && $setup.dsPagecount !== 0 ? $setup.dsPage + 1 : $setup.dsPage), ["prevent"]))
+      }, toDisplayString($setup.datasetI18n.next), 9, _hoisted_5)
+    ], 2)
+  ]);
+}
+var DatasetPager = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+const _sfc_main$1 = {
+  props: {
+    dsSearchPlaceholder: {
+      type: String,
+      default: ""
+    },
+    wait: {
+      type: Number,
+      default: 0
+    }
+  },
+  setup(props) {
+    const search = inject("search");
+    const dsSearch = ref("");
+    const input = debounce((value) => {
+      search(value);
+    }, props.wait);
+    return {
+      dsSearch,
+      input
+    };
+  }
+};
+const _hoisted_1$1 = ["placeholder", "value"];
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("input", {
+    type: "text",
+    placeholder: $props.dsSearchPlaceholder,
+    class: "form-control",
+    value: $setup.dsSearch,
+    onInput: _cache[0] || (_cache[0] = ($event) => $setup.input($event.target.value))
+  }, null, 40, _hoisted_1$1);
+}
+var DatasetSearch = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+const _sfc_main = {
+  props: {
+    dsShowEntries: {
+      type: Number,
+      default: 10
+    },
+    dsShowEntriesLovs: {
+      type: Array,
+      default: () => [
+        { value: 5, text: 5 },
+        { value: 10, text: 10 },
+        { value: 25, text: 25 },
+        { value: 50, text: 50 },
+        { value: 100, text: 100 }
+      ]
+    }
+  },
+  emits: ["changed"],
+  setup(props, { emit }) {
+    const showEntries = inject("showEntries");
+    const change = (e) => {
+      emit("changed", Number(e.target.value));
+      showEntries(Number(e.target.value));
+    };
+    showEntries(Number(props.dsShowEntries));
+    return {
+      datasetI18n: inject("datasetI18n"),
+      change
+    };
+  }
+};
+const _hoisted_1 = { class: "form-inline" };
+const _hoisted_2 = ["value"];
+const _hoisted_3 = ["value"];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", _hoisted_1, [
+    createElementVNode("label", null, toDisplayString($setup.datasetI18n.show), 1),
+    createElementVNode("select", {
+      value: $props.dsShowEntries,
+      class: "form-control mr-1 ml-1",
+      onChange: _cache[0] || (_cache[0] = (...args) => $setup.change && $setup.change(...args))
+    }, [
+      (openBlock(true), createElementBlock(Fragment, null, renderList($props.dsShowEntriesLovs, (option) => {
+        return openBlock(), createElementBlock("option", {
+          key: option.value,
+          value: option.value
+        }, toDisplayString(option.text), 9, _hoisted_3);
+      }), 128))
+    ], 40, _hoisted_2),
+    createElementVNode("label", null, toDisplayString($setup.datasetI18n.entries), 1)
+  ]);
+}
+var DatasetShow = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+export { Dataset, DatasetInfo, DatasetItem, DatasetPager, DatasetSearch, DatasetShow };
