@@ -99,8 +99,10 @@ Type: `Object`
 Default: <em>Empty Object</em>
 
 It defines how certain properties of the data object will be searched.
-The object key denotes the data object property and the object value is a `Function` that will be used to search
-that data property. This is useful in situations when you are displaying a formatted value and you want the user to be able to search
+The object key denotes the data object property and the object value is a predicate `Function` that will be used to search
+that data property. The predicate function has access to the column value, the search string and the current row data.  
+ 
+This is useful in situations when you are displaying a formatted value and you want the user to be able to search
 it inside the data object with the same format as it appears on-screen.
 
 For example this will set the birthDate attribute searchable by `searchAsEuroDate` method
@@ -112,7 +114,7 @@ and will allow birthdate dates defined as YYYY-MM-DD format to be searched as DD
 
 Inside your instance methods
 ```js
-searchAsEuroDate: function (value, searchString) {
+searchAsEuroDate: function (value, searchString, rowData) {
   const parts = searchString.split('.')
   const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`
   return isoDate === value
