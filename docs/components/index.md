@@ -95,7 +95,7 @@ For example this will tell `Dataset` to perform search **only** in the `firstNam
 ```
 
 #### ds-search-as
-Type: `Object`
+Type: `Object`  
 Default: <em>Empty Object</em>
 
 It defines how certain properties of the data object will be searched.
