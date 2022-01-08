@@ -1,4 +1,4 @@
-# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset"></a> ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg) ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg?compression=gzip)
+# vue-dataset <a href="https://npm.im/vue-dataset"><img src="https://badgen.net/npm/v/vue-dataset"></a> ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg) ![](https://img.badgesize.io/kouts/vue-dataset/master/dist/umd/VueDataset.min.js.svg?compression=gzip) ![](/coverage/badge.svg)
 
 
 ---

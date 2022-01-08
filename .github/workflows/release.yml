@@ -23,7 +23,7 @@ jobs:
     - name: Lint
       run: npm run lint-fix
     - name: Test
-      run: npm run test:unit --if-present
+      run: npm run test:unit-coverage --if-present
     - name: Build
       run: npm run rollup      
     - name: Release
