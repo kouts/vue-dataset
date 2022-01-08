@@ -7,5 +7,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@playground/(.*)$': '<rootDir>/playground/$1',
     '^@root/(.*)$': '<rootDir>/$1'
-  }
+  },
+  coveragePathIgnorePatterns: ['/node_modules/', '/tests/'],
+  coverageReporters: ['text', 'json-summary']
 }
