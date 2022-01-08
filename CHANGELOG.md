@@ -1,3 +1,13 @@
+## [1.1.10](https://github.com/kouts/vue-dataset/compare/v1.1.9...v1.1.10) (2022-01-08)
+
+
+### Bug Fixes
+
+* added coverage badge ([a8cd4aa](https://github.com/kouts/vue-dataset/commit/a8cd4aad112f331cb03ef29d67de0429c5cc131a))
+* exposed indexes through scoped slot and provide ([9838b31](https://github.com/kouts/vue-dataset/commit/9838b31712502c09c341492179e476583a4bd405))
+* pass rowData as 3rd param to the searchAs function ([66eb291](https://github.com/kouts/vue-dataset/commit/66eb291ff55291a007feda50507c35491371aa82))
+* pass search, showEntries, setActive functions in scope ([ccd80ec](https://github.com/kouts/vue-dataset/commit/ccd80eccdd6e91b1c3681b6f80adeb7099a3a54e))
+
 ## [1.1.9](https://github.com/kouts/vue-dataset/compare/v1.1.8...v1.1.9) (2021-10-27)
 
 
