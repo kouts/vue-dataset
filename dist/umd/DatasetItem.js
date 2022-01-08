@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatasetItem = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   //
   //
@@ -15,7 +15,7 @@
   //
 
   var script = {
-    inject: ['rdsData', 'rdsRows'],
+    inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
     props: {
       tag: {
         type: String,
@@ -29,6 +29,19 @@
       },
       dsData: function dsData() {
         return this.rdsData()
+      },
+      dsFrom: function dsFrom() {
+        return this.rdsFrom()
+      },
+      dsTo: function dsTo() {
+        return this.rdsTo()
+      },
+      indexes: function indexes() {
+        var arr = [];
+        for (var i = this.dsFrom; i < this.dsTo; i++) {
+          arr.push(i);
+        }
+        return arr
       }
     }
   };
@@ -120,9 +133,13 @@
       _vm.tag,
       { tag: "component" },
       [
-        _vm._l(_vm.dsRows, function(item) {
+        _vm._l(_vm.dsRows, function(rowIndex, i) {
           return [
-            _vm._t("default", null, { row: _vm.dsData[item], rowIndex: item })
+            _vm._t("default", null, {
+              row: _vm.dsData[rowIndex],
+              rowIndex: rowIndex,
+              index: _vm.indexes[i]
+            })
           ]
         }),
         _vm._v(" "),
@@ -165,5 +182,5 @@
 
   return __vue_component__;
 
-})));
+}));
 //# sourceMappingURL=DatasetItem.js.map

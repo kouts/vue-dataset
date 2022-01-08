@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/kouts/vue-dataset/compare/v1.1.10...v1.1.11) (2022-01-08)
+
+
+### Bug Fixes
+
+* fixed release assets ([c0efc47](https://github.com/kouts/vue-dataset/commit/c0efc47d9baec5e602bd80ff53fc4862f05daa6e))
+
 ## [1.1.10](https://github.com/kouts/vue-dataset/compare/v1.1.9...v1.1.10) (2022-01-08)
 
 

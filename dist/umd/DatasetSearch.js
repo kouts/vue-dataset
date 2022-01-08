@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatasetSearch = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   function debounce(func, wait, immediate) {
     var timeout;
@@ -178,5 +178,5 @@
 
   return __vue_component__;
 
-})));
+}));
 //# sourceMappingURL=DatasetSearch.js.map

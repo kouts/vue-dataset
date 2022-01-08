@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dataset = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   var datasetI18n = {
     show: 'Show',
@@ -119,19 +119,19 @@
   }
 
   // Search method that also takes into account transformations needed
-  function findAny(dsSearchIn, dsSearchAs, obj, str) {
+  function findAny(dsSearchIn, dsSearchAs, rowData, str) {
     // Convert the search string to lower case
     str = String(str).toLowerCase();
-    for (var key in obj) {
+    for (var key in rowData) {
       if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
-        var value = String(obj[key]).toLowerCase();
+        var value = String(rowData[key]).toLowerCase();
         for (var field in dsSearchAs) {
           if (field === key) {
             // Found key in dsSearchAs so we pass the value and the search string to a search function
             // that returns true/false and we return that if true.
             /* Check if dsSearchAs is a function (passed from the template) */
             if (typeof dsSearchAs[field] === 'function') {
-              var res = dsSearchAs[field](value, str);
+              var res = dsSearchAs[field](value, str, rowData);
               if (res === true) {
                 return res
               }
@@ -159,6 +159,7 @@
         setActive: this.setActive,
         datasetI18n: this.datasetI18n,
         /* Setup reactive provides */
+        rdsIndexes: function () { return this$1$1.indexes; },
         rdsData: function () { return this$1$1.dsData; },
         rdsRows: function () { return this$1$1.dsRows; },
         rdsPages: function () { return this$1$1.dsPages; },
@@ -258,7 +259,7 @@
       The trick is to work directly on the array indexes.
       */
       whenChanged: {
-        handler: function handler(val, oldVal) {
+        handler: function handler(newVal, oldVal) {
           var result = [];
           var dsData = this.dsData;
           var dsSearch = this.dsSearch;
@@ -408,6 +409,7 @@
       [
         _vm._t("default", null, {
           ds: {
+            dsIndexes: _vm.indexes,
             dsShowEntries: _vm.dsShowEntries,
             dsResultsNumber: _vm.dsResultsNumber,
             dsPage: _vm.dsPage,
@@ -416,7 +418,10 @@
             dsTo: _vm.dsTo,
             dsData: _vm.dsData,
             dsRows: _vm.dsRows,
-            dsPages: _vm.dsPages
+            dsPages: _vm.dsPages,
+            search: _vm.search,
+            showEntries: _vm.showEntries,
+            setActive: _vm.setActive
           }
         })
       ],
@@ -457,5 +462,5 @@
 
   return __vue_component__;
 
-})));
+}));
 //# sourceMappingURL=Dataset.js.map

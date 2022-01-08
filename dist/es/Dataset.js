@@ -1,4 +1,4 @@
-import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-e93a2314.js';
+import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-2a50bd4b.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 var datasetI18n = {
@@ -24,6 +24,7 @@ var script = {
       setActive: this.setActive,
       datasetI18n: this.datasetI18n,
       /* Setup reactive provides */
+      rdsIndexes: function () { return this$1$1.indexes; },
       rdsData: function () { return this$1$1.dsData; },
       rdsRows: function () { return this$1$1.dsRows; },
       rdsPages: function () { return this$1$1.dsPages; },
@@ -123,7 +124,7 @@ var script = {
     The trick is to work directly on the array indexes.
     */
     whenChanged: {
-      handler: function handler(val, oldVal) {
+      handler: function handler(newVal, oldVal) {
         var result = [];
         var dsData = this.dsData;
         var dsSearch = this.dsSearch;
@@ -198,6 +199,7 @@ var __vue_render__ = function() {
     [
       _vm._t("default", null, {
         ds: {
+          dsIndexes: _vm.indexes,
           dsShowEntries: _vm.dsShowEntries,
           dsResultsNumber: _vm.dsResultsNumber,
           dsPage: _vm.dsPage,
@@ -206,7 +208,10 @@ var __vue_render__ = function() {
           dsTo: _vm.dsTo,
           dsData: _vm.dsData,
           dsRows: _vm.dsRows,
-          dsPages: _vm.dsPages
+          dsPages: _vm.dsPages,
+          search: _vm.search,
+          showEntries: _vm.showEntries,
+          setActive: _vm.setActive
         }
       })
     ],
