@@ -2,6 +2,7 @@
   <div>
     <slot
       :ds="{
+        dsIndexes: indexes,
         dsShowEntries,
         dsResultsNumber,
         dsPage,
@@ -31,6 +32,7 @@ export default {
       setActive: this.setActive,
       datasetI18n: this.datasetI18n,
       /* Setup reactive provides */
+      rdsIndexes: () => this.indexes,
       rdsData: () => this.dsData,
       rdsRows: () => this.dsRows,
       rdsPages: () => this.dsPages,

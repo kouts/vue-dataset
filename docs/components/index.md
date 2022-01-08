@@ -158,6 +158,16 @@ You can leverage these using `inject` to create your own **custom child componen
   </thead>
   <tbody>
     <tr>
+      <td>rdsData</td>
+      <td>Array of Objects</td>
+      <td>The data object that contains all the data.</td>
+    </tr>  
+    <tr>
+      <td>rdsIndexes</td>
+      <td>Array</td>
+      <td>The indexes of all the filtered data rows, regardless of paging</td>
+    </tr>  
+    <tr>
       <td>rdsRows</td>
       <td>Array</td>
       <td>The indexes of the data rows currently displaying</td>
@@ -221,11 +231,6 @@ Example:
   </thead>
   <tbody>
     <tr>
-      <td>dsData</td>
-      <td>Array of Objects</td>
-      <td>The data object that contains all the data.</td>
-    </tr>
-    <tr>
       <td>datasetI18n</td>
       <td>Object</td>
       <td>An object containing translation strings</td>
@@ -280,6 +285,11 @@ Dataset also provides several data via a `ds` object exposed from a a scoped slo
       <td>Array of Objects</td>
       <td>The data object that contains all the data.</td>
     </tr>
+    <tr>
+      <td>dsIndexes</td>
+      <td>Array</td>
+      <td>The indexes of all the filtered data rows, regardless of paging</td>
+    </tr>    
     <tr>
       <td>dsRows</td>
       <td>Array</td>
