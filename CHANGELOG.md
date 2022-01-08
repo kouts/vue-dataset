@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/kouts/vue-dataset/compare/v3.4.0...v3.4.1) (2022-01-08)
+
+
+### Bug Fixes
+
+* added coverage badge ([51f5d82](https://github.com/kouts/vue-dataset/commit/51f5d826370b3a5b03533b2906bdc05d5b93be3c))
+
 # [3.4.0](https://github.com/kouts/vue-dataset/compare/v3.3.0...v3.4.0) (2021-12-19)
 
 
