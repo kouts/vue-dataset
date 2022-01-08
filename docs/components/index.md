@@ -81,6 +81,19 @@ For example this will sort the data by lastName
 ['lastName']
 ```
 
+#### ds-search-in
+Type: `Array`  
+Default: <em>Empty Array</em>
+
+It restricts the search to certain data object properties.
+If the `ds-search-in` array is empty (default), then all object properties will be searched.
+
+For example this will tell `Dataset` to perform search **only** in the `firstName` and `lastName` data object properties.
+
+```js
+['firstName', 'lastName']
+```
+
 #### ds-search-as
 Type: `Object`  
 Default: <em>Empty Object</em>
