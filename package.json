@@ -11,9 +11,15 @@
     "dataset",
     "datatable"
   ],
-  "main": "dist/umd/VueDataset.js",
-  "module": "dist/es/index.js",
-  "unpkg": "dist/umd/VueDataset.min.js",
+  "main": "./dist/umd/VueDataset.js",
+  "module": "./dist/es/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/VueDataset.js"
+    }
+  },
+  "unpkg": "./dist/umd/VueDataset.min.js",
   "sideEffects": false,
   "scripts": {
     "serve": "vue-cli-service serve",
