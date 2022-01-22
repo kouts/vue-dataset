@@ -1,3 +1,11 @@
+## [3.4.3](https://github.com/kouts/vue-dataset/compare/v3.4.2...v3.4.3) (2022-01-22)
+
+
+### Bug Fixes
+
+* added exports property ([cb8e30e](https://github.com/kouts/vue-dataset/commit/cb8e30e4e1ebb081e27e8f08d85bccad926c1249))
+* added exports property ([a5441b6](https://github.com/kouts/vue-dataset/commit/a5441b606e12dbff7426a76931fde13cb7548fe5))
+
 ## [3.4.2](https://github.com/kouts/vue-dataset/compare/v3.4.1...v3.4.2) (2022-01-08)
 
 
