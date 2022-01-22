@@ -18,4 +18,9 @@ describe('fieldFilter', () => {
     const res = fieldFilter(filterData, { firstName: filterFunction })
     expect(res.length).toBe(1)
   })
+
+  it('includes items with empty filter key', () => {
+    const res = fieldFilter(filterData, { firstName: '' })
+    expect(res.length).toBe(4)
+  })
 })
