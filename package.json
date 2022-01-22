@@ -13,6 +13,12 @@
   ],
   "main": "./dist/vue-dataset.umd.js",
   "module": "./dist/vue-dataset.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-dataset.es.js",
+      "require": "./dist/vue-dataset.umd.js"
+    }
+  },  
   "unpkg": "dist/vue-dataset.umd.js",
   "sideEffects": [
     "./**/*.scss",
