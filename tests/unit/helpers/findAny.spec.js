@@ -40,4 +40,23 @@ describe('findAny', () => {
     expect(res).toBe(true)
     expect(searchAs.birthdate).toHaveBeenCalledWith('1980-03-09', '09.03.1980', findData[0].value)
   })
+
+  it(`returns false in case there's no match using the predicate function`, () => {
+    const searchAs = {
+      firstName: jest.fn((value, searchStr, rowData) => {
+        return searchStr.toLowerCase() === value.toLowerCase()
+      })
+    }
+    const res = findAny(['firstName', 'balance'], searchAs, findData[0].value, 'Bob')
+    expect(res).toBe(false)
+  })
+
+  it(`performs a simple search in case searchAs does not contain a function`, () => {
+    const searchAs = {
+      firstName: 'string',
+      balance: 20
+    }
+    const res = findAny(['firstName', 'balance'], searchAs, findData[0].value, 'Gawain')
+    expect(res).toBe(true)
+  })
 })
