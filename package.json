@@ -15,7 +15,8 @@
   "module": "./dist/es/index.js",
   "exports": {
     ".": {
-      "import": "./dist/es/index.js"
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/VueDataset.js"
     }
   },
   "unpkg": "./dist/umd/VueDataset.min.js",
