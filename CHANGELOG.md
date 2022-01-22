@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/kouts/vue-dataset/compare/v1.1.11...v1.1.12) (2022-01-22)
+
+
+### Bug Fixes
+
+* added additional tests for helpers ([e404084](https://github.com/kouts/vue-dataset/commit/e4040844e3c6b44afbf806b59f8388b4ecbc60ae))
+
 ## [1.1.11](https://github.com/kouts/vue-dataset/compare/v1.1.10...v1.1.11) (2022-01-08)
 
 
