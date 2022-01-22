@@ -125,4 +125,15 @@ describe('Dataset', () => {
     expect(wrapper.find('.items > div').text()).toBe('4188 - Burke Kelley')
     expect(wrapper.findAll('.items > div').length).toBe(1)
   })
+
+  it('provides the indexes to child components', async () => {
+    expect(typeof wrapper.vm._provided.rdsIndexes).toBe('function')
+    expect(wrapper.vm._provided.rdsIndexes().length).toBe(5000)
+  })
+
+  it('initializes with an empty data array', async () => {
+    const wrapperDataset = mount(Dataset)
+
+    expect(wrapperDataset.vm.dsData).toEqual([])
+  })
 })
