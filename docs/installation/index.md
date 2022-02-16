@@ -73,3 +73,29 @@ Vue.component('DatasetPager', DatasetPager)
 Vue.component('DatasetSearch', DatasetSearch)
 Vue.component('DatasetShow', DatasetShow)`
 ```
+
+## Translations
+It's possible to customize the texts of `vue-dataset` by extending the `Dataset` component and providing the translated texts in its data property:
+
+```js
+import { Dataset } from 'vue-dataset'
+
+export default {
+  extends: Dataset,
+  data() {
+    return {
+      // Provide the translated texts here
+      datasetI18n: {
+        show: 'Show',
+        entries: 'entries',
+        previous: 'Previous',
+        next: 'Next',
+        showing: 'Showing',
+        showingTo: 'to',
+        showingOf: 'of',
+        showingEntries: 'entries'
+      }
+    }
+  }
+}
+```

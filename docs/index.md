@@ -20,7 +20,7 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 - Pagination
 - Global search with debounce setting
 - Easy to extend with custom components
-- I18n support
+
 
 `vue-dataset` contains 6 components
 
@@ -32,33 +32,6 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 | `dataset-pager`   | Renders the paging buttons        |
 | `dataset-search`   | Renders the search input field        |
 | `dataset-show`   | Renders the "items per page" dropdown select        |
-
-## Internationalization support
-It's possible to customize the texts of `vue-dataset` by extending the `Dataset` component and providing the translated texts in its data property:
-
-```
-import { Dataset } from 'vue-dataset'
-
-export default {
-  extends: Dataset,
-  data() {
-    return {
-      // Provide the translated texts here
-      datasetI18n: {
-        show: 'Show',
-        entries: 'entries',
-        previous: 'Previous',
-        next: 'Next',
-        showing: 'Showing',
-        showingTo: 'to',
-        showingOf: 'of',
-        showingEntries: 'entries'
-      }
-    }
-  }
-}
-```
-
 
 <h2 class="mb-4">Example using cards</h2>
 
