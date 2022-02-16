@@ -34,9 +34,7 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 | `dataset-show`   | Renders the "items per page" dropdown select        |
 
 ## Internationalization support
-It's possible to customize the texts of `vue-dataset` by extending the `Dataset` component and providing the translated texts in its data property.
-
-In **Vue 2**:
+It's possible to customize the texts of `vue-dataset` by extending the `Dataset` component and providing the translated texts in its data property:
 
 ```
 import { Dataset } from 'vue-dataset'
@@ -61,30 +59,6 @@ export default {
 }
 ```
 
-In **Vue 3**:
-
-```
-import { Dataset } from 'vue-dataset'
-
-const MyDataset = {
-  ...Dataset,
-  name: "MyDataset",
-  provide() {
-    return {
-      datasetI18n: {
-        show: "Display",
-        entries: "rows",
-        previous: "Previous",
-        next: "Next",
-        showing: "Showing",
-        showingTo: "to",
-        showingOf: "of",
-        showingEntries: "entries",
-      },
-    }
-  },
-}
-```
 
 <h2 class="mb-4">Example using cards</h2>
 
