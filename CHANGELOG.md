@@ -1,3 +1,10 @@
+## [3.4.4](https://github.com/kouts/vue-dataset/compare/v3.4.3...v3.4.4) (2022-04-20)
+
+
+### Bug Fixes
+
+* updated npm packages ([0eb174e](https://github.com/kouts/vue-dataset/commit/0eb174ef2bf32d1c0c21c848da7752598a1bca27))
+
 ## [3.4.3](https://github.com/kouts/vue-dataset/compare/v3.4.2...v3.4.3) (2022-01-22)
 
 

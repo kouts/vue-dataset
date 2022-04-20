@@ -134,10 +134,11 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
   return false;
 }
 var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
-    sfc[key] = val;
+    target[key] = val;
   }
-  return sfc;
+  return target;
 };
 const _sfc_main$5 = {
   props: {
