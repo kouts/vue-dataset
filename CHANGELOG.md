@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/kouts/vue-dataset/compare/v1.1.12...v1.1.13) (2022-04-20)
+
+
+### Bug Fixes
+
+* updated npm packages ([b8310c0](https://github.com/kouts/vue-dataset/commit/b8310c090d286bedcf141fa85e288d84a6dbc782))
+
 ## [1.1.12](https://github.com/kouts/vue-dataset/compare/v1.1.11...v1.1.12) (2022-01-22)
 
 
