@@ -94,6 +94,7 @@ export default {
       props.dsSearchIn
       props.dsSearchAs
       props.dsSortAs
+      dsShowEntries.value
       return Date.now()
     })
 
