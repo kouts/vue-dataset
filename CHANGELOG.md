@@ -1,3 +1,11 @@
+## [3.4.5](https://github.com/kouts/vue-dataset/compare/v3.4.4...v3.4.5) (2022-05-07)
+
+
+### Bug Fixes
+
+* fixed sass autoprefixer error ([fb54ee0](https://github.com/kouts/vue-dataset/commit/fb54ee011f5040d340c6387fba2a8d9fb128b96b))
+* fixed updated eslint config and npm packages ([592d931](https://github.com/kouts/vue-dataset/commit/592d931abae97b33f99ead0868a459f3b0f25cab))
+
 ## [3.4.4](https://github.com/kouts/vue-dataset/compare/v3.4.3...v3.4.4) (2022-04-20)
 
 
