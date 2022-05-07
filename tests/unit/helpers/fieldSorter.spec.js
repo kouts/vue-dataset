@@ -1,9 +1,10 @@
-import { fieldSorter } from '@/helpers'
 import { data } from './testData.js'
+import { fieldSorter } from '@/helpers'
 
 function isoDateToDate(isoDate) {
   const isoDateParts = isoDate.split('-').map((o) => Number(o))
   const res = new Date(new Date(isoDateParts[0], isoDateParts[1] - 1, isoDateParts[2]))
+
   return res
 }
 
@@ -29,6 +30,7 @@ describe('fieldSorter', () => {
   it('sorts the given array by the birthdate column - asc', () => {
     sortData = sortData.map((o) => {
       o.value.birthdate = isoDateToDate(o.value.birthdate)
+
       return o
     })
     sortData.sort(fieldSorter(['birthdate']))
@@ -39,6 +41,7 @@ describe('fieldSorter', () => {
   it('sorts the given array by the birthdate column - desc', () => {
     sortData = sortData.map((o) => {
       o.value.birthdate = isoDateToDate(o.value.birthdate)
+
       return o
     })
     sortData.sort(fieldSorter(['-birthdate']))

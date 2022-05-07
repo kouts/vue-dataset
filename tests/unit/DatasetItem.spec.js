@@ -1,6 +1,6 @@
+import DatasetItem from '@/DatasetItem.vue'
 import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
-import DatasetItem from '@/DatasetItem.vue'
 
 describe('DatasetItem', () => {
   let wrapper = null

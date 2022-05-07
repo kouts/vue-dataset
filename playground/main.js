@@ -1,8 +1,8 @@
+import App from './App.vue'
+import Default from './layouts/default/Default.vue'
 import { createApp } from 'vue'
 import { router } from './router'
 import { store } from './store'
-import Default from './layouts/default/Default.vue'
-import App from './App.vue'
 
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
@@ -12,6 +12,7 @@ import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
 
 const app = createApp(App)
+
 app.component('LayoutDefault', Default)
 
 app.component('Dataset', Dataset)

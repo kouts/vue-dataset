@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import { ref, inject, computed } from 'vue'
 import { MORE_PAGES } from './helpers'
+import { computed, inject, ref } from 'vue'
 
 export default {
   setup() {

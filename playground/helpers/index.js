@@ -2,9 +2,11 @@ const MORE_PAGES = '...'
 
 function debounce(func, wait, immediate) {
   let timeout
+
   return function () {
     const context = this
     const args = arguments
+
     clearTimeout(timeout)
     if (immediate && !timeout) {
       func.apply(context, args)
@@ -24,6 +26,7 @@ function isEmptyObject(obj) {
   for (const key in obj) {
     return false
   }
+
   return true
 }
 
@@ -57,6 +60,7 @@ function createPagingRange(nrOfPages, currentPage) {
     rangeWithDots.push(range[i])
     length = range[i]
   }
+
   return rangeWithDots
 }
 
@@ -64,6 +68,7 @@ function fieldSorter(fields, dsSortAs = {}) {
   const dir = []
   let i
   const length = fields.length
+
   fields = fields.map(function (o, i) {
     if (o[0] === '-') {
       dir[i] = -1
@@ -71,6 +76,7 @@ function fieldSorter(fields, dsSortAs = {}) {
     } else {
       dir[i] = 1
     }
+
     return o
   })
 
@@ -79,6 +85,7 @@ function fieldSorter(fields, dsSortAs = {}) {
       const o = fields[i]
       const aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o]
       const bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o]
+
       if (aVal > bVal) {
         return dir[i]
       }
@@ -86,6 +93,7 @@ function fieldSorter(fields, dsSortAs = {}) {
         return -dir[i]
       }
     }
+
     return 0
   }
 }
@@ -96,6 +104,7 @@ function fieldFilter(items, filterFields) {
     // console.log(filterKey + ' -> ' + filterFields[filterKey]);
     items = items.filter(function (item) {
       const itemValue = item.value
+
       for (const itemKey in itemValue) {
         if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
@@ -109,9 +118,11 @@ function fieldFilter(items, filterFields) {
           }
         }
       }
+
       return false
     })
   }
+
   return items
 }
 
@@ -122,6 +133,7 @@ function findAny(dsSearchIn, dsSearchAs, obj, str) {
   for (const key in obj) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
       const value = String(obj[key]).toLowerCase()
+
       for (const field in dsSearchAs) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
@@ -129,6 +141,7 @@ function findAny(dsSearchIn, dsSearchAs, obj, str) {
           /* Check if dsSearchAs is a function (passed from the template) */
           if (typeof dsSearchAs[field] === 'function') {
             const res = dsSearchAs[field](value, str)
+
             if (res === true) {
               return res
             }
@@ -141,6 +154,7 @@ function findAny(dsSearchIn, dsSearchAs, obj, str) {
       }
     }
   }
+
   return false
 }
 

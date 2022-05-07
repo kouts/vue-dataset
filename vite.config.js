@@ -1,16 +1,18 @@
-import { minifyHtml, injectHtml } from 'vite-plugin-html'
 import vue from '@vitejs/plugin-vue'
+import { createHtmlPlugin } from 'vite-plugin-html'
 const path = require('path')
 const { defineConfig } = require('vite')
 
 module.exports = defineConfig({
   plugins: [
     vue(),
-    minifyHtml(),
-    injectHtml({
-      injectData: {
-        title: 'vue-dataset playground',
-        description: 'Playground for vue-dataset Vue.js 3'
+    createHtmlPlugin({
+      minify: true,
+      inject: {
+        data: {
+          title: 'vue-dataset playground',
+          description: 'Playground for vue-dataset Vue.js 3'
+        }
       }
     })
   ],

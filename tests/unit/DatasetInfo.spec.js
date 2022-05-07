@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils'
-import { ref } from 'vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import datasetI18n from '@/i18n/en.js'
+import { mount } from '@vue/test-utils'
+import { ref } from 'vue'
 
 describe('DatasetInfo', () => {
   let wrapper = null
@@ -15,6 +15,7 @@ describe('DatasetInfo', () => {
         }
       }
     })
+
     return wrapper
   }
 
@@ -29,6 +30,7 @@ describe('DatasetInfo', () => {
       dsTo: ref(0)
     })
     const div = wrapper.find('div')
+
     expect(div.exists()).toBe(true)
   })
 

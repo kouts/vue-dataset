@@ -20,8 +20,8 @@
 
 <script>
 import i18n from './i18n/en.js'
-import { isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny } from './helpers'
-import { ref, computed, provide, watch, nextTick } from 'vue'
+import { computed, nextTick, provide, ref, watch } from 'vue'
+import { createPagingRange, fieldFilter, fieldSorter, findAny, isEmptyObject } from './helpers'
 
 export default {
   props: {
@@ -73,9 +73,11 @@ export default {
 
     const showEntries = async (value) => {
       const pagesBeforeChange = dsPages.value
+
       dsShowEntries.value = value
       await nextTick()
       const pagesAfterChange = dsPages.value
+
       if (pagesAfterChange.length < pagesBeforeChange.length) {
         setActive(pagesAfterChange[pagesAfterChange.length - 1])
       }
@@ -94,6 +96,7 @@ export default {
       props.dsSearchIn
       props.dsSearchAs
       props.dsSortAs
+
       return Date.now()
     })
 

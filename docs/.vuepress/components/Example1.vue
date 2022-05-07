@@ -56,7 +56,7 @@ export default {
   name: 'Example1',
   data: function () {
     return {
-      users: users,
+      users,
       statusClass: {
         Active: 'text-success',
         Away: 'text-warning',
