@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { inject, computed } from 'vue'
+import { computed, inject } from 'vue'
 
 export default {
   setup() {

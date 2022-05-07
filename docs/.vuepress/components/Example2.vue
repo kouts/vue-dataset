@@ -126,7 +126,7 @@
 
 <script>
 import users from '@root/example-data/users.json'
-import { filterList, clone, isoDateToEuroDate, searchAsEuroDate } from '../utilities'
+import { clone, filterList, isoDateToEuroDate, searchAsEuroDate } from '../utilities'
 import { debounce } from '@/helpers'
 
 // const lessUsers = clone(data).slice(0, 2);
@@ -135,7 +135,7 @@ export default {
   name: 'Example2',
   data: function () {
     return {
-      users: users,
+      users,
       startsWith: '',
       onlineFilter: '',
       statusClass: {
@@ -163,6 +163,7 @@ export default {
     searchAsEuroDate,
     updateData() {
       const updatedUsers = clone(users).slice(5, 10)
+
       this.users = updatedUsers
     },
     startsWithFilter(value) {

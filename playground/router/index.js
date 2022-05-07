@@ -1,5 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
 import Example1 from '../views/Example1.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const history = createWebHashHistory()
 const routes = [

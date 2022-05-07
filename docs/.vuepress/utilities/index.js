@@ -5,6 +5,7 @@ export const filterList = function (list = [], filter) {
         return false
       }
     }
+
     return true
   })
 }
@@ -15,12 +16,14 @@ export const clone = function (obj) {
 
 export const isoDateToEuroDate = function (isoDate) {
   const parts = isoDate.split('-')
+
   return `${parts[2]}.${parts[1]}.${parts[0]}`
 }
 
 export const searchAsEuroDate = function (value, searchString) {
   const parts = searchString.split('.')
   const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`
+
   return isoDate === value
 }
 

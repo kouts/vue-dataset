@@ -4,6 +4,7 @@ describe('isEmptyObject', () => {
   it('should return true when an object is empty', () => {
     const object = {}
     const res = isEmptyObject(object)
+
     expect(res).toBe(true)
   })
 
@@ -12,6 +13,7 @@ describe('isEmptyObject', () => {
       test: 'value'
     }
     const res = isEmptyObject(object)
+
     expect(res).toBe(false)
   })
 })

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { inject, ref } from 'vue'
 import { debounce } from './helpers'
+import { inject, ref } from 'vue'
 
 export default {
   props: {

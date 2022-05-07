@@ -52,13 +52,13 @@
 
 <script>
 import users from '@root/example-data/users.json'
-import { isoDateToEuroDate, isoDateToDate, searchAsEuroDate } from '../utilities'
+import { isoDateToDate, isoDateToEuroDate, searchAsEuroDate } from '../utilities'
 
 export default {
   name: 'Example2',
   data: function () {
     return {
-      users: users,
+      users,
       cols: [
         {
           name: 'Name',
@@ -84,6 +84,7 @@ export default {
         if (o.sort) {
           o.sort === 'asc' ? acc.push(o.field) : acc.push('-' + o.field)
         }
+
         return acc
       }, [])
     }
@@ -92,6 +93,7 @@ export default {
     click(event, i) {
       let toset
       const sortEl = this.cols[i]
+
       if (!event.shiftKey) {
         this.cols.forEach((o) => {
           if (o.field !== sortEl.field) {
