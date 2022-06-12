@@ -22,7 +22,7 @@
 
 <script>
 import datasetI18n from './i18n/en.js'
-import { isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny } from './helpers'
+import { createPagingRange, fieldFilter, fieldSorter, findAny, isEmptyObject } from './helpers'
 
 export default {
   provide() {
@@ -74,7 +74,7 @@ export default {
       dsPage: 1,
       dsSearch: '',
       dsShowEntries: 10,
-      datasetI18n: datasetI18n,
+      datasetI18n,
       indexes: []
     }
   },
@@ -88,6 +88,7 @@ export default {
       this.dsSearchIn
       this.dsSearchAs
       this.dsSortAs
+
       return Date.now()
     },
     dsRows() {
@@ -178,9 +179,11 @@ export default {
     },
     showEntries(value) {
       const pagesBeforeChange = this.dsPages
+
       this.dsShowEntries = value
       this.$nextTick(() => {
         const pagesAfterChange = this.dsPages
+
         if (pagesAfterChange.length < pagesBeforeChange.length) {
           this.setActive(pagesAfterChange[pagesAfterChange.length - 1])
         }

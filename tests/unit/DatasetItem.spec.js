@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils'
 import DatasetItem from '@/DatasetItem.vue'
+import { mount } from '@vue/test-utils'
 
 describe('DatasetItem', () => {
   const WrapperComp = {

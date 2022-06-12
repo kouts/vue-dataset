@@ -1,6 +1,6 @@
-import { shallowMount } from '@vue/test-utils'
 import DatasetPager from '@/DatasetPager.vue'
 import datasetI18n from '@/i18n/en.js'
+import { shallowMount } from '@vue/test-utils'
 
 const mockSetActive = jest.fn()
 
@@ -18,7 +18,7 @@ describe('DatasetPager', () => {
   function wrapperWithProvide(provideOpts = {}) {
     const wrapper = shallowMount(DatasetPager, {
       provide: {
-        datasetI18n: datasetI18n,
+        datasetI18n,
         setActive: function (value) {
           mockSetActive(value)
         },
@@ -28,6 +28,7 @@ describe('DatasetPager', () => {
         ...provideOpts
       }
     })
+
     return wrapper
   }
 
@@ -38,6 +39,7 @@ describe('DatasetPager', () => {
   it('renders a ul element', () => {
     wrapper = wrapperWithProvide()
     const ul = wrapper.find('ul')
+
     expect(ul.exists()).toBe(true)
   })
 
@@ -47,6 +49,7 @@ describe('DatasetPager', () => {
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
+
       expect(isButtonDisabled(previousButton)).toBe(true)
     })
   })
@@ -57,6 +60,7 @@ describe('DatasetPager', () => {
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
+
       expect(isButtonDisabled(previousButton)).toBe(true)
     })
   })
@@ -68,6 +72,7 @@ describe('DatasetPager', () => {
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
+
       expect(isButtonEnabled(previousButton)).toBe(true)
     })
   })
@@ -80,6 +85,7 @@ describe('DatasetPager', () => {
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
       const nextButton = buttons.at(buttons.length - 1).element
+
       expect(isButtonDisabled(nextButton)).toBe(true)
     })
   })
@@ -91,6 +97,7 @@ describe('DatasetPager', () => {
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
       const nextButton = buttons.at(buttons.length - 1).element
+
       expect(isButtonDisabled(nextButton)).toBe(true)
     })
   })
@@ -103,6 +110,7 @@ describe('DatasetPager', () => {
       const buttons = wrapper.findAll('a')
       const previousButton = buttons.at(0).element
       const nextButton = buttons.at(buttons.length - 1).element
+
       expect(isButtonDisabled(previousButton)).toBe(true)
       expect(isButtonDisabled(nextButton)).toBe(true)
     })
@@ -116,6 +124,7 @@ describe('DatasetPager', () => {
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
       const nextButton = buttons.at(buttons.length - 1).element
+
       expect(isButtonEnabled(nextButton)).toBe(true)
     })
   })
@@ -127,6 +136,7 @@ describe('DatasetPager', () => {
     })
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(1)
+
       expect(li.classes()).toContain('active')
     })
   })
@@ -139,6 +149,7 @@ describe('DatasetPager', () => {
     })
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(2)
+
       expect(li.classes()).toContain('disabled')
       expect(li.find('span').exists()).toBe(true)
     })
@@ -152,6 +163,7 @@ describe('DatasetPager', () => {
       rdsPagecount: () => 6
     })
     const previousButton = wrapper.findAll('a').at(0)
+
     previousButton.trigger('click')
     expect(mockSetActive.mock.calls[0][0]).toBe(5)
   })
@@ -165,6 +177,7 @@ describe('DatasetPager', () => {
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons.at(buttons.length - 1)
+
     nextButton.trigger('click')
     expect(mockSetActive.mock.calls[0][0]).toBe(6)
   })

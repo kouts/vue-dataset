@@ -1,7 +1,7 @@
 <template>
   <component :is="tag">
     <template v-for="(rowIndex, i) in dsRows">
-      <slot :row="dsData[rowIndex]" :rowIndex="rowIndex" :index="indexes[i]"></slot>
+      <slot :row="dsData[rowIndex]" :row-index="rowIndex" :index="indexes[i]"></slot>
     </template>
     <slot v-if="!dsRows.length" name="noDataFound"></slot>
   </component>
@@ -32,9 +32,11 @@ export default {
     },
     indexes() {
       const arr = []
+
       for (let i = this.dsFrom; i < this.dsTo; i++) {
         arr.push(i)
       }
+
       return arr
     }
   }

@@ -1,9 +1,9 @@
 import Dataset from '../../src/Dataset.vue'
+import DatasetInfo from '../../src/DatasetInfo.vue'
+import DatasetItem from '../../src/DatasetItem.vue'
+import DatasetPager from '../../src/DatasetPager.vue'
 import DatasetSearch from '../../src/DatasetSearch.vue'
 import DatasetShow from '../../src/DatasetShow.vue'
-import DatasetPager from '../../src/DatasetPager.vue'
-import DatasetItem from '../../src/DatasetItem.vue'
-import DatasetInfo from '../../src/DatasetInfo.vue'
 import './styles/styles.scss'
 
 export default ({

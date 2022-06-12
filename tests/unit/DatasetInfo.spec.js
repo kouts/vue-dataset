@@ -1,6 +1,6 @@
-import { shallowMount } from '@vue/test-utils'
 import DatasetInfo from '@/DatasetInfo.vue'
 import datasetI18n from '@/i18n/en.js'
+import { shallowMount } from '@vue/test-utils'
 
 describe('DatasetInfo', () => {
   let wrapper = null
@@ -8,10 +8,11 @@ describe('DatasetInfo', () => {
   function wrapperWithProvide(provideOpts) {
     const wrapper = shallowMount(DatasetInfo, {
       provide: {
-        datasetI18n: datasetI18n,
+        datasetI18n,
         ...provideOpts
       }
     })
+
     return wrapper
   }
 
@@ -26,6 +27,7 @@ describe('DatasetInfo', () => {
       rdsTo: () => 0
     })
     const div = wrapper.find('div')
+
     expect(div.exists()).toBe(true)
   })
 

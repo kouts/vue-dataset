@@ -1,10 +1,10 @@
-import vue from 'rollup-plugin-vue'
-import css from 'rollup-plugin-css-only'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
-import del from 'rollup-plugin-delete'
 import buble from '@rollup/plugin-buble'
+import commonjs from 'rollup-plugin-commonjs'
+import css from 'rollup-plugin-css-only'
+import del from 'rollup-plugin-delete'
+import resolve from 'rollup-plugin-node-resolve'
+import vue from 'rollup-plugin-vue'
+import { terser } from 'rollup-plugin-terser'
 
 const sources = [
   './src/Dataset.vue',
@@ -16,17 +16,19 @@ const sources = [
 ]
 
 const umdSources = sources.slice()
+
 umdSources.unshift('./src/index.js')
 
 const umdBuild = umdSources.map((source) => {
   const name = source === './src/index.js' ? 'VueDataset' : source.split('/').pop().replace('.vue', '')
+
   return {
     input: source,
     output: [
       {
         file: './dist/umd/' + name + '.js',
         format: 'umd',
-        name: name,
+        name,
         sourcemap: true,
         sourcemapExcludeSources: false,
         globals: {
@@ -36,7 +38,7 @@ const umdBuild = umdSources.map((source) => {
       {
         file: './dist/umd/' + name + '.min.js',
         format: 'umd',
-        name: name,
+        name,
         sourcemap: true,
         sourcemapExcludeSources: false,
         globals: {
