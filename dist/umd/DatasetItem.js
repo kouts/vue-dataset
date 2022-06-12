@@ -38,9 +38,11 @@
       },
       indexes: function indexes() {
         var arr = [];
+
         for (var i = this.dsFrom; i < this.dsTo; i++) {
           arr.push(i);
         }
+
         return arr
       }
     }

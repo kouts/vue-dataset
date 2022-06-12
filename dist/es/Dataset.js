@@ -1,4 +1,4 @@
-import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-2a50bd4b.js';
+import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-fde6a0b4.js';
 import { n as normalizeComponent } from './normalize-component-1efcb3aa.js';
 
 var datasetI18n = {
@@ -80,6 +80,7 @@ var script = {
       this.dsSearchIn;
       this.dsSearchAs;
       this.dsSortAs;
+
       return Date.now()
     },
     dsRows: function dsRows() {
@@ -172,9 +173,11 @@ var script = {
       var this$1$1 = this;
 
       var pagesBeforeChange = this.dsPages;
+
       this.dsShowEntries = value;
       this.$nextTick(function () {
         var pagesAfterChange = this$1$1.dsPages;
+
         if (pagesAfterChange.length < pagesBeforeChange.length) {
           this$1$1.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
         }

@@ -23,6 +23,7 @@
     for (var key in obj) {
       return false
     }
+
     return true
   }
 
@@ -56,6 +57,7 @@
       rangeWithDots.push(range[i$1]);
       length = range[i$1];
     }
+
     return rangeWithDots
   }
 
@@ -65,6 +67,7 @@
     var dir = [];
     var i;
     var length = fields.length;
+
     fields = fields.map(function (o, i) {
       if (o[0] === '-') {
         dir[i] = -1;
@@ -72,6 +75,7 @@
       } else {
         dir[i] = 1;
       }
+
       return o
     });
 
@@ -80,6 +84,7 @@
         var o = fields[i];
         var aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
         var bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
+
         if (aVal > bVal) {
           return dir[i]
         }
@@ -87,6 +92,7 @@
           return -dir[i]
         }
       }
+
       return 0
     }
   }
@@ -97,6 +103,7 @@
       // console.log(filterKey + ' -> ' + filterFields[filterKey]);
       items = items.filter(function (item) {
         var itemValue = item.value;
+
         for (var itemKey in itemValue) {
           if (itemKey === filterKey) {
             if (typeof filterFields[filterKey] === 'function') {
@@ -110,11 +117,13 @@
             }
           }
         }
+
         return false
       });
     };
 
     for (var filterKey in filterFields) loop( filterKey );
+
     return items
   }
 
@@ -125,6 +134,7 @@
     for (var key in rowData) {
       if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
         var value = String(rowData[key]).toLowerCase();
+
         for (var field in dsSearchAs) {
           if (field === key) {
             // Found key in dsSearchAs so we pass the value and the search string to a search function
@@ -132,6 +142,7 @@
             /* Check if dsSearchAs is a function (passed from the template) */
             if (typeof dsSearchAs[field] === 'function') {
               var res = dsSearchAs[field](value, str, rowData);
+
               if (res === true) {
                 return res
               }
@@ -144,6 +155,7 @@
         }
       }
     }
+
     return false
   }
 
@@ -215,6 +227,7 @@
         this.dsSearchIn;
         this.dsSearchAs;
         this.dsSortAs;
+
         return Date.now()
       },
       dsRows: function dsRows() {
@@ -307,9 +320,11 @@
         var this$1$1 = this;
 
         var pagesBeforeChange = this.dsPages;
+
         this.dsShowEntries = value;
         this.$nextTick(function () {
           var pagesAfterChange = this$1$1.dsPages;
+
           if (pagesAfterChange.length < pagesBeforeChange.length) {
             this$1$1.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
           }

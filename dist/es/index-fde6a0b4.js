@@ -2,9 +2,11 @@ var MORE_PAGES = '...';
 
 function debounce(func, wait, immediate) {
   var timeout;
+
   return function () {
     var context = this;
     var args = arguments;
+
     clearTimeout(timeout);
     if (immediate && !timeout) {
       func.apply(context, args);
@@ -24,6 +26,7 @@ function isEmptyObject(obj) {
   for (var key in obj) {
     return false
   }
+
   return true
 }
 
@@ -57,6 +60,7 @@ function createPagingRange(nrOfPages, currentPage) {
     rangeWithDots.push(range[i$1]);
     length = range[i$1];
   }
+
   return rangeWithDots
 }
 
@@ -66,6 +70,7 @@ function fieldSorter(fields, dsSortAs) {
   var dir = [];
   var i;
   var length = fields.length;
+
   fields = fields.map(function (o, i) {
     if (o[0] === '-') {
       dir[i] = -1;
@@ -73,6 +78,7 @@ function fieldSorter(fields, dsSortAs) {
     } else {
       dir[i] = 1;
     }
+
     return o
   });
 
@@ -81,6 +87,7 @@ function fieldSorter(fields, dsSortAs) {
       var o = fields[i];
       var aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
       var bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
+
       if (aVal > bVal) {
         return dir[i]
       }
@@ -88,6 +95,7 @@ function fieldSorter(fields, dsSortAs) {
         return -dir[i]
       }
     }
+
     return 0
   }
 }
@@ -98,6 +106,7 @@ function fieldFilter(items, filterFields) {
     // console.log(filterKey + ' -> ' + filterFields[filterKey]);
     items = items.filter(function (item) {
       var itemValue = item.value;
+
       for (var itemKey in itemValue) {
         if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
@@ -111,11 +120,13 @@ function fieldFilter(items, filterFields) {
           }
         }
       }
+
       return false
     });
   };
 
   for (var filterKey in filterFields) loop( filterKey );
+
   return items
 }
 
@@ -126,6 +137,7 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
   for (var key in rowData) {
     if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
       var value = String(rowData[key]).toLowerCase();
+
       for (var field in dsSearchAs) {
         if (field === key) {
           // Found key in dsSearchAs so we pass the value and the search string to a search function
@@ -133,6 +145,7 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
           /* Check if dsSearchAs is a function (passed from the template) */
           if (typeof dsSearchAs[field] === 'function') {
             var res = dsSearchAs[field](value, str, rowData);
+
             if (res === true) {
               return res
             }
@@ -145,8 +158,9 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
       }
     }
   }
+
   return false
 }
 
 export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, debounce as d, fieldFilter as f, isEmptyObject as i };
-//# sourceMappingURL=index-2a50bd4b.js.map
+//# sourceMappingURL=index-fde6a0b4.js.map
