@@ -42,3 +42,28 @@ In order to start development:
 npm i
 npm run watch
 ```
+
+
+## Nuxt implementation
+
+Using module bundlers, you will need to create a plugin to register the vue-dataset components into your project
+
+### Steps
+
+- Install vue-dataset
+```bash
+$ npm install vue-dataset --save
+```
+
+- Create the plugin ```plugins/vue-dataset-client.js``` and using this template file >>> [nuxt-plugin-template](/master/nuxt-plugin-template.js)
+
+- In ```nuxt.config.js``` register the plugin
+
+```javascript
+plugins: [
+    { src: '@/plugins/vue-dataset', ssr: false }
+],
+```
+- It`s done! ( _This way you don't need to import the vue-dataset into the component, just use the vue-dataset components as per the [documentation](https://vue-dataset-demo.netlify.app/)_ )
+
+Here you have a complete [example using NuxtJS](https://stackblitz.com/edit/node-ddnoec?file=plugins%2Fvue-dataset.js)
