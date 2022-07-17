@@ -1,5 +1,5 @@
-import { ref, computed, watch, provide, renderSlot, nextTick, inject, openBlock, createElementBlock, toDisplayString, createBlock, resolveDynamicComponent, withCtx, Fragment, renderList, createCommentVNode, createElementVNode, normalizeClass, withModifiers } from "vue";
-var i18n = {
+import { ref as w, computed as f, watch as V, provide as u, renderSlot as F, nextTick as B, inject as l, openBlock as h, createElementBlock as g, toDisplayString as c, createBlock as M, resolveDynamicComponent as K, withCtx as p, Fragment as C, renderList as T, createCommentVNode as z, createElementVNode as _, normalizeClass as A, withModifiers as R } from "vue";
+const G = {
   show: "Show",
   entries: "entries",
   previous: "Previous",
@@ -8,139 +8,87 @@ var i18n = {
   showingTo: "to",
   showingOf: "of",
   showingEntries: "entries"
-};
-const MORE_PAGES = "...";
-function debounce(func, wait, immediate) {
-  let timeout;
+}, L = "...";
+function W(t, n, s) {
+  let e;
   return function() {
-    const context = this;
-    const args = arguments;
-    clearTimeout(timeout);
-    if (immediate && !timeout) {
-      func.apply(context, args);
-    }
-    timeout = setTimeout(function() {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    }, wait);
+    const o = this, r = arguments;
+    clearTimeout(e), s && !e && t.apply(o, r), e = setTimeout(function() {
+      e = null, s || t.apply(o, r);
+    }, n);
   };
 }
-function isEmptyObject(obj) {
-  for (const key in obj) {
-    return false;
-  }
-  return true;
+function j(t) {
+  for (const n in t)
+    return !1;
+  return !0;
 }
-function createPagingRange(nrOfPages, currentPage) {
-  const delta = 2;
-  const range = [];
-  const rangeWithDots = [];
-  let length;
-  range.push(1);
-  if (nrOfPages <= 1) {
-    return range;
-  }
-  for (let i = currentPage - delta; i <= currentPage + delta; i++) {
-    if (i < nrOfPages && i > 1) {
-      range.push(i);
-    }
-  }
-  range.push(nrOfPages);
-  for (let i = 0; i < range.length; i++) {
-    if (length) {
-      if (range[i] - length === 2) {
-        rangeWithDots.push(length + 1);
-      } else if (range[i] - length !== 1) {
-        rangeWithDots.push(MORE_PAGES);
-      }
-    }
-    rangeWithDots.push(range[i]);
-    length = range[i];
-  }
-  return rangeWithDots;
+function q(t, n) {
+  const e = [], o = [];
+  let r;
+  if (e.push(1), t <= 1)
+    return e;
+  for (let a = n - 2; a <= n + 2; a++)
+    a < t && a > 1 && e.push(a);
+  e.push(t);
+  for (let a = 0; a < e.length; a++)
+    r && (e[a] - r === 2 ? o.push(r + 1) : e[a] - r !== 1 && o.push(L)), o.push(e[a]), r = e[a];
+  return o;
 }
-function fieldSorter(fields, dsSortAs = {}) {
-  const dir = [];
-  let i;
-  const length = fields.length;
-  fields = fields.map(function(o, i2) {
-    if (o[0] === "-") {
-      dir[i2] = -1;
-      o = o.substring(1);
-    } else {
-      dir[i2] = 1;
-    }
-    return o;
-  });
-  return function(a, b) {
-    for (i = 0; i < length; i++) {
-      const o = fields[i];
-      const aVal = dsSortAs[o] ? dsSortAs[o](a.value[o]) : a.value[o];
-      const bVal = dsSortAs[o] ? dsSortAs[o](b.value[o]) : b.value[o];
-      if (aVal > bVal) {
-        return dir[i];
-      }
-      if (aVal < bVal) {
-        return -dir[i];
-      }
+function H(t, n = {}) {
+  const s = [];
+  let e;
+  const o = t.length;
+  return t = t.map(function(r, a) {
+    return r[0] === "-" ? (s[a] = -1, r = r.substring(1)) : s[a] = 1, r;
+  }), function(r, a) {
+    for (e = 0; e < o; e++) {
+      const d = t[e], v = n[d] ? n[d](r.value[d]) : r.value[d], P = n[d] ? n[d](a.value[d]) : a.value[d];
+      if (v > P)
+        return s[e];
+      if (v < P)
+        return -s[e];
     }
     return 0;
   };
 }
-function fieldFilter(items, filterFields) {
-  for (const filterKey in filterFields) {
-    items = items.filter(function(item) {
-      const itemValue = item.value;
-      for (const itemKey in itemValue) {
-        if (itemKey === filterKey) {
-          if (typeof filterFields[filterKey] === "function") {
-            return filterFields[filterKey](itemValue[itemKey]);
-          }
-          if (filterFields[filterKey] === "") {
-            return true;
-          }
-          if (itemValue[itemKey] === filterFields[filterKey]) {
-            return true;
-          }
+function J(t, n) {
+  for (const s in n)
+    t = t.filter(function(e) {
+      const o = e.value;
+      for (const r in o)
+        if (r === s) {
+          if (typeof n[s] == "function")
+            return n[s](o[r]);
+          if (n[s] === "" || o[r] === n[s])
+            return !0;
         }
-      }
-      return false;
+      return !1;
     });
-  }
-  return items;
+  return t;
 }
-function findAny(dsSearchIn, dsSearchAs, rowData, str) {
-  str = String(str).toLowerCase();
-  for (const key in rowData) {
-    if (dsSearchIn.length === 0 || dsSearchIn.indexOf(key) !== -1) {
-      const value = String(rowData[key]).toLowerCase();
-      for (const field in dsSearchAs) {
-        if (field === key) {
-          if (typeof dsSearchAs[field] === "function") {
-            const res = dsSearchAs[field](value, str, rowData);
-            if (res === true) {
-              return res;
-            }
-          }
+function Q(t, n, s, e) {
+  e = String(e).toLowerCase();
+  for (const o in s)
+    if (t.length === 0 || t.indexOf(o) !== -1) {
+      const r = String(s[o]).toLowerCase();
+      for (const a in n)
+        if (a === o && typeof n[a] == "function") {
+          const d = n[a](r, e, s);
+          if (d === !0)
+            return d;
         }
-      }
-      if (value.indexOf(str) >= 0) {
-        return true;
-      }
+      if (r.indexOf(e) >= 0)
+        return !0;
     }
-  }
-  return false;
+  return !1;
 }
-var _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _sfc_main$5 = {
+const y = (t, n) => {
+  const s = t.__vccOpts || t;
+  for (const [e, o] of n)
+    s[e] = o;
+  return s;
+}, U = {
   props: {
     dsData: {
       type: Array,
@@ -167,148 +115,74 @@ const _sfc_main$5 = {
       default: () => ({})
     }
   },
-  setup(props) {
-    const dsPage = ref(1);
-    const dsSearch = ref("");
-    const dsShowEntries = ref(10);
-    const datasetI18n = ref(i18n);
-    const dsIndexes = ref([]);
-    const search = (value) => {
-      dsSearch.value = value;
-    };
-    const showEntries = async (value) => {
-      const pagesBeforeChange = dsPages.value;
-      dsShowEntries.value = value;
-      await nextTick();
-      const pagesAfterChange = dsPages.value;
-      if (pagesAfterChange.length < pagesBeforeChange.length) {
-        setActive(pagesAfterChange[pagesAfterChange.length - 1]);
-      }
-    };
-    const setActive = (value) => {
-      dsPage.value = value;
-    };
-    const whenChanged = computed(() => {
-      props.dsData;
-      dsSearch.value;
-      props.dsSortby;
-      props.dsFilterFields;
-      props.dsSearchIn;
-      props.dsSearchAs;
-      props.dsSortAs;
-      return Date.now();
-    });
-    const dsRows = computed(() => {
-      return dsIndexes.value.slice(dsFrom.value, dsTo.value);
-    });
-    const dsPages = computed(() => {
-      return createPagingRange(dsPagecount.value, dsPage.value);
-    });
-    const dsResultsNumber = computed(() => {
-      return dsIndexes.value.length;
-    });
-    const dsPagecount = computed(() => {
-      return Math.ceil(dsResultsNumber.value / dsShowEntries.value);
-    });
-    const dsFrom = computed(() => {
-      return (dsPage.value - 1) * dsShowEntries.value;
-    });
-    const dsTo = computed(() => {
-      return dsPage.value * dsShowEntries.value;
-    });
-    watch(dsResultsNumber, (val, oldVal) => {
-      setActive(1);
-    });
-    watch(whenChanged, (newVal, oldVal) => {
-      let result = [];
-      if (!dsSearch.value && !props.dsSortby.length && isEmptyObject(props.dsFilterFields)) {
-        result = props.dsData.map((val, i) => i);
-      } else {
-        result = props.dsData.map((val, i) => ({ index: i, value: val }));
-        if (!isEmptyObject(props.dsFilterFields)) {
-          result = fieldFilter(result, props.dsFilterFields);
-        }
-        if (dsSearch.value) {
-          result = result.filter((entry) => findAny(props.dsSearchIn, props.dsSearchAs, entry.value, dsSearch.value));
-        }
-        if (props.dsSortby.length) {
-          result.sort(fieldSorter(props.dsSortby, props.dsSortAs));
-        }
-        result = result.map((entry) => entry.index);
-      }
-      dsIndexes.value = result;
+  setup(t) {
+    const n = w(1), s = w(""), e = w(10), o = w(G), r = w([]), a = (m) => {
+      s.value = m;
+    }, d = async (m) => {
+      const D = x.value;
+      e.value = m, await B();
+      const i = x.value;
+      i.length < D.length && v(i[i.length - 1]);
+    }, v = (m) => {
+      n.value = m;
+    }, P = f(() => (t.dsData, s.value, t.dsSortby, t.dsFilterFields, t.dsSearchIn, t.dsSearchAs, t.dsSortAs, Date.now())), O = f(() => r.value.slice(E.value, k.value)), x = f(() => q(I.value, n.value)), S = f(() => r.value.length), I = f(() => Math.ceil(S.value / e.value)), E = f(() => (n.value - 1) * e.value), k = f(() => n.value * e.value);
+    return V(S, (m, D) => {
+      v(1);
+    }), V(P, (m, D) => {
+      let i = [];
+      !s.value && !t.dsSortby.length && j(t.dsFilterFields) ? i = t.dsData.map((b, N) => N) : (i = t.dsData.map((b, N) => ({ index: N, value: b })), j(t.dsFilterFields) || (i = J(i, t.dsFilterFields)), s.value && (i = i.filter((b) => Q(t.dsSearchIn, t.dsSearchAs, b.value, s.value))), t.dsSortby.length && i.sort(H(t.dsSortby, t.dsSortAs)), i = i.map((b) => b.index)), r.value = i;
     }, {
-      immediate: true
-    });
-    provide("dsIndexes", dsIndexes);
-    provide("search", search);
-    provide("showEntries", showEntries);
-    provide("setActive", setActive);
-    provide("datasetI18n", datasetI18n);
-    provide("dsData", computed(() => props.dsData));
-    provide("dsRows", dsRows);
-    provide("dsPages", dsPages);
-    provide("dsResultsNumber", dsResultsNumber);
-    provide("dsPagecount", dsPagecount);
-    provide("dsFrom", dsFrom);
-    provide("dsTo", dsTo);
-    provide("dsPage", dsPage);
-    return {
-      dsIndexes,
-      dsShowEntries,
-      dsResultsNumber,
-      dsPage,
-      dsPagecount,
-      dsFrom,
-      dsTo,
-      dsRows,
-      dsPages,
-      search,
-      showEntries,
-      setActive
+      immediate: !0
+    }), u("dsIndexes", r), u("search", a), u("showEntries", d), u("setActive", v), u("datasetI18n", o), u("dsData", f(() => t.dsData)), u("dsRows", O), u("dsPages", x), u("dsResultsNumber", S), u("dsPagecount", I), u("dsFrom", E), u("dsTo", k), u("dsPage", n), {
+      dsIndexes: r,
+      dsShowEntries: e,
+      dsResultsNumber: S,
+      dsPage: n,
+      dsPagecount: I,
+      dsFrom: E,
+      dsTo: k,
+      dsRows: O,
+      dsPages: x,
+      search: a,
+      showEntries: d,
+      setActive: v
     };
   }
 };
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  return renderSlot(_ctx.$slots, "default", {
+function X(t, n, s, e, o, r) {
+  return F(t.$slots, "default", {
     ds: {
-      dsIndexes: $setup.dsIndexes,
-      dsShowEntries: $setup.dsShowEntries,
-      dsResultsNumber: $setup.dsResultsNumber,
-      dsPage: $setup.dsPage,
-      dsPagecount: $setup.dsPagecount,
-      dsFrom: $setup.dsFrom,
-      dsTo: $setup.dsTo,
-      dsData: $props.dsData,
-      dsRows: $setup.dsRows,
-      dsPages: $setup.dsPages,
-      search: $setup.search,
-      showEntries: $setup.showEntries,
-      setActive: $setup.setActive
+      dsIndexes: e.dsIndexes,
+      dsShowEntries: e.dsShowEntries,
+      dsResultsNumber: e.dsResultsNumber,
+      dsPage: e.dsPage,
+      dsPagecount: e.dsPagecount,
+      dsFrom: e.dsFrom,
+      dsTo: e.dsTo,
+      dsData: s.dsData,
+      dsRows: e.dsRows,
+      dsPages: e.dsPages,
+      search: e.search,
+      showEntries: e.showEntries,
+      setActive: e.setActive
     }
   });
 }
-var Dataset = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
-const _sfc_main$4 = {
+const we = /* @__PURE__ */ y(U, [["render", X]]), Y = {
   setup() {
-    const dsResultsNumber = inject("dsResultsNumber");
-    const dsFrom = inject("dsFrom");
-    const dsTo = inject("dsTo");
-    const showing = computed(() => dsResultsNumber.value !== 0 ? dsFrom.value + 1 : 0);
-    const showingTo = computed(() => dsTo.value >= dsResultsNumber.value ? dsResultsNumber.value : dsTo.value);
+    const t = l("dsResultsNumber"), n = l("dsFrom"), s = l("dsTo"), e = f(() => t.value !== 0 ? n.value + 1 : 0), o = f(() => s.value >= t.value ? t.value : s.value);
     return {
-      datasetI18n: inject("datasetI18n"),
-      dsResultsNumber,
-      showing,
-      showingTo
+      datasetI18n: l("datasetI18n"),
+      dsResultsNumber: t,
+      showing: e,
+      showingTo: o
     };
   }
 };
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, toDisplayString($setup.datasetI18n.showing) + " " + toDisplayString($setup.showing) + " " + toDisplayString($setup.datasetI18n.showingTo) + " " + toDisplayString($setup.showingTo) + " " + toDisplayString($setup.datasetI18n.showingOf) + " " + toDisplayString($setup.dsResultsNumber) + " " + toDisplayString($setup.datasetI18n.showingEntries), 1);
+function Z(t, n, s, e, o, r) {
+  return h(), g("div", null, c(e.datasetI18n.showing) + " " + c(e.showing) + " " + c(e.datasetI18n.showingTo) + " " + c(e.showingTo) + " " + c(e.datasetI18n.showingOf) + " " + c(e.dsResultsNumber) + " " + c(e.datasetI18n.showingEntries), 1);
 }
-var DatasetInfo = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-const _sfc_main$3 = {
+const _e = /* @__PURE__ */ y(Y, [["render", Z]]), $ = {
   props: {
     tag: {
       type: String,
@@ -316,104 +190,88 @@ const _sfc_main$3 = {
     }
   },
   setup() {
-    const indexes = computed(() => {
-      const arr = [];
-      for (let i = inject("dsFrom").value; i < inject("dsTo").value; i++) {
-        arr.push(i);
-      }
-      return arr;
+    const t = f(() => {
+      const n = [];
+      for (let s = l("dsFrom").value; s < l("dsTo").value; s++)
+        n.push(s);
+      return n;
     });
     return {
-      dsData: inject("dsData"),
-      dsRows: inject("dsRows"),
-      indexes
+      dsData: l("dsData"),
+      dsRows: l("dsRows"),
+      indexes: t
     };
   }
 };
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(resolveDynamicComponent($props.tag), null, {
-    default: withCtx(() => [
-      (openBlock(true), createElementBlock(Fragment, null, renderList($setup.dsRows, (rowIndex, i) => {
-        return renderSlot(_ctx.$slots, "default", {
-          row: $setup.dsData[rowIndex],
-          rowIndex,
-          index: $setup.indexes[i]
-        });
-      }), 256)),
-      !$setup.dsRows.length ? renderSlot(_ctx.$slots, "noDataFound", { key: 0 }) : createCommentVNode("", true)
+function ee(t, n, s, e, o, r) {
+  return h(), M(K(s.tag), null, {
+    default: p(() => [
+      (h(!0), g(C, null, T(e.dsRows, (a, d) => F(t.$slots, "default", {
+        row: e.dsData[a],
+        rowIndex: a,
+        index: e.indexes[d]
+      })), 256)),
+      e.dsRows.length ? z("", !0) : F(t.$slots, "noDataFound", { key: 0 })
     ]),
     _: 3
   });
 }
-var DatasetItem = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-const _sfc_main$2 = {
+const be = /* @__PURE__ */ y($, [["render", ee]]), te = {
   setup() {
-    const morePages = ref(MORE_PAGES);
-    const dsPage = inject("dsPage");
-    const dsPagecount = inject("dsPagecount");
-    const disabledPrevious = computed(() => dsPage.value === 1);
-    const disabledNext = computed(() => dsPage.value === dsPagecount.value || dsPagecount.value === 0);
+    const t = w(L), n = l("dsPage"), s = l("dsPagecount"), e = f(() => n.value === 1), o = f(() => n.value === s.value || s.value === 0);
     return {
-      datasetI18n: inject("datasetI18n"),
-      setActive: inject("setActive"),
-      dsPages: inject("dsPages"),
-      dsPagecount,
-      dsPage,
-      morePages,
-      disabledPrevious,
-      disabledNext
+      datasetI18n: l("datasetI18n"),
+      setActive: l("setActive"),
+      dsPages: l("dsPages"),
+      dsPagecount: s,
+      dsPage: n,
+      morePages: t,
+      disabledPrevious: e,
+      disabledNext: o
     };
   }
-};
-const _hoisted_1$2 = { class: "pagination" };
-const _hoisted_2$1 = ["tabindex", "aria-disabled"];
-const _hoisted_3$1 = ["onClick"];
-const _hoisted_4 = {
+}, ne = { class: "pagination" }, se = ["tabindex", "aria-disabled"], ae = ["onClick"], oe = {
   key: 1,
   class: "page-link"
-};
-const _hoisted_5 = ["tabindex", "aria-disabled"];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("ul", _hoisted_1$2, [
-    createElementVNode("li", {
-      class: normalizeClass(["page-item", $setup.disabledPrevious && "disabled"])
+}, re = ["tabindex", "aria-disabled"];
+function de(t, n, s, e, o, r) {
+  return h(), g("ul", ne, [
+    _("li", {
+      class: A(["page-item", e.disabledPrevious && "disabled"])
     }, [
-      createElementVNode("a", {
+      _("a", {
         class: "page-link",
         href: "#",
-        tabindex: $setup.disabledPrevious ? "-1" : null,
-        "aria-disabled": $setup.disabledPrevious ? "true" : null,
-        onClick: _cache[0] || (_cache[0] = withModifiers(($event) => $setup.setActive($setup.dsPage !== 1 && $setup.dsPagecount !== 0 ? $setup.dsPage - 1 : $setup.dsPage), ["prevent"]))
-      }, toDisplayString($setup.datasetI18n.previous), 9, _hoisted_2$1)
+        tabindex: e.disabledPrevious ? "-1" : null,
+        "aria-disabled": e.disabledPrevious ? "true" : null,
+        onClick: n[0] || (n[0] = R((a) => e.setActive(e.dsPage !== 1 && e.dsPagecount !== 0 ? e.dsPage - 1 : e.dsPage), ["prevent"]))
+      }, c(e.datasetI18n.previous), 9, se)
     ], 2),
-    (openBlock(true), createElementBlock(Fragment, null, renderList($setup.dsPages, (item, index) => {
-      return openBlock(), createElementBlock("li", {
-        key: index,
-        class: normalizeClass(["page-item", item === $setup.dsPage && "active", item === $setup.morePages && "disabled"])
-      }, [
-        item !== $setup.morePages ? (openBlock(), createElementBlock("a", {
-          key: 0,
-          class: "page-link",
-          href: "#",
-          onClick: withModifiers(($event) => $setup.setActive(item), ["prevent"])
-        }, toDisplayString(item), 9, _hoisted_3$1)) : (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(item), 1))
-      ], 2);
-    }), 128)),
-    createElementVNode("li", {
-      class: normalizeClass(["page-item", $setup.disabledNext && "disabled"])
+    (h(!0), g(C, null, T(e.dsPages, (a, d) => (h(), g("li", {
+      key: d,
+      class: A(["page-item", a === e.dsPage && "active", a === e.morePages && "disabled"])
     }, [
-      createElementVNode("a", {
+      a !== e.morePages ? (h(), g("a", {
+        key: 0,
         class: "page-link",
         href: "#",
-        tabindex: $setup.disabledNext ? "-1" : null,
-        "aria-disabled": $setup.disabledNext ? "true" : null,
-        onClick: _cache[1] || (_cache[1] = withModifiers(($event) => $setup.setActive($setup.dsPage !== $setup.dsPagecount && $setup.dsPagecount !== 0 ? $setup.dsPage + 1 : $setup.dsPage), ["prevent"]))
-      }, toDisplayString($setup.datasetI18n.next), 9, _hoisted_5)
+        onClick: R((v) => e.setActive(a), ["prevent"])
+      }, c(a), 9, ae)) : (h(), g("span", oe, c(a), 1))
+    ], 2))), 128)),
+    _("li", {
+      class: A(["page-item", e.disabledNext && "disabled"])
+    }, [
+      _("a", {
+        class: "page-link",
+        href: "#",
+        tabindex: e.disabledNext ? "-1" : null,
+        "aria-disabled": e.disabledNext ? "true" : null,
+        onClick: n[1] || (n[1] = R((a) => e.setActive(e.dsPage !== e.dsPagecount && e.dsPagecount !== 0 ? e.dsPage + 1 : e.dsPage), ["prevent"]))
+      }, c(e.datasetI18n.next), 9, re)
     ], 2)
   ]);
 }
-var DatasetPager = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
-const _sfc_main$1 = {
+const ye = /* @__PURE__ */ y(te, [["render", de]]), le = {
   props: {
     dsSearchPlaceholder: {
       type: String,
@@ -424,30 +282,26 @@ const _sfc_main$1 = {
       default: 0
     }
   },
-  setup(props) {
-    const search = inject("search");
-    const dsSearch = ref("");
-    const input = debounce((value) => {
-      search(value);
-    }, props.wait);
+  setup(t) {
+    const n = l("search"), s = w(""), e = W((o) => {
+      n(o);
+    }, t.wait);
     return {
-      dsSearch,
-      input
+      dsSearch: s,
+      input: e
     };
   }
-};
-const _hoisted_1$1 = ["placeholder", "value"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("input", {
+}, ie = ["placeholder", "value"];
+function ce(t, n, s, e, o, r) {
+  return h(), g("input", {
     type: "text",
-    placeholder: $props.dsSearchPlaceholder,
+    placeholder: s.dsSearchPlaceholder,
     class: "form-control",
-    value: $setup.dsSearch,
-    onInput: _cache[0] || (_cache[0] = ($event) => $setup.input($event.target.value))
-  }, null, 40, _hoisted_1$1);
+    value: e.dsSearch,
+    onInput: n[0] || (n[0] = (a) => e.input(a.target.value))
+  }, null, 40, ie);
 }
-var DatasetSearch = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-const _sfc_main = {
+const Pe = /* @__PURE__ */ y(le, [["render", ce]]), ue = {
   props: {
     dsShowEntries: {
       type: Number,
@@ -465,39 +319,38 @@ const _sfc_main = {
     }
   },
   emits: ["changed"],
-  setup(props, { emit }) {
-    const showEntries = inject("showEntries");
-    const change = (e) => {
-      emit("changed", Number(e.target.value));
-      showEntries(Number(e.target.value));
+  setup(t, { emit: n }) {
+    const s = l("showEntries"), e = (o) => {
+      n("changed", Number(o.target.value)), s(Number(o.target.value));
     };
-    showEntries(Number(props.dsShowEntries));
-    return {
-      datasetI18n: inject("datasetI18n"),
-      change
+    return s(Number(t.dsShowEntries)), {
+      datasetI18n: l("datasetI18n"),
+      change: e
     };
   }
-};
-const _hoisted_1 = { class: "form-inline" };
-const _hoisted_2 = ["value"];
-const _hoisted_3 = ["value"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1, [
-    createElementVNode("label", null, toDisplayString($setup.datasetI18n.show), 1),
-    createElementVNode("select", {
-      value: $props.dsShowEntries,
+}, fe = { class: "form-inline" }, he = ["value"], ge = ["value"];
+function ve(t, n, s, e, o, r) {
+  return h(), g("div", fe, [
+    _("label", null, c(e.datasetI18n.show), 1),
+    _("select", {
+      value: s.dsShowEntries,
       class: "form-control mr-1 ml-1",
-      onChange: _cache[0] || (_cache[0] = (...args) => $setup.change && $setup.change(...args))
+      onChange: n[0] || (n[0] = (...a) => e.change && e.change(...a))
     }, [
-      (openBlock(true), createElementBlock(Fragment, null, renderList($props.dsShowEntriesLovs, (option) => {
-        return openBlock(), createElementBlock("option", {
-          key: option.value,
-          value: option.value
-        }, toDisplayString(option.text), 9, _hoisted_3);
-      }), 128))
-    ], 40, _hoisted_2),
-    createElementVNode("label", null, toDisplayString($setup.datasetI18n.entries), 1)
+      (h(!0), g(C, null, T(s.dsShowEntriesLovs, (a) => (h(), g("option", {
+        key: a.value,
+        value: a.value
+      }, c(a.text), 9, ge))), 128))
+    ], 40, he),
+    _("label", null, c(e.datasetI18n.entries), 1)
   ]);
 }
-var DatasetShow = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-export { Dataset, DatasetInfo, DatasetItem, DatasetPager, DatasetSearch, DatasetShow };
+const xe = /* @__PURE__ */ y(ue, [["render", ve]]);
+export {
+  we as Dataset,
+  _e as DatasetInfo,
+  be as DatasetItem,
+  ye as DatasetPager,
+  Pe as DatasetSearch,
+  xe as DatasetShow
+};

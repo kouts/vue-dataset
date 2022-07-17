@@ -1,3 +1,10 @@
+## [3.4.6](https://github.com/kouts/vue-dataset/compare/v3.4.5...v3.4.6) (2022-07-17)
+
+
+### Bug Fixes
+
+* updated vuepress ([d0a75f2](https://github.com/kouts/vue-dataset/commit/d0a75f20c2e1e54180fab445b9f4d9442770e666))
+
 ## [3.4.5](https://github.com/kouts/vue-dataset/compare/v3.4.4...v3.4.5) (2022-05-07)
 
 
