@@ -26,8 +26,8 @@ $link-hover-color: lighten($link-color, 15%) !default;
 @import '~bootstrap/scss/_button-group';
 /*
 @import '~bootstrap/scss/_input-group';
-*/
 @import '~bootstrap/scss/_custom-forms';
+*/
 @import '~bootstrap/scss/_nav';
 /*
 @import '~bootstrap/scss/_navbar';
@@ -96,12 +96,12 @@ blockquote p {color: #777;}
 }
 
 /* Fix margin-bottom for headers */
-.theme-container .theme-default-content:not(.custom) > h2, 
-.theme-container .theme-default-content:not(.custom) > h3, 
-.theme-container .theme-default-content:not(.custom) > h4, 
-.theme-container .theme-default-content:not(.custom) > h5, 
-.theme-container .theme-default-content:not(.custom) > h6 {
-  margin-bottom: 1rem !important;
+.theme-container .theme-default-content:not(.custom) h2, 
+.theme-container .theme-default-content:not(.custom) h3, 
+.theme-container .theme-default-content:not(.custom) h4, 
+.theme-container .theme-default-content:not(.custom) h5, 
+.theme-container .theme-default-content:not(.custom) h6 {
+  margin-bottom: 1rem;
 }
 
 /* Fix footer nav links */
@@ -110,9 +110,30 @@ blockquote p {color: #777;}
   padding: 0;
 }
 
+/* Fix navbar links */
+.theme-container .navbar a:hover {
+  text-decoration: none;
+}
+
+.theme-container .navbar .navbar-items a:hover {
+  border-bottom: none;
+}
+
 /* Fix stripped table rows colors */
 .table.table-striped tr:nth-child(2n) {
   background-color: #f6f8fa;
+}
+
+/* Fix card titles */
+.theme-container .theme-default-content:not(.custom) .card > .card-body > h5.card-title, 
+.theme-container .theme-default-content:not(.custom) .card > .card-body > h6 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.theme-container .theme-default-content:not(.custom) .card>.card-body h3 {
+  margin: 0px 0px 8px 0px;
+  padding: 0px;
 }
 
 /* Fix headings font-size */

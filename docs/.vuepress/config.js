@@ -19,7 +19,8 @@ module.exports = {
   theme: defaultTheme({
     contributors: false,
     repo: 'https://github.com/kouts/vue-dataset/tree/next',
-    darkMode: false,
+    colorMode: 'light',
+    colorModeSwitch: false,
     sidebar: [
       {
         link: '/',
