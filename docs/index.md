@@ -24,14 +24,14 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 
 `vue-dataset` contains 6 components
 
-| Component      | Description |
+| Component | Description |
 | ----------- | ----------- |
-| `dataset`      | Responsible for distributing data/methods to children (wrapper/data provider)       |
-| `dataset-item`   | Renders the dataset items        |
-| `dataset-info`   | Renders the paging information        |
-| `dataset-pager`   | Renders the paging buttons        |
-| `dataset-search`   | Renders the search input field        |
-| `dataset-show`   | Renders the "items per page" dropdown select        |
+| `dataset` | Responsible for distributing data/methods to children (wrapper/data provider) |
+| `dataset-item` | Renders the dataset items |
+| `dataset-info` | Renders the paging information |
+| `dataset-pager` | Renders the paging buttons |
+| `dataset-search` | Renders the search input field |
+| `dataset-show` | Renders the "items per page" dropdown select |
 
 <h2 class="mb-4">Example using cards</h2>
 
