@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
   <title>Dataset UMD build test</title>
 </head>
@@ -16,61 +16,80 @@
 <body>
   <div id="app"></div>
   <script type="text/html" id="app-template">
-      <div class="container pt-4">
-        <dataset
-          :ds-data="users"
-          :ds-sortby="['name']"
-          :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
-        >
-          <div class="row mb-2">
-            <div class="col-md-6 mb-2 mb-md-0">
-              <dataset-show />
-            </div>
-            <div class="col-md-6">
-              <dataset-search ds-search-placeholder="Search..." />
-            </div>
+    <div class="container pt-4">
+      <dataset
+        :ds-data="users"
+        :ds-sortby="['name']"
+        :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
+      >
+        <div class="row mb-2">
+          <div class="col-md-6 mb-2 mb-md-0">
+            <dataset-show />
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <dataset-item class="form-row">
-                <template v-slot="{ row, rowIndex }">
-                  <div class="col-md-4">
-                    <div class="card mb-2">
-                      <div class="card-body pt-3 pb-2 px-3">
-                        <h5 class="card-title text-truncate mb-2" :title="'Index: ' + rowIndex">
-                          <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
-                        </h5>
-                        <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
-                        <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
-                        <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
-                      </div>
+          <div class="col-md-6">
+            <dataset-search ds-search-placeholder="Search..." />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <dataset-item class="form-row">
+              <template v-slot="{ row, rowIndex }">
+                <div class="col-md-4">
+                  <div class="card mb-2">
+                    <div class="card-body pt-3 pb-2 px-3">
+                      <h5 class="card-title text-truncate mb-2" :title="'Index: ' + rowIndex">
+                        <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
+                      </h5>
+                      <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
+                      <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
+                      <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
                     </div>
                   </div>
-                </template>
-                <template v-slot:noDataFound>
-                  <div class="col-md-12 pt-2">
-                    <p class="text-center">No results found</p>
-                  </div>
-                </template>
-              </dataset-item>
-            </div>
+                </div>
+              </template>
+              <template v-slot:noDataFound>
+                <div class="col-md-12 pt-2">
+                  <p class="text-center">No results found</p>
+                </div>
+              </template>
+            </dataset-item>
           </div>
-          <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
-            <dataset-info class="mb-2 mb-md-0" />
-            <dataset-pager />
-          </div>
-        </dataset>
         </div>
-    </script>
+        <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
+          <dataset-info class="mb-2 mb-md-0" />
+          <dataset-pager />
+        </div>
+      </dataset>
+    </div>
+  </script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript" src="umd-users.js"></script>
+
+  <!-- Test individual files build -->
   <script type="text/javascript" src="/dist/umd/Dataset.js"></script>
   <script type="text/javascript" src="/dist/umd/DatasetInfo.js"></script>
   <script type="text/javascript" src="/dist/umd/DatasetItem.js"></script>
   <script type="text/javascript" src="/dist/umd/DatasetPager.js"></script>
   <script type="text/javascript" src="/dist/umd/DatasetSearch.js"></script>
   <script type="text/javascript" src="/dist/umd/DatasetShow.js"></script>
+  <script type="text/javascript">
+    /* eslint-disable object-shorthand, no-undef, no-var, no-unused-vars */
+    var VueDataset = {
+      Dataset: Dataset,
+      DatasetInfo: DatasetInfo,
+      DatasetItem: DatasetItem,
+      DatasetPager: DatasetPager,
+      DatasetSearch: DatasetSearch,
+      DatasetShow: DatasetShow
+    }
+    /* eslint-enable object-shorthand, no-undef, no-var, no-unused-vars */
+  </script>
+
+  <!-- Test one file build -->
+  <!--
+  <script type="text/javascript" src="/dist/umd/VueDataset.js"></script>
+  -->
 
   <script type="text/javascript">
     /* eslint-disable object-shorthand, no-undef, no-var */
@@ -78,12 +97,12 @@
     var app = new Vue({
       el: '#app',
       components: {
-        Dataset: Dataset,
-        DatasetInfo: DatasetInfo,
-        DatasetItem: DatasetItem,
-        DatasetPager: DatasetPager,
-        DatasetSearch: DatasetSearch,
-        DatasetShow: DatasetShow
+        Dataset: VueDataset.Dataset,
+        DatasetInfo: VueDataset.DatasetInfo,
+        DatasetItem: VueDataset.DatasetItem,
+        DatasetPager: VueDataset.DatasetPager,
+        DatasetSearch: VueDataset.DatasetSearch,
+        DatasetShow: VueDataset.DatasetShow
       },
       data: {
         users: umdUsers,
