@@ -1,5 +1,4 @@
 import buble from '@rollup/plugin-buble'
-import commonjs from 'rollup-plugin-commonjs'
 import del from 'rollup-plugin-delete'
 import resolve from 'rollup-plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
@@ -16,7 +15,6 @@ const sources = [
 
 const commonPlugins = () => [
   resolve(),
-  commonjs(),
   vue({
     css: false
   }),
