@@ -193,7 +193,7 @@ var script = {
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function() {
+var __vue_render__ = function () {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -214,10 +214,9 @@ var __vue_render__ = function() {
           dsPages: _vm.dsPages,
           search: _vm.search,
           showEntries: _vm.showEntries,
-          setActive: _vm.setActive
-        }
-      })
-    ],
+          setActive: _vm.setActive,
+        },
+      }) ],
     2
   )
 };

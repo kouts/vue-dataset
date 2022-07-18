@@ -125,7 +125,7 @@
   var __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function() {
+  var __vue_render__ = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -137,9 +137,9 @@
         {
           staticClass: "form-control mr-1 ml-1",
           domProps: { value: _vm.dsShowEntries },
-          on: { change: _vm.change }
+          on: { change: _vm.change },
         },
-        _vm._l(_vm.dsShowEntriesLovs, function(option) {
+        _vm._l(_vm.dsShowEntriesLovs, function (option) {
           return _c(
             "option",
             { key: option.value, domProps: { value: option.value } },
@@ -149,8 +149,7 @@
         0
       ),
       _vm._v(" "),
-      _c("label", [_vm._v(_vm._s(_vm.datasetI18n.entries))])
-    ])
+      _c("label", [_vm._v(_vm._s(_vm.datasetI18n.entries))]) ])
   };
   var __vue_staticRenderFns__ = [];
   __vue_render__._withStripped = true;

@@ -131,7 +131,7 @@
   var __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function() {
+  var __vue_render__ = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -140,10 +140,10 @@
       attrs: { type: "text", placeholder: _vm.dsSearchPlaceholder },
       domProps: { value: _vm.dsSearch },
       on: {
-        input: function($event) {
+        input: function ($event) {
           return _vm.input($event.target.value)
-        }
-      }
+        },
+      },
     })
   };
   var __vue_staticRenderFns__ = [];

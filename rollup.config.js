@@ -1,12 +1,11 @@
 import buble from '@rollup/plugin-buble'
-import commonjs from 'rollup-plugin-commonjs'
-import css from 'rollup-plugin-css-only'
 import del from 'rollup-plugin-delete'
-import resolve from 'rollup-plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 
-const sources = [
+const createSources = () => [
+  './src/index.js',
   './src/Dataset.vue',
   './src/DatasetInfo.vue',
   './src/DatasetItem.vue',
@@ -15,83 +14,74 @@ const sources = [
   './src/DatasetShow.vue'
 ]
 
-const umdSources = sources.slice()
+const createPlugins = () => [
+  nodeResolve(),
+  vue({
+    css: false
+  }),
+  buble({
+    exclude: 'node_modules/**'
+  })
+]
 
-umdSources.unshift('./src/index.js')
+const umdBuild = (minify) =>
+  createSources().map((source) => {
+    const name = source === './src/index.js' ? 'VueDataset' : source.split('/').pop().replace('.vue', '')
+    const minifiedSuffix = minify ? '.min' : ''
+    const plugins = createPlugins()
 
-const umdBuild = umdSources.map((source) => {
-  const name = source === './src/index.js' ? 'VueDataset' : source.split('/').pop().replace('.vue', '')
+    if (minify) {
+      plugins.push(terser())
+    }
 
-  return {
-    input: source,
-    output: [
-      {
-        file: './dist/umd/' + name + '.js',
-        format: 'umd',
-        name,
-        sourcemap: true,
-        sourcemapExcludeSources: false,
-        globals: {
-          vue: 'Vue'
+    return {
+      input: source,
+      output: [
+        {
+          file: `./dist/umd/${name}${minifiedSuffix}.js`,
+          format: 'umd',
+          name,
+          sourcemap: true,
+          sourcemapExcludeSources: false,
+          globals: {
+            vue: 'Vue'
+          }
         }
-      },
-      {
-        file: './dist/umd/' + name + '.min.js',
-        format: 'umd',
-        name,
-        sourcemap: true,
-        sourcemapExcludeSources: false,
-        globals: {
-          vue: 'Vue'
+      ],
+      external: ['vue'],
+      plugins
+    }
+  })
+
+const esBuild = () => {
+  const plugins = createPlugins()
+
+  plugins.unshift(del({ targets: 'dist/*' }))
+
+  return [
+    {
+      input: createSources(),
+      output: [
+        {
+          dir: 'dist/es',
+          format: 'es',
+          sourcemap: true,
+          sourcemapExcludeSources: false
         }
-      }
-    ],
-    external: ['vue'],
-    plugins: [
-      resolve(),
-      commonjs(),
-      vue({
-        css: false
-      }),
-      buble({
-        exclude: 'node_modules/**'
-      }),
-      terser({
-        sourcemap: true,
-        include: [/^.+\.min\.js$/]
-      })
-    ]
-  }
-})
+      ],
+      external: ['vue'],
+      plugins
+    }
+  ]
+}
 
 export default [
   // ES
-  {
-    input: ['./src/index.js'].concat(sources),
-    output: [
-      {
-        dir: 'dist/es',
-        format: 'es',
-        sourcemap: true,
-        sourcemapExcludeSources: false
-      }
-    ],
-    external: ['vue'],
-    plugins: [
-      del({ targets: 'dist/*' }),
-      resolve(),
-      commonjs(),
-      css({
-        output: 'dist/vue-dataset.css'
-      }),
-      vue({
-        css: false
-      }),
-      buble({
-        exclude: 'node_modules/**'
-      })
-    ]
-  },
+  ...esBuild(),
+
   // UMD
-  ...umdBuild
+  ...umdBuild(),
+
+  // UMD Minified
+  ...umdBuild(true)
 ]

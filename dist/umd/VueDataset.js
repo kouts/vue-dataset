@@ -435,7 +435,7 @@
   var __vue_script__$5 = script$5;
 
   /* template */
-  var __vue_render__$5 = function() {
+  var __vue_render__$5 = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -456,10 +456,9 @@
             dsPages: _vm.dsPages,
             search: _vm.search,
             showEntries: _vm.showEntries,
-            setActive: _vm.setActive
-          }
-        })
-      ],
+            setActive: _vm.setActive,
+          },
+        }) ],
       2
     )
   };
@@ -531,7 +530,7 @@
   var __vue_script__$4 = script$4;
 
   /* template */
-  var __vue_render__$4 = function() {
+  var __vue_render__$4 = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -552,8 +551,7 @@
           " " +
           _vm._s(_vm.datasetI18n.showingEntries) +
           "\n"
-      )
-    ])
+      ) ])
   };
   var __vue_staticRenderFns__$4 = [];
   __vue_render__$4._withStripped = true;
@@ -637,7 +635,7 @@
   var __vue_script__$3 = script$3;
 
   /* template */
-  var __vue_render__$3 = function() {
+  var __vue_render__$3 = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -645,18 +643,16 @@
       _vm.tag,
       { tag: "component" },
       [
-        _vm._l(_vm.dsRows, function(rowIndex, i) {
+        _vm._l(_vm.dsRows, function (rowIndex, i) {
           return [
             _vm._t("default", null, {
               row: _vm.dsData[rowIndex],
               rowIndex: rowIndex,
-              index: _vm.indexes[i]
-            })
-          ]
+              index: _vm.indexes[i],
+            }) ]
         }),
         _vm._v(" "),
-        !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e()
-      ],
+        !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e() ],
       2
     )
   };
@@ -728,7 +724,7 @@
   var __vue_script__$2 = script$2;
 
   /* template */
-  var __vue_render__$2 = function() {
+  var __vue_render__$2 = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -744,24 +740,23 @@
               attrs: {
                 href: "#",
                 tabindex: _vm.disabledPrevious && "-1",
-                "aria-disabled": _vm.disabledPrevious && "true"
+                "aria-disabled": _vm.disabledPrevious && "true",
               },
               on: {
-                click: function($event) {
+                click: function ($event) {
                   $event.preventDefault();
                   return _vm.setActive(
                     _vm.dsPage !== 1 && _vm.dsPagecount !== 0
                       ? _vm.dsPage - 1
                       : _vm.dsPage
                   )
-                }
-              }
+                },
+              },
             },
             [_vm._v("\n      " + _vm._s(_vm.datasetI18n.previous) + "\n    ")]
-          )
-        ]),
+          ) ]),
         _vm._v(" "),
-        _vm._l(_vm.dsPages, function(item, index) {
+        _vm._l(_vm.dsPages, function (item, index) {
           return [
             _c(
               "li",
@@ -770,8 +765,7 @@
                 class: [
                   "page-item",
                   item === _vm.dsPage && "active",
-                  item === _vm.morePages && "disabled"
-                ]
+                  item === _vm.morePages && "disabled" ],
               },
               [
                 item !== _vm.morePages
@@ -781,20 +775,17 @@
                         staticClass: "page-link",
                         attrs: { href: "#" },
                         on: {
-                          click: function($event) {
+                          click: function ($event) {
                             $event.preventDefault();
                             return _vm.setActive(item)
-                          }
-                        }
+                          },
+                        },
                       },
                       [_vm._v("\n        " + _vm._s(item) + "\n      ")]
                     )
                   : _c("span", { staticClass: "page-link" }, [
-                      _vm._v("\n        " + _vm._s(item) + "\n      ")
-                    ])
-              ]
-            )
-          ]
+                      _vm._v("\n        " + _vm._s(item) + "\n      ") ]) ]
+            ) ]
         }),
         _vm._v(" "),
         _c("li", { class: ["page-item", _vm.disabledNext && "disabled"] }, [
@@ -805,23 +796,21 @@
               attrs: {
                 href: "#",
                 tabindex: _vm.disabledNext && "-1",
-                "aria-disabled": _vm.disabledNext && "true"
+                "aria-disabled": _vm.disabledNext && "true",
               },
               on: {
-                click: function($event) {
+                click: function ($event) {
                   $event.preventDefault();
                   return _vm.setActive(
                     _vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0
                       ? _vm.dsPage + 1
                       : _vm.dsPage
                   )
-                }
-              }
+                },
+              },
             },
             [_vm._v("\n      " + _vm._s(_vm.datasetI18n.next) + "\n    ")]
-          )
-        ])
-      ],
+          ) ]) ],
       2
     )
   };
@@ -891,7 +880,7 @@
   var __vue_script__$1 = script$1;
 
   /* template */
-  var __vue_render__$1 = function() {
+  var __vue_render__$1 = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -900,10 +889,10 @@
       attrs: { type: "text", placeholder: _vm.dsSearchPlaceholder },
       domProps: { value: _vm.dsSearch },
       on: {
-        input: function($event) {
+        input: function ($event) {
           return _vm.input($event.target.value)
-        }
-      }
+        },
+      },
     })
   };
   var __vue_staticRenderFns__$1 = [];
@@ -986,7 +975,7 @@
   var __vue_script__ = script;
 
   /* template */
-  var __vue_render__ = function() {
+  var __vue_render__ = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -998,9 +987,9 @@
         {
           staticClass: "form-control mr-1 ml-1",
           domProps: { value: _vm.dsShowEntries },
-          on: { change: _vm.change }
+          on: { change: _vm.change },
         },
-        _vm._l(_vm.dsShowEntriesLovs, function(option) {
+        _vm._l(_vm.dsShowEntriesLovs, function (option) {
           return _c(
             "option",
             { key: option.value, domProps: { value: option.value } },
@@ -1010,8 +999,7 @@
         0
       ),
       _vm._v(" "),
-      _c("label", [_vm._v(_vm._s(_vm.datasetI18n.entries))])
-    ])
+      _c("label", [_vm._v(_vm._s(_vm.datasetI18n.entries))]) ])
   };
   var __vue_staticRenderFns__ = [];
   __vue_render__._withStripped = true;

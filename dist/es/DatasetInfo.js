@@ -34,7 +34,7 @@ var script = {
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function() {
+var __vue_render__ = function () {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -55,8 +55,7 @@ var __vue_render__ = function() {
         " " +
         _vm._s(_vm.datasetI18n.showingEntries) +
         "\n"
-    )
-  ])
+    ) ])
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;

@@ -48,7 +48,7 @@ var script = {
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function() {
+var __vue_render__ = function () {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -56,18 +56,16 @@ var __vue_render__ = function() {
     _vm.tag,
     { tag: "component" },
     [
-      _vm._l(_vm.dsRows, function(rowIndex, i) {
+      _vm._l(_vm.dsRows, function (rowIndex, i) {
         return [
           _vm._t("default", null, {
             row: _vm.dsData[rowIndex],
             rowIndex: rowIndex,
-            index: _vm.indexes[i]
-          })
-        ]
+            index: _vm.indexes[i],
+          }) ]
       }),
       _vm._v(" "),
-      !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e()
-    ],
+      !_vm.dsRows.length ? _vm._t("noDataFound") : _vm._e() ],
     2
   )
 };
