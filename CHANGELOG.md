@@ -1,3 +1,10 @@
+## [1.1.15](https://github.com/kouts/vue-dataset/compare/v1.1.14...v1.1.15) (2022-07-18)
+
+
+### Bug Fixes
+
+* fixed table spacing ([0729260](https://github.com/kouts/vue-dataset/commit/0729260eb87afde805683eba58c19d2df47f2ba8))
+
 ## [1.1.14](https://github.com/kouts/vue-dataset/compare/v1.1.13...v1.1.14) (2022-06-12)
 
 
