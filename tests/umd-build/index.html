@@ -16,13 +16,20 @@
 <body>
   <div id="app"></div>
   <script type="text/html" id="app-template">
-    <div class="container pt-4">
+    <div class="container pt-2">
+      <h2>Dataset UMD build test</h2>
+      <div class="row mt-3">
+        <div class="col">
+          <button type="button" class="btn btn-primary mr-2" @click="setData">Set data</button>
+          <button type="button" class="btn btn-primary" @click="clearData">Clear data</button>
+        </div>
+      </div>
       <dataset
         :ds-data="users"
         :ds-sortby="['name']"
         :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       >
-        <div class="row mb-2">
+        <div class="row mb-2 mt-3">
           <div class="col-md-6 mb-2 mb-md-0">
             <dataset-show />
           </div>
@@ -33,23 +40,24 @@
         <div class="row">
           <div class="col-md-12">
             <dataset-item class="form-row">
-              <template v-slot="{ row, rowIndex }">
+              <!-- We don't destructure slotProps in order to retain IE11 compatibility -->
+              <template v-slot="slotProps">
                 <div class="col-md-4">
                   <div class="card mb-2">
                     <div class="card-body pt-3 pb-2 px-3">
-                      <h5 class="card-title text-truncate mb-2" :title="'Index: ' + rowIndex">
-                        <span :class="['font-16', statusClass[row.onlineStatus]]">⬤</span> {{ row.name }}
+                      <h5 class="card-title text-truncate mb-2" :title="'Index: ' + slotProps.rowIndex">
+                        <span :class="['font-16', statusClass[slotProps.row.onlineStatus]]">⬤</span> {{ slotProps.row.name }}
                       </h5>
-                      <h6 class="card-subtitle text-truncate text-muted">{{ row.email }}</h6>
-                      <p class="card-text text-truncate mb-0">{{ row.balance }}</p>
-                      <p class="card-text text-truncate text-right">{{ row.birthdate }}</p>
+                      <h6 class="card-subtitle text-truncate text-muted">{{ slotProps.row.email }}</h6>
+                      <p class="card-text text-truncate mb-0">{{ slotProps.row.balance }}</p>
+                      <p class="card-text text-truncate text-right">{{ slotProps.row.birthdate }}</p>
                     </div>
                   </div>
                 </div>
               </template>
               <template v-slot:noDataFound>
                 <div class="col-md-12 pt-2">
-                  <p class="text-center">No results found</p>
+                  <p class="text-center">No users found</p>
                 </div>
               </template>
             </dataset-item>
@@ -104,13 +112,23 @@
         DatasetSearch: VueDataset.DatasetSearch,
         DatasetShow: VueDataset.DatasetShow
       },
-      data: {
-        users: umdUsers,
-        statusClass: {
-          Active: 'text-success',
-          Away: 'text-warning',
-          'Do not disturb': 'text-danger',
-          Invisible: 'text-secondary'
+      data: function () {
+        return {
+          users: umdUsers,
+          statusClass: {
+            Active: 'text-success',
+            Away: 'text-warning',
+            'Do not disturb': 'text-danger',
+            Invisible: 'text-secondary'
+          }
+        }
+      },
+      methods: {
+        setData: function () {
+          this.users = umdUsers
+        },
+        clearData: function () {
+          this.users = []
         }
       },
       template: '#app-template'
