@@ -1,95 +1,174 @@
-(function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.DatasetInfo = factory());
-})(this, function() {
-  "use strict";
-  var render = function() {
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.DatasetInfo = factory());
+})(this, (function () { 'use strict';
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script = {
+    inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
+    computed: {
+      showing: function showing() {
+        return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0
+      },
+      showingTo: function showingTo() {
+        return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo
+      },
+      /* Setup reactive injects */
+      dsResultsNumber: function dsResultsNumber() {
+        return this.rdsResultsNumber()
+      },
+      dsFrom: function dsFrom() {
+        return this.rdsFrom()
+      },
+      dsTo: function dsTo() {
+        return this.rdsTo()
+      }
+    }
+  };
+
+  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+      if (typeof shadowMode !== 'boolean') {
+          createInjectorSSR = createInjector;
+          createInjector = shadowMode;
+          shadowMode = false;
+      }
+      // Vue.extend constructor export interop.
+      const options = typeof script === 'function' ? script.options : script;
+      // render functions
+      if (template && template.render) {
+          options.render = template.render;
+          options.staticRenderFns = template.staticRenderFns;
+          options._compiled = true;
+          // functional template
+          if (isFunctionalTemplate) {
+              options.functional = true;
+          }
+      }
+      // scopedId
+      if (scopeId) {
+          options._scopeId = scopeId;
+      }
+      let hook;
+      if (moduleIdentifier) {
+          // server build
+          hook = function (context) {
+              // 2.3 injection
+              context =
+                  context || // cached call
+                      (this.$vnode && this.$vnode.ssrContext) || // stateful
+                      (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+              // 2.2 with runInNewContext: true
+              if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                  context = __VUE_SSR_CONTEXT__;
+              }
+              // inject component styles
+              if (style) {
+                  style.call(this, createInjectorSSR(context));
+              }
+              // register component module identifier for async chunk inference
+              if (context && context._registeredComponents) {
+                  context._registeredComponents.add(moduleIdentifier);
+              }
+          };
+          // used by ssr in case component is cached and beforeCreate
+          // never gets called
+          options._ssrRegister = hook;
+      }
+      else if (style) {
+          hook = shadowMode
+              ? function (context) {
+                  style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+              }
+              : function (context) {
+                  style.call(this, createInjector(context));
+              };
+      }
+      if (hook) {
+          if (options.functional) {
+              // register for functional component in vue file
+              const originalRender = options.render;
+              options.render = function renderWithStyleInjection(h, context) {
+                  hook.call(context);
+                  return originalRender(h, context);
+              };
+          }
+          else {
+              // inject component registration as beforeCreate hook
+              const existing = options.beforeCreate;
+              options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+          }
+      }
+      return script;
+  }
+
+  /* script */
+  var __vue_script__ = script;
+
+  /* template */
+  var __vue_render__ = function () {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
-    return _c("div", [_vm._v(" " + _vm._s(_vm.datasetI18n.showing) + " " + _vm._s(_vm.showing) + " " + _vm._s(_vm.datasetI18n.showingTo) + " " + _vm._s(_vm.showingTo) + " " + _vm._s(_vm.datasetI18n.showingOf) + " " + _vm._s(_vm.dsResultsNumber) + " " + _vm._s(_vm.datasetI18n.showingEntries) + " ")]);
+    return _c("div", [
+      _vm._v(
+        "\n  " +
+          _vm._s(_vm.datasetI18n.showing) +
+          " " +
+          _vm._s(_vm.showing) +
+          " " +
+          _vm._s(_vm.datasetI18n.showingTo) +
+          " " +
+          _vm._s(_vm.showingTo) +
+          " " +
+          _vm._s(_vm.datasetI18n.showingOf) +
+          "\n  " +
+          _vm._s(_vm.dsResultsNumber) +
+          " " +
+          _vm._s(_vm.datasetI18n.showingEntries) +
+          "\n"
+      ) ])
   };
-  var staticRenderFns = [];
-  function normalizeComponent(scriptExports, render2, staticRenderFns2, functionalTemplate, injectStyles, scopeId, moduleIdentifier, shadowMode) {
-    var options = typeof scriptExports === "function" ? scriptExports.options : scriptExports;
-    if (render2) {
-      options.render = render2;
-      options.staticRenderFns = staticRenderFns2;
-      options._compiled = true;
-    }
-    if (functionalTemplate) {
-      options.functional = true;
-    }
-    if (scopeId) {
-      options._scopeId = "data-v-" + scopeId;
-    }
-    var hook;
-    if (moduleIdentifier) {
-      hook = function(context) {
-        context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
-        if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
-          context = __VUE_SSR_CONTEXT__;
-        }
-        if (injectStyles) {
-          injectStyles.call(this, context);
-        }
-        if (context && context._registeredComponents) {
-          context._registeredComponents.add(moduleIdentifier);
-        }
-      };
-      options._ssrRegister = hook;
-    } else if (injectStyles) {
-      hook = shadowMode ? function() {
-        injectStyles.call(this, (options.functional ? this.parent : this).$root.$options.shadowRoot);
-      } : injectStyles;
-    }
-    if (hook) {
-      if (options.functional) {
-        options._injectStyles = hook;
-        var originalRender = options.render;
-        options.render = function renderWithStyleInjection(h, context) {
-          hook.call(context);
-          return originalRender(h, context);
-        };
-      } else {
-        var existing = options.beforeCreate;
-        options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-      }
-    }
-    return {
-      exports: scriptExports,
-      options
-    };
-  }
-  var __vue2_script = {
-    inject: ["datasetI18n", "rdsResultsNumber", "rdsFrom", "rdsTo"],
-    computed: {
-      showing: function showing() {
-        return this.dsResultsNumber !== 0 ? this.dsFrom + 1 : 0;
-      },
-      showingTo: function showingTo() {
-        return this.dsTo >= this.dsResultsNumber ? this.dsResultsNumber : this.dsTo;
-      },
-      dsResultsNumber: function dsResultsNumber() {
-        return this.rdsResultsNumber();
-      },
-      dsFrom: function dsFrom() {
-        return this.rdsFrom();
-      },
-      dsTo: function dsTo() {
-        return this.rdsTo();
-      }
-    }
-  };
-  var __cssModules = {};
-  var __component__ = /* @__PURE__ */ normalizeComponent(__vue2_script, render, staticRenderFns, false, __vue2_injectStyles, null, null, null);
-  function __vue2_injectStyles(context) {
-    for (var o in __cssModules) {
-      this[o] = __cssModules[o];
-    }
-  }
-  const DatasetInfo = /* @__PURE__ */ function() {
-    return __component__.exports;
-  }();
-  return DatasetInfo;
-});
+  var __vue_staticRenderFns__ = [];
+  __vue_render__._withStripped = true;
+
+    /* style */
+    var __vue_inject_styles__ = undefined;
+    /* scoped */
+    var __vue_scope_id__ = undefined;
+    /* module identifier */
+    var __vue_module_identifier__ = undefined;
+    /* functional template */
+    var __vue_is_functional_template__ = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+    /* style inject shadow dom */
+    
+
+    
+    var __vue_component__ = /*#__PURE__*/normalizeComponent(
+      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+      __vue_inject_styles__,
+      __vue_script__,
+      __vue_scope_id__,
+      __vue_is_functional_template__,
+      __vue_module_identifier__,
+      false,
+      undefined,
+      undefined,
+      undefined
+    );
+
+  return __vue_component__;
+
+}));
 //# sourceMappingURL=DatasetInfo.js.map
