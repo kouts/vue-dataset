@@ -1,10 +1,11 @@
 import buble from '@rollup/plugin-buble'
 import del from 'rollup-plugin-delete'
-import resolve from 'rollup-plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 
-const sources = [
+const createSources = () => [
+  './src/index.js',
   './src/Dataset.vue',
   './src/DatasetInfo.vue',
   './src/DatasetItem.vue',
@@ -13,8 +14,8 @@ const sources = [
   './src/DatasetShow.vue'
 ]
 
-const commonPlugins = () => [
-  resolve(),
+const createPlugins = () => [
+  nodeResolve(),
   vue({
     css: false
   }),
@@ -23,15 +24,11 @@ const commonPlugins = () => [
   })
 ]
 
-const umdSources = sources.slice()
-
-umdSources.unshift('./src/index.js')
-
 const umdBuild = (minify) =>
-  umdSources.map((source) => {
+  createSources().map((source) => {
     const name = source === './src/index.js' ? 'VueDataset' : source.split('/').pop().replace('.vue', '')
     const minifiedSuffix = minify ? '.min' : ''
-    const plugins = commonPlugins()
+    const plugins = createPlugins()
 
     if (minify) {
       plugins.push(terser())
@@ -57,13 +54,13 @@ const umdBuild = (minify) =>
   })
 
 const esBuild = () => {
-  const plugins = commonPlugins()
+  const plugins = createPlugins()
 
   plugins.unshift(del({ targets: 'dist/*' }))
 
   return [
     {
-      input: ['./src/index.js'].concat(sources),
+      input: createSources(),
       output: [
         {
           dir: 'dist/es',
