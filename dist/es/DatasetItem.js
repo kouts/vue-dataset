@@ -1,4 +1,4 @@
-var render = function __render__() {
+var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28,7 +28,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
   }
   var hook;
   if (moduleIdentifier) {
-    hook = function hook2(context) {
+    hook = function(context) {
       context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
       if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
         context = __VUE_SSR_CONTEXT__;
@@ -101,7 +101,7 @@ function __vue2_injectStyles(context) {
     this[o] = __cssModules[o];
   }
 }
-var DatasetItem = /* @__PURE__ */ function() {
+const DatasetItem = /* @__PURE__ */ function() {
   return __component__.exports;
 }();
 export {

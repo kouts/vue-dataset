@@ -1,13 +1,5 @@
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-    return typeof obj2;
-  } : function(obj2) {
-    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-  }, _typeof(obj);
-}
 (function(global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.DatasetSearch = factory());
+  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.DatasetSearch = factory());
 })(this, function() {
   "use strict";
   function debounce(func, wait, immediate) {
@@ -27,7 +19,7 @@ function _typeof(obj) {
       }, wait);
     };
   }
-  var render = function __render__() {
+  var render = function() {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -41,7 +33,7 @@ function _typeof(obj) {
         "value": _vm.dsSearch
       },
       on: {
-        "input": function input($event) {
+        "input": function($event) {
           return _vm.input($event.target.value);
         }
       }
@@ -63,7 +55,7 @@ function _typeof(obj) {
     }
     var hook;
     if (moduleIdentifier) {
-      hook = function hook2(context) {
+      hook = function(context) {
         context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
         if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
           context = __VUE_SSR_CONTEXT__;
@@ -111,15 +103,15 @@ function _typeof(obj) {
         default: 0
       }
     },
-    data: function data() {
+    data: function() {
       return {
         dsSearch: ""
       };
     },
     mounted: function mounted() {
-      var _this = this;
+      var this$1$1 = this;
       this.input = debounce(function(value) {
-        _this.search(value);
+        this$1$1.search(value);
       }, this.wait);
     }
   };
@@ -130,7 +122,7 @@ function _typeof(obj) {
       this[o] = __cssModules[o];
     }
   }
-  var DatasetSearch = /* @__PURE__ */ function() {
+  const DatasetSearch = /* @__PURE__ */ function() {
     return __component__.exports;
   }();
   return DatasetSearch;

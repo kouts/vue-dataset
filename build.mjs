@@ -1,7 +1,7 @@
+import buble from '@rollup/plugin-buble'
 import { build } from 'vite'
 import { createVuePlugin } from 'vite-plugin-vue2'
 import { fileURLToPath } from 'url'
-import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import { resolve } from 'path'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -16,33 +16,34 @@ const sources = [
   'src/DatasetShow.vue'
 ]
 
-const buildOne = async (emptyOutDir, format, source) => {
+const buildOne = async (emptyOutDir, minify, format, source) => {
   const name =
     source === 'src/index.js' && format === 'umd'
       ? 'VueDataset'
       : source.split('/').pop().replace('.vue', '').replace('.js', '')
 
+  const minifiedSuffix = minify ? '.min' : ''
+
   await build({
     publicDir: 'public-vite',
-    plugins: [createVuePlugin()],
+    plugins: [
+      createVuePlugin(),
+      buble({
+        exclude: 'node_modules/**'
+      })
+    ],
     build: {
       emptyOutDir,
-      minify: false,
+      minify,
       lib: {
         formats: [format],
         entry: resolve(__dirname, source),
         name,
-        fileName: () => `${format}/${name}.js`
+        fileName: () => `${format}/${name}${minifiedSuffix}.js`
       },
       rollupOptions: {
         external: ['vue'],
         output: {
-          plugins: [
-            getBabelOutputPlugin({
-              allowAllFormats: true,
-              presets: [['@babel/preset-env', { ...(format === 'umd' && { modules: 'umd' }) }]]
-            })
-          ],
           sourcemap: true,
           sourcemapExcludeSources: false,
           globals: {
@@ -59,12 +60,16 @@ for (let index = 0; index < sources.length; index++) {
   const source = sources[index]
   const emptyOutDir = index === 0
 
-  await buildOne(emptyOutDir, 'es', source)
+  await buildOne(emptyOutDir, false, 'es', source)
 }
 
 // Build UMD
 for (let index = 0; index < sources.length; index++) {
   const source = sources[index]
 
-  await buildOne(false, 'umd', source)
+  // Build unminified assets
+  await buildOne(false, false, 'umd', source)
+
+  // Build minified assets
+  await buildOne(false, true, 'umd', source)
 }

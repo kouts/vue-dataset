@@ -1,5 +1,5 @@
 var MORE_PAGES = "...";
-var render = function __render__() {
+var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -15,7 +15,7 @@ var render = function __render__() {
       "aria-disabled": _vm.disabledPrevious && "true"
     },
     on: {
-      "click": function click($event) {
+      "click": function($event) {
         $event.preventDefault();
         return _vm.setActive(_vm.dsPage !== 1 && _vm.dsPagecount !== 0 ? _vm.dsPage - 1 : _vm.dsPage);
       }
@@ -30,7 +30,7 @@ var render = function __render__() {
         "href": "#"
       },
       on: {
-        "click": function click($event) {
+        "click": function($event) {
           $event.preventDefault();
           return _vm.setActive(item);
         }
@@ -48,7 +48,7 @@ var render = function __render__() {
       "aria-disabled": _vm.disabledNext && "true"
     },
     on: {
-      "click": function click($event) {
+      "click": function($event) {
         $event.preventDefault();
         return _vm.setActive(_vm.dsPage !== _vm.dsPagecount && _vm.dsPagecount !== 0 ? _vm.dsPage + 1 : _vm.dsPage);
       }
@@ -71,7 +71,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
   }
   var hook;
   if (moduleIdentifier) {
-    hook = function hook2(context) {
+    hook = function(context) {
       context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
       if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
         context = __VUE_SSR_CONTEXT__;
@@ -109,7 +109,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
 }
 var __vue2_script = {
   inject: ["datasetI18n", "setActive", "rdsPages", "rdsPagecount", "rdsPage"],
-  data: function data() {
+  data: function() {
     return {
       morePages: MORE_PAGES
     };
@@ -139,7 +139,7 @@ function __vue2_injectStyles(context) {
     this[o] = __cssModules[o];
   }
 }
-var DatasetPager = /* @__PURE__ */ function() {
+const DatasetPager = /* @__PURE__ */ function() {
   return __component__.exports;
 }();
 export {

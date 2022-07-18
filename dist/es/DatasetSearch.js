@@ -15,7 +15,7 @@ function debounce(func, wait, immediate) {
     }, wait);
   };
 }
-var render = function __render__() {
+var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -29,7 +29,7 @@ var render = function __render__() {
       "value": _vm.dsSearch
     },
     on: {
-      "input": function input($event) {
+      "input": function($event) {
         return _vm.input($event.target.value);
       }
     }
@@ -51,7 +51,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
   }
   var hook;
   if (moduleIdentifier) {
-    hook = function hook2(context) {
+    hook = function(context) {
       context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
       if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
         context = __VUE_SSR_CONTEXT__;
@@ -99,15 +99,15 @@ var __vue2_script = {
       default: 0
     }
   },
-  data: function data() {
+  data: function() {
     return {
       dsSearch: ""
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    var this$1$1 = this;
     this.input = debounce(function(value) {
-      _this.search(value);
+      this$1$1.search(value);
     }, this.wait);
   }
 };
@@ -118,7 +118,7 @@ function __vue2_injectStyles(context) {
     this[o] = __cssModules[o];
   }
 }
-var DatasetSearch = /* @__PURE__ */ function() {
+const DatasetSearch = /* @__PURE__ */ function() {
   return __component__.exports;
 }();
 export {
