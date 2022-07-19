@@ -1,3 +1,10 @@
+## [3.4.7](https://github.com/kouts/vue-dataset/compare/v3.4.6...v3.4.7) (2022-07-19)
+
+
+### Bug Fixes
+
+* fixed docs site ([343ed04](https://github.com/kouts/vue-dataset/commit/343ed0457d39df6b732f0e0dd5c6d467959717ea))
+
 ## [3.4.6](https://github.com/kouts/vue-dataset/compare/v3.4.5...v3.4.6) (2022-07-17)
 
 
