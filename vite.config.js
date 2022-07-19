@@ -4,6 +4,7 @@ const path = require('path')
 const { defineConfig } = require('vite')
 
 module.exports = defineConfig({
+  publicDir: 'public-vite',
   plugins: [
     vue(),
     createHtmlPlugin({
