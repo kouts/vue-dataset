@@ -46,7 +46,7 @@
     "@vue/cli-service": "^4.5.19",
     "@vue/test-utils": "^1.3.0",
     "@vue/vue2-jest": "^27.0.0",
-    "bootstrap": "^4.6.1",
+    "bootstrap": "^4.6.2",
     "eslint": "^8.20.0",
     "eslint-config-kouts": "^2.2.0",
     "eslint-config-prettier": "^8.5.0",
@@ -68,7 +68,7 @@
     "rollup-plugin-vue": "^5.1.9",
     "sass": "^1.53.0",
     "sass-loader": "^10.3.1",
-    "vue-template-compiler": "^2.7.7",
+    "vue-template-compiler": "^2.7.8",
     "vuepress": "^1.9.7",
     "vuepress-plugin-vue-example": "^1.1.6"
   }
