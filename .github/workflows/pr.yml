@@ -1,24 +1,35 @@
-name: Pull request
+name: pr-master
 
 on:
-  pull_request:
-    branches: [master, beta]
+  push:
+    branches: [master]
 
 jobs:
-  pr:
-    name: Pull request
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [16]
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16.x
-    - name: Install dependencies
-      run: npm install
-    - name: Lint
-      run: npm run lint
-    - name: Test
-      run: npm run test:unit --if-present
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies 📦
+        run: npm install
+
+      - name: Run linter 👀
+        run: npm run lint-fix
+
+      - name: Run tests 🧪
+        run: npm run test:unit-coverage --if-present

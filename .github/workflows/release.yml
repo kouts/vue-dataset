@@ -2,8 +2,7 @@ name: release-master
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   ci:
@@ -16,12 +15,12 @@ jobs:
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
