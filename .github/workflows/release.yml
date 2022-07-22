@@ -5,19 +5,20 @@ on:
     branches: [master, beta]
 
 jobs:
-  release:
-    name: Release
+  ci:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
       - name: Install dependencies
-        run: npm ci
+        run: npx ci
       - name: Install semantic-release extra plugins
         run: npm install --save-dev @semantic-release/changelog @semantic-release/git
       - name: Lint
