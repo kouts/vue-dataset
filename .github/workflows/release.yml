@@ -1,32 +1,46 @@
-name: Release
+name: release-master
 
 on:
   push:
-    branches: [master, beta]
+    branches:
+      - master
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [16]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v2.5.1
         with:
-          node-version: 16
-      - name: Install dependencies
-        run: npx ci
-      - name: Install semantic-release extra plugins
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies 📦
+        run: npm install
+
+      - name: Install semantic-release extra plugins 📦
         run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-      - name: Lint
+
+      - name: Run linter 👀
         run: npm run lint-fix
-      - name: Test
+
+      - name: Run tests 🧪
         run: npm run test:unit-coverage --if-present
+
       - name: Build
-        run: npm run rollup
+        run: npm run build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
