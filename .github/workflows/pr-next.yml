@@ -1,24 +1,38 @@
-name: Pull request next
+name: pr-next
 
 on:
-  pull_request:
+  push:
     branches: [next]
 
 jobs:
-  pr:
-    name: Pull request next
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [16]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
         with:
-          node-version: 16.x
-      - name: Install dependencies
+          fetch-depth: 0
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Install dependencies 📦
         run: npm install
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm run test:unit --if-present
+
+      - name: Install semantic-release extra plugins 📦
+        run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+
+      - name: Run linter 👀
+        run: npm run lint-fix
+
+      - name: Run tests 🧪
+        run: npm run test:unit-coverage --if-present
