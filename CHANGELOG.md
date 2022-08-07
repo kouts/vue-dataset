@@ -1,3 +1,10 @@
+## [3.4.8](https://github.com/kouts/vue-dataset/compare/v3.4.7...v3.4.8) (2022-08-07)
+
+
+### Bug Fixes
+
+* fixed set active page to last page ([fda0228](https://github.com/kouts/vue-dataset/commit/fda0228cef0b7cca7ec6b846b2cfcdccfcc692d8))
+
 ## [3.4.7](https://github.com/kouts/vue-dataset/compare/v3.4.6...v3.4.7) (2022-07-19)
 
 
