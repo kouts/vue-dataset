@@ -178,14 +178,10 @@ export default {
       this.dsSearch = value
     },
     showEntries(value) {
-      const pagesBeforeChange = this.dsPages
-
       this.dsShowEntries = value
       this.$nextTick(() => {
-        const pagesAfterChange = this.dsPages
-
-        if (pagesAfterChange.length < pagesBeforeChange.length) {
-          this.setActive(pagesAfterChange[pagesAfterChange.length - 1])
+        if (this.dsPage > this.dsPagecount) {
+          this.setActive(this.dsPages[this.dsPages.length - 1])
         }
       })
     },
