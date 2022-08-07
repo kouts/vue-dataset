@@ -72,14 +72,11 @@ export default {
     }
 
     const showEntries = async (value) => {
-      const pagesBeforeChange = dsPages.value
-
       dsShowEntries.value = value
       await nextTick()
-      const pagesAfterChange = dsPages.value
 
-      if (pagesAfterChange.length < pagesBeforeChange.length) {
-        setActive(pagesAfterChange[pagesAfterChange.length - 1])
+      if (dsPage.value > dsPagecount.value) {
+        setActive(dsPages.value[dsPages.value.length - 1])
       }
     }
 
