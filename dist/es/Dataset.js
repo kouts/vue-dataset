@@ -172,14 +172,10 @@ var script = {
     showEntries: function showEntries(value) {
       var this$1$1 = this;
 
-      var pagesBeforeChange = this.dsPages;
-
       this.dsShowEntries = value;
       this.$nextTick(function () {
-        var pagesAfterChange = this$1$1.dsPages;
-
-        if (pagesAfterChange.length < pagesBeforeChange.length) {
-          this$1$1.setActive(pagesAfterChange[pagesAfterChange.length - 1]);
+        if (this$1$1.dsPage > this$1$1.dsPagecount) {
+          this$1$1.setActive(this$1$1.dsPages[this$1$1.dsPages.length - 1]);
         }
       });
     },

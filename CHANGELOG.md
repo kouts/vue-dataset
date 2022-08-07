@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/kouts/vue-dataset/compare/v1.1.15...v1.1.16) (2022-08-07)
+
+
+### Bug Fixes
+
+* fixed set active page to last page ([371cf6a](https://github.com/kouts/vue-dataset/commit/371cf6a8d7a7d7a059bb7f98595f4568448c2463))
+
 ## [1.1.15](https://github.com/kouts/vue-dataset/compare/v1.1.14...v1.1.15) (2022-07-18)
 
 
