@@ -1,3 +1,10 @@
+## [3.4.9](https://github.com/kouts/vue-dataset/compare/v3.4.8...v3.4.9) (2022-11-06)
+
+
+### Bug Fixes
+
+* updated eslint config and npm packages ([79653ee](https://github.com/kouts/vue-dataset/commit/79653ee4714916ca4d58dc6cdfa2b5ccc30bdc47))
+
 ## [3.4.8](https://github.com/kouts/vue-dataset/compare/v3.4.7...v3.4.8) (2022-08-07)
 
 
