@@ -1038,7 +1038,5 @@
   exports.DatasetSearch = __vue_component__$3;
   exports.DatasetShow = __vue_component__$1;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
-
 }));
 //# sourceMappingURL=VueDataset.js.map
