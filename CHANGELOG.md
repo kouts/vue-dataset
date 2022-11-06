@@ -1,3 +1,11 @@
+## [1.1.17](https://github.com/kouts/vue-dataset/compare/v1.1.16...v1.1.17) (2022-11-06)
+
+
+### Bug Fixes
+
+* fixed lint config ([ca89546](https://github.com/kouts/vue-dataset/commit/ca89546b859103e495ed30be91de11524ccbb294))
+* updated eslint config, rollup and npm packages ([43c7c94](https://github.com/kouts/vue-dataset/commit/43c7c9485370297b5b5460be3c8e49dfd0514f27))
+
 ## [1.1.16](https://github.com/kouts/vue-dataset/compare/v1.1.15...v1.1.16) (2022-08-07)
 
 
