@@ -1,1 +1,1 @@
-module.exports = require('eslint-config-kouts/prettier.config.js')
+module.exports = require('@kouts/eslint-config/prettier.config.js')
