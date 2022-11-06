@@ -2,7 +2,7 @@ import buble from '@rollup/plugin-buble'
 import del from 'rollup-plugin-delete'
 import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 
 const createSources = () => [
   './src/index.js',
