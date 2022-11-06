@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint-config-kouts/vue3'],
+  extends: ['@kouts/eslint-config/vue3'],
   overrides: [
     {
       // Disable multi-word-component-names

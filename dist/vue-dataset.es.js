@@ -125,12 +125,19 @@ const y = (t, n) => {
     }, P = u(() => (t.dsData, s.value, t.dsSortby, t.dsFilterFields, t.dsSearchIn, t.dsSearchAs, t.dsSortAs, Date.now())), C = u(() => o.value.slice(E.value, k.value)), x = u(() => H(I.value, n.value)), S = u(() => o.value.length), I = u(() => Math.ceil(S.value / e.value)), E = u(() => (n.value - 1) * e.value), k = u(() => n.value * e.value);
     return O(S, (m, L) => {
       g(1);
-    }), O(P, (m, L) => {
-      let h = [];
-      !s.value && !t.dsSortby.length && V(t.dsFilterFields) ? h = t.dsData.map((b, D) => D) : (h = t.dsData.map((b, D) => ({ index: D, value: b })), V(t.dsFilterFields) || (h = Q(h, t.dsFilterFields)), s.value && (h = h.filter((b) => U(t.dsSearchIn, t.dsSearchAs, b.value, s.value))), t.dsSortby.length && h.sort(J(t.dsSortby, t.dsSortAs)), h = h.map((b) => b.index)), o.value = h;
-    }, {
-      immediate: !0
-    }), c("dsIndexes", o), c("search", a), c("showEntries", d), c("setActive", g), c("datasetI18n", r), c("dsData", u(() => t.dsData)), c("dsRows", C), c("dsPages", x), c("dsResultsNumber", S), c("dsPagecount", I), c("dsFrom", E), c("dsTo", k), c("dsPage", n), {
+    }), O(
+      P,
+      (m, L) => {
+        let h = [];
+        !s.value && !t.dsSortby.length && V(t.dsFilterFields) ? h = t.dsData.map((b, D) => D) : (h = t.dsData.map((b, D) => ({ index: D, value: b })), V(t.dsFilterFields) || (h = Q(h, t.dsFilterFields)), s.value && (h = h.filter((b) => U(t.dsSearchIn, t.dsSearchAs, b.value, s.value))), t.dsSortby.length && h.sort(J(t.dsSortby, t.dsSortAs)), h = h.map((b) => b.index)), o.value = h;
+      },
+      {
+        immediate: !0
+      }
+    ), c("dsIndexes", o), c("search", a), c("showEntries", d), c("setActive", g), c("datasetI18n", r), c(
+      "dsData",
+      u(() => t.dsData)
+    ), c("dsRows", C), c("dsPages", x), c("dsResultsNumber", S), c("dsPagecount", I), c("dsFrom", E), c("dsTo", k), c("dsPage", n), {
       dsIndexes: o,
       dsShowEntries: e,
       dsResultsNumber: S,
