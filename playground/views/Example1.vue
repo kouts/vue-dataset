@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <div class="mb-3">
+    <div><h3>Options API</h3></div>
+    <div class="mt-3 mb-3">
       <button type="button" class="btn btn-primary ml-1" @click="setData1">Set users 1</button>
       <button type="button" class="btn btn-primary ml-1" @click="setData2">Set users 2</button>
       <button type="button" class="btn btn-primary ml-1" @click="setDataAll">Set users all</button>
