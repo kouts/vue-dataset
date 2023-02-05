@@ -50,6 +50,7 @@ export default {
       default: () => ({})
     }
   },
+  emits: ['update:dsData'],
   /**
    * @param {{
    *   dsData: Record<string, any>[];
@@ -60,7 +61,7 @@ export default {
    *   dsSortAs: { [id in string]: (columnValue: any) => any };
    * }} props
    */
-  setup(props) {
+  setup(props, { emit }) {
     const dsPage = ref(1)
     const dsSearch = ref('')
     const dsShowEntries = ref(10)
@@ -157,6 +158,11 @@ export default {
           result = result.map((entry) => entry.index)
         }
         dsIndexes.value = result
+
+        emit(
+          'update:dsData',
+          props.dsData.filter((_, i) => result.includes(i))
+        )
       },
       {
         immediate: true

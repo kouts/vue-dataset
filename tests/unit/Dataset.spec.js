@@ -67,7 +67,7 @@ describe('Dataset', () => {
     expect(wrapper.findAll('li.page-item')[1].classes()).toContain('active')
   })
 
-  it('correctly calulates the number of pages', async () => {
+  it('correctly calculates the number of pages', async () => {
     const wrapper = createWrapper({ dsData: users })
     const newUsers = clone(users).slice(0, 301)
 
@@ -157,5 +157,15 @@ describe('Dataset', () => {
     expect(wrapper.findAll('.items > div')[0].text()).toBe('0 - Harper Nolan')
     await wrapper.setProps({ dsData: users2 })
     expect(wrapper.findAll('.items > div')[0].text()).toBe('0 - Aimee Stephens')
+  })
+
+  it('emits an event when the filtered results update', async () => {
+    const wrapper = createWrapper({ dsData: users })
+
+    expect(wrapper.emitted()['update:dsData'][0][0]).toHaveLength(5000)
+
+    await wrapper.vm.search('tristique.net')
+
+    expect(wrapper.emitted()['update:dsData'][1][0]).toHaveLength(4)
   })
 })
