@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/kouts/vue-dataset/compare/v3.4.9...v3.5.0) (2023-02-05)
+
+
+### Features
+
+* added update event ([409179c](https://github.com/kouts/vue-dataset/commit/409179cad28cf0069a9ae82992a35d99230b136a))
+
 ## [3.4.9](https://github.com/kouts/vue-dataset/compare/v3.4.8...v3.4.9) (2022-11-06)
 
 
