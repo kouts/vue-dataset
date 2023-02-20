@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/kouts/vue-dataset/compare/v3.5.0...v3.5.1) (2023-02-20)
+
+
+### Bug Fixes
+
+* fixed update:dsData event to emit the sorted data ([63cf64e](https://github.com/kouts/vue-dataset/commit/63cf64ede660860a20578b91abd681d1a420dfab))
+
 # [3.5.0](https://github.com/kouts/vue-dataset/compare/v3.4.9...v3.5.0) (2023-02-05)
 
 
