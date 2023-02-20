@@ -161,7 +161,7 @@ export default {
 
         emit(
           'update:dsData',
-          props.dsData.filter((_, i) => result.includes(i))
+          result.map((i) => props.dsData[i])
         )
       },
       {
