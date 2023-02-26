@@ -1,3 +1,10 @@
+## [3.5.2](https://github.com/kouts/vue-dataset/compare/v3.5.1...v3.5.2) (2023-02-26)
+
+
+### Bug Fixes
+
+* use deep watch instead of cimputed for data update ([97bf0c7](https://github.com/kouts/vue-dataset/commit/97bf0c7eb9187c9559af96a8ad24ef9c738111d1))
+
 ## [3.5.1](https://github.com/kouts/vue-dataset/compare/v3.5.0...v3.5.1) (2023-02-20)
 
 

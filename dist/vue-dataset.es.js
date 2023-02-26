@@ -1,4 +1,4 @@
-import { ref as _, computed as u, watch as O, provide as c, renderSlot as A, nextTick as M, inject as l, openBlock as f, createElementBlock as h, toDisplayString as i, createBlock as K, resolveDynamicComponent as z, withCtx as G, Fragment as F, renderList as T, createCommentVNode as W, createElementVNode as b, normalizeClass as N, withModifiers as R } from "vue";
+import { ref as _, computed as f, watch as C, provide as u, renderSlot as R, nextTick as j, inject as i, openBlock as v, createElementBlock as h, toDisplayString as c, createBlock as L, resolveDynamicComponent as B, withCtx as M, Fragment as A, renderList as F, createCommentVNode as K, createElementVNode as w, normalizeClass as k, withModifiers as N } from "vue";
 const p = {
   show: "Show",
   entries: "entries",
@@ -8,73 +8,73 @@ const p = {
   showingTo: "to",
   showingOf: "of",
   showingEntries: "entries"
-}, j = "...";
-function q(t, s, n) {
+}, V = "...";
+function z(t, n, s) {
   let e;
   return function() {
     const r = this, o = arguments;
-    clearTimeout(e), n && !e && t.apply(r, o), e = setTimeout(function() {
-      e = null, n || t.apply(r, o);
-    }, s);
+    clearTimeout(e), s && !e && t.apply(r, o), e = setTimeout(function() {
+      e = null, s || t.apply(r, o);
+    }, n);
   };
 }
-function V(t) {
-  for (const s in t)
+function O(t) {
+  for (const n in t)
     return !1;
   return !0;
 }
-function H(t, s) {
+function G(t, n) {
   const e = [], r = [];
   let o;
   if (e.push(1), t <= 1)
     return e;
-  for (let a = s - 2; a <= s + 2; a++)
+  for (let a = n - 2; a <= n + 2; a++)
     a < t && a > 1 && e.push(a);
   e.push(t);
   for (let a = 0; a < e.length; a++)
-    o && (e[a] - o === 2 ? r.push(o + 1) : e[a] - o !== 1 && r.push(j)), r.push(e[a]), o = e[a];
+    o && (e[a] - o === 2 ? r.push(o + 1) : e[a] - o !== 1 && r.push(V)), r.push(e[a]), o = e[a];
   return r;
 }
-function J(t, s = {}) {
-  const n = [];
+function W(t, n = {}) {
+  const s = [];
   let e;
   const r = t.length;
   return t = t.map(function(o, a) {
-    return o[0] === "-" ? (n[a] = -1, o = o.substring(1)) : n[a] = 1, o;
+    return o[0] === "-" ? (s[a] = -1, o = o.substring(1)) : s[a] = 1, o;
   }), function(o, a) {
     for (e = 0; e < r; e++) {
-      const d = t[e], y = s[d] ? s[d](o.value[d]) : o.value[d], m = s[d] ? s[d](a.value[d]) : a.value[d];
-      if (y > m)
-        return n[e];
-      if (y < m)
-        return -n[e];
+      const d = t[e], b = n[d] ? n[d](o.value[d]) : o.value[d], m = n[d] ? n[d](a.value[d]) : a.value[d];
+      if (b > m)
+        return s[e];
+      if (b < m)
+        return -s[e];
     }
     return 0;
   };
 }
-function Q(t, s) {
-  for (const n in s)
+function q(t, n) {
+  for (const s in n)
     t = t.filter(function(e) {
       const r = e.value;
       for (const o in r)
-        if (o === n) {
-          if (typeof s[n] == "function")
-            return s[n](r[o]);
-          if (s[n] === "" || r[o] === s[n])
+        if (o === s) {
+          if (typeof n[s] == "function")
+            return n[s](r[o]);
+          if (n[s] === "" || r[o] === n[s])
             return !0;
         }
       return !1;
     });
   return t;
 }
-function U(t, s, n, e) {
+function H(t, n, s, e) {
   e = String(e).toLowerCase();
-  for (const r in n)
+  for (const r in s)
     if (t.length === 0 || t.indexOf(r) !== -1) {
-      const o = String(n[r]).toLowerCase();
-      for (const a in s)
-        if (a === r && typeof s[a] == "function") {
-          const d = s[a](o, e, n);
+      const o = String(s[r]).toLowerCase();
+      for (const a in n)
+        if (a === r && typeof n[a] == "function") {
+          const d = n[a](o, e, s);
           if (d === !0)
             return d;
         }
@@ -83,12 +83,12 @@ function U(t, s, n, e) {
     }
   return !1;
 }
-const P = (t, s) => {
-  const n = t.__vccOpts || t;
-  for (const [e, r] of s)
-    n[e] = r;
-  return n;
-}, X = {
+const y = (t, n) => {
+  const s = t.__vccOpts || t;
+  for (const [e, r] of n)
+    s[e] = r;
+  return s;
+}, J = {
   props: {
     dsData: {
       type: Array,
@@ -126,49 +126,50 @@ const P = (t, s) => {
    *   dsSortAs: { [id in string]: (columnValue: any) => any };
    * }} props
    */
-  setup(t, { emit: s }) {
-    const n = _(1), e = _(""), r = _(10), o = _(p), a = _([]), d = (w) => {
-      e.value = w;
-    }, y = async (w) => {
-      r.value = w, await M(), n.value > I.value && m(x.value[x.value.length - 1]);
-    }, m = (w) => {
-      n.value = w;
-    }, L = u(() => (t.dsData, e.value, t.dsSortby, t.dsFilterFields, t.dsSearchIn, t.dsSearchAs, t.dsSortAs, Date.now())), C = u(() => a.value.slice(D.value, E.value)), x = u(() => H(I.value, n.value)), S = u(() => a.value.length), I = u(() => Math.ceil(S.value / r.value)), D = u(() => (n.value - 1) * r.value), E = u(() => n.value * r.value);
-    return O(S, (w, B) => {
+  setup(t, { emit: n }) {
+    const s = _(1), e = _(""), r = _(10), o = _(p), a = _([]), d = (l) => {
+      e.value = l;
+    }, b = async (l) => {
+      r.value = l, await j(), s.value > S.value && m(P.value[P.value.length - 1]);
+    }, m = (l) => {
+      s.value = l;
+    }, T = f(() => a.value.slice(I.value, D.value)), P = f(() => G(S.value, s.value)), x = f(() => a.value.length), S = f(() => Math.ceil(x.value / r.value)), I = f(() => (s.value - 1) * r.value), D = f(() => s.value * r.value);
+    return C(x, (l, g) => {
       m(1);
-    }), O(
-      L,
-      (w, B) => {
-        let v = [];
-        !e.value && !t.dsSortby.length && V(t.dsFilterFields) ? v = t.dsData.map((g, k) => k) : (v = t.dsData.map((g, k) => ({ index: k, value: g })), V(t.dsFilterFields) || (v = Q(v, t.dsFilterFields)), e.value && (v = v.filter((g) => U(t.dsSearchIn, t.dsSearchAs, g.value, e.value))), t.dsSortby.length && v.sort(J(t.dsSortby, t.dsSortAs)), v = v.map((g) => g.index)), a.value = v, s(
+    }), C(
+      () => [t.dsData, e, t.dsSortby, t.dsFilterFields, t.dsSearchIn, t.dsSearchAs, t.dsSortAs],
+      () => {
+        let l = [];
+        !e.value && !t.dsSortby.length && O(t.dsFilterFields) ? l = t.dsData.map((g, E) => E) : (l = t.dsData.map((g, E) => ({ index: E, value: g })), O(t.dsFilterFields) || (l = q(l, t.dsFilterFields)), e.value && (l = l.filter((g) => H(t.dsSearchIn, t.dsSearchAs, g.value, e.value))), t.dsSortby.length && l.sort(W(t.dsSortby, t.dsSortAs)), l = l.map((g) => g.index)), a.value = l, n(
           "update:dsData",
-          v.map((g) => t.dsData[g])
+          l.map((g) => t.dsData[g])
         );
       },
       {
-        immediate: !0
+        immediate: !0,
+        deep: !0
       }
-    ), c("dsIndexes", a), c("search", d), c("showEntries", y), c("setActive", m), c("datasetI18n", o), c(
+    ), u("dsIndexes", a), u("search", d), u("showEntries", b), u("setActive", m), u("datasetI18n", o), u(
       "dsData",
-      u(() => t.dsData)
-    ), c("dsRows", C), c("dsPages", x), c("dsResultsNumber", S), c("dsPagecount", I), c("dsFrom", D), c("dsTo", E), c("dsPage", n), {
+      f(() => t.dsData)
+    ), u("dsRows", T), u("dsPages", P), u("dsResultsNumber", x), u("dsPagecount", S), u("dsFrom", I), u("dsTo", D), u("dsPage", s), {
       dsIndexes: a,
       dsShowEntries: r,
-      dsResultsNumber: S,
-      dsPage: n,
-      dsPagecount: I,
-      dsFrom: D,
-      dsTo: E,
-      dsRows: C,
-      dsPages: x,
+      dsResultsNumber: x,
+      dsPage: s,
+      dsPagecount: S,
+      dsFrom: I,
+      dsTo: D,
+      dsRows: T,
+      dsPages: P,
       search: d,
-      showEntries: y,
+      showEntries: b,
       setActive: m
     };
   }
 };
-function Y(t, s, n, e, r, o) {
-  return A(t.$slots, "default", {
+function Q(t, n, s, e, r, o) {
+  return R(t.$slots, "default", {
     ds: {
       dsIndexes: e.dsIndexes,
       dsShowEntries: e.dsShowEntries,
@@ -177,7 +178,7 @@ function Y(t, s, n, e, r, o) {
       dsPagecount: e.dsPagecount,
       dsFrom: e.dsFrom,
       dsTo: e.dsTo,
-      dsData: n.dsData,
+      dsData: s.dsData,
       dsRows: e.dsRows,
       dsPages: e.dsPages,
       search: e.search,
@@ -186,21 +187,21 @@ function Y(t, s, n, e, r, o) {
     }
   });
 }
-const _e = /* @__PURE__ */ P(X, [["render", Y]]), Z = {
+const ge = /* @__PURE__ */ y(J, [["render", Q]]), U = {
   setup() {
-    const t = l("dsResultsNumber"), s = l("dsFrom"), n = l("dsTo"), e = u(() => t.value !== 0 ? s.value + 1 : 0), r = u(() => n.value >= t.value ? t.value : n.value);
+    const t = i("dsResultsNumber"), n = i("dsFrom"), s = i("dsTo"), e = f(() => t.value !== 0 ? n.value + 1 : 0), r = f(() => s.value >= t.value ? t.value : s.value);
     return {
-      datasetI18n: l("datasetI18n"),
+      datasetI18n: i("datasetI18n"),
       dsResultsNumber: t,
       showing: e,
       showingTo: r
     };
   }
 };
-function $(t, s, n, e, r, o) {
-  return f(), h("div", null, i(e.datasetI18n.showing) + " " + i(e.showing) + " " + i(e.datasetI18n.showingTo) + " " + i(e.showingTo) + " " + i(e.datasetI18n.showingOf) + " " + i(e.dsResultsNumber) + " " + i(e.datasetI18n.showingEntries), 1);
+function X(t, n, s, e, r, o) {
+  return v(), h("div", null, c(e.datasetI18n.showing) + " " + c(e.showing) + " " + c(e.datasetI18n.showingTo) + " " + c(e.showingTo) + " " + c(e.datasetI18n.showingOf) + " " + c(e.dsResultsNumber) + " " + c(e.datasetI18n.showingEntries), 1);
 }
-const be = /* @__PURE__ */ P(Z, [["render", $]]), ee = {
+const me = /* @__PURE__ */ y(U, [["render", X]]), Y = {
   props: {
     tag: {
       type: String,
@@ -208,88 +209,88 @@ const be = /* @__PURE__ */ P(Z, [["render", $]]), ee = {
     }
   },
   setup() {
-    const t = u(() => {
-      const s = [];
-      for (let n = l("dsFrom").value; n < l("dsTo").value; n++)
-        s.push(n);
-      return s;
+    const t = f(() => {
+      const n = [];
+      for (let s = i("dsFrom").value; s < i("dsTo").value; s++)
+        n.push(s);
+      return n;
     });
     return {
-      dsData: l("dsData"),
-      dsRows: l("dsRows"),
+      dsData: i("dsData"),
+      dsRows: i("dsRows"),
       indexes: t
     };
   }
 };
-function te(t, s, n, e, r, o) {
-  return f(), K(z(n.tag), null, {
-    default: G(() => [
-      (f(!0), h(F, null, T(e.dsRows, (a, d) => A(t.$slots, "default", {
+function Z(t, n, s, e, r, o) {
+  return v(), L(B(s.tag), null, {
+    default: M(() => [
+      (v(!0), h(A, null, F(e.dsRows, (a, d) => R(t.$slots, "default", {
         row: e.dsData[a],
         rowIndex: a,
         index: e.indexes[d]
       })), 256)),
-      e.dsRows.length ? W("", !0) : A(t.$slots, "noDataFound", { key: 0 })
+      e.dsRows.length ? K("", !0) : R(t.$slots, "noDataFound", { key: 0 })
     ]),
     _: 3
   });
 }
-const ye = /* @__PURE__ */ P(ee, [["render", te]]), ne = {
+const _e = /* @__PURE__ */ y(Y, [["render", Z]]), $ = {
   setup() {
-    const t = _(j), s = l("dsPage"), n = l("dsPagecount"), e = u(() => s.value === 1), r = u(() => s.value === n.value || n.value === 0);
+    const t = _(V), n = i("dsPage"), s = i("dsPagecount"), e = f(() => n.value === 1), r = f(() => n.value === s.value || s.value === 0);
     return {
-      datasetI18n: l("datasetI18n"),
-      setActive: l("setActive"),
-      dsPages: l("dsPages"),
-      dsPagecount: n,
-      dsPage: s,
+      datasetI18n: i("datasetI18n"),
+      setActive: i("setActive"),
+      dsPages: i("dsPages"),
+      dsPagecount: s,
+      dsPage: n,
       morePages: t,
       disabledPrevious: e,
       disabledNext: r
     };
   }
-}, se = { class: "pagination" }, ae = ["tabindex", "aria-disabled"], re = ["onClick"], oe = {
+}, ee = { class: "pagination" }, te = ["tabindex", "aria-disabled"], se = ["onClick"], ne = {
   key: 1,
   class: "page-link"
-}, de = ["tabindex", "aria-disabled"];
-function le(t, s, n, e, r, o) {
-  return f(), h("ul", se, [
-    b("li", {
-      class: N(["page-item", e.disabledPrevious && "disabled"])
+}, ae = ["tabindex", "aria-disabled"];
+function re(t, n, s, e, r, o) {
+  return v(), h("ul", ee, [
+    w("li", {
+      class: k(["page-item", e.disabledPrevious && "disabled"])
     }, [
-      b("a", {
+      w("a", {
         class: "page-link",
         href: "#",
         tabindex: e.disabledPrevious ? "-1" : null,
         "aria-disabled": e.disabledPrevious ? "true" : null,
-        onClick: s[0] || (s[0] = R((a) => e.setActive(e.dsPage !== 1 && e.dsPagecount !== 0 ? e.dsPage - 1 : e.dsPage), ["prevent"]))
-      }, i(e.datasetI18n.previous), 9, ae)
+        onClick: n[0] || (n[0] = N((a) => e.setActive(e.dsPage !== 1 && e.dsPagecount !== 0 ? e.dsPage - 1 : e.dsPage), ["prevent"]))
+      }, c(e.datasetI18n.previous), 9, te)
     ], 2),
-    (f(!0), h(F, null, T(e.dsPages, (a, d) => (f(), h("li", {
+    (v(!0), h(A, null, F(e.dsPages, (a, d) => (v(), h("li", {
       key: d,
-      class: N(["page-item", a === e.dsPage && "active", a === e.morePages && "disabled"])
+      class: k(["page-item", a === e.dsPage && "active", a === e.morePages && "disabled"])
     }, [
-      a !== e.morePages ? (f(), h("a", {
+      a !== e.morePages ? (v(), h("a", {
         key: 0,
         class: "page-link",
         href: "#",
-        onClick: R((y) => e.setActive(a), ["prevent"])
-      }, i(a), 9, re)) : (f(), h("span", oe, i(a), 1))
+        onClick: N((b) => e.setActive(a), ["prevent"])
+      }, c(a), 9, se)) : (v(), h("span", ne, c(a), 1))
     ], 2))), 128)),
-    b("li", {
-      class: N(["page-item", e.disabledNext && "disabled"])
+    w("li", {
+      class: k(["page-item", e.disabledNext && "disabled"])
     }, [
-      b("a", {
+      w("a", {
         class: "page-link",
         href: "#",
         tabindex: e.disabledNext ? "-1" : null,
         "aria-disabled": e.disabledNext ? "true" : null,
-        onClick: s[1] || (s[1] = R((a) => e.setActive(e.dsPage !== e.dsPagecount && e.dsPagecount !== 0 ? e.dsPage + 1 : e.dsPage), ["prevent"]))
-      }, i(e.datasetI18n.next), 9, de)
+        onClick: n[1] || (n[1] = N((a) => e.setActive(e.dsPage !== e.dsPagecount && e.dsPagecount !== 0 ? e.dsPage + 1 : e.dsPage), ["prevent"]))
+      }, c(e.datasetI18n.next), 9, ae)
     ], 2)
   ]);
 }
-const Pe = /* @__PURE__ */ P(ne, [["render", le]]), ie = {
+const we = /* @__PURE__ */ y($, [["render", re]]), oe = {
   props: {
     dsSearchPlaceholder: {
       type: String,
@@ -301,25 +302,25 @@ const Pe = /* @__PURE__ */ P(ne, [["render", le]]), ie = {
     }
   },
   setup(t) {
-    const s = l("search"), n = _(""), e = q((r) => {
-      s(r);
+    const n = i("search"), s = _(""), e = z((r) => {
+      n(r);
     }, t.wait);
     return {
-      dsSearch: n,
+      dsSearch: s,
       input: e
     };
   }
-}, ce = ["placeholder", "value"];
-function ue(t, s, n, e, r, o) {
-  return f(), h("input", {
+}, de = ["placeholder", "value"];
+function le(t, n, s, e, r, o) {
+  return v(), h("input", {
     type: "text",
-    placeholder: n.dsSearchPlaceholder,
+    placeholder: s.dsSearchPlaceholder,
     class: "form-control",
     value: e.dsSearch,
-    onInput: s[0] || (s[0] = (a) => e.input(a.target.value))
-  }, null, 40, ce);
+    onInput: n[0] || (n[0] = (a) => e.input(a.target.value))
+  }, null, 40, de);
 }
-const xe = /* @__PURE__ */ P(ie, [["render", ue]]), fe = {
+const be = /* @__PURE__ */ y(oe, [["render", le]]), ie = {
   props: {
     dsShowEntries: {
       type: Number,
@@ -337,38 +338,38 @@ const xe = /* @__PURE__ */ P(ie, [["render", ue]]), fe = {
     }
   },
   emits: ["changed"],
-  setup(t, { emit: s }) {
-    const n = l("showEntries"), e = (r) => {
-      s("changed", Number(r.target.value)), n(Number(r.target.value));
+  setup(t, { emit: n }) {
+    const s = i("showEntries"), e = (r) => {
+      n("changed", Number(r.target.value)), s(Number(r.target.value));
     };
-    return n(Number(t.dsShowEntries)), {
-      datasetI18n: l("datasetI18n"),
+    return s(Number(t.dsShowEntries)), {
+      datasetI18n: i("datasetI18n"),
       change: e
     };
   }
-}, ve = { class: "form-inline" }, he = ["value"], ge = ["value"];
-function me(t, s, n, e, r, o) {
-  return f(), h("div", ve, [
-    b("label", null, i(e.datasetI18n.show), 1),
-    b("select", {
-      value: n.dsShowEntries,
+}, ce = { class: "form-inline" }, ue = ["value"], fe = ["value"];
+function ve(t, n, s, e, r, o) {
+  return v(), h("div", ce, [
+    w("label", null, c(e.datasetI18n.show), 1),
+    w("select", {
+      value: s.dsShowEntries,
       class: "form-control mr-1 ml-1",
-      onChange: s[0] || (s[0] = (...a) => e.change && e.change(...a))
+      onChange: n[0] || (n[0] = (...a) => e.change && e.change(...a))
     }, [
-      (f(!0), h(F, null, T(n.dsShowEntriesLovs, (a) => (f(), h("option", {
+      (v(!0), h(A, null, F(s.dsShowEntriesLovs, (a) => (v(), h("option", {
         key: a.value,
         value: a.value
-      }, i(a.text), 9, ge))), 128))
-    ], 40, he),
-    b("label", null, i(e.datasetI18n.entries), 1)
+      }, c(a.text), 9, fe))), 128))
+    ], 40, ue),
+    w("label", null, c(e.datasetI18n.entries), 1)
   ]);
 }
-const Se = /* @__PURE__ */ P(fe, [["render", me]]);
+const ye = /* @__PURE__ */ y(ie, [["render", ve]]);
 export {
-  _e as Dataset,
-  be as DatasetInfo,
-  ye as DatasetItem,
-  Pe as DatasetPager,
-  xe as DatasetSearch,
-  Se as DatasetShow
+  ge as Dataset,
+  me as DatasetInfo,
+  _e as DatasetItem,
+  we as DatasetPager,
+  be as DatasetSearch,
+  ye as DatasetShow
 };
