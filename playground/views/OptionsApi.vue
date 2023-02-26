@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <div><h3>Composition API</h3></div>
+    <div><h3>Options API</h3></div>
     <div class="mt-3 mb-3">
       <button type="button" class="btn btn-primary ml-1" @click="setData1">Set users 1</button>
       <button type="button" class="btn btn-primary ml-1" @click="setData2">Set users 2</button>
       <button type="button" class="btn btn-primary ml-1" @click="setDataAll">Set users all</button>
+      <button type="button" class="btn btn-primary ml-1" @click="addOne">Add one user</button>
+      <button type="button" class="btn btn-primary ml-1" @click="removeOne">Remove one user</button>
     </div>
     <dataset
       v-slot="{ ds }"
@@ -56,9 +58,8 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import jsonUsers from '@root/example-data/users.json'
-import { ref } from 'vue'
 
 const clone = function (obj) {
   return JSON.parse(JSON.stringify(obj || {}))
@@ -68,28 +69,56 @@ const users1 = clone(jsonUsers).slice(0, 12)
 const users2 = clone(jsonUsers).slice(13, 25)
 const usersAll = clone(jsonUsers)
 
-const users = ref([])
-const statusClass = {
-  Active: 'text-success',
-  Away: 'text-warning',
-  'Do not disturb': 'text-danger',
-  Invisible: 'text-secondary'
-}
-const selected = ref(5)
-
-const setData1 = () => {
-  users.value = users1
-}
-
-const setData2 = () => {
-  users.value = users2
-}
-
-const setDataAll = () => {
-  users.value = usersAll
+const user = {
+  _id: 'EA265B20-45F2-953C-C534-3E2A78620ins',
+  isActive: true,
+  onlineStatus: 'Do not disturb',
+  balance: 10000,
+  birthdate: '1978-12-24',
+  favoriteColor: 'orredange',
+  firstName: 'Inserted',
+  lastName: 'User',
+  name: 'Inserted User',
+  company: 'Inserted AG',
+  email: 'inserted@inserted.co.uk',
+  phone: '(0112) 192 5651',
+  address: 'P.O. Box 98, 571 Inserted Rd.',
+  favoriteAnimal: 'cat'
 }
 
-const updateDsData = (data) => {
-  console.log(data)
+export default {
+  name: 'Home',
+  data() {
+    return {
+      users: [],
+      statusClass: {
+        Active: 'text-success',
+        Away: 'text-warning',
+        'Do not disturb': 'text-danger',
+        Invisible: 'text-secondary'
+      },
+      selected: 5
+    }
+  },
+  methods: {
+    setData1() {
+      this.users = users1
+    },
+    setData2() {
+      this.users = users2
+    },
+    setDataAll() {
+      this.users = usersAll
+    },
+    updateDsData(data) {
+      console.log(data)
+    },
+    addOne() {
+      this.users.unshift(user)
+    },
+    removeOne() {
+      this.users.splice(0, 1)
+    }
+  }
 }
 </script>

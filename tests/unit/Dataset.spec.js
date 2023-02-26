@@ -5,6 +5,7 @@ import DatasetPager from '@/DatasetPager.vue'
 import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
 import { mount } from '@vue/test-utils'
+import { nextTick, ref } from 'vue'
 
 import users from '../../example-data/users.json'
 import { clone, waitNT } from '../../tests/utils.js'
@@ -167,5 +168,56 @@ describe('Dataset', () => {
     await wrapper.vm.search('tristique.net')
 
     expect(wrapper.emitted()['update:dsData'][1][0]).toHaveLength(4)
+  })
+
+  it('updates when a new object is pushed or deleted', async () => {
+    const Container = {
+      template: `
+        <Dataset :ds-data="datasetUsers">
+          <DatasetItem>
+            <template #default="{ row, rowIndex }">
+              <div class="name">{{ row.name }}</div>
+            </template>
+            <template #noDataFound>
+              <p class="text-center">No results found</p>
+            </template>
+          </DatasetItem>
+        </Dataset>
+      `,
+      components: { Dataset, DatasetItem },
+      setup() {
+        const datasetUsers = ref([])
+
+        const addOne = () => {
+          const oneUser = { name: 'George' }
+
+          datasetUsers.value.unshift(oneUser)
+        }
+
+        const removeOne = () => {
+          datasetUsers.value.splice(0, 1)
+        }
+
+        return {
+          datasetUsers,
+          addOne,
+          removeOne
+        }
+      }
+    }
+
+    const wrapper = mount(Container)
+
+    wrapper.vm.addOne()
+
+    await nextTick()
+
+    expect(wrapper.find('.name').text()).toBe('George')
+
+    wrapper.vm.removeOne()
+
+    await nextTick()
+
+    expect(wrapper.find('p.text-center').text()).toBe('No results found')
   })
 })

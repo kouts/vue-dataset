@@ -1,23 +1,23 @@
-import Example1 from '../views/Example1.vue'
+import OptionsApi from '../views/OptionsApi.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const history = createWebHashHistory()
 const routes = [
   {
     path: '/',
-    name: 'Example1',
-    component: Example1,
+    name: 'OptionsApi',
+    component: OptionsApi,
     meta: {
       layout: 'default'
     }
   },
   {
-    path: '/example2',
-    name: 'Example2',
+    path: '/composition-api',
+    name: 'CompositionApi',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "example2" */ '../views/Example2.vue'),
+    component: () => import(/* webpackChunkName: "composition-api" */ '../views/CompositionApi.vue'),
     meta: {
       layout: 'default'
     }
