@@ -16,10 +16,10 @@
       <div id="navbarDefault" :class="['collapse navbar-collapse', navbarExpanded && 'show']">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <router-link to="/" class="nav-link" @click="collapseNavbar">Example1</router-link>
+            <router-link to="/" class="nav-link" @click="collapseNavbar">Options API</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/example2" class="nav-link" @click="collapseNavbar">Example2</router-link>
+            <router-link to="/composition-api" class="nav-link" @click="collapseNavbar">Composition API</router-link>
           </li>
         </ul>
       </div>

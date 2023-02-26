@@ -85,19 +85,6 @@ export default {
       dsPage.value = value
     }
 
-    const whenChanged = computed(() => {
-      /* eslint-disable no-unused-expressions */
-      props.dsData
-      dsSearch.value
-      props.dsSortby
-      props.dsFilterFields
-      props.dsSearchIn
-      props.dsSearchAs
-      props.dsSortAs
-
-      return Date.now()
-    })
-
     const dsRows = computed(() => {
       return dsIndexes.value.slice(dsFrom.value, dsTo.value)
     })
@@ -128,8 +115,8 @@ export default {
     })
 
     watch(
-      whenChanged,
-      (newVal, oldVal) => {
+      () => [props.dsData, dsSearch, props.dsSortby, props.dsFilterFields, props.dsSearchIn, props.dsSearchAs, props.dsSortAs],
+      () => {
         let result = []
 
         if (!dsSearch.value && !props.dsSortby.length && isEmptyObject(props.dsFilterFields)) {
@@ -165,7 +152,8 @@ export default {
         )
       },
       {
-        immediate: true
+        immediate: true,
+        deep: true
       }
     )
 
