@@ -1,14 +1,14 @@
 import * as path from 'path'
 import * as url from 'url'
-import VueExamplePlugin from 'vuepress-plugin-vue-example'
 import { defaultTheme, defineUserConfig } from 'vuepress-webpack'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
   plugins: [
-    VueExamplePlugin({
+    vueExamplePlugin({
       componentsPath: '/docs/.vuepress/components/'
     }),
     docsearchPlugin({
