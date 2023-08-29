@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/kouts/vue-dataset/compare/v3.5.4...v3.6.0) (2023-08-29)
+
+
+### Features
+
+* **filter:** passing all data fields to filterfields function ([a2d50e5](https://github.com/kouts/vue-dataset/commit/a2d50e50e05dd8faafa843e6c808b26416950f24))
+
 ## [3.5.4](https://github.com/kouts/vue-dataset/compare/v3.5.3...v3.5.4) (2023-06-04)
 
 

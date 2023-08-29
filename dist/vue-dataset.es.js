@@ -59,7 +59,7 @@ function q(t, n) {
       for (const o in r)
         if (o === s) {
           if (typeof n[s] == "function")
-            return n[s](r[o]);
+            return n[s](r[o], r);
           if (n[s] === "" || r[o] === n[s])
             return !0;
         }
