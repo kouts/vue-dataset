@@ -11,14 +11,14 @@ Dataset takes the original data object as a prop and also some useful props as o
 <dataset
   v-slot="{ ds }"
   :ds-data="users"
-  :ds-filter-fields="{ firstName: 'John' }"
+  :ds-filter-fields="{ firstName: 'John', lastName: startsWithD }"
   :ds-sortby="['lastName']"
   :ds-search-in="['firstName', 'lastName']"
   :ds-search-as="{ birthDate: searchAsEuroDate }"
   :ds-sort-as="{ birthDate: sortAsDate }"
 >
     ...
-    </dataset>
+</dataset>
 ```
 
 ### Props
@@ -66,11 +66,12 @@ firstName "John" and all lastNames that start with the letter "D"
 }
 ```
 
-`startsWithD` can be a function defined in your instance methods
+`startsWithD` can be a predicate function defined in your instance methods.  
+The function takes two arguments, the value of the data object property and the current row data.
 
 ```js
-startsWithD (value) {
-  return value.toLowerCase().startsWith('D')
+startsWithD (value, row) {
+  return value.toLowerCase().startsWith('d')
 }
 ```
 
@@ -84,8 +85,8 @@ If a property is prefixed by `-` it will be sorted with descending order.
 
 For example this will sort the data by lastName
 
-```js
-;['lastName']
+```html
+['lastName']
 ```
 
 #### ds-search-in
@@ -98,8 +99,8 @@ If the `ds-search-in` array is empty (default), then all object properties will 
 
 For example this will tell `Dataset` to perform search **only** in the `firstName` and `lastName` data object properties.
 
-```js
-;['firstName', 'lastName']
+```html
+['firstName', 'lastName']
 ```
 
 #### ds-search-as

@@ -26,4 +26,11 @@ describe('fieldFilter', () => {
 
     expect(res.length).toBe(4)
   })
+
+  it('filters the given array by first names that start with "Ga" and last names that start with "Arr"', () => {
+    const filterFunction = (value, row) => value.startsWith('Ga') && row.lastName.startsWith('Arr')
+    const res = fieldFilter(filterData, { firstName: filterFunction })
+
+    expect(res.length).toBe(1)
+  })
 })
