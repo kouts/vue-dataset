@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/kouts/vue-dataset/compare/v3.6.0...v3.6.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* added update dsData example, improved filterFields description ([fbe918a](https://github.com/kouts/vue-dataset/commit/fbe918a32fb4f99d47ddb0410c703990a867d575))
+
 # [3.6.0](https://github.com/kouts/vue-dataset/compare/v3.5.4...v3.6.0) (2023-08-29)
 
 
