@@ -11,7 +11,7 @@ Dataset takes the original data object as a prop and also some useful props as o
 <dataset
   v-slot="{ ds }"
   :ds-data="users"
-  :ds-filter-fields="{ firstName: 'John' }"
+  :ds-filter-fields="{ firstName: 'John', lastName: startsWithD }"
   :ds-sortby="['lastName']"
   :ds-search-in="['firstName', 'lastName']"
   :ds-search-as="{ birthDate: searchAsEuroDate }"
@@ -66,17 +66,20 @@ firstName "John" and all lastNames that start with the letter "D"
 }
 ```
 
-`startsWithD` can be a function defined in your instance methods
+`startsWithD` can be a predicate function defined in your instance methods.  
+The function takes two arguments, the value of the data object property and the current row data.
 
 ```js
-startsWithD (value) {
-  return value.toLowerCase().startsWith('D')
+startsWithD (value, row) {
+  return value.toLowerCase().startsWith('d')
 }
 ```
 
+````
+
 #### ds-sortby
 
-Type: `Array`  
+Type: `Array`
 Default: <em>Empty Array</em>
 
 It defines the data object properties by which the dataset object will be sorted.
@@ -86,7 +89,7 @@ For example this will sort the data by lastName
 
 ```html
 ['lastName']
-```
+````
 
 #### ds-search-in
 

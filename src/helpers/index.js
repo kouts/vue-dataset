@@ -108,7 +108,7 @@ function fieldFilter(items, filterFields) {
       for (const itemKey in itemValue) {
         if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
-            return filterFields[filterKey](itemValue[itemKey])
+            return filterFields[filterKey](itemValue[itemKey], itemValue)
           }
           if (filterFields[filterKey] === '') {
             return true
