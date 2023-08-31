@@ -67,6 +67,14 @@ export default {
     dsSortAs: {
       type: Object,
       default: () => ({})
+    },
+    dsSearchFc: {
+      type: Function,
+      default: function () {
+        return (dataset, searchVal) => {
+          return dataset.filter((entry) => { return findAny(this.dsSearchIn, this.dsSearchAs, entry.value, searchVal) })
+        }
+      }
     }
   },
   data: function () {
@@ -157,7 +165,7 @@ export default {
 
           // Search it
           if (dsSearch) {
-            result = result.filter((entry) => findAny(dsSearchIn, dsSearchAs, entry.value, dsSearch))
+            result = this.dsSearchFc(result, dsSearch)
           }
 
           // Sort it
