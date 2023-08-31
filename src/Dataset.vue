@@ -169,6 +169,11 @@ export default {
           result = result.map((entry) => entry.index)
         }
         this.indexes = result
+
+        this.$emit(
+          'update:dsData',
+          result.map((i) => this.dsData[i])
+        )
       },
       immediate: true
     }
