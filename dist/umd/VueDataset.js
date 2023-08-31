@@ -127,7 +127,7 @@
         for (var itemKey in itemValue) {
           if (itemKey === filterKey) {
             if (typeof filterFields[filterKey] === 'function') {
-              return filterFields[filterKey](itemValue[itemKey])
+              return filterFields[filterKey](itemValue[itemKey], itemValue)
             }
             if (filterFields[filterKey] === '') {
               return true
@@ -180,6 +180,28 @@
   }
 
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
 
   var script$5 = {
     provide: function provide() {
@@ -293,6 +315,8 @@
       */
       whenChanged: {
         handler: function handler(newVal, oldVal) {
+          var this$1$1 = this;
+
           var result = [];
           var dsData = this.dsData;
           var dsSearch = this.dsSearch;
@@ -328,6 +352,11 @@
             result = result.map(function (entry) { return entry.index; });
           }
           this.indexes = result;
+
+          this.$emit(
+            'update:dsData',
+            result.map(function (i) { return this$1$1.dsData[i]; })
+          );
         },
         immediate: true
       }
@@ -687,6 +716,43 @@
     var __vue_component__$7 = __vue_component__$6;
 
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
 
   var script$2 = {
     inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
@@ -845,6 +911,16 @@
     var __vue_component__$5 = __vue_component__$4;
 
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
 
   var script$1 = {
     inject: ['search'],

@@ -110,7 +110,7 @@ function fieldFilter(items, filterFields) {
       for (var itemKey in itemValue) {
         if (itemKey === filterKey) {
           if (typeof filterFields[filterKey] === 'function') {
-            return filterFields[filterKey](itemValue[itemKey])
+            return filterFields[filterKey](itemValue[itemKey], itemValue)
           }
           if (filterFields[filterKey] === '') {
             return true
@@ -163,4 +163,4 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
 }
 
 export { MORE_PAGES as M, findAny as a, fieldSorter as b, createPagingRange as c, debounce as d, fieldFilter as f, isEmptyObject as i };
-//# sourceMappingURL=index-e1c0eda3.js.map
+//# sourceMappingURL=index-3394d0a6.js.map

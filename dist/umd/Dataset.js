@@ -107,7 +107,7 @@
         for (var itemKey in itemValue) {
           if (itemKey === filterKey) {
             if (typeof filterFields[filterKey] === 'function') {
-              return filterFields[filterKey](itemValue[itemKey])
+              return filterFields[filterKey](itemValue[itemKey], itemValue)
             }
             if (filterFields[filterKey] === '') {
               return true
@@ -160,6 +160,28 @@
   }
 
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
 
   var script = {
     provide: function provide() {
@@ -273,6 +295,8 @@
       */
       whenChanged: {
         handler: function handler(newVal, oldVal) {
+          var this$1$1 = this;
+
           var result = [];
           var dsData = this.dsData;
           var dsSearch = this.dsSearch;
@@ -308,6 +332,11 @@
             result = result.map(function (entry) { return entry.index; });
           }
           this.indexes = result;
+
+          this.$emit(
+            'update:dsData',
+            result.map(function (i) { return this$1$1.dsData[i]; })
+          );
         },
         immediate: true
       }

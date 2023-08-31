@@ -1,4 +1,4 @@
-import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-e1c0eda3.js';
+import { c as createPagingRange, i as isEmptyObject, f as fieldFilter, a as findAny, b as fieldSorter } from './index-3394d0a6.js';
 import { n as normalizeComponent } from './normalize-component-cf2db48b.js';
 
 var datasetI18n = {
@@ -13,6 +13,28 @@ var datasetI18n = {
 };
 
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 var script = {
   provide: function provide() {
@@ -126,6 +148,8 @@ var script = {
     */
     whenChanged: {
       handler: function handler(newVal, oldVal) {
+        var this$1$1 = this;
+
         var result = [];
         var dsData = this.dsData;
         var dsSearch = this.dsSearch;
@@ -161,6 +185,11 @@ var script = {
           result = result.map(function (entry) { return entry.index; });
         }
         this.indexes = result;
+
+        this.$emit(
+          'update:dsData',
+          result.map(function (i) { return this$1$1.dsData[i]; })
+        );
       },
       immediate: true
     }

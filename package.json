@@ -26,9 +26,9 @@
     "test:unit-coverage": "vue-cli-service test:unit --coverage && make-coverage-badge",
     "watch": "vuepress dev docs",
     "rollup": "rollup -c",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "build": "rollup -c && vuepress build docs",
+    "docs:dev": "export NODE_OPTIONS=--openssl-legacy-provider; vuepress dev docs",
+    "docs:build": "export NODE_OPTIONS=--openssl-legacy-provider; vuepress build docs",
+    "build": "rollup -c && export NODE_OPTIONS=--openssl-legacy-provider; vuepress build docs",
     "lint": "eslint . --ext .js,.vue",
     "lint-fix": "eslint . --fix --ext .js,.vue",
     "prepare": "husky install"
