@@ -82,6 +82,7 @@
       :ds-sortby="[sortFirstName]"
       :ds-search-in="['balance', 'birthdate', 'name', 'company', 'email', 'phone', 'address', 'favoriteAnimal']"
       :ds-search-as="{ birthdate: searchAsEuroDate }"
+      @update:dsData="onUpdate"
     >
       <div class="row mb-2" :data-page-count="ds.dsPagecount">
         <div class="col-md-6 mb-2 mb-md-0">
@@ -168,6 +169,9 @@ export default {
     },
     startsWithFilter(value) {
       return value.toLowerCase().startsWith(this.startsWith.toLowerCase())
+    },
+    onUpdate(data) {
+      console.log('Filtered data:', data)
     }
   }
 }

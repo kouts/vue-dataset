@@ -141,4 +141,19 @@ describe('Dataset', () => {
 
     expect(wrapperDataset.vm.dsData).toEqual([])
   })
+
+  it('emits an event when the filtered results update', async () => {
+    const newUsers = clone(users).slice(0, 10)
+    const wrapperDataset = mount(Dataset, {
+      propsData: {
+        dsData: newUsers
+      }
+    })
+
+    expect(wrapperDataset.emitted()['update:dsData'][0][0]).toHaveLength(10)
+
+    await wrapperDataset.vm.search('posuerevulputate.co.uk')
+
+    expect(wrapperDataset.emitted()['update:dsData'][1][0]).toHaveLength(1)
+  })
 })
