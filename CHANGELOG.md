@@ -1,3 +1,12 @@
+## [1.1.18](https://github.com/kouts/vue-dataset/compare/v1.1.17...v1.1.18) (2023-08-31)
+
+
+### Bug Fixes
+
+* added row data to fieldFilter function ([ab9671d](https://github.com/kouts/vue-dataset/commit/ab9671dee0656a9abba3a92c80fe398146433674))
+* added update:dsData event ([6776a08](https://github.com/kouts/vue-dataset/commit/6776a0828275e06832ad3d9d9d3661e92c6ca54d))
+* updated node to v18 ([de32a8f](https://github.com/kouts/vue-dataset/commit/de32a8f3b91ca0b942709669a851dc73bf3279e9))
+
 ## [1.1.17](https://github.com/kouts/vue-dataset/compare/v1.1.16...v1.1.17) (2022-11-06)
 
 
