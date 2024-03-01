@@ -48,6 +48,11 @@ export default {
     dsSortAs: {
       type: Object,
       default: () => ({})
+    },
+    splitSearchQueryBy: {
+      type: String,
+      required: false,
+      default: ' '
     }
   },
   emits: ['update:dsData'],
@@ -133,7 +138,16 @@ export default {
 
           // Search it
           if (dsSearch.value) {
-            result = result.filter((entry) => findAny(props.dsSearchIn, props.dsSearchAs, entry.value, dsSearch.value))
+            console.debug('ds search', dsSearch)
+
+            // Search like jq-datatable if there is splitsearchquery option enabled
+            const searchTerms = props.splitSearchQueryBy
+              ? dsSearch.value.toLowerCase().trim().split(props.splitSearchQueryBy)
+              : [dsSearch.value]
+
+            searchTerms.forEach((term, idx) => {
+              result = result.filter((entry) => findAny(props.dsSearchIn, props.dsSearchAs, entry.value, term))
+            })
           }
 
           // Sort it
