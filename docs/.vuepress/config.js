@@ -1,8 +1,10 @@
 import * as path from 'path'
 import * as url from 'url'
-import { defaultTheme, defineUserConfig } from 'vuepress-webpack'
+import { defaultTheme } from '@vuepress/theme-default'
+import { defineUserConfig } from 'vuepress'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
@@ -12,13 +14,18 @@ export default defineUserConfig({
       componentsPath: '/docs/.vuepress/components/'
     }),
     docsearchPlugin({
-      apiKey: '1a6df20c3c6d9b729c4109ebce3e2eed',
-      indexName: 'next-vue-dataset'
+      apiKey: 'a05c686d69be9a09e66f93b07bc7f855',
+      indexName: 'next-vue-dataset',
+      appId: 'BAXEDGK9R9'
     })
   ],
   dest: 'public',
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {}
+  }),
   theme: defaultTheme({
     contributors: false,
     repo: 'https://github.com/kouts/vue-dataset/tree/next',
