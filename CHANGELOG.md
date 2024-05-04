@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/kouts/vue-dataset/compare/v3.6.1...v3.6.2) (2024-05-04)
+
+
+### Bug Fixes
+
+* fixed vuepress config ([8b885c2](https://github.com/kouts/vue-dataset/commit/8b885c27b7ba7a620781add3f868bf382889df98))
+
 ## [3.6.1](https://github.com/kouts/vue-dataset/compare/v3.6.0...v3.6.1) (2023-08-31)
 
 
