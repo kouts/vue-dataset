@@ -1,3 +1,10 @@
+## [3.6.3](https://github.com/kouts/vue-dataset/compare/v3.6.2...v3.6.3) (2024-05-12)
+
+
+### Bug Fixes
+
+* swtched to pnpm ([dff098d](https://github.com/kouts/vue-dataset/commit/dff098df9e5c1e558e608ea93e40be7a8d4fc2cb))
+
 ## [3.6.2](https://github.com/kouts/vue-dataset/compare/v3.6.1...v3.6.2) (2024-05-04)
 
 
