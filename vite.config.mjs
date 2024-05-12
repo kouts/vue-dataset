@@ -1,10 +1,9 @@
 import vue from '@vitejs/plugin-vue'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
-const path = require('path')
-const { defineConfig } = require('vite')
-
-module.exports = defineConfig({
+export default defineConfig({
   publicDir: 'public-vite',
   plugins: [
     vue(),
@@ -20,14 +19,14 @@ module.exports = defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@playground': path.resolve(__dirname, './playground'),
-      '@root': path.resolve(__dirname, './'),
+      '@': resolve(__dirname, './src'),
+      '@playground': resolve(__dirname, './playground'),
+      '@root': resolve(__dirname, './'),
       '~bootstrap': 'bootstrap'
     }
   },
   rollupInputOptions: {
-    input: path.resolve(__dirname, '/playground/main.js') // custom main
+    input: resolve(__dirname, '/playground/main.js') // custom main
   },
   css: {
     preprocessorOptions: {
@@ -38,7 +37,7 @@ module.exports = defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.js'),
+      entry: resolve(__dirname, 'src/index.js'),
       name: 'VueDataset',
       fileName: (format) => `vue-dataset.${format}.js`
     },
