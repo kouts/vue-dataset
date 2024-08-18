@@ -1,11 +1,11 @@
+import './styles/styles.scss'
+import { defineClientConfig } from '@vuepress/client'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
 import DatasetPager from '@/DatasetPager.vue'
 import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
-import { defineClientConfig } from '@vuepress/client'
-import './styles/styles.scss'
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -19,5 +19,5 @@ export default defineClientConfig({
   setup() {
     // noop
   },
-  rootComponents: []
+  rootComponents: [],
 })

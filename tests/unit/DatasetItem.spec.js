@@ -1,6 +1,6 @@
-import DatasetItem from '@/DatasetItem.vue'
 import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
+import DatasetItem from '@/DatasetItem.vue'
 
 describe('DatasetItem', () => {
   let wrapper = null
@@ -13,19 +13,19 @@ describe('DatasetItem', () => {
             {
               age: 20,
               name: 'Jessie Casey',
-              email: 'jessie.casey@flyboyz.biz'
+              email: 'jessie.casey@flyboyz.biz',
             },
             {
               age: 26,
               name: 'Solomon Stanley',
-              email: 'solomon.stanley@tetak.net'
-            }
+              email: 'solomon.stanley@tetak.net',
+            },
           ]),
           dsRows: ref([0, 1]),
           dsFrom: ref(0),
           dsTo: ref(10),
-          ...provideOpts
-        }
+          ...provideOpts,
+        },
       },
       slots: {
         default: `
@@ -37,8 +37,8 @@ describe('DatasetItem', () => {
             </div>
           </template>
         `,
-        noDataFound: `<p>No results found</p>`
-      }
+        noDataFound: `<p>No results found</p>`,
+      },
     })
 
     return wrapper
@@ -65,14 +65,14 @@ describe('DatasetItem', () => {
 
   it('does not render any results when dsRows is empty', () => {
     wrapper = wrapperWithProvide({
-      dsRows: ref([])
+      dsRows: ref([]),
     })
     expect(wrapper.findAll('div.result').length).toBe(0)
   })
 
   it('renders the noDataFound slot when dsRows is empty', () => {
     wrapper = wrapperWithProvide({
-      dsRows: ref([])
+      dsRows: ref([]),
     })
     expect(wrapper.find('p').text()).toBe('No results found')
   })
@@ -83,10 +83,10 @@ describe('DatasetItem', () => {
         {
           age: 17,
           name: 'John Doe',
-          email: 'john.doe@flyboyz.biz'
-        }
+          email: 'john.doe@flyboyz.biz',
+        },
       ]),
-      dsRows: ref([0])
+      dsRows: ref([0]),
     })
     expect(wrapper.findAll('div.result').length).toBe(1)
     expect(wrapper.element).toMatchSnapshot()

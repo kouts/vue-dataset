@@ -11,11 +11,12 @@
 import { computed, inject } from 'vue'
 
 export default {
+  name: 'DatasetItem',
   props: {
     tag: {
       type: String,
-      default: 'div'
-    }
+      default: 'div',
+    },
   },
   setup() {
     const indexes = computed(() => {
@@ -31,8 +32,8 @@ export default {
     return {
       dsData: inject('dsData'),
       dsRows: inject('dsRows'),
-      indexes
+      indexes,
     }
-  }
+  },
 }
 </script>

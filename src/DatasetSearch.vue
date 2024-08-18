@@ -9,19 +9,20 @@
 </template>
 
 <script>
-import { debounce } from './helpers'
 import { inject, ref } from 'vue'
+import { debounce } from './helpers'
 
 export default {
+  name: 'DatasetSearch',
   props: {
     dsSearchPlaceholder: {
       type: String,
-      default: ''
+      default: '',
     },
     wait: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   setup(props) {
     const search = inject('search')
@@ -33,8 +34,8 @@ export default {
 
     return {
       dsSearch,
-      input
+      input,
     }
-  }
+  },
 }
 </script>
