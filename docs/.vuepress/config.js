@@ -1,5 +1,6 @@
-import { webpackBundler } from '@vuepress/bundler-webpack'
+import { viteBundler } from '@vuepress/bundler-vite'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defaultTheme } from '@vuepress/theme-default'
 import * as path from 'path'
 import * as url from 'url'
@@ -9,9 +10,14 @@ import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
+  bundler: viteBundler(),
   plugins: [
+    shikiPlugin({
+      theme: 'github-dark-default',
+      langs: ['bash', 'css', 'sass', 'scss', 'js', 'ts', 'json', 'vue', 'md', 'diff'],
+    }),
     vueExamplePlugin({
-      componentsPath: '/docs/.vuepress/components/',
+      componentsPath: '../components/',
     }),
     docsearchPlugin({
       apiKey: 'a05c686d69be9a09e66f93b07bc7f855',
@@ -22,10 +28,6 @@ export default defineUserConfig({
   dest: 'public',
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',
-  bundler: webpackBundler({
-    postcss: {},
-    vue: {},
-  }),
   theme: defaultTheme({
     contributors: false,
     repo: 'https://github.com/kouts/vue-dataset/tree/next',

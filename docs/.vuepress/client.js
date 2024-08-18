@@ -1,5 +1,5 @@
 import './styles/styles.scss'
-import { defineClientConfig } from '@vuepress/client'
+import { defineClientConfig } from 'vuepress/client'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
