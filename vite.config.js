@@ -57,7 +57,8 @@ export default defineConfig({
     environment: 'jsdom',
     reporters: ['default'],
     coverage: {
-      reporter: ['text', 'json'],
+      reporter: ['text', ['json-summary', { file: 'coverage-summary.json' }]],
+      include: ['src/**'],
     },
   },
 })
