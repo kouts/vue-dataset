@@ -1,6 +1,5 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
-import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defaultTheme } from '@vuepress/theme-default'
 import * as path from 'path'
 import * as url from 'url'
@@ -12,10 +11,6 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 export default defineUserConfig({
   bundler: viteBundler(),
   plugins: [
-    shikiPlugin({
-      theme: 'github-dark-default',
-      langs: ['bash', 'css', 'sass', 'scss', 'js', 'ts', 'json', 'vue', 'md', 'diff'],
-    }),
     vueExamplePlugin({
       componentsPath: '../components/',
     }),
@@ -61,6 +56,11 @@ export default defineUserConfig({
         ],
       },
     ],
+    themePlugins: {
+      prismjs: {
+        theme: 'tomorrow',
+      },
+    },
   }),
   alias: {
     '@': path.resolve(__dirname, '../../src'),

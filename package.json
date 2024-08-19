@@ -52,7 +52,6 @@
     "@vue/test-utils": "^2.4.6",
     "@vuepress/bundler-vite": "2.0.0-rc.15",
     "@vuepress/plugin-docsearch": "2.0.0-rc.41",
-    "@vuepress/plugin-shiki": "2.0.0-rc.41",
     "@vuepress/theme-default": "^2.0.0-rc.41",
     "bootstrap": "^4.6.2",
     "eslint": "^9.9.0",
@@ -62,13 +61,12 @@
     "make-coverage-badge": "^1.2.0",
     "prettier": "3.3.3",
     "sass": "~1.77.8",
-    "shiki": "^1.14.1",
     "vite": "^5.4.1",
     "vite-plugin-html": "^3.2.2",
     "vitest": "^2.0.5",
     "vue-router": "^4.4.3",
     "vuepress": "2.0.0-rc.15",
-    "vuepress-plugin-vue-example": "3.0.2",
+    "vuepress-plugin-vue-example": "3.0.7",
     "vuex": "^4.1.0"
   },
   "resolutions": {
