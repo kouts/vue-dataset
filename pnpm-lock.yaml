@@ -86,8 +86,8 @@ importers:
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
       vuepress-plugin-vue-example:
-        specifier: 3.0.8
-        version: 3.0.8(vuepress@2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4)))
+        specifier: 3.0.10
+        version: 3.0.10(vuepress@2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4)))
       vuex:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.4.38(typescript@5.5.4))
@@ -3218,8 +3218,8 @@ packages:
       typescript:
         optional: true
 
-  vuepress-plugin-vue-example@3.0.8:
-    resolution: {integrity: sha512-/UBwKPha08X3wMmGUbVWZf3etUuKMEIP3XRtyfc3gCu04unKBqN9uE+xjY8p30SX7Rcx3kMHoHbD06qhoYJJNA==}
+  vuepress-plugin-vue-example@3.0.10:
+    resolution: {integrity: sha512-NRUWOkyh08miRVwDaniUc4s+yY5RPKVk5+RzMhBW8ISswG1oyDvmLAgAxbsdHpkiJ3Tnlh5iQ2b1Wz+wPmHnAw==}
     peerDependencies:
       vuepress: 2.0.0-rc.15
 
@@ -6977,7 +6977,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
-  vuepress-plugin-vue-example@3.0.8(vuepress@2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))):
+  vuepress-plugin-vue-example@3.0.10(vuepress@2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))):
     dependencies:
       vuepress: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.4)(yaml@2.5.0))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
 
