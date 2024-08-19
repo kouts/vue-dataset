@@ -1,3 +1,13 @@
+## [3.6.4](https://github.com/kouts/vue-dataset/compare/v3.6.3...v3.6.4) (2024-08-19)
+
+
+### Bug Fixes
+
+* fixed docs examples styling ([9ca8ce0](https://github.com/kouts/vue-dataset/commit/9ca8ce02175ef2b8ad9aed172e6780c58582557b))
+* updated eslint config, added vitest ([b7b905a](https://github.com/kouts/vue-dataset/commit/b7b905a0cb8651ae4dd8d56555434df7bcc40b98))
+* updated vuepress-plugin-vue-example ([68251a1](https://github.com/kouts/vue-dataset/commit/68251a153d2e7792b1340e12e515468014709a2c))
+* updated vuepress-plugin-vue-example ([6f7d7f2](https://github.com/kouts/vue-dataset/commit/6f7d7f2853d0ea7f6606bba74f2e48ebac9b3f98))
+
 ## [3.6.3](https://github.com/kouts/vue-dataset/compare/v3.6.2...v3.6.3) (2024-05-12)
 
 
