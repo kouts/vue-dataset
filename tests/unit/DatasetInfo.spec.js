@@ -1,7 +1,7 @@
-import DatasetInfo from '@/DatasetInfo.vue'
-import datasetI18n from '@/i18n/en.js'
 import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
+import DatasetInfo from '@/DatasetInfo.vue'
+import datasetI18n from '@/i18n/en.js'
 
 describe('DatasetInfo', () => {
   let wrapper = null
@@ -11,9 +11,9 @@ describe('DatasetInfo', () => {
       global: {
         provide: {
           datasetI18n: ref(datasetI18n),
-          ...provideOpts
-        }
-      }
+          ...provideOpts,
+        },
+      },
     })
 
     return wrapper
@@ -27,7 +27,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       dsResultsNumber: ref(1),
       dsFrom: ref(0),
-      dsTo: ref(0)
+      dsTo: ref(0),
     })
     const div = wrapper.find('div')
 
@@ -38,7 +38,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       dsResultsNumber: ref(0),
       dsFrom: ref(0),
-      dsTo: ref(0)
+      dsTo: ref(0),
     })
     expect(wrapper.vm.showing).toBe(0)
   })
@@ -47,7 +47,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       dsResultsNumber: ref(10),
       dsFrom: ref(0),
-      dsTo: ref(0)
+      dsTo: ref(0),
     })
     expect(wrapper.vm.showing).toBe(1)
   })
@@ -56,7 +56,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       dsResultsNumber: ref(3),
       dsFrom: ref(1),
-      dsTo: ref(4)
+      dsTo: ref(4),
     })
     expect(wrapper.vm.showingTo).toBe(3)
   })
@@ -65,7 +65,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       dsResultsNumber: ref(3),
       dsFrom: ref(1),
-      dsTo: ref(2)
+      dsTo: ref(2),
     })
     expect(wrapper.vm.showingTo).toBe(2)
   })

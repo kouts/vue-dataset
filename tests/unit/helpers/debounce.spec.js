@@ -1,13 +1,13 @@
 import { debounce } from '@/helpers'
 
 beforeEach(() => {
-  jest.clearAllMocks()
-  jest.useRealTimers()
+  vi.clearAllMocks()
+  vi.useRealTimers()
 })
 
 describe('debounce', () => {
   it('calls the function immediately if theres no wait', () => {
-    const func = jest.fn()
+    const func = vi.fn()
 
     const debounced = debounce(func, 0, true)
 
@@ -17,8 +17,8 @@ describe('debounce', () => {
   })
 
   it('calls the function only once for a wait time period', () => {
-    jest.useFakeTimers()
-    const func = jest.fn()
+    vi.useFakeTimers()
+    const func = vi.fn()
 
     const debounced = debounce(func, 100, false)
 
@@ -27,14 +27,14 @@ describe('debounce', () => {
     debounced()
     debounced()
 
-    jest.advanceTimersByTime(300)
+    vi.advanceTimersByTime(300)
 
     expect(func).toHaveBeenCalledTimes(1)
   })
 
   it('calls the function immediately only once for a wait time period', () => {
-    jest.useFakeTimers()
-    const func = jest.fn()
+    vi.useFakeTimers()
+    const func = vi.fn()
 
     const debounced = debounce(func, 100, true)
 
@@ -43,7 +43,7 @@ describe('debounce', () => {
     debounced()
     debounced()
 
-    jest.advanceTimersByTime(300)
+    vi.advanceTimersByTime(300)
 
     expect(func).toHaveBeenCalledTimes(1)
   })

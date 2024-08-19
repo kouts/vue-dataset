@@ -1,5 +1,5 @@
-import { data } from './testData.js'
 import { fieldSorter } from '@/helpers'
+import { data } from './testData.js'
 
 function isoDateToDate(isoDate) {
   const isoDateParts = isoDate.split('-').map((o) => Number(o))

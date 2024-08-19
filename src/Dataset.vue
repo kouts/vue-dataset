@@ -13,42 +13,43 @@
       dsPages,
       search,
       showEntries,
-      setActive
+      setActive,
     }"
   ></slot>
 </template>
 
 <script>
-import i18n from './i18n/en.js'
 import { computed, nextTick, provide, ref, watch } from 'vue'
 import { createPagingRange, fieldFilter, fieldSorter, findAny, isEmptyObject } from './helpers'
+import i18n from './i18n/en.js'
 
 export default {
+  name: 'Dataset',
   props: {
     dsData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsFilterFields: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     dsSortby: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsSearchIn: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsSearchAs: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     dsSortAs: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   emits: ['update:dsData'],
   /**
@@ -148,13 +149,13 @@ export default {
 
         emit(
           'update:dsData',
-          result.map((i) => props.dsData[i])
+          result.map((i) => props.dsData[i]),
         )
       },
       {
         immediate: true,
-        deep: true
-      }
+        deep: true,
+      },
     )
 
     provide('dsIndexes', dsIndexes)
@@ -164,7 +165,7 @@ export default {
     provide('datasetI18n', datasetI18n)
     provide(
       'dsData',
-      computed(() => props.dsData)
+      computed(() => props.dsData),
     )
     provide('dsRows', dsRows)
     provide('dsPages', dsPages)
@@ -186,8 +187,8 @@ export default {
       dsPages,
       search,
       showEntries,
-      setActive
+      setActive,
     }
-  }
+  },
 }
 </script>

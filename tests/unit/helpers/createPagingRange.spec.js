@@ -1,4 +1,4 @@
-import { MORE_PAGES, createPagingRange } from '@/helpers'
+import { createPagingRange, MORE_PAGES } from '@/helpers'
 
 describe('createPagingRange', () => {
   it('should return the correct range for 3 pages when current page is 1', () => {

@@ -1,1 +1,3 @@
-module.exports = require('@kouts/eslint-config/prettier.config.js')
+import prettierConfig from '@kouts/eslint-config/prettier'
+
+export default prettierConfig

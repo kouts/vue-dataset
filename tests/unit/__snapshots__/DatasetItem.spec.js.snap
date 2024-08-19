@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DatasetItem renders correctly 1`] = `
+exports[`DatasetItem > renders correctly 1`] = `
 <div>
   
   
@@ -38,7 +38,7 @@ exports[`DatasetItem renders correctly 1`] = `
 </div>
 `;
 
-exports[`DatasetItem renders divs after data changed 1`] = `
+exports[`DatasetItem > renders divs after data changed 1`] = `
 <div>
   
   

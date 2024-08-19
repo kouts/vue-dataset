@@ -36,10 +36,11 @@
 </template>
 
 <script>
-import { MORE_PAGES } from './helpers'
 import { computed, inject, ref } from 'vue'
+import { MORE_PAGES } from './helpers'
 
 export default {
+  name: 'DatasetPager',
   setup() {
     const morePages = ref(MORE_PAGES)
     const dsPage = inject('dsPage')
@@ -56,8 +57,8 @@ export default {
       dsPage,
       morePages,
       disabledPrevious,
-      disabledNext
+      disabledNext,
     }
-  }
+  },
 }
 </script>

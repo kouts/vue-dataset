@@ -1,31 +1,28 @@
+import { viteBundler } from '@vuepress/bundler-vite'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { defaultTheme } from '@vuepress/theme-default'
 import * as path from 'path'
 import * as url from 'url'
-import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
-import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
-import { webpackBundler } from '@vuepress/bundler-webpack'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
+  bundler: viteBundler(),
   plugins: [
     vueExamplePlugin({
-      componentsPath: '/docs/.vuepress/components/'
+      componentsPath: '../components/',
     }),
     docsearchPlugin({
       apiKey: 'a05c686d69be9a09e66f93b07bc7f855',
       indexName: 'next-vue-dataset',
-      appId: 'BAXEDGK9R9'
-    })
+      appId: 'BAXEDGK9R9',
+    }),
   ],
   dest: 'public',
   title: 'vue-dataset',
   description: 'A vue component to display datasets with filtering, paging and sorting capabilities!',
-  bundler: webpackBundler({
-    postcss: {},
-    vue: {}
-  }),
   theme: defaultTheme({
     contributors: false,
     repo: 'https://github.com/kouts/vue-dataset/tree/next',
@@ -34,15 +31,15 @@ export default defineUserConfig({
     sidebar: [
       {
         link: '/',
-        text: 'Introduction'
+        text: 'Introduction',
       },
       {
         link: '/installation/',
-        text: 'Installation'
+        text: 'Installation',
       },
       {
         link: '/components/',
-        text: 'Components'
+        text: 'Components',
       },
       {
         text: 'Examples',
@@ -50,19 +47,24 @@ export default defineUserConfig({
         children: [
           {
             link: '/examples/cards/',
-            text: 'Cards'
+            text: 'Cards',
           },
           {
             link: '/examples/datatable/',
-            text: 'Datatable'
-          }
-        ]
-      }
-    ]
+            text: 'Datatable',
+          },
+        ],
+      },
+    ],
+    themePlugins: {
+      prismjs: {
+        theme: 'tomorrow',
+      },
+    },
   }),
   alias: {
     '@': path.resolve(__dirname, '../../src'),
     '@playground': path.resolve(__dirname, '../../playground'),
-    '@root': path.resolve(__dirname, '../../')
-  }
+    '@root': path.resolve(__dirname, '../../'),
+  },
 })

@@ -1,5 +1,5 @@
-import OptionsApi from '../views/OptionsApi.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import OptionsApi from '../views/OptionsApi.vue'
 
 const history = createWebHashHistory()
 const routes = [
@@ -8,8 +8,8 @@ const routes = [
     name: 'OptionsApi',
     component: OptionsApi,
     meta: {
-      layout: 'default'
-    }
+      layout: 'default',
+    },
   },
   {
     path: '/composition-api',
@@ -19,14 +19,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "composition-api" */ '../views/CompositionApi.vue'),
     meta: {
-      layout: 'default'
-    }
-  }
+      layout: 'default',
+    },
+  },
 ]
 const router = createRouter({
   linkActiveClass: 'active',
   history,
-  routes
+  routes,
 })
 
 export { router }

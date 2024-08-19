@@ -158,4 +158,4 @@ function findAny(dsSearchIn, dsSearchAs, rowData, str) {
   return false
 }
 
-export { MORE_PAGES, debounce, isEmptyObject, createPagingRange, fieldSorter, fieldFilter, findAny }
+export { createPagingRange, debounce, fieldFilter, fieldSorter, findAny, isEmptyObject, MORE_PAGES }
