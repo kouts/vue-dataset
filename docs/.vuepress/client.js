@@ -1,4 +1,5 @@
 import './styles/styles.scss'
+import 'vuepress-plugin-vue-example/style.css'
 import { defineClientConfig } from 'vuepress/client'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
