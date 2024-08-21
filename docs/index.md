@@ -34,4 +34,4 @@ Created with reusability in mind, so that one doesn't have to recreate the same 
 
 <h2 class="mb-4">Example using cards</h2>
 
-<VueExample component="example1" />
+<VueExample component="Example1" />
