@@ -2,17 +2,14 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { defaultTheme } from '@vuepress/theme-default'
-import * as path from 'path'
-import * as url from 'url'
+import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { defineUserConfig } from 'vuepress'
 import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
 
 const examplesDir = fileURLToPath(new URL('./components', import.meta.url))
 
-console.log(examplesDir)
-
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
   bundler: viteBundler(),
@@ -72,8 +69,8 @@ export default defineUserConfig({
     },
   }),
   alias: {
-    '@': path.resolve(__dirname, '../../src'),
-    '@playground': path.resolve(__dirname, '../../playground'),
-    '@root': path.resolve(__dirname, '../../'),
+    '@': resolve(__dirname, '../../src'),
+    '@playground': resolve(__dirname, '../../playground'),
+    '@root': resolve(__dirname, '../../'),
   },
 })

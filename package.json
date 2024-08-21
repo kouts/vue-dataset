@@ -68,7 +68,7 @@
     "vitest": "^2.0.5",
     "vue-router": "^4.4.3",
     "vuepress": "2.0.0-rc.15",
-    "vuepress-plugin-vue-example": "3.0.14",
+    "vuepress-plugin-vue-example": "3.0.15",
     "vuex": "^4.1.0"
   },
   "resolutions": {
