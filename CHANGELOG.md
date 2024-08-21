@@ -1,3 +1,11 @@
+## [3.6.5](https://github.com/kouts/vue-dataset/compare/v3.6.4...v3.6.5) (2024-08-21)
+
+
+### Bug Fixes
+
+* fixed components path ([bc32301](https://github.com/kouts/vue-dataset/commit/bc3230192a5cb52a06ae1fcd7ecbf0ee7dffe434))
+* fixed example component name ([4c76a06](https://github.com/kouts/vue-dataset/commit/4c76a06e6166ec2c0565b76c358e5954fdee163b))
+
 ## [3.6.4](https://github.com/kouts/vue-dataset/compare/v3.6.3...v3.6.4) (2024-08-19)
 
 
