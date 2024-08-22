@@ -1,3 +1,10 @@
+## [3.6.6](https://github.com/kouts/vue-dataset/compare/v3.6.5...v3.6.6) (2024-08-22)
+
+
+### Bug Fixes
+
+* updated vue-example ([4be3c6f](https://github.com/kouts/vue-dataset/commit/4be3c6ff334b57e5eaf4e91daa50172355aece48))
+
 ## [3.6.5](https://github.com/kouts/vue-dataset/compare/v3.6.4...v3.6.5) (2024-08-21)
 
 
