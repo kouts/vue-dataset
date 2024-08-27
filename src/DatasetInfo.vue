@@ -9,6 +9,7 @@
 import { computed, inject } from 'vue'
 
 export default {
+  name: 'DatasetInfo',
   setup() {
     const dsResultsNumber = inject('dsResultsNumber')
     const dsFrom = inject('dsFrom')
@@ -21,8 +22,8 @@ export default {
       datasetI18n: inject('datasetI18n'),
       dsResultsNumber,
       showing,
-      showingTo
+      showingTo,
     }
-  }
+  },
 }
 </script>

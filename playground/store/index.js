@@ -8,5 +8,5 @@ export const store = createStore({
   },
   mutations: {},
   actions: {},
-  modules: {}
+  modules: {},
 })

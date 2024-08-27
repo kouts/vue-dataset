@@ -39,6 +39,6 @@ https://next--vue-dataset-demo.netlify.app/
 In order to start development:
 
 ```sh
-npm i
-npm run dev
+pnpm i
+pnpm run dev
 ```

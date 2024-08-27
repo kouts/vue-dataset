@@ -10,7 +10,7 @@ describe('isEmptyObject', () => {
 
   it('should return false when an object is not empty', () => {
     const object = {
-      test: 'value'
+      test: 'value',
     }
     const res = isEmptyObject(object)
 

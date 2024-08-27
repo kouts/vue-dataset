@@ -14,10 +14,11 @@
 import { inject } from 'vue'
 
 export default {
+  name: 'DatasetShow',
   props: {
     dsShowEntries: {
       type: Number,
-      default: 10
+      default: 10,
     },
     dsShowEntriesLovs: {
       type: Array,
@@ -26,9 +27,9 @@ export default {
         { value: 10, text: 10 },
         { value: 25, text: 25 },
         { value: 50, text: 50 },
-        { value: 100, text: 100 }
-      ]
-    }
+        { value: 100, text: 100 },
+      ],
+    },
   },
   emits: ['changed'],
   setup(props, { emit }) {
@@ -43,8 +44,8 @@ export default {
 
     return {
       datasetI18n: inject('datasetI18n'),
-      change
+      change,
     }
-  }
+  },
 }
 </script>

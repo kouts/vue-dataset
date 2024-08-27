@@ -1,20 +1,33 @@
+import { viteBundler } from '@vuepress/bundler-vite'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { defaultTheme } from '@vuepress/theme-default'
 import * as path from 'path'
 import * as url from 'url'
-import { defaultTheme, defineUserConfig } from 'vuepress-webpack'
-import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { fileURLToPath } from 'url'
+import { defineUserConfig } from 'vuepress'
 import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
+
+const examplesDir = fileURLToPath(new URL('./components', import.meta.url))
+
+console.log(examplesDir)
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
+  bundler: viteBundler(),
   plugins: [
+    registerComponentsPlugin({
+      componentsDir: examplesDir,
+    }),
     vueExamplePlugin({
-      componentsPath: '/docs/.vuepress/components/'
+      componentsDir: examplesDir,
     }),
     docsearchPlugin({
-      apiKey: '1a6df20c3c6d9b729c4109ebce3e2eed',
-      indexName: 'next-vue-dataset'
-    })
+      apiKey: 'a05c686d69be9a09e66f93b07bc7f855',
+      indexName: 'next-vue-dataset',
+      appId: 'BAXEDGK9R9',
+    }),
   ],
   dest: 'public',
   title: 'vue-dataset',
@@ -27,15 +40,15 @@ export default defineUserConfig({
     sidebar: [
       {
         link: '/',
-        text: 'Introduction'
+        text: 'Introduction',
       },
       {
         link: '/installation/',
-        text: 'Installation'
+        text: 'Installation',
       },
       {
         link: '/components/',
-        text: 'Components'
+        text: 'Components',
       },
       {
         text: 'Examples',
@@ -43,19 +56,24 @@ export default defineUserConfig({
         children: [
           {
             link: '/examples/cards/',
-            text: 'Cards'
+            text: 'Cards',
           },
           {
             link: '/examples/datatable/',
-            text: 'Datatable'
-          }
-        ]
-      }
-    ]
+            text: 'Datatable',
+          },
+        ],
+      },
+    ],
+    themePlugins: {
+      prismjs: {
+        theme: 'tomorrow',
+      },
+    },
   }),
   alias: {
     '@': path.resolve(__dirname, '../../src'),
     '@playground': path.resolve(__dirname, '../../playground'),
-    '@root': path.resolve(__dirname, '../../')
-  }
+    '@root': path.resolve(__dirname, '../../'),
+  },
 })

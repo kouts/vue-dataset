@@ -1,14 +1,14 @@
-module.exports = {
+export default {
   branches: [
     'master',
     {
       name: 'beta',
-      prerelease: true
+      prerelease: true,
     },
     {
       name: 'next',
-      channel: 'next'
-    }
+      channel: 'next',
+    },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -16,8 +16,8 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'CHANGELOG.md'
-      }
+        changelogFile: 'CHANGELOG.md',
+      },
     ],
     '@semantic-release/npm',
     '@semantic-release/github',
@@ -26,8 +26,8 @@ module.exports = {
       {
         assets: ['CHANGELOG.md', 'dist', 'coverage'],
         // eslint-disable-next-line no-template-curly-in-string
-        message: 'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
-      }
-    ]
-  ]
+        message: 'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
+  ],
 }

@@ -3,66 +3,122 @@ $link-color: $primary !default;
 $link-hover-color: lighten($link-color, 15%) !default;
 
 /* Bootstrap imports */
-@import '~bootstrap/scss/_functions';
-@import '~bootstrap/scss/_variables';
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
 
-
-@import '~bootstrap/scss/_mixins';
-@import '~bootstrap/scss/_root';
-@import '~bootstrap/scss/_reboot';
-@import '~bootstrap/scss/_type';
+@import 'bootstrap/scss/_mixins';
+@import 'bootstrap/scss/_root';
+@import 'bootstrap/scss/_reboot';
+@import 'bootstrap/scss/_type';
 /*
-@import '~bootstrap/scss/_images';
-@import '~bootstrap/scss/_code';
+@import 'bootstrap/scss/_images';
+@import 'bootstrap/scss/_code';
 */
-@import '~bootstrap/scss/_grid';
-@import '~bootstrap/scss/_tables';
-@import '~bootstrap/scss/_forms';
-@import '~bootstrap/scss/_buttons';
+@import 'bootstrap/scss/_grid';
+@import 'bootstrap/scss/_tables';
+@import 'bootstrap/scss/_forms';
+@import 'bootstrap/scss/_buttons';
 /*
-@import '~bootstrap/scss/_transitions';
-@import '~bootstrap/scss/_dropdown';
+@import 'bootstrap/scss/_transitions';
+@import 'bootstrap/scss/_dropdown';
 */
-@import '~bootstrap/scss/_button-group';
+@import 'bootstrap/scss/_button-group';
 /*
-@import '~bootstrap/scss/_input-group';
+@import 'bootstrap/scss/_input-group';
 */
-@import '~bootstrap/scss/_custom-forms';
-@import '~bootstrap/scss/_nav';
+@import 'bootstrap/scss/_custom-forms';
+@import 'bootstrap/scss/_nav';
 /*
-@import '~bootstrap/scss/_navbar';
+@import 'bootstrap/scss/_navbar';
 */
-@import '~bootstrap/scss/_card';
+@import 'bootstrap/scss/_card';
 /*
-@import '~bootstrap/scss/_breadcrumb';
+@import 'bootstrap/scss/_breadcrumb';
 */
-@import '~bootstrap/scss/_pagination';
-@import '~bootstrap/scss/_badge';
+@import 'bootstrap/scss/_pagination';
+@import 'bootstrap/scss/_badge';
 /*
-@import '~bootstrap/scss/_jumbotron';
-@import '~bootstrap/scss/_alert';
-@import '~bootstrap/scss/_progress';
-@import '~bootstrap/scss/_media';
-@import '~bootstrap/scss/_list-group';
-@import '~bootstrap/scss/_close';
-@import '~bootstrap/scss/_toasts';
-@import '~bootstrap/scss/_modal';
-@import '~bootstrap/scss/_tooltip';
-@import '~bootstrap/scss/_popover';
-@import '~bootstrap/scss/_carousel';
-@import '~bootstrap/scss/_spinners';
+@import 'bootstrap/scss/_jumbotron';
+@import 'bootstrap/scss/_alert';
+@import 'bootstrap/scss/_progress';
+@import 'bootstrap/scss/_media';
+@import 'bootstrap/scss/_list-group';
+@import 'bootstrap/scss/_close';
+@import 'bootstrap/scss/_toasts';
+@import 'bootstrap/scss/_modal';
+@import 'bootstrap/scss/_tooltip';
+@import 'bootstrap/scss/_popover';
+@import 'bootstrap/scss/_carousel';
+@import 'bootstrap/scss/_spinners';
 */
-@import '~bootstrap/scss/_utilities';
+@import 'bootstrap/scss/_utilities';
 /*
-@import '~bootstrap/scss/_print';
+@import 'bootstrap/scss/_print';
 */
 
 /* Max-widths */
-.mw1 {max-width: 35px !important;} .mw2 {max-width: 90px !important;} .mw3 {max-width: 145px !important;} .mw4 {max-width: 200px !important;} .mw5 {max-width: 255px !important;} .mw6 {max-width: 310px !important;} .mw7 {max-width: 365px !important;} .mw8 {max-width: 420px !important;} .mw9 {max-width: 475px !important;} .mw10 {max-width: 530px !important;} .mw11 {max-width: 585px !important;} .mw12 {max-width: 640px !important;} .mw13 {max-width: 695px !important;} .mw14 {max-width: 750px !important;} .mw15 {max-width: 805px !important;} .mw16 {max-width: 860px !important;} .mw17 {max-width: 915px !important;} .mw18 {max-width: 970px !important;}
-blockquote p {color: #777;}
+.mw1 {
+  max-width: 35px !important;
+}
+.mw2 {
+  max-width: 90px !important;
+}
+.mw3 {
+  max-width: 145px !important;
+}
+.mw4 {
+  max-width: 200px !important;
+}
+.mw5 {
+  max-width: 255px !important;
+}
+.mw6 {
+  max-width: 310px !important;
+}
+.mw7 {
+  max-width: 365px !important;
+}
+.mw8 {
+  max-width: 420px !important;
+}
+.mw9 {
+  max-width: 475px !important;
+}
+.mw10 {
+  max-width: 530px !important;
+}
+.mw11 {
+  max-width: 585px !important;
+}
+.mw12 {
+  max-width: 640px !important;
+}
+.mw13 {
+  max-width: 695px !important;
+}
+.mw14 {
+  max-width: 750px !important;
+}
+.mw15 {
+  max-width: 805px !important;
+}
+.mw16 {
+  max-width: 860px !important;
+}
+.mw17 {
+  max-width: 915px !important;
+}
+.mw18 {
+  max-width: 970px !important;
+}
+blockquote p {
+  color: #777;
+}
 
 /* Font sizes */
-.font-16 { font-size: 16px; }
+.font-16 {
+  font-size: 16px;
+}
 
 /* Browsers support table */
 #browsers-support + table .icon.outbound {
@@ -96,16 +152,17 @@ blockquote p {color: #777;}
 }
 
 /* Fix margin-bottom for headers */
-.theme-container .theme-default-content:not(.custom) h2, 
-.theme-container .theme-default-content:not(.custom) h3, 
-.theme-container .theme-default-content:not(.custom) h4, 
-.theme-container .theme-default-content:not(.custom) h5, 
+.theme-container .theme-default-content:not(.custom) h2,
+.theme-container .theme-default-content:not(.custom) h3,
+.theme-container .theme-default-content:not(.custom) h4,
+.theme-container .theme-default-content:not(.custom) h5,
 .theme-container .theme-default-content:not(.custom) h6 {
   margin-bottom: 1rem;
 }
 
 /* Fix footer nav links */
-.page-nav .nav-link, .page-meta .nav-link {
+.page-nav .nav-link,
+.page-meta .nav-link {
   display: inline;
   padding: 0;
 }
@@ -125,13 +182,13 @@ blockquote p {color: #777;}
 }
 
 /* Fix card titles */
-.theme-container .theme-default-content:not(.custom) .card > .card-body > h5.card-title, 
+.theme-container .theme-default-content:not(.custom) .card > .card-body > h5.card-title,
 .theme-container .theme-default-content:not(.custom) .card > .card-body > h6 {
   margin: 0px;
   padding: 0px;
 }
 
-.theme-container .theme-default-content:not(.custom) .card>.card-body h3 {
+.theme-container .theme-default-content:not(.custom) .card > .card-body h3 {
   margin: 0px 0px 8px 0px;
   padding: 0px;
 }
@@ -152,4 +209,20 @@ h3 {
 /* Fix code blocks */
 code {
   font-family: inherit;
+}
+
+/* Fix Dataset pagination links */
+.theme-default-content ul.pagination li a {
+  text-decoration: none;
+}
+
+/* Fix Dataset card title spacing */
+.theme-default-content h5.card-title {
+  position: relative;
+  padding-top: 3rem;
+}
+
+/* Fix navbar item hover */
+.vp-navbar-item > a:hover {
+  border-bottom: none;
 }

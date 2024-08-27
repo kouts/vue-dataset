@@ -1,9 +1,9 @@
+import { shallowMount } from '@vue/test-utils'
+import { ref } from 'vue'
 import DatasetPager from '@/DatasetPager.vue'
 import datasetI18n from '@/i18n/en.js'
-import { ref } from 'vue'
-import { shallowMount } from '@vue/test-utils'
 
-const mockSetActive = jest.fn()
+const mockSetActive = vi.fn()
 
 const isButtonDisabled = function (el) {
   return el.tabIndex === -1 && el.hasAttribute('aria-disabled') === true
@@ -27,9 +27,9 @@ describe('DatasetPager', () => {
           dsPages: ref([1, 2, 3]),
           dsPagecount: ref(0),
           dsPage: ref(1),
-          ...provideOpts
-        }
-      }
+          ...provideOpts,
+        },
+      },
     })
 
     return wrapper
@@ -48,7 +48,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button on first page', () => {
     wrapper = wrapperWithProvide({
-      dsPage: ref(1)
+      dsPage: ref(1),
     })
     const previousButton = wrapper.findAll('a')[0].element
 
@@ -57,7 +57,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      dsPagecount: ref(1)
+      dsPagecount: ref(1),
     })
     const previousButton = wrapper.findAll('a')[0].element
 
@@ -67,7 +67,7 @@ describe('DatasetPager', () => {
   it('enables the previous button', () => {
     wrapper = wrapperWithProvide({
       dsPage: ref(2),
-      dsPagecount: ref(3)
+      dsPagecount: ref(3),
     })
     const previousButton = wrapper.findAll('a')[0].element
 
@@ -77,7 +77,7 @@ describe('DatasetPager', () => {
   it('disables the next button on last page', () => {
     wrapper = wrapperWithProvide({
       dsPage: ref(4),
-      dsPagecount: ref(4)
+      dsPagecount: ref(4),
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons[buttons.length - 1].element
@@ -87,7 +87,7 @@ describe('DatasetPager', () => {
 
   it('disables the next button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      dsPagecount: ref(1)
+      dsPagecount: ref(1),
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons[buttons.length - 1].element
@@ -97,7 +97,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous and next buttons when there are no pages', () => {
     wrapper = wrapperWithProvide({
-      dsPagecount: ref(0)
+      dsPagecount: ref(0),
     })
     const buttons = wrapper.findAll('a')
     const previousButton = buttons[0].element
@@ -110,7 +110,7 @@ describe('DatasetPager', () => {
   it('enables the next button', () => {
     wrapper = wrapperWithProvide({
       dsPage: ref(2),
-      dsPagecount: ref(3)
+      dsPagecount: ref(3),
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons[buttons.length - 1].element
@@ -121,7 +121,7 @@ describe('DatasetPager', () => {
   it('makes the normal page button active', () => {
     wrapper = wrapperWithProvide({
       dsPage: ref(1),
-      dsPagecount: ref(3)
+      dsPagecount: ref(3),
     })
     const li = wrapper.findAll('li')[1]
 
@@ -132,7 +132,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       dsPages: ref([1, '...', 4, 5, 6]),
       dsPage: ref(6),
-      dsPagecount: ref(6)
+      dsPagecount: ref(6),
     })
     const li = wrapper.findAll('li')[2]
 
@@ -145,7 +145,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       dsPages: ref([1, '...', 4, 5, 6]),
       dsPage: ref(6),
-      dsPagecount: ref(6)
+      dsPagecount: ref(6),
     })
     const previousButton = wrapper.findAll('a')[0]
 
@@ -158,7 +158,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       dsPages: ref([1, '...', 4, 5, 6]),
       dsPage: ref(5),
-      dsPagecount: ref(6)
+      dsPagecount: ref(6),
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons[buttons.length - 1]

@@ -1,15 +1,14 @@
-import App from './App.vue'
-import Default from './layouts/default/Default.vue'
 import { createApp } from 'vue'
-import { router } from './router'
-import { store } from './store'
-
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
 import DatasetPager from '@/DatasetPager.vue'
 import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
+import App from './App.vue'
+import Default from './layouts/default/Default.vue'
+import { router } from './router'
+import { store } from './store'
 
 const app = createApp(App)
 

@@ -1,30 +1,24 @@
 ## Using module bundlers
 
-Most likely you are using a module bundler like [Webpack](https://webpack.js.org/), which makes it easy to directly include `vue-dataset` into your project.  
+Most likely you are using a module bundler like [Webpack](https://webpack.js.org/), which makes it easy to directly include `vue-dataset` into your project.
 
 Install `vue-dataset@next` via npm
-```
+
+```bash
 npm install vue-dataset@next --save
 ```
 
-Use the ```import``` statement to include the `vue-dataset` components into your bundle.  
+Use the `import` statement to include the `vue-dataset` components into your bundle.
 
 ```js
-import { 
-  Dataset,
-  DatasetItem,
-  DatasetInfo,
-  DatasetPager,
-  DatasetSearch,
-  DatasetShow
-} from 'vue-dataset'
+import { Dataset, DatasetItem, DatasetInfo, DatasetPager, DatasetSearch, DatasetShow } from 'vue-dataset'
 ```
 
 ## Using a script tag
 
 A `vue-dataset.umd.js` file suitable for including `vue-dataset` using a `script` tag into your page, is resides inside the `dist` folder.
 
-``` html
+```html
 <script type="text/javascript" src="vue-dataset.umd.js"></script>
 ```
 
@@ -43,6 +37,7 @@ app.component('DatasetShow', VueDataset.DatasetShow)`
 ```
 
 ## Translations
+
 It's possible to customize the texts of `vue-dataset` by extending the `Dataset` component using the following pattern.
 
 ```js

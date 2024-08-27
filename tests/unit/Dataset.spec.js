@@ -1,12 +1,11 @@
+import { mount } from '@vue/test-utils'
+import { nextTick, ref } from 'vue'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
 import DatasetPager from '@/DatasetPager.vue'
 import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
-import { mount } from '@vue/test-utils'
-import { nextTick, ref } from 'vue'
-
 import users from '../../example-data/users.json'
 import { clone, waitNT } from '../../tests/utils.js'
 
@@ -28,7 +27,7 @@ const createWrapper = (props = {}) => {
         </dataset-item>
         <dataset-info />
         <dataset-pager />
-      `
+      `,
     },
     props,
     global: {
@@ -37,9 +36,9 @@ const createWrapper = (props = {}) => {
         DatasetSearch,
         DatasetInfo,
         DatasetItem,
-        DatasetPager
-      }
-    }
+        DatasetPager,
+      },
+    },
   })
 }
 
@@ -201,9 +200,9 @@ describe('Dataset', () => {
         return {
           datasetUsers,
           addOne,
-          removeOne
+          removeOne,
         }
-      }
+      },
     }
 
     const wrapper = mount(Container)

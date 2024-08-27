@@ -1,5 +1,5 @@
-import { data } from './testData.js'
 import { fieldFilter } from '@/helpers'
+import { data } from './testData.js'
 
 let filterData = []
 
