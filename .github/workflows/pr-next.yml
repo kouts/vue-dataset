@@ -22,13 +22,13 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: '.nvmrc'
           check-latest: true
 
       - name: Setup pnpm 📦
         uses: pnpm/action-setup@v4
         with:
-          version: 9.7.1
+          package_json_file: package.json
 
       - name: Install dependencies 📦
         run: pnpm install
