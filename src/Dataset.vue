@@ -168,6 +168,7 @@ export default {
       computed(() => props.dsData),
     )
     provide('dsRows', dsRows)
+    provide('dsSearch', dsSearch)
     provide('dsShowEntries', dsShowEntries)
     provide('dsPages', dsPages)
     provide('dsResultsNumber', dsResultsNumber)
