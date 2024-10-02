@@ -1,4 +1,4 @@
-import { ref as _, computed as f, watch as C, provide as u, renderSlot as R, nextTick as j, inject as i, openBlock as v, createElementBlock as h, toDisplayString as c, createBlock as L, resolveDynamicComponent as B, withCtx as M, Fragment as A, renderList as F, createCommentVNode as K, createElementVNode as w, normalizeClass as k, withModifiers as N } from "vue";
+import { ref as _, computed as f, watch as C, provide as c, renderSlot as R, nextTick as j, inject as i, openBlock as h, createElementBlock as v, toDisplayString as u, createBlock as L, resolveDynamicComponent as B, withCtx as M, Fragment as A, renderList as F, createCommentVNode as K, createElementVNode as w, normalizeClass as k, withModifiers as N } from "vue";
 const V = "...";
 function z(t, n, s) {
   let e;
@@ -150,10 +150,10 @@ const J = {
         immediate: !0,
         deep: !0
       }
-    ), u("dsIndexes", a), u("search", d), u("showEntries", b), u("setActive", m), u("datasetI18n", o), u(
+    ), c("dsIndexes", a), c("search", d), c("showEntries", b), c("setActive", m), c("datasetI18n", o), c(
       "dsData",
       f(() => t.dsData)
-    ), u("dsRows", T), u("dsPages", y), u("dsResultsNumber", x), u("dsPagecount", S), u("dsFrom", D), u("dsTo", I), u("dsPage", s), {
+    ), c("dsRows", T), c("dsSearch", e), c("dsShowEntries", r), c("dsPages", y), c("dsResultsNumber", x), c("dsPagecount", S), c("dsFrom", D), c("dsTo", I), c("dsPage", s), {
       dsIndexes: a,
       dsShowEntries: r,
       dsResultsNumber: x,
@@ -201,7 +201,7 @@ const ge = /* @__PURE__ */ P(Q, [["render", U]]), X = {
   }
 };
 function Y(t, n, s, e, r, o) {
-  return v(), h("div", null, c(e.datasetI18n.showing) + " " + c(e.showing) + " " + c(e.datasetI18n.showingTo) + " " + c(e.showingTo) + " " + c(e.datasetI18n.showingOf) + " " + c(e.dsResultsNumber) + " " + c(e.datasetI18n.showingEntries), 1);
+  return h(), v("div", null, u(e.datasetI18n.showing) + " " + u(e.showing) + " " + u(e.datasetI18n.showingTo) + " " + u(e.showingTo) + " " + u(e.datasetI18n.showingOf) + " " + u(e.dsResultsNumber) + " " + u(e.datasetI18n.showingEntries), 1);
 }
 const me = /* @__PURE__ */ P(X, [["render", Y]]), Z = {
   name: "DatasetItem",
@@ -226,9 +226,9 @@ const me = /* @__PURE__ */ P(X, [["render", Y]]), Z = {
   }
 };
 function p(t, n, s, e, r, o) {
-  return v(), L(B(s.tag), null, {
+  return h(), L(B(s.tag), null, {
     default: M(() => [
-      (v(!0), h(A, null, F(e.dsRows, (a, d) => R(t.$slots, "default", {
+      (h(!0), v(A, null, F(e.dsRows, (a, d) => R(t.$slots, "default", {
         row: e.dsData[a],
         rowIndex: a,
         index: e.indexes[d]
@@ -258,7 +258,7 @@ const _e = /* @__PURE__ */ P(Z, [["render", p]]), $ = {
   class: "page-link"
 }, ae = ["tabindex", "aria-disabled"];
 function re(t, n, s, e, r, o) {
-  return v(), h("ul", ee, [
+  return h(), v("ul", ee, [
     w("li", {
       class: k(["page-item", e.disabledPrevious && "disabled"])
     }, [
@@ -268,18 +268,18 @@ function re(t, n, s, e, r, o) {
         tabindex: e.disabledPrevious ? "-1" : null,
         "aria-disabled": e.disabledPrevious ? "true" : null,
         onClick: n[0] || (n[0] = N((a) => e.setActive(e.dsPage !== 1 && e.dsPagecount !== 0 ? e.dsPage - 1 : e.dsPage), ["prevent"]))
-      }, c(e.datasetI18n.previous), 9, te)
+      }, u(e.datasetI18n.previous), 9, te)
     ], 2),
-    (v(!0), h(A, null, F(e.dsPages, (a, d) => (v(), h("li", {
+    (h(!0), v(A, null, F(e.dsPages, (a, d) => (h(), v("li", {
       key: d,
       class: k(["page-item", a === e.dsPage && "active", a === e.morePages && "disabled"])
     }, [
-      a !== e.morePages ? (v(), h("a", {
+      a !== e.morePages ? (h(), v("a", {
         key: 0,
         class: "page-link",
         href: "#",
         onClick: N((b) => e.setActive(a), ["prevent"])
-      }, c(a), 9, se)) : (v(), h("span", ne, c(a), 1))
+      }, u(a), 9, se)) : (h(), v("span", ne, u(a), 1))
     ], 2))), 128)),
     w("li", {
       class: k(["page-item", e.disabledNext && "disabled"])
@@ -290,7 +290,7 @@ function re(t, n, s, e, r, o) {
         tabindex: e.disabledNext ? "-1" : null,
         "aria-disabled": e.disabledNext ? "true" : null,
         onClick: n[1] || (n[1] = N((a) => e.setActive(e.dsPage !== e.dsPagecount && e.dsPagecount !== 0 ? e.dsPage + 1 : e.dsPage), ["prevent"]))
-      }, c(e.datasetI18n.next), 9, ae)
+      }, u(e.datasetI18n.next), 9, ae)
     ], 2)
   ]);
 }
@@ -317,7 +317,7 @@ const we = /* @__PURE__ */ P($, [["render", re]]), oe = {
   }
 }, de = ["placeholder", "value"];
 function le(t, n, s, e, r, o) {
-  return v(), h("input", {
+  return h(), v("input", {
     type: "text",
     placeholder: s.dsSearchPlaceholder,
     class: "form-control",
@@ -354,23 +354,23 @@ const be = /* @__PURE__ */ P(oe, [["render", le]]), ie = {
     };
   }
 }, ce = { class: "form-inline" }, ue = ["value"], fe = ["value"];
-function ve(t, n, s, e, r, o) {
-  return v(), h("div", ce, [
-    w("label", null, c(e.datasetI18n.show), 1),
+function he(t, n, s, e, r, o) {
+  return h(), v("div", ce, [
+    w("label", null, u(e.datasetI18n.show), 1),
     w("select", {
       value: s.dsShowEntries,
       class: "form-control mr-1 ml-1",
       onChange: n[0] || (n[0] = (...a) => e.change && e.change(...a))
     }, [
-      (v(!0), h(A, null, F(s.dsShowEntriesLovs, (a) => (v(), h("option", {
+      (h(!0), v(A, null, F(s.dsShowEntriesLovs, (a) => (h(), v("option", {
         key: a.value,
         value: a.value
-      }, c(a.text), 9, fe))), 128))
+      }, u(a.text), 9, fe))), 128))
     ], 40, ue),
-    w("label", null, c(e.datasetI18n.entries), 1)
+    w("label", null, u(e.datasetI18n.entries), 1)
   ]);
 }
-const Pe = /* @__PURE__ */ P(ie, [["render", ve]]);
+const Pe = /* @__PURE__ */ P(ie, [["render", he]]);
 export {
   ge as Dataset,
   me as DatasetInfo,

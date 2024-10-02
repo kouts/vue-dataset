@@ -1,3 +1,16 @@
+# [3.7.0](https://github.com/kouts/vue-dataset/compare/v3.6.6...v3.7.0) (2024-10-02)
+
+
+### Bug Fixes
+
+* added dsShowEntries provider ([c9e0ef2](https://github.com/kouts/vue-dataset/commit/c9e0ef2b826eb9fc78056a4828a52b217181f6d7))
+* updated npm packages ([d71ffa9](https://github.com/kouts/vue-dataset/commit/d71ffa9b234f4b679867bcaa593ded7901a8619c))
+
+
+### Features
+
+* exposed dsSearch ([79c6db7](https://github.com/kouts/vue-dataset/commit/79c6db783b11c85291bfd1d712ea10291fa3bd2d))
+
 ## [3.6.6](https://github.com/kouts/vue-dataset/compare/v3.6.5...v3.6.6) (2024-08-22)
 
 
