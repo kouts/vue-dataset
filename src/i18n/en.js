@@ -6,5 +6,5 @@ export default {
   showing: 'Showing',
   showingTo: 'to',
   showingOf: 'of',
-  showingEntries: 'entries'
+  showingEntries: 'entries',
 }

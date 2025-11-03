@@ -1,5 +1,5 @@
-import DatasetSearch from '@/DatasetSearch.vue'
 import { shallowMount } from '@vue/test-utils'
+import DatasetSearch from '@/DatasetSearch.vue'
 
 const mockSearch = jest.fn()
 
@@ -8,8 +8,8 @@ describe('DatasetSearch', () => {
     provide: {
       search: function (value) {
         mockSearch(value)
-      }
-    }
+      },
+    },
   })
 
   it('renders an input element', () => {

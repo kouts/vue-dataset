@@ -1,8 +1,8 @@
 import buble from '@rollup/plugin-buble'
-import del from 'rollup-plugin-delete'
-import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
+import del from 'rollup-plugin-delete'
+import vue from 'rollup-plugin-vue'
 
 const createSources = () => [
   './src/index.js',
@@ -11,17 +11,17 @@ const createSources = () => [
   './src/DatasetItem.vue',
   './src/DatasetPager.vue',
   './src/DatasetSearch.vue',
-  './src/DatasetShow.vue'
+  './src/DatasetShow.vue',
 ]
 
 const createPlugins = () => [
   nodeResolve(),
   vue({
-    css: false
+    css: false,
   }),
   buble({
-    exclude: 'node_modules/**'
-  })
+    exclude: 'node_modules/**',
+  }),
 ]
 
 const umdBuild = (minify) =>
@@ -44,12 +44,12 @@ const umdBuild = (minify) =>
           sourcemap: true,
           sourcemapExcludeSources: false,
           globals: {
-            vue: 'Vue'
-          }
-        }
+            vue: 'Vue',
+          },
+        },
       ],
       external: ['vue'],
-      plugins
+      plugins,
     }
   })
 
@@ -66,12 +66,12 @@ const esBuild = () => {
           dir: 'dist/es',
           format: 'es',
           sourcemap: true,
-          sourcemapExcludeSources: false
-        }
+          sourcemapExcludeSources: false,
+        },
       ],
       external: ['vue'],
-      plugins
-    }
+      plugins,
+    },
   ]
 }
 
@@ -83,5 +83,5 @@ export default [
   ...umdBuild(),
 
   // UMD Minified
-  ...umdBuild(true)
+  ...umdBuild(true),
 ]

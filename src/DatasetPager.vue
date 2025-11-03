@@ -39,10 +39,11 @@
 import { MORE_PAGES } from './helpers'
 
 export default {
+  name: 'DatasetPager',
   inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
   data: function () {
     return {
-      morePages: MORE_PAGES
+      morePages: MORE_PAGES,
     }
   },
   computed: {
@@ -62,7 +63,7 @@ export default {
     },
     disabledNext() {
       return this.dsPage === this.dsPagecount || this.dsPagecount === 0
-    }
-  }
+    },
+  },
 }
 </script>

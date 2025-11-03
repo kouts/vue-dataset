@@ -13,6 +13,7 @@
   //
 
   var script = {
+    name: 'DatasetInfo',
     inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
     computed: {
       showing: function showing() {
@@ -30,8 +31,8 @@
       },
       dsTo: function dsTo() {
         return this.rdsTo()
-      }
-    }
+      },
+    },
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {

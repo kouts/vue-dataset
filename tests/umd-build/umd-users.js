@@ -14,7 +14,7 @@ var umdUsers = [
     email: 'amet@posuerevulputate.co.uk',
     phone: '(0111) 194 7651',
     address: 'P.O. Box 298, 5571 Mauris Rd.',
-    favoriteAnimal: 'owl'
+    favoriteAnimal: 'owl',
   },
   {
     _id: '544E559A-303A-1F35-F1DF-AE2E110465D1',
@@ -30,7 +30,7 @@ var umdUsers = [
     email: 'laoreet.ipsum@varius.co.uk',
     phone: '0800 1111',
     address: 'Ap #473-9010 Risus. Rd.',
-    favoriteAnimal: 'pig'
+    favoriteAnimal: 'pig',
   },
   {
     _id: '7D35F637-F6BD-B371-6BA7-A202D315158E',
@@ -46,7 +46,7 @@ var umdUsers = [
     email: 'ridiculus.mus.Aenean@urnaVivamus.com',
     phone: '0800 291 4995',
     address: '3403 Nam Av.',
-    favoriteAnimal: 'duck'
+    favoriteAnimal: 'duck',
   },
   {
     _id: 'F018C6B0-754B-2575-06BA-D1A71E5FB8D6',
@@ -62,7 +62,7 @@ var umdUsers = [
     email: 'ullamcorper@facilisisegetipsum.edu',
     phone: '055 0463 3183',
     address: '237-8362 Non Rd.',
-    favoriteAnimal: 'dog'
+    favoriteAnimal: 'dog',
   },
   {
     _id: '02425634-296F-9223-B9A5-1E7CCB5CBE5F',
@@ -78,7 +78,7 @@ var umdUsers = [
     email: 'arcu.Nunc.mauris@nequeMorbi.com',
     phone: '07624 617656',
     address: '777 Nunc Rd.',
-    favoriteAnimal: 'dog'
+    favoriteAnimal: 'dog',
   },
   {
     _id: 'D95F44CA-F6EA-06A6-A876-4063D80C6771',
@@ -94,7 +94,7 @@ var umdUsers = [
     email: 'Lorem.ipsum@ligulaDonec.co.uk',
     phone: '(01734) 407876',
     address: '733 Cras Av.',
-    favoriteAnimal: 'duck'
+    favoriteAnimal: 'duck',
   },
   {
     _id: '78F1C44D-A3A0-5588-EEE8-CD32D6EC9A82',
@@ -110,7 +110,7 @@ var umdUsers = [
     email: 'elit.pellentesque@nonmassa.net',
     phone: '(016977) 4021',
     address: '637-9327 Turpis. Street',
-    favoriteAnimal: 'cow'
+    favoriteAnimal: 'cow',
   },
   {
     _id: '81ADEC11-C56A-CFBC-5215-513C85D8F00F',
@@ -126,7 +126,7 @@ var umdUsers = [
     email: 'magna.Ut@mifringilla.ca',
     phone: '070 6855 6126',
     address: 'Ap #955-983 Diam. Rd.',
-    favoriteAnimal: 'cat'
+    favoriteAnimal: 'cat',
   },
   {
     _id: '0B146A52-FD9A-3F40-7ABE-3A1A615616EC',
@@ -142,7 +142,7 @@ var umdUsers = [
     email: 'velit@nisisemsemper.co.uk',
     phone: '(015095) 87009',
     address: 'Ap #454-7539 Leo. Road',
-    favoriteAnimal: 'chicken'
+    favoriteAnimal: 'chicken',
   },
   {
     _id: 'FD4A7941-F0C9-3C36-2055-1B5E843921FF',
@@ -158,7 +158,7 @@ var umdUsers = [
     email: 'risus.Donec.egestas@dolorquamelementum.co.uk',
     phone: '076 7503 7535',
     address: 'P.O. Box 926, 8983 Pede. Rd.',
-    favoriteAnimal: 'horse'
+    favoriteAnimal: 'horse',
   },
   {
     _id: '0272FCAF-F0C1-89A7-8890-4C217237935E',
@@ -174,7 +174,7 @@ var umdUsers = [
     email: 'mauris.eu.elit@arcu.co.uk',
     phone: '07225 341240',
     address: 'Ap #813-9479 Enim Street',
-    favoriteAnimal: 'duck'
+    favoriteAnimal: 'duck',
   },
   {
     _id: '7053089C-A0D5-B428-57D5-660F62E4263A',
@@ -190,7 +190,7 @@ var umdUsers = [
     email: 'id@loremfringillaornare.co.uk',
     phone: '(016223) 58309',
     address: 'P.O. Box 104, 4121 Velit St.',
-    favoriteAnimal: 'cow'
+    favoriteAnimal: 'cow',
   },
   {
     _id: 'B2F5B56D-C630-1B92-6232-003949881BF9',
@@ -206,7 +206,7 @@ var umdUsers = [
     email: 'urna.suscipit.nonummy@elitpretium.edu',
     phone: '0943 142 3099',
     address: 'P.O. Box 613, 963 Ante Rd.',
-    favoriteAnimal: 'owl'
+    favoriteAnimal: 'owl',
   },
   {
     _id: '3A073396-08DE-F59B-F358-2D5ED32CA583',
@@ -222,7 +222,7 @@ var umdUsers = [
     email: 'congue.elit.sed@Nullamvelit.org',
     phone: '(017504) 92333',
     address: '418-8445 Dui Road',
-    favoriteAnimal: 'chicken'
+    favoriteAnimal: 'chicken',
   },
   {
     _id: 'E8793E41-EF67-1946-48C7-42875D3FBBC9',
@@ -238,7 +238,7 @@ var umdUsers = [
     email: 'turpis@sempercursus.ca',
     phone: '0945 711 5384',
     address: '152-6455 Non, Road',
-    favoriteAnimal: 'duck'
+    favoriteAnimal: 'duck',
   },
   {
     _id: 'FD062514-F818-96A9-E260-901FAF14741B',
@@ -254,7 +254,7 @@ var umdUsers = [
     email: 'velit@cursus.net',
     phone: '(0117) 401 5994',
     address: 'Ap #192-9648 Cubilia Ave',
-    favoriteAnimal: 'chicken'
+    favoriteAnimal: 'chicken',
   },
   {
     _id: 'DBDA3B64-41CA-3B8A-4927-45C6B027CB2A',
@@ -270,7 +270,7 @@ var umdUsers = [
     email: 'libero.nec.ligula@cursus.org',
     phone: '(016977) 3784',
     address: 'P.O. Box 787, 201 Venenatis Avenue',
-    favoriteAnimal: 'chicken'
+    favoriteAnimal: 'chicken',
   },
   {
     _id: '015D5E68-32A2-3479-25CD-19C192611AD6',
@@ -286,7 +286,7 @@ var umdUsers = [
     email: 'et.pede.Nunc@Mauris.ca',
     phone: '0339 072 2056',
     address: 'P.O. Box 760, 6844 Vel Av.',
-    favoriteAnimal: 'cow'
+    favoriteAnimal: 'cow',
   },
   {
     _id: 'DD806FA7-AB4A-38E9-6F4E-5D4DFC40864F',
@@ -302,7 +302,7 @@ var umdUsers = [
     email: 'purus.in@est.edu',
     phone: '0500 691512',
     address: 'P.O. Box 609, 4170 Imperdiet Av.',
-    favoriteAnimal: 'pig'
+    favoriteAnimal: 'pig',
   },
   {
     _id: '3DE39E50-956F-C798-DE88-731A1A67F953',
@@ -318,7 +318,7 @@ var umdUsers = [
     email: 'erat@Mauris.ca',
     phone: '0800 494466',
     address: '5903 Penatibus St.',
-    favoriteAnimal: 'owl'
+    favoriteAnimal: 'owl',
   },
   {
     _id: 'A3CCE9E8-BC23-CA12-5AAE-C14061847564',
@@ -334,7 +334,7 @@ var umdUsers = [
     email: 'quis@Morbiaccumsan.edu',
     phone: '(0113) 747 8813',
     address: '334-9318 Nibh. St.',
-    favoriteAnimal: 'horse'
+    favoriteAnimal: 'horse',
   },
   {
     _id: 'F5388BAE-3439-8A6F-C844-11186AD907C0',
@@ -350,6 +350,6 @@ var umdUsers = [
     email: 'vehicula.aliquet.libero@in.edu',
     phone: '0845 46 45',
     address: '646-3455 Ut, Ave',
-    favoriteAnimal: 'dog'
-  }
+    favoriteAnimal: 'dog',
+  },
 ]

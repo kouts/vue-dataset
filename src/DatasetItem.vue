@@ -9,12 +9,13 @@
 
 <script>
 export default {
+  name: 'DatasetItem',
   inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
   props: {
     tag: {
       type: String,
-      default: 'div'
-    }
+      default: 'div',
+    },
   },
   computed: {
     /* Setup reactive injects */
@@ -38,7 +39,7 @@ export default {
       }
 
       return arr
-    }
-  }
+    },
+  },
 }
 </script>

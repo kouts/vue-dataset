@@ -9,6 +9,7 @@ import { n as normalizeComponent } from './normalize-component-cf2db48b.js';
 //
 
 var script = {
+  name: 'DatasetInfo',
   inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
   computed: {
     showing: function showing() {
@@ -26,8 +27,8 @@ var script = {
     },
     dsTo: function dsTo() {
       return this.rdsTo()
-    }
-  }
+    },
+  },
 };
 
 /* script */

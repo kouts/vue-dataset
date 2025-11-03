@@ -14,17 +14,18 @@
         dsPages,
         search,
         showEntries,
-        setActive
+        setActive,
       }"
     ></slot>
   </div>
 </template>
 
 <script>
-import datasetI18n from './i18n/en.js'
 import { createPagingRange, fieldFilter, fieldSorter, findAny, isEmptyObject } from './helpers'
+import datasetI18n from './i18n/en.js'
 
 export default {
+  name: 'Dataset',
   provide() {
     return {
       search: this.search,
@@ -40,42 +41,43 @@ export default {
       rdsPagecount: () => this.dsPagecount,
       rdsFrom: () => this.dsFrom,
       rdsTo: () => this.dsTo,
-      rdsPage: () => this.dsPage
+      rdsPage: () => this.dsPage,
     }
   },
   props: {
     dsData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsFilterFields: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     dsSortby: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsSearchIn: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dsSearchAs: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     dsSortAs: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
+  emits: ['update:dsData'],
   data: function () {
     return {
       dsPage: 1,
       dsSearch: '',
       dsShowEntries: 10,
       datasetI18n,
-      indexes: []
+      indexes: [],
     }
   },
   computed: {
@@ -115,14 +117,14 @@ export default {
     },
     dsTo() {
       return this.dsPage * this.dsShowEntries
-    }
+    },
   },
   watch: {
     dsResultsNumber: {
       handler(val, oldVal) {
         // Reset active page when results change
         this.setActive(1)
-      }
+      },
     },
     /*
     The naive attempt would be to manipulate the original array directly.
@@ -172,11 +174,11 @@ export default {
 
         this.$emit(
           'update:dsData',
-          result.map((i) => this.dsData[i])
+          result.map((i) => this.dsData[i]),
         )
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     search(value) {
@@ -192,7 +194,7 @@ export default {
     },
     setActive(value) {
       this.dsPage = value
-    }
-  }
+    },
+  },
 }
 </script>

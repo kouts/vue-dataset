@@ -1,6 +1,6 @@
+import { shallowMount } from '@vue/test-utils'
 import DatasetShow from '@/DatasetShow.vue'
 import datasetI18n from '@/i18n/en.js'
-import { shallowMount } from '@vue/test-utils'
 
 const mockShowEntries = jest.fn()
 
@@ -10,8 +10,8 @@ describe('DatasetShow', () => {
       datasetI18n,
       showEntries: function (value) {
         mockShowEntries(value)
-      }
-    }
+      },
+    },
   })
 
   it('renders a select element', () => {

@@ -1,6 +1,6 @@
+import { shallowMount } from '@vue/test-utils'
 import DatasetPager from '@/DatasetPager.vue'
 import datasetI18n from '@/i18n/en.js'
-import { shallowMount } from '@vue/test-utils'
 
 const mockSetActive = jest.fn()
 
@@ -25,8 +25,8 @@ describe('DatasetPager', () => {
         rdsPages: () => [1, 2, 3],
         rdsPagecount: () => 0,
         rdsPage: () => 1,
-        ...provideOpts
-      }
+        ...provideOpts,
+      },
     })
 
     return wrapper
@@ -45,7 +45,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button on first page', () => {
     wrapper = wrapperWithProvide({
-      rdsPage: () => 1
+      rdsPage: () => 1,
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
@@ -56,7 +56,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      rdsPagecount: () => 1
+      rdsPagecount: () => 1,
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
@@ -68,7 +68,7 @@ describe('DatasetPager', () => {
   it('enables the previous button', () => {
     wrapper = wrapperWithProvide({
       rdsPage: () => 2,
-      rdsPagecount: () => 3
+      rdsPagecount: () => 3,
     })
     wrapper.vm.$nextTick(() => {
       const previousButton = wrapper.findAll('a').at(0).element
@@ -80,7 +80,7 @@ describe('DatasetPager', () => {
   it('disables the next button on last page', () => {
     wrapper = wrapperWithProvide({
       rdsPage: () => 4,
-      rdsPagecount: () => 4
+      rdsPagecount: () => 4,
     })
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
@@ -92,7 +92,7 @@ describe('DatasetPager', () => {
 
   it('disables the next button when there is only one page', () => {
     wrapper = wrapperWithProvide({
-      rdsPagecount: () => 1
+      rdsPagecount: () => 1,
     })
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
@@ -104,7 +104,7 @@ describe('DatasetPager', () => {
 
   it('disables the previous and next buttons when there are no pages', () => {
     wrapper = wrapperWithProvide({
-      rdsPagecount: () => 0
+      rdsPagecount: () => 0,
     })
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
@@ -119,7 +119,7 @@ describe('DatasetPager', () => {
   it('enables the next button', () => {
     wrapper = wrapperWithProvide({
       rdsPage: () => 2,
-      rdsPagecount: () => 3
+      rdsPagecount: () => 3,
     })
     wrapper.vm.$nextTick(() => {
       const buttons = wrapper.findAll('a')
@@ -132,7 +132,7 @@ describe('DatasetPager', () => {
   it('makes the normal page button active', () => {
     wrapper = wrapperWithProvide({
       rdsPage: () => 1,
-      rdsPagecount: () => 3
+      rdsPagecount: () => 3,
     })
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(1)
@@ -145,7 +145,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       rdsPages: () => [1, '...', 4, 5, 6],
       rdsPage: () => 6,
-      rdsPagecount: () => 6
+      rdsPagecount: () => 6,
     })
     wrapper.vm.$nextTick(() => {
       const li = wrapper.findAll('li').at(2)
@@ -160,7 +160,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       rdsPages: () => [1, '...', 4, 5, 6],
       rdsPage: () => 6,
-      rdsPagecount: () => 6
+      rdsPagecount: () => 6,
     })
     const previousButton = wrapper.findAll('a').at(0)
 
@@ -173,7 +173,7 @@ describe('DatasetPager', () => {
     wrapper = wrapperWithProvide({
       rdsPages: () => [1, '...', 4, 5, 6],
       rdsPage: () => 5,
-      rdsPagecount: () => 6
+      rdsPagecount: () => 6,
     })
     const buttons = wrapper.findAll('a')
     const nextButton = buttons.at(buttons.length - 1)
