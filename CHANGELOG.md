@@ -1,3 +1,11 @@
+## [1.1.19](https://github.com/kouts/vue-dataset/compare/v1.1.18...v1.1.19) (2025-11-03)
+
+
+### Bug Fixes
+
+* updated node and npm packages ([5438386](https://github.com/kouts/vue-dataset/commit/54383863944589305febbd8d2f2dda2680864696))
+* updated node and npm packages ([041b838](https://github.com/kouts/vue-dataset/commit/041b838a161514b7c19f7d0b920ba296fa5b64ff))
+
 ## [1.1.18](https://github.com/kouts/vue-dataset/compare/v1.1.17...v1.1.18) (2023-08-31)
 
 
