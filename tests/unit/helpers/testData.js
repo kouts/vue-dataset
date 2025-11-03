@@ -11,8 +11,8 @@ const data = [
       email: 'gcumpsty0@discuz.net',
       phone: '985-353-3917',
       address: '4669 Northland Circle',
-      favoriteAnimal: 'Deer, roe'
-    }
+      favoriteAnimal: 'Deer, roe',
+    },
   },
   {
     index: 1,
@@ -26,8 +26,8 @@ const data = [
       email: 'mfulloway2@whitehouse.gov',
       phone: '225-853-2332',
       address: '683 Lakeland Crossing',
-      favoriteAnimal: 'Starling, cape'
-    }
+      favoriteAnimal: 'Starling, cape',
+    },
   },
   {
     index: 2,
@@ -41,8 +41,8 @@ const data = [
       email: 'gkubiak3@tripadvisor.com',
       phone: '235-467-8727',
       address: '157 Fisk Center',
-      favoriteAnimal: 'Fairy penguin'
-    }
+      favoriteAnimal: 'Fairy penguin',
+    },
   },
   {
     index: 3,
@@ -56,9 +56,9 @@ const data = [
       email: 'eharraway1@wordpress.com',
       phone: '217-861-5367',
       address: '1 Meadow Valley Circle',
-      favoriteAnimal: 'African clawless otter'
-    }
-  }
+      favoriteAnimal: 'African clawless otter',
+    },
+  },
 ]
 
 export { data }

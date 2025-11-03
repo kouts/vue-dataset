@@ -41,10 +41,11 @@ import { n as normalizeComponent } from './normalize-component-cf2db48b.js';
 
 
 var script = {
+  name: 'DatasetPager',
   inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
   data: function () {
     return {
-      morePages: MORE_PAGES
+      morePages: MORE_PAGES,
     }
   },
   computed: {
@@ -64,8 +65,8 @@ var script = {
     },
     disabledNext: function disabledNext() {
       return this.dsPage === this.dsPagecount || this.dsPagecount === 0
-    }
-  }
+    },
+  },
 };
 
 /* script */

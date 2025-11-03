@@ -11,12 +11,13 @@ import { n as normalizeComponent } from './normalize-component-cf2db48b.js';
 //
 
 var script = {
+  name: 'DatasetItem',
   inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
   props: {
     tag: {
       type: String,
-      default: 'div'
-    }
+      default: 'div',
+    },
   },
   computed: {
     /* Setup reactive injects */
@@ -40,8 +41,8 @@ var script = {
       }
 
       return arr
-    }
-  }
+    },
+  },
 };
 
 /* script */

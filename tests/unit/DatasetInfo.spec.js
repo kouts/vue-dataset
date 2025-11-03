@@ -1,6 +1,6 @@
+import { shallowMount } from '@vue/test-utils'
 import DatasetInfo from '@/DatasetInfo.vue'
 import datasetI18n from '@/i18n/en.js'
-import { shallowMount } from '@vue/test-utils'
 
 describe('DatasetInfo', () => {
   let wrapper = null
@@ -9,8 +9,8 @@ describe('DatasetInfo', () => {
     const wrapper = shallowMount(DatasetInfo, {
       provide: {
         datasetI18n,
-        ...provideOpts
-      }
+        ...provideOpts,
+      },
     })
 
     return wrapper
@@ -24,7 +24,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       rdsResultsNumber: () => 1,
       rdsFrom: () => 0,
-      rdsTo: () => 0
+      rdsTo: () => 0,
     })
     const div = wrapper.find('div')
 
@@ -35,7 +35,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       rdsResultsNumber: () => 0,
       rdsFrom: () => 0,
-      rdsTo: () => 0
+      rdsTo: () => 0,
     })
     expect(wrapper.vm.showing).toBe(0)
   })
@@ -44,7 +44,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       rdsResultsNumber: () => 10,
       rdsFrom: () => 0,
-      rdsTo: () => 0
+      rdsTo: () => 0,
     })
     expect(wrapper.vm.showing).toBe(1)
   })
@@ -53,7 +53,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       rdsResultsNumber: () => 3,
       rdsFrom: () => 1,
-      rdsTo: () => 4
+      rdsTo: () => 4,
     })
     expect(wrapper.vm.showingTo).toBe(3)
   })
@@ -62,7 +62,7 @@ describe('DatasetInfo', () => {
     wrapper = wrapperWithProvide({
       rdsResultsNumber: () => 3,
       rdsFrom: () => 1,
-      rdsTo: () => 2
+      rdsTo: () => 2,
     })
     expect(wrapper.vm.showingTo).toBe(2)
   })

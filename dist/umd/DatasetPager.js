@@ -46,10 +46,11 @@
 
 
   var script = {
+    name: 'DatasetPager',
     inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
     data: function () {
       return {
-        morePages: MORE_PAGES
+        morePages: MORE_PAGES,
       }
     },
     computed: {
@@ -69,8 +70,8 @@
       },
       disabledNext: function disabledNext() {
         return this.dsPage === this.dsPagecount || this.dsPagecount === 0
-      }
-    }
+      },
+    },
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {

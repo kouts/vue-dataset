@@ -1,5 +1,5 @@
-import DatasetItem from '@/DatasetItem.vue'
 import { mount } from '@vue/test-utils'
+import DatasetItem from '@/DatasetItem.vue'
 
 describe('DatasetItem', () => {
   const WrapperComp = {
@@ -8,7 +8,7 @@ describe('DatasetItem', () => {
         rdsData: () => this.dsData,
         rdsRows: () => this.dsRows,
         rdsFrom: () => this.dsFrom,
-        rdsTo: () => this.dsTo
+        rdsTo: () => this.dsTo,
       }
     },
     data: function () {
@@ -17,17 +17,17 @@ describe('DatasetItem', () => {
           {
             age: 20,
             name: 'Jessie Casey',
-            email: 'jessie.casey@flyboyz.biz'
+            email: 'jessie.casey@flyboyz.biz',
           },
           {
             age: 26,
             name: 'Solomon Stanley',
-            email: 'solomon.stanley@tetak.net'
-          }
+            email: 'solomon.stanley@tetak.net',
+          },
         ],
         dsRows: [0, 1],
         dsFrom: 0,
-        dsTo: 10
+        dsTo: 10,
       }
     },
     template: `
@@ -45,8 +45,8 @@ describe('DatasetItem', () => {
       </dataset-item>
     `,
     components: {
-      DatasetItem
-    }
+      DatasetItem,
+    },
   }
 
   const wrapperComp = mount(WrapperComp)
@@ -84,10 +84,10 @@ describe('DatasetItem', () => {
         {
           age: 17,
           name: 'John Doe',
-          email: 'john.doe@flyboyz.biz'
-        }
+          email: 'john.doe@flyboyz.biz',
+        },
       ],
-      dsRows: [0]
+      dsRows: [0],
     })
     wrapperComp.vm.$nextTick(() => {
       expect(wrapper.findAll('div.result').length).toBe(1)

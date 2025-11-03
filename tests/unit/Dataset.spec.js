@@ -1,11 +1,10 @@
+import { createLocalVue, mount } from '@vue/test-utils'
 import Dataset from '@/Dataset.vue'
 import DatasetInfo from '@/DatasetInfo.vue'
 import DatasetItem from '@/DatasetItem.vue'
 import DatasetPager from '@/DatasetPager.vue'
 import DatasetSearch from '@/DatasetSearch.vue'
 import DatasetShow from '@/DatasetShow.vue'
-import { createLocalVue, mount } from '@vue/test-utils'
-
 import users from '../../example-data/users.json'
 import { clone, waitNT } from '../../tests/utils.js'
 
@@ -37,12 +36,12 @@ beforeEach(function () {
         </dataset-item>
         <dataset-info />
         <dataset-pager />
-      `
+      `,
     },
     propsData: {
-      dsData: users
+      dsData: users,
     },
-    localVue
+    localVue,
   })
 })
 
@@ -145,15 +144,37 @@ describe('Dataset', () => {
   it('emits an event when the filtered results update', async () => {
     const newUsers = clone(users).slice(0, 10)
     const wrapperDataset = mount(Dataset, {
+      slots: {
+        default: `
+          <dataset-show />
+          <dataset-search />
+          <dataset-item class="items">
+            <template #default="{ row, rowIndex }">
+              <div>{{ rowIndex }} - {{ row.name }}</div>
+            </template>
+            <template #noDataFound>
+              <div>
+                No results found
+              </div>
+            </template>          
+          </dataset-item>
+          <dataset-info />
+          <dataset-pager />
+        `,
+      },
       propsData: {
-        dsData: newUsers
-      }
+        dsData: newUsers,
+      },
+      localVue,
     })
 
     expect(wrapperDataset.emitted()['update:dsData'][0][0]).toHaveLength(10)
 
     await wrapperDataset.vm.search('posuerevulputate.co.uk')
 
-    expect(wrapperDataset.emitted()['update:dsData'][1][0]).toHaveLength(1)
+    const updateEvents = wrapperDataset.emitted()['update:dsData']
+
+    expect(updateEvents).toHaveLength(2)
+    expect(updateEvents[1][0]).toHaveLength(1)
   })
 })

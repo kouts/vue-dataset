@@ -4,17 +4,6 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VueDataset = {}));
 })(this, (function (exports) { 'use strict';
 
-  var datasetI18n = {
-    show: 'Show',
-    entries: 'entries',
-    previous: 'Previous',
-    next: 'Next',
-    showing: 'Showing',
-    showingTo: 'to',
-    showingOf: 'of',
-    showingEntries: 'entries'
-  };
-
   var MORE_PAGES = '...';
 
   function debounce(func, wait, immediate) {
@@ -179,6 +168,17 @@
     return false
   }
 
+  var datasetI18n = {
+    show: 'Show',
+    entries: 'entries',
+    previous: 'Previous',
+    next: 'Next',
+    showing: 'Showing',
+    showingTo: 'to',
+    showingOf: 'of',
+    showingEntries: 'entries',
+  };
+
   //
   //
   //
@@ -204,6 +204,7 @@
 
 
   var script$5 = {
+    name: 'Dataset',
     provide: function provide() {
       var this$1$1 = this;
 
@@ -221,42 +222,43 @@
         rdsPagecount: function () { return this$1$1.dsPagecount; },
         rdsFrom: function () { return this$1$1.dsFrom; },
         rdsTo: function () { return this$1$1.dsTo; },
-        rdsPage: function () { return this$1$1.dsPage; }
+        rdsPage: function () { return this$1$1.dsPage; },
       }
     },
     props: {
       dsData: {
         type: Array,
-        default: function () { return []; }
+        default: function () { return []; },
       },
       dsFilterFields: {
         type: Object,
-        default: function () { return ({}); }
+        default: function () { return ({}); },
       },
       dsSortby: {
         type: Array,
-        default: function () { return []; }
+        default: function () { return []; },
       },
       dsSearchIn: {
         type: Array,
-        default: function () { return []; }
+        default: function () { return []; },
       },
       dsSearchAs: {
         type: Object,
-        default: function () { return ({}); }
+        default: function () { return ({}); },
       },
       dsSortAs: {
         type: Object,
-        default: function () { return ({}); }
-      }
+        default: function () { return ({}); },
+      },
     },
+    emits: ['update:dsData'],
     data: function () {
       return {
         dsPage: 1,
         dsSearch: '',
         dsShowEntries: 10,
         datasetI18n: datasetI18n,
-        indexes: []
+        indexes: [],
       }
     },
     computed: {
@@ -296,14 +298,14 @@
       },
       dsTo: function dsTo() {
         return this.dsPage * this.dsShowEntries
-      }
+      },
     },
     watch: {
       dsResultsNumber: {
         handler: function handler(val, oldVal) {
           // Reset active page when results change
           this.setActive(1);
-        }
+        },
       },
       /*
       The naive attempt would be to manipulate the original array directly.
@@ -358,8 +360,8 @@
             result.map(function (i) { return this$1$1.dsData[i]; })
           );
         },
-        immediate: true
-      }
+        immediate: true,
+      },
     },
     methods: {
       search: function search(value) {
@@ -377,8 +379,8 @@
       },
       setActive: function setActive(value) {
         this.dsPage = value;
-      }
-    }
+      },
+    },
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
@@ -530,6 +532,7 @@
   //
 
   var script$4 = {
+    name: 'DatasetInfo',
     inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
     computed: {
       showing: function showing() {
@@ -547,8 +550,8 @@
       },
       dsTo: function dsTo() {
         return this.rdsTo()
-      }
-    }
+      },
+    },
   };
 
   /* script */
@@ -623,12 +626,13 @@
   //
 
   var script$3 = {
+    name: 'DatasetItem',
     inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
     props: {
       tag: {
         type: String,
-        default: 'div'
-      }
+        default: 'div',
+      },
     },
     computed: {
       /* Setup reactive injects */
@@ -652,8 +656,8 @@
         }
 
         return arr
-      }
-    }
+      },
+    },
   };
 
   /* script */
@@ -755,10 +759,11 @@
 
 
   var script$2 = {
+    name: 'DatasetPager',
     inject: ['datasetI18n', 'setActive', 'rdsPages', 'rdsPagecount', 'rdsPage'],
     data: function () {
       return {
-        morePages: MORE_PAGES
+        morePages: MORE_PAGES,
       }
     },
     computed: {
@@ -778,8 +783,8 @@
       },
       disabledNext: function disabledNext() {
         return this.dsPage === this.dsPagecount || this.dsPagecount === 0
-      }
-    }
+      },
+    },
   };
 
   /* script */
@@ -923,20 +928,21 @@
 
 
   var script$1 = {
+    name: 'DatasetSearch',
     inject: ['search'],
     props: {
       dsSearchPlaceholder: {
         type: String,
-        default: ''
+        default: '',
       },
       wait: {
         type: Number,
-        default: 0
-      }
+        default: 0,
+      },
     },
     data: function () {
       return {
-        dsSearch: ''
+        dsSearch: '',
       }
     },
     mounted: function mounted() {
@@ -945,7 +951,7 @@
       this.input = debounce(function (value) {
         this$1$1.search(value);
       }, this.wait);
-    }
+    },
   };
 
   /* script */
@@ -1015,11 +1021,12 @@
   //
 
   var script = {
+    name: 'DatasetShow',
     inject: ['datasetI18n', 'showEntries'],
     props: {
       dsShowEntries: {
         type: Number,
-        default: 10
+        default: 10,
       },
       dsShowEntriesLovs: {
         type: Array,
@@ -1028,10 +1035,10 @@
           { value: 10, text: 10 },
           { value: 25, text: 25 },
           { value: 50, text: 50 },
-          { value: 100, text: 100 }
-        ]; }
-      }
+          { value: 100, text: 100 } ]; },
+      },
     },
+    emits: ['changed'],
     created: function created() {
       this.showEntries(Number(this.dsShowEntries));
     },
@@ -1039,8 +1046,8 @@
       change: function change(e) {
         this.$emit('changed', Number(e.target.value));
         this.showEntries(Number(e.target.value));
-      }
-    }
+      },
+    },
   };
 
   /* script */

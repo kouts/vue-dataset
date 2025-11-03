@@ -15,12 +15,13 @@
   //
 
   var script = {
+    name: 'DatasetItem',
     inject: ['rdsData', 'rdsRows', 'rdsFrom', 'rdsTo'],
     props: {
       tag: {
         type: String,
-        default: 'div'
-      }
+        default: 'div',
+      },
     },
     computed: {
       /* Setup reactive injects */
@@ -44,8 +45,8 @@
         }
 
         return arr
-      }
-    }
+      },
+    },
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {

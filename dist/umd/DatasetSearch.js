@@ -37,20 +37,21 @@
 
 
   var script = {
+    name: 'DatasetSearch',
     inject: ['search'],
     props: {
       dsSearchPlaceholder: {
         type: String,
-        default: ''
+        default: '',
       },
       wait: {
         type: Number,
-        default: 0
-      }
+        default: 0,
+      },
     },
     data: function () {
       return {
-        dsSearch: ''
+        dsSearch: '',
       }
     },
     mounted: function mounted() {
@@ -59,7 +60,7 @@
       this.input = debounce(function (value) {
         this$1$1.search(value);
       }, this.wait);
-    }
+    },
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {

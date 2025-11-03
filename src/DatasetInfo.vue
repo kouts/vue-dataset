@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: 'DatasetInfo',
   inject: ['datasetI18n', 'rdsResultsNumber', 'rdsFrom', 'rdsTo'],
   computed: {
     showing() {
@@ -24,7 +25,7 @@ export default {
     },
     dsTo() {
       return this.rdsTo()
-    }
-  }
+    },
+  },
 }
 </script>

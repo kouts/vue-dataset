@@ -12,26 +12,27 @@
 import { debounce } from './helpers'
 
 export default {
+  name: 'DatasetSearch',
   inject: ['search'],
   props: {
     dsSearchPlaceholder: {
       type: String,
-      default: ''
+      default: '',
     },
     wait: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data: function () {
     return {
-      dsSearch: ''
+      dsSearch: '',
     }
   },
   mounted() {
     this.input = debounce((value) => {
       this.search(value)
     }, this.wait)
-  }
+  },
 }
 </script>

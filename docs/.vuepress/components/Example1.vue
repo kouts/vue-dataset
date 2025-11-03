@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dataset
+    <Dataset
       v-slot="{ ds }"
       :ds-data="users"
       :ds-filter-fields="{}"
@@ -10,15 +10,15 @@
     >
       <div class="row mb-2" :data-page-count="ds.dsPagecount">
         <div class="col-md-6 mb-2 mb-md-0">
-          <dataset-show :ds-show-entries="selected" @changed="selected = $event" />
+          <DatasetShow :ds-show-entries="selected" @changed="selected = $event" />
         </div>
         <div class="col-md-6">
-          <dataset-search ds-search-placeholder="Search..." />
+          <DatasetSearch ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <dataset-item class="form-row mb-3">
+          <DatasetItem class="form-row mb-3">
             <template #default="{ row, rowIndex }">
               <div class="col-md-4">
                 <div class="card mb-2">
@@ -38,14 +38,14 @@
                 <p class="text-center">No results found</p>
               </div>
             </template>
-          </dataset-item>
+          </DatasetItem>
         </div>
       </div>
       <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
-        <dataset-info class="mb-2 mb-md-0" />
-        <dataset-pager />
+        <DatasetInfo class="mb-2 mb-md-0" />
+        <DatasetPager />
       </div>
-    </dataset>
+    </Dataset>
   </div>
 </template>
 
@@ -61,10 +61,10 @@ export default {
         Active: 'text-success',
         Away: 'text-warning',
         'Do not disturb': 'text-danger',
-        Invisible: 'text-secondary'
+        Invisible: 'text-secondary',
       },
-      selected: 5
+      selected: 5,
     }
-  }
+  },
 }
 </script>

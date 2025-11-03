@@ -9,7 +9,7 @@ var datasetI18n = {
   showing: 'Showing',
   showingTo: 'to',
   showingOf: 'of',
-  showingEntries: 'entries'
+  showingEntries: 'entries',
 };
 
 //
@@ -37,6 +37,7 @@ var datasetI18n = {
 
 
 var script = {
+  name: 'Dataset',
   provide: function provide() {
     var this$1$1 = this;
 
@@ -54,42 +55,43 @@ var script = {
       rdsPagecount: function () { return this$1$1.dsPagecount; },
       rdsFrom: function () { return this$1$1.dsFrom; },
       rdsTo: function () { return this$1$1.dsTo; },
-      rdsPage: function () { return this$1$1.dsPage; }
+      rdsPage: function () { return this$1$1.dsPage; },
     }
   },
   props: {
     dsData: {
       type: Array,
-      default: function () { return []; }
+      default: function () { return []; },
     },
     dsFilterFields: {
       type: Object,
-      default: function () { return ({}); }
+      default: function () { return ({}); },
     },
     dsSortby: {
       type: Array,
-      default: function () { return []; }
+      default: function () { return []; },
     },
     dsSearchIn: {
       type: Array,
-      default: function () { return []; }
+      default: function () { return []; },
     },
     dsSearchAs: {
       type: Object,
-      default: function () { return ({}); }
+      default: function () { return ({}); },
     },
     dsSortAs: {
       type: Object,
-      default: function () { return ({}); }
-    }
+      default: function () { return ({}); },
+    },
   },
+  emits: ['update:dsData'],
   data: function () {
     return {
       dsPage: 1,
       dsSearch: '',
       dsShowEntries: 10,
       datasetI18n: datasetI18n,
-      indexes: []
+      indexes: [],
     }
   },
   computed: {
@@ -129,14 +131,14 @@ var script = {
     },
     dsTo: function dsTo() {
       return this.dsPage * this.dsShowEntries
-    }
+    },
   },
   watch: {
     dsResultsNumber: {
       handler: function handler(val, oldVal) {
         // Reset active page when results change
         this.setActive(1);
-      }
+      },
     },
     /*
     The naive attempt would be to manipulate the original array directly.
@@ -191,8 +193,8 @@ var script = {
           result.map(function (i) { return this$1$1.dsData[i]; })
         );
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     search: function search(value) {
@@ -210,8 +212,8 @@ var script = {
     },
     setActive: function setActive(value) {
       this.dsPage = value;
-    }
-  }
+    },
+  },
 };
 
 /* script */

@@ -1,5 +1,5 @@
-import { data } from './testData.js'
 import { findAny } from '@/helpers'
+import { data } from './testData.js'
 
 let findData = []
 
@@ -39,7 +39,7 @@ describe('findAny', () => {
         const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`
 
         return isoDate === value
-      })
+      }),
     }
     const res = findAny(['birthdate'], searchAs, findData[0].value, '09.03.1980')
 
@@ -51,7 +51,7 @@ describe('findAny', () => {
     const searchAs = {
       firstName: jest.fn((value, searchStr, rowData) => {
         return searchStr.toLowerCase() === value.toLowerCase()
-      })
+      }),
     }
     const res = findAny(['firstName', 'balance'], searchAs, findData[0].value, 'Bob')
 
@@ -61,7 +61,7 @@ describe('findAny', () => {
   it(`performs a simple search in case searchAs does not contain a function`, () => {
     const searchAs = {
       firstName: 'string',
-      balance: 20
+      balance: 20,
     }
     const res = findAny(['firstName', 'balance'], searchAs, findData[0].value, 'Gawain')
 

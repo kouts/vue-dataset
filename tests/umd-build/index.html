@@ -89,7 +89,7 @@
       DatasetItem: DatasetItem,
       DatasetPager: DatasetPager,
       DatasetSearch: DatasetSearch,
-      DatasetShow: DatasetShow
+      DatasetShow: DatasetShow,
     }
     /* eslint-enable object-shorthand, no-undef, no-var, no-unused-vars */
   </script>
@@ -100,7 +100,7 @@
   -->
 
   <script type="text/javascript">
-    /* eslint-disable object-shorthand, no-undef, no-var */
+    /* eslint-disable no-undef, no-var */
     // eslint-disable-next-line no-unused-vars
     var app = new Vue({
       el: '#app',
@@ -110,7 +110,7 @@
         DatasetItem: VueDataset.DatasetItem,
         DatasetPager: VueDataset.DatasetPager,
         DatasetSearch: VueDataset.DatasetSearch,
-        DatasetShow: VueDataset.DatasetShow
+        DatasetShow: VueDataset.DatasetShow,
       },
       data: function () {
         return {
@@ -119,8 +119,8 @@
             Active: 'text-success',
             Away: 'text-warning',
             'Do not disturb': 'text-danger',
-            Invisible: 'text-secondary'
-          }
+            Invisible: 'text-secondary',
+          },
         }
       },
       methods: {
@@ -129,9 +129,9 @@
         },
         clearData: function () {
           this.users = []
-        }
+        },
       },
-      template: '#app-template'
+      template: '#app-template',
     })
   </script>
 </body>

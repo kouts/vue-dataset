@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dataset
+    <Dataset
       v-slot="{ ds }"
       :ds-data="users"
       :ds-sortby="sortBy"
@@ -10,10 +10,10 @@
     >
       <div class="row" :data-page-count="ds.dsPagecount">
         <div class="col-md-6 mb-2 mb-md-0">
-          <dataset-show />
+          <DatasetShow />
         </div>
         <div class="col-md-6">
-          <dataset-search ds-search-placeholder="Search..." />
+          <DatasetSearch ds-search-placeholder="Search..." />
         </div>
       </div>
       <div class="row">
@@ -28,7 +28,7 @@
                   </th>
                 </tr>
               </thead>
-              <dataset-item tag="tbody">
+              <DatasetItem tag="tbody">
                 <template #default="{ row, rowIndex }">
                   <tr>
                     <th scope="row">{{ rowIndex + 1 }}</th>
@@ -37,16 +37,16 @@
                     <td>{{ isoDateToEuroDate(row.birthdate) }}</td>
                   </tr>
                 </template>
-              </dataset-item>
+              </DatasetItem>
             </table>
           </div>
         </div>
       </div>
       <div class="d-flex flex-md-row flex-column justify-content-between align-items-center">
-        <dataset-info class="mb-2 mb-md-0" />
-        <dataset-pager />
+        <DatasetInfo class="mb-2 mb-md-0" />
+        <DatasetPager />
       </div>
-    </dataset>
+    </Dataset>
   </div>
 </template>
 
@@ -63,19 +63,19 @@ export default {
         {
           name: 'Name',
           field: 'name',
-          sort: ''
+          sort: '',
         },
         {
           name: 'Email',
           field: 'email',
-          sort: ''
+          sort: '',
         },
         {
           name: 'Birthdate',
           field: 'birthdate',
-          sort: ''
-        }
-      ]
+          sort: '',
+        },
+      ],
     }
   },
   computed: {
@@ -87,7 +87,7 @@ export default {
 
         return acc
       }, [])
-    }
+    },
   },
   methods: {
     click(event, i) {
@@ -114,8 +114,8 @@ export default {
     },
     isoDateToEuroDate,
     isoDateToDate,
-    searchAsEuroDate
-  }
+    searchAsEuroDate,
+  },
 }
 </script>
 
