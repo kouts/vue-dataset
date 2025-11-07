@@ -3,6 +3,7 @@ import { config } from '@kouts/eslint-config'
 export default [
   ...config({
     ts: false,
+    env: ['browser'],
   }),
   {
     name: 'project-ignores',

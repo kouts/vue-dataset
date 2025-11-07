@@ -31,7 +31,10 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./playground/scss/variables";`,
+        api: 'modern',
+        quietDeps: true,
+        silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions', 'abs-percent'],
+        additionalData: `@use "@playground/scss/variables.scss" as *;`,
       },
     },
   },

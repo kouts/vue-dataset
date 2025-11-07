@@ -62,6 +62,10 @@
 import jsonUsers from '@root/example-data/users.json'
 import { ref } from 'vue'
 
+defineOptions({
+  name: 'CompositionApi',
+})
+
 const clone = function (obj) {
   return JSON.parse(JSON.stringify(obj || {}))
 }
