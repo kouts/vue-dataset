@@ -1,3 +1,11 @@
+## [3.7.1](https://github.com/kouts/vue-dataset/compare/v3.7.0...v3.7.1) (2025-11-08)
+
+
+### Bug Fixes
+
+* updated node and npm packages ([b31d312](https://github.com/kouts/vue-dataset/commit/b31d312a0f43649daa3e70b8bc101b748e821725))
+* updated release workflow file ([66c18af](https://github.com/kouts/vue-dataset/commit/66c18afcd41b5da7475e11306194006388e59c6b))
+
 # [3.7.0](https://github.com/kouts/vue-dataset/compare/v3.6.6...v3.7.0) (2024-10-02)
 
 
