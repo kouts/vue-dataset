@@ -137,13 +137,21 @@ blockquote p {
 }
 
 /* Custom width for dataset pages */
-.dataset-page .theme-default-content:not(.custom) {
+dataset-page .theme-default-content:not(.custom) {
+  max-width: 100%;
+}
+
+.dataset-page .vp-page [vp-content] {
   max-width: 100%;
 }
 
 /* Fix links appearance */
 .dataset-page .theme-default-content:not(.custom) ul.pagination a:hover {
   text-decoration: none;
+}
+
+[vp-content] ul.pagination li a {
+  text-decoration: none !important;
 }
 
 /* Fix margin-top for first paragraph */
@@ -211,18 +219,35 @@ code {
   font-family: inherit;
 }
 
-/* Fix Dataset pagination links */
-.theme-default-content ul.pagination li a {
+/* Fix h2 spacing */
+.theme-container .theme-default-content:not(.custom) h2 {
+  margin-bottom: 1.3rem;
+  padding-bottom: 1.3rem;
+}
+
+.theme-container .theme-default-content:not(.custom) h3 {
+  margin-bottom: 1.3rem;
+}
+
+/* Fix and normalize header spacing */
+[vp-content] h2 {
+  margin-bottom: 1rem;
+}
+
+[vp-content] h2:first-child + p {
+  margin-top: 0;
+}
+
+/* Override VuePress link underlines for nav pills in examples */
+[vp-content] .nav-pills .nav-link {
   text-decoration: none;
 }
 
-/* Fix Dataset card title spacing */
-.theme-default-content h5.card-title {
-  position: relative;
-  padding-top: 3rem;
-}
+/* Add margin to GitHub link in navbar */
+.vp-navbar-items .auto-link.external-link[href*='github.com'] {
+  margin-right: 1rem;
 
-/* Fix navbar item hover */
-.vp-navbar-item > a:hover {
-  border-bottom: none;
+  &:hover {
+    text-decoration: none;
+  }
 }

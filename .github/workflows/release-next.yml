@@ -1,4 +1,4 @@
-name: release-next
+name: release
 
 on:
   push:
@@ -8,10 +8,13 @@ jobs:
   ci:
     runs-on: ${{ matrix.os }}
 
+    permissions:
+      id-token: write
+      contents: write
+
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
 
     steps:
       - name: Checkout 🛎
@@ -48,5 +51,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release

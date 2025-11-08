@@ -175,7 +175,7 @@ export default {
       return value.toLowerCase().startsWith(this.startsWith.toLowerCase())
     },
     onUpdate(data) {
-      console.log('Filtered data:', data)
+      // console.log('Filtered data:', data)
     },
   },
 }

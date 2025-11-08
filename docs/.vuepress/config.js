@@ -10,12 +10,24 @@ import { vueExamplePlugin } from 'vuepress-plugin-vue-example'
 
 const examplesDir = fileURLToPath(new URL('./components', import.meta.url))
 
-console.log(examplesDir)
+// console.log(examplesDir)
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export default defineUserConfig({
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      css: {
+        preprocessorOptions: {
+          scss: {
+            api: 'modern',
+            quietDeps: true,
+            silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions', 'abs-percent'],
+          },
+        },
+      },
+    },
+  }),
   plugins: [
     registerComponentsPlugin({
       componentsDir: examplesDir,
